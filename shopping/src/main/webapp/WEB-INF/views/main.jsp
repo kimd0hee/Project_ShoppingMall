@@ -7,15 +7,16 @@
 <head>
 	<title>Home</title>
     <%@ include file="include/header.jsp" %>
-    <%@ include file="include/menu.jsp" %>
     
-    <c:if test="${msg == 'success'}">
-   		<h2>${sessionScope.userName}(${sessionScope.userId})님 환영합니다.</h2>
-   	</c:if>
+    
+    
 </head>
 
 <body>
-
+	<%@ include file="include/menu.jsp" %>
+	<c:if test="${msg == 'success'}">
+   		<h2>${sessionScope.user_name}(${sessionScope.user_id})님 환영합니다.</h2>
+   	</c:if>
     <!-- Categories Section Begin -->
     <section class="categories">
         <div class="container-fluid">

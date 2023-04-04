@@ -18,6 +18,16 @@ public class MainController {
 		return "main";
 	}
 	
+	//로그인 page 연결
+	@RequestMapping(value = "login.do", method = RequestMethod.GET)
+	public String login() {
+		return "login";
+	}	
+	@RequestMapping(value = "logout", method = RequestMethod.GET)
+	public String logout() {
+		return "logout";
+	}
+	
 	//회원관리 page 연결
 	@RequestMapping(value = "userList", method = RequestMethod.GET)
 	public String userList(Model model) {

@@ -11,6 +11,7 @@ import com.user.dto.UserVO;
 
 @Service
 public class UserServiceImpl implements UserService {
+	
 	@Inject
 	UserDAOImpl userdao;
 	

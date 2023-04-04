@@ -49,4 +49,15 @@
 	<context:component-scan base-package="com.board.dao"></context:component-scan>
 	<context:component-scan base-package="com.board.dto"></context:component-scan>
 	<context:component-scan base-package="com.board.service"></context:component-scan>
+	
+	<context:component-scan base-package="com.login.dao"></context:component-scan>
+	<context:component-scan base-package="com.login.service"></context:component-scan>
+	
+	<context:component-scan base-package="com.product.dao"></context:component-scan>
+	<context:component-scan base-package="com.product.dto"></context:component-scan>
+	<context:component-scan base-package="com.product.service"></context:component-scan>
+	
+	<context:component-scan base-package="com.memberboard.dao"></context:component-scan>
+	<context:component-scan base-package="com.memberboard.dto"></context:component-scan>
+	<context:component-scan base-package="com.memberboard.service"></context:component-scan>
 </beans>
