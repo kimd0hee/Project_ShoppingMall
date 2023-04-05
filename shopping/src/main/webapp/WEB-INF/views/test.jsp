@@ -9,6 +9,7 @@
 	Hello world!  
 </h1>
 
-<P>  The time on the server is ${serverTime}. </P>
+<h2>쿼리문</h2>
+<h2>쿼리문</h2>
 </body>
 </html>
