@@ -26,6 +26,7 @@
 			<td>${row.user_name }</td>
 			<td>${row.user_phone }</td>
 			<td>${row.user_joindate }</td>
+			
 		</tr>
 		</c:forEach>
 	</table>
