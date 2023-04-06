@@ -21,11 +21,44 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.shopping.app" />
-	<context:component-scan base-package="com.user.controller" />
-	<context:component-scan base-package="com.board.controller" />
-	<context:component-scan base-package="com.login.controller" />
+	<!-- 추가 Start -->
+	<!-- 파일 업로드 -->
+	<beans:bean id="mulitpartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="10485760"/>
+	</beans:bean>
 	
+	<beans:bean id="uploadPath" class="java.lang.String">
+	<beans:constructor-arg value="C:\Users\son94\git\Project_ShoppingMall\shopping\src\main\resources"/>
+	</beans:bean>
+	
+	<!-- 관리자 세션체크 -->
+	<!-- <beans:bean id="adminInterceptor" class="com.spring.interceptor.AdminInterceptor"/> -->
+	
+	<!-- 관리자 세션체크 매핑 -->
+ 	<!-- <interceptor>
+		<mapping path="writeProduct.do"/>
+		<mapping path="insertProduct.do"/>
+		<mapping path="updateProduct.do"/>
+		<mapping path="editProduct.do"/>
+		<mapping path="deleteProduct.do"/>
+		<beans:ref bean="adminInterceptor"/>
+	</interceptor> -->
+	
+	<!-- 추가 End -->
+	<!-- 메인 -->
+	<context:component-scan base-package="com.shopping.app" />
+	<!-- 유저/고객 -->
+	<context:component-scan base-package="com.user.controller" />
+	<!-- 로그인 -->
+	<context:component-scan base-package="com.login.controller" />
+	<!-- 상품 -->
 	<context:component-scan base-package="com.product.controller" />
+	<!-- 자유게시판 -->
+	<context:component-scan base-package="com.board.controller" />
+	<!-- 유저/고객게시판 -->
 	<context:component-scan base-package="com.memberboard.controller" />
+	<!-- 장바구니 -->
+	<context:component-scan base-package="com.cart.controller" />
+	<!-- 댓글 -->
+	<context:component-scan base-package="com.review.controller" />
 </beans:beans>

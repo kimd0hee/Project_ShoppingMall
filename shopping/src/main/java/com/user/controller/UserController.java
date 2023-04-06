@@ -3,6 +3,7 @@ package com.user.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.user.dto.UserVO;
 import com.user.service.UserService;
@@ -90,4 +92,40 @@ public class UserController {
 			return "userView";
 		}
 	}
+	//어드민
+    
+    // 1. 관리자 로그인 페이지 매핑
+    @RequestMapping("adminlogin.do")
+    public String login() {
+       return "admin/adminLogin";
+    }
+    // 2. 관리자 로그인 체크
+    @RequestMapping("adminloginCheck.do")
+    public ModelAndView loginCheck(HttpSession session, UserVO vo , ModelAndView mav) {
+       String name = userService.loginCheck(vo);
+       // 로그인 성공
+       if(name != null) {
+          session.setAttribute("admin_id", vo.getUser_id());
+          session.setAttribute("user_id", vo.getUser_id());
+          session.setAttribute("admin_name", name);
+          session.setAttribute("user_name", name);
+          mav.setViewName("admin/adminHome");
+          mav.addObject("msg", "success"); 
+        // 로그인 실패
+       }else {
+          mav.setViewName("admin/adminLogin");
+          mav.addObject("msg", "failure");
+       }
+       return mav;
+    }
+    // 3. 관리자 로그아웃
+    @RequestMapping("adminlogout.do")
+    public ModelAndView logout(HttpSession session) {
+       session.invalidate();
+       ModelAndView mav = new ModelAndView();
+       mav.setViewName("admin/adminLogin");
+       mav.addObject("msg", "logout");
+       return mav;
+    }
 }
+	

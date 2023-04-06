@@ -27,37 +27,41 @@
 	<bean name="sqlSessionFactory"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
-		<property name="configLocation"
-			value="classpath:/mybatis-config.xml">
+		<property name="configLocation" value="classpath:/mybatis-config.xml">
 		</property>
-		<property name="mapperLocations"
-			value="classpath:mappers/**/*Mapper.xml">
+		<property name="mapperLocations" value="classpath:mappers/**/*Mapper.xml">
 		</property>
 	</bean>
 	<bean name="sqlSession"
-		class="org.mybatis.spring.SqlSessionTemplate"
-		destroy-method="clearCache" id="sqlSession">
-		<constructor-arg ref="sqlSessionFactory"
-			name="sqlSessionFactory">
+		class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache" id="sqlSession">
+		<constructor-arg ref="sqlSessionFactory" name="sqlSessionFactory">
 		</constructor-arg>
 	</bean>
-
+	<!-- 사용자 -->
 	<context:component-scan base-package="com.user.dao"></context:component-scan>
 	<context:component-scan base-package="com.user.dto"></context:component-scan>
 	<context:component-scan base-package="com.user.service"></context:component-scan>
-	
+	<!-- 자유게시판 -->
 	<context:component-scan base-package="com.board.dao"></context:component-scan>
 	<context:component-scan base-package="com.board.dto"></context:component-scan>
 	<context:component-scan base-package="com.board.service"></context:component-scan>
-	
+	<!-- 로그인 -->
 	<context:component-scan base-package="com.login.dao"></context:component-scan>
 	<context:component-scan base-package="com.login.service"></context:component-scan>
-	
+	<!-- 상품 -->
 	<context:component-scan base-package="com.product.dao"></context:component-scan>
 	<context:component-scan base-package="com.product.dto"></context:component-scan>
 	<context:component-scan base-package="com.product.service"></context:component-scan>
-	
+	<!-- 사용자게시판 -->
 	<context:component-scan base-package="com.memberboard.dao"></context:component-scan>
 	<context:component-scan base-package="com.memberboard.dto"></context:component-scan>
 	<context:component-scan base-package="com.memberboard.service"></context:component-scan>
+	<!-- 장바구니 -->
+	<context:component-scan base-package="com.shop.dao"></context:component-scan>
+	<context:component-scan base-package="com.cart.dto"></context:component-scan>
+	<context:component-scan base-package="com.cart.service"></context:component-scan>
+	<!-- 댓글 -->
+	<context:component-scan base-package="com.review.dao"></context:component-scan>
+	<context:component-scan base-package="com.review.dto"></context:component-scan>
+	<context:component-scan base-package="com.review.service"></context:component-scan>			
 </beans>
