@@ -39,8 +39,8 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public String fileInfo(int productId) {
-		return dao.fileInfo(productId);
+	public String fileInfo(int product_id) {
+		return dao.fileInfo(product_id);
 	}
 
 }
