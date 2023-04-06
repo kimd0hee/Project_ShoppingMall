@@ -43,6 +43,7 @@
 		<mapping path="deleteProduct.do"/>
 		<beans:ref bean="adminInterceptor"/>
 	</interceptor> -->
+<<<<<<< HEAD
 	<!-- 추가 End -->
 		
 	<context:component-scan base-package="com.shopping.app" />
@@ -50,5 +51,24 @@
 	<context:component-scan base-package="com.product.controller" />
 	<context:component-scan base-package="com.memberboard.controller" />
 	<context:component-scan base-package="com.cart.controller" />
+=======
+>>>>>>> branch 'S.S.M' of https://github.com/kimd0hee/Project_ShoppingMall.git
 	
+	<!-- 추가 End -->
+	<!-- 메인 -->
+	<context:component-scan base-package="com.shopping.app" />
+	<!-- 유저/고객 -->
+	<context:component-scan base-package="com.user.controller" />
+	<!-- 로그인 -->
+	<context:component-scan base-package="com.login.controller" />
+	<!-- 상품 -->
+	<context:component-scan base-package="com.product.controller" />
+	<!-- 자유게시판 -->
+	<context:component-scan base-package="com.board.controller" />
+	<!-- 유저/고객게시판 -->
+	<context:component-scan base-package="com.memberboard.controller" />
+	<!-- 장바구니 -->
+	<context:component-scan base-package="com.cart.controller" />
+	<!-- 댓글 -->
+	<context:component-scan base-package="com.review.controller" />
 </beans:beans>

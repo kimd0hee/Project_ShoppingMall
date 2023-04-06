@@ -1,6 +1,6 @@
-package com.user.service;
+package com.review.service;
 
-public class ReplyPager {
+public class ReviewPager {
 
 	public static final int PAGE_SCALE = 10;
 	public static final int BLOCK_SCALE = 4;
@@ -17,7 +17,7 @@ public class ReplyPager {
 	private int blockBegin;
 	private int blockEnd;
 
-	public ReplyPager(int count, int curPage) {
+	public ReviewPager(int count, int curPage) {
 		curBlock = 1;
 		this.curPage = curPage;
 		setTotPage(count);

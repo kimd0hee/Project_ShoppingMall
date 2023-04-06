@@ -4,6 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cart">
+<<<<<<< HEAD
 	<!-- 장바구니 추가 -->
 	<insert id="insertCart">
 		INSERT INTO tbl_cart(
@@ -65,4 +66,67 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE user_id= #{user_id}
 		AND product_id = #{product_id}
 	</update>	
+=======
+   <!-- 장바구니 추가 -->
+   <insert id="insertCart">
+      INSERT INTO tbl_cart(
+         user_id, product_id, cart_quantity
+      ) VALUES (
+         #{user_id}, #{product_id}, #{cart_quantity}         
+      )
+   </insert>
+   <!-- 2. 장바구니 목록 -->
+   <select id="cartList" resultType="com.cart.dto.cartVO">
+      SELECT
+         c.cart_id AS cart_id,
+         c.user_id AS user_id,
+         p.product_id As product_id,
+         p.product_name AS product_name,
+          c.cart_quantity,
+          p.cart_price AS cart_price,
+          (p.cart_price * c.cart_quantity) product_money,
+          m.user_name AS user_name
+      FROM
+         tbl_cart c LEFT JOIN tbl_product p ON p.product_id = c.product_id
+         LEFT JOIN tbl_user m ON m.user_id = c.user_id
+      WHERE <!--  m.user_id = c.user_id
+            AND p.product_id = c.product_id  AND-->
+         c.user_id = #{user_id}
+      ORDER BY
+         c.cart_id
+   </select>
+   <!--  3. 장바구니 전체 금액 -->
+   <select id="sumMoneyCart" resultType="int">
+      SELECT NVL(SUM(cart_price * cart_quantity), 0) product_money
+      FROM tbl_cart c LEFT JOIN tbl_product p ON c.product_id = p.product_id
+      WHERE <!--  c.product_id = p.product_id AND -->
+      c.user_id =#{user_id}
+   </select>
+   <!--  4. 장바구니 수정 -->
+   <update id="modifyCart">
+      UPDATE tbl_cart
+      SET cart_quantity = #{cart_quantity}
+      WHERE user_id= #{user_id}
+      AND product_id = #{product_id}
+   </update>
+   <!-- 5. 장바구니 삭제 -->
+   <delete id="deleteCart">
+      DELETE FROM tbl_cart
+      WHEre cart_id = #{cart_id}
+   </delete>
+   <!-- 6. 장바구니에 동일한 상품 레코드 확인 -->
+   <select id="countCart" resultType="int">
+      SELECT COUNT(*)
+      FORM tbl_cart
+      WHERE user_id = #{user_id}
+      AND product_id =#{product_id}
+   </select>
+   <!--  7. 장바구니에 동일한 상품이 존재하면 수정 -->
+   <update id="updateCart">
+      UPDATE tbl_cart
+      SET cart_quantity = cart_quantity + #{cart_quantity}
+      WHERE user_id= #{user_id}
+      AND product_id = #{product_id}
+   </update>   
+>>>>>>> branch 'S.S.M' of https://github.com/kimd0hee/Project_ShoppingMall.git
 </mapper>

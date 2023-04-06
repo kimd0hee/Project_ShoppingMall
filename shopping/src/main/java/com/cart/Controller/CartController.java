@@ -1,4 +1,4 @@
-package com.cart.Controller;
+package com.cart.controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -32,10 +32,10 @@ public class CartController {
       //장바구네이 기존 상품이 있는지 검사
       int count = cartService.countCart(vo.getProduct_id(),user_id);
       if(count == 0) {
-    	  // 없으면 insert
+         // 없으면 insert
          cartService.insertCart(vo);
       }else {
-    	  //있으면 update
+         //있으면 update
          cartService.updateCart(vo);
       }
       return "redirect:/product/list.do";
@@ -81,7 +81,7 @@ public class CartController {
    @RequestMapping("update.do")
    public String update(@RequestParam int[] cart_quantity, @RequestParam int[] product_id, HttpSession session) throws Exception {
       //session의 id
-	   String user_id = (String) session.getAttribute("user_id");
+      String user_id = (String) session.getAttribute("user_id");
       //레코드의 갯수만큼 반복문 실행
       
       for(int i=0; i<product_id.length; i++) {

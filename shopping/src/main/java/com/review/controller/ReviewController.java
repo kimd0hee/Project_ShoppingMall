@@ -1,4 +1,4 @@
-package com.user.app;
+package com.review.controller;
 
 import java.util.List;
 
@@ -16,35 +16,34 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.user.dto.ReplyVO;
-import com.user.service.ReplyPager;
-import com.user.service.ReplyService;
+import com.review.dto.ReviewVO;
+import com.review.service.ReviewPager;
+import com.review.service.ReviewService;
 
 
 @RestController
-@RequestMapping("/reply/*")
-public class ReplyController {
+public class ReviewController {
 	
 	@Inject
-	ReplyService replyservice;
+	ReviewService service;
 	
-	@RequestMapping("insert.do")
-	public void insert(@ModelAttribute ReplyVO vo, HttpSession session) {
+	@RequestMapping("insertReview.do")
+	public void insertReview(@ModelAttribute ReviewVO vo, HttpSession session) {
 		
-		String userId = (String) session.getAttribute("userId");
-		vo.setReplyer(userId);
+		String user_id = (String) session.getAttribute("user_id");
+		vo.setUser_id(user_id);
 		
-		replyservice.create(vo);
+		service.createReview(vo);
 	}
 	
 	@RequestMapping(value="insertRest.do", method=RequestMethod.POST)
 			
-	public ResponseEntity<String> interRest(@RequestBody ReplyVO vo, HttpSession session) {
+	public ResponseEntity<String> interRest(@RequestBody ReviewVO vo, HttpSession session) {
 	ResponseEntity<String> entity = null;
 	try {
-		String userId = (String)session.getAttribute("userId");
-		vo.setReplyer(userId);
-		replyservice.create(vo);
+		String user_id = (String)session.getAttribute("user_id");
+		vo.setUser_id(user_id);
+		service.createReview(vo);
 		entity = new ResponseEntity<String>("success", HttpStatus.OK);
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -54,13 +53,13 @@ public class ReplyController {
 }
 
 	@RequestMapping("list.do")
-	public ModelAndView list(@RequestParam int bno,
+	public ModelAndView list(@RequestParam int order_id,
 @RequestParam(defaultValue="1") int curPage, ModelAndView mav, HttpSession session) {
-	int count = replyservice.count(bno);
-	ReplyPager replyPager = new ReplyPager(count, curPage);
+	int count = service.countReview(order_id);
+	ReviewPager replyPager = new ReviewPager(count, curPage);
 	int start = replyPager.getPageBegin();
 	int end = replyPager.getPageEnd();
-	List<ReplyVO> list = replyservice.list(bno, start, end, session);
+	List<ReviewVO> list = service.reviewList(order_id, start, end, session);
 	mav.setViewName("userboard/replyList");
 	mav.addObject("list", list);
 	mav.addObject("replyPager", replyPager);
@@ -68,45 +67,45 @@ public class ReplyController {
 }
 	
 	@RequestMapping("listJson.do")
-	public List<ReplyVO> listJson(@RequestParam int bno,
+	public List<ReviewVO> listJson(@RequestParam int order_id,
 @RequestParam(defaultValue="1") int curPage, HttpSession session) {
-	int count = replyservice.count(bno);
-	ReplyPager pager = new ReplyPager(count, curPage);
+	int count = service.countReview(order_id);
+	ReviewPager pager = new ReviewPager(count, curPage);
 	int start = pager.getPageBegin();
 	int end = pager.getPageEnd();
-	List<ReplyVO> list = replyservice.list(bno, start, end, session);
+	List<ReviewVO> list = service.reviewList(order_id, start, end, session);
 	return list;
 }	
 	
 	@RequestMapping(value="list/{bno}/{curPage}", method=RequestMethod.GET)
-	public ModelAndView replylist(@PathVariable("bno") int bno, @PathVariable int curPage, ModelAndView mav, HttpSession session) {
+	public ModelAndView replylist(@PathVariable("bno") int order_id, @PathVariable int curPage, ModelAndView mav, HttpSession session) {
 
-	int count = replyservice.count(bno);
-	ReplyPager replyPager = new ReplyPager(count, curPage);
+	int count = service.countReview(order_id);
+	ReviewPager replyPager = new ReviewPager(count, curPage);
 	int start = replyPager.getPageBegin();
 	int end = replyPager.getPageEnd();
-	List<ReplyVO> list = replyservice.list(bno, start, end, session);
+	List<ReviewVO> list = service.reviewList(order_id, start, end, session);
 	mav.setViewName("userboard/replyList");
 	mav.addObject("list", list);
 	mav.addObject("replyPager", replyPager);
 	return mav;
 }
 	
-	@RequestMapping(value="/delete/{rno}", method=RequestMethod.GET)
-	public ModelAndView replydetail(@PathVariable("rno") Integer rno, ModelAndView mav) {
-	ReplyVO vo = replyservice.detail(rno);
+	@RequestMapping(value="/delete/{review_id}", method=RequestMethod.GET)
+	public ModelAndView replydetail(@PathVariable("review_id") Integer review_id, ModelAndView mav) {
+	ReviewVO vo = service.detail(review_id);
 	mav.setViewName("userboard/replyDetail");
 	mav.addObject("vo", vo);
 	return mav;
 }
 	
-	@RequestMapping(value="/update/{rno}", method={RequestMethod.PUT, RequestMethod.PATCH})
-	public ResponseEntity<String> replyUpdate(@PathVariable("rno") Integer rno, @RequestBody ReplyVO vo) {
+	@RequestMapping(value="/update/{review_id}", method={RequestMethod.PUT, RequestMethod.PATCH})
+	public ResponseEntity<String> updateReview(@PathVariable("review_id") Integer review_id, @RequestBody ReviewVO vo) {
 		
 		ResponseEntity<String> entity = null;
 		try {
-			vo.setRno(rno);
-			replyservice.update(vo);
+			vo.setOrder_id(review_id);
+			service.updateReview(vo);
 			entity = new ResponseEntity<String>("success", HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -115,11 +114,11 @@ public class ReplyController {
 	return entity;
 }
 	
-	@RequestMapping(value="/delete/{rno}")
-	public ResponseEntity<String> replyDelete(@PathVariable("rno") Integer rno) {
+	@RequestMapping(value="/delete/{review_id}")
+	public ResponseEntity<String> deleteReview(@PathVariable("review_id") Integer review_id) {
 		ResponseEntity<String> entity = null;
 		try {
-			replyservice.delete(rno);
+			service.deleteReview(review_id);
 			entity = new ResponseEntity<String>("success", HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();

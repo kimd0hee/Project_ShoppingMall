@@ -6,6 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="login">
 
+<<<<<<< HEAD
 	<select id="LoginCheck" resultType="String">
 		SELECT user_name FROM tbl_user
 		WHERE user_id = #{user_id} AND user_pw = #{user_pw}
@@ -21,6 +22,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE user_id = #{user_id} AND user_pw = #{user_pw}
 			
 	</select>
+=======
+   <select id="LoginCheck" resultType="String">
+      SELECT user_name FROM tbl_user
+      WHERE user_id = #{user_id} AND user_pw = #{user_pw}
+   </select>
+   
+   <select id="viewUser" resultType="com.user.dto.UserVO">
+      SELECT
+         user_name,
+         user_id,
+         user_email,
+         user_joindate
+      FROM tbl_user
+      WHERE user_id = #{user_id} AND user_pw = #{user_pw}
+         
+   </select>
+>>>>>>> branch 'S.S.M' of https://github.com/kimd0hee/Project_ShoppingMall.git
 
 </mapper>
-
