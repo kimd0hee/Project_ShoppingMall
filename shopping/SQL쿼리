@@ -1,4 +1,3 @@
-SQL
 * User(사용자/고객)
 
 CREATE TABLE `user` (
@@ -56,7 +55,7 @@ CREATE TABLE `cart` (
 	`product_id`	int(10)	NOT NULL,
 	`user_id`	varchar(50)	NOT NULL,
 	`cart_quantity`	int(10)	NULL,
-	`cart_price`	int(10)	NULL
+	//`cart_price`	int(10)	NULL
 );
 
 * image(상품 이미지)
@@ -69,3 +68,4 @@ CREATE TABLE `product_image` (
 	`file_createdate`	timestamp	NULL,
 	`thumbnail_file`	varchar(1)	NULL
 );
+
