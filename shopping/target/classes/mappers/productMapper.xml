@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="product">
 	<!--  01. 상품 전체 목록 -->
-	<select id="productList" resultType="com.shop.dto.productVO">
+	<select id="productList" resultType="com.product.dto.ProductVO">
 		SELECT
 			product_id AS product_id,
 			product_name AS product_name,
@@ -18,7 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>	
 	
 	<!--  02. 상품 상세보기 -->
-	<select id="detailProduct" resultType="com.shop.dto.productVO">
+	<select id="detailProduct" resultType="com.product.dto.ProductVO">
 		SELECT
 			product_id AS product_id,
 			product_name AS product_name,
@@ -31,7 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 03. 상품 추가하기 url-->
 	<insert id="insertProduct">
-		INSERT INTO tbl_product(product_name, product_price, product_desc,product_url)
+		INSERT INTO tbl_product(product_name, product_price, product_desc, product_url)
 		VALIES ()
 			 #{product_name}
 			,#{product_price}
