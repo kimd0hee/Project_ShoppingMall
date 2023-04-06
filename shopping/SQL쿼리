@@ -1,6 +1,9 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 SQL
+=======
+>>>>>>> branch 'S.S.M' of https://github.com/kimd0hee/Project_ShoppingMall.git
 * User(사용자/고객)
 
 CREATE TABLE `user` (
@@ -50,6 +53,7 @@ CREATE TABLE `cscenter` (
    `cs_status`   varchar(10)   NULL,
    `cs_writer`   varchar(50)   NOT NULL,
    `cs_recnt`   int(10)  NOT NULL
+<<<<<<< HEAD
 );
 =======
 
@@ -57,3 +61,27 @@ CREATE TABLE `cscenter` (
 �ھ�~
 ����
 >>>>>>> branch 'P.S.M' of https://github.com/kimd0hee/Project_ShoppingMall.git
+=======
+);
+
+* cart(장바구니)
+CREATE TABLE `cart` (
+	`cart_id`	int(10)	NOT NULL,
+	`product_id`	int(10)	NOT NULL,
+	`user_id`	varchar(50)	NOT NULL,
+	`cart_quantity`	int(10)	NULL,
+);
+
+* image(상품 이미지)
+CREATE TABLE `product_image` (
+	`img_file_id`	int(10)	NOT NULL,
+	`product_id`	int(10)	NOT NULL,
+	`original_file_name`	varchar(255)	NULL,
+	`storage_file_name`	varchar(255)	NULL,
+	`file_size`	int(10)	NULL,
+	`file_createdate`	timestamp	NULL,
+	`thumbnail_file`	varchar(1)	NULL
+);
+
+
+>>>>>>> branch 'S.S.M' of https://github.com/kimd0hee/Project_ShoppingMall.git
