@@ -55,10 +55,14 @@ CREATE TABLE `cscenter` (
 
 * cart(장바구니)
 CREATE TABLE `cart` (
-	`cart_id`	int(10)	NOT NULL,
-	`product_id`	int(10)	NOT NULL,
-	`user_id`	varchar(50)	NOT NULL,
-	`cart_quantity`	int(10)	NULL,
+   `cart_id`         int(10)   NOT NULL,
+   `user_id`         varchar(50)   NOT NULL,
+   `user_name`       varchar(50)   NULL,
+   `product_id`      int(10)   NOT NULL,
+   `product_name`    varchar(50) NULL,
+   `cart_price`      int(10)   NULL,      
+   `cart_quantity`   int(10)   NULL,   
+   `product_money`   int(10)      NULL
 );
 
 * image(상품 이미지)
@@ -75,7 +79,7 @@ CREATE TABLE `product_image` (
 
 <<<<<<< HEAD
 =======
-����
+����
 >>>>>>> branch 'P.S.M' of https://github.com/kimd0hee/Project_ShoppingMall.git
 =======
 

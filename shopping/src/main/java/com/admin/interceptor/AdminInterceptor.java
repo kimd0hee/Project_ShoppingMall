@@ -14,8 +14,8 @@ public class AdminInterceptor extends HandlerInterceptorAdapter {
          Object handler) throws Exception {
       HttpSession session= request.getSession();
       
-      if(session.getAttribute("adminId") == null) {
-         response.sendRedirect(request.getContextPath()+"member/login.do? msg=nologin");
+      if(session.getAttribute("admin_id") == null) {
+         response.sendRedirect(request.getContextPath()+"login.do? msg=nologin");
          return false;
       }else {
          return true;

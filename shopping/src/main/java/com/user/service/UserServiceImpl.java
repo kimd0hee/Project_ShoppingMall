@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+
 import com.user.dao.UserDAOImpl;
 import com.user.dto.UserVO;
 
@@ -50,5 +51,9 @@ public class UserServiceImpl implements UserService {
 		
 		return userdao.checkPw(user_id, user_pw);
 	}
-
+	//어드민
+	@Override
+	public String loginCheck(UserVO vo) {
+		return userdao.loginCheck(vo);
+	}
 }

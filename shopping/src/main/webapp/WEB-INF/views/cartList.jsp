@@ -24,7 +24,7 @@
             장바구니가 비었습니다.
          </c:when>
          <c:otherwise>
-            <form name="form1" id="form1" method="post" action=${path}/cart/ipdate.do">
+            <form name="form1" id="form1" method="post" action=${path}/cart/update.do">
                <table border="1">
                   <tr>
                      <th>상품명</th>
@@ -36,26 +36,26 @@
                   <c:forEach var="row" items="${map.list}" varStatus="i">
                   <tr>
                      <td>
-                        ${row.productName}
+                        ${row.product_name}
                      </td>
                      <td style="width:800px" align="right">
-                        <fmt:formatNumber pattern="###,###,###" value="${row.productPrice}"/>
+                        <fmt:formatNumber pattern="###,###,###" value="${row.cart_price}"/>
                      </td>
                      <td>
-                        <input type="number" style="width:40px" name="amount" value="${row.amount}" min="1">
-                        <input type="hidden" name="productId" value="${row.productId}">
+                        <input type="number" style="width:40px" name="cart_quantity" value="${row.cart_quantity}" min="1">
+                        <input type="hidden" name="product_id" value="${row.product_id}">
                      </td>
                      <td style="width:100px" align="right">
-                        <fmt:formatNumber pattern="###,###,###" value="${row.money}"/>
+                        <fmt:formatNumber pattern="###,###,###" value="${row.product_money}"/>
                      </td>
                      <td>
-                        <a href="${path}/cart/delete.do?cartId=${row.cartId}">삭제</a>
+                        <a href="${path}/cart/delete.do?cart_id=${row.cart_id}">삭제</a>
                      </td>
                   </tr>                  
                   </c:forEach>
                   <tr>
                      <td colspan="5" align="right">
-                        장바구니 금액 합계 : <fmt:formatNumber pattern="###,###,###" value="${map.sumMoney}"/><br>
+                        장바구니 금액 합계 : <fmt:formatNumber pattern="###,###,###" value="${map.sumMoneyCart}"/><br>
                         배송료 : ${map.fee}<br>
                         전체 주문금액 : <fmt:formatNumber pattern="###,###,###" value="${map.allSum}"/>
                      </td>

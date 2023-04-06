@@ -67,5 +67,9 @@ public class UserDAOImpl implements UserDAO {
 		
 		return result;
 	}
-
+	//관리자 로그인체크
+	@Override
+	public String loginCheck(UserVO vo) {
+		return sqlSession.selectOne("admin.loginCheck", vo);
+	}
 }

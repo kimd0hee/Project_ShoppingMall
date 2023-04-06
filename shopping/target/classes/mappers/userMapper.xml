@@ -43,5 +43,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   	<select id="checkPw" resultType="int">
   		select count(*) from user where user_id=#{user_id} and user_pw=#{user_pw}
   	</select>
-
+<!-- 관리자 -->
+	<select id="LoginCheck" resultType="String">
+		SELECT user_name
+		FROM tbl_user
+		WHERE user_id = #{user_id} AND userPW = #{user_pw}
+	</select>
 </mapper>
