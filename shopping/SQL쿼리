@@ -18,17 +18,6 @@ CREATE TABLE `user` (
 	`user_update`	timestamp	NULL  DEFAULT current_timestamp() ON UPDATE current_timestamp
 );
 
-<<<<<<< HEAD
-
-dfsdfdf
-asdfasdfsdfgdsfgdffgdhfdfgh
-fffff
-dff
-
-dfsdfdf��2��13
-
-woori
-=======
 * Product(상품)
 CREATE TABLE `product` (
 	`product_id`	int(10)	NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -119,4 +108,3 @@ create table tbl_reply (
 );
 
 
->>>>>>> branch 'S.S.M' of https://github.com/kimd0hee/Project_ShoppingMall.git
