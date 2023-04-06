@@ -69,3 +69,4 @@ CREATE TABLE `product_image` (
 	`thumbnail_file`	varchar(1)	NULL
 );
 
+
