@@ -1,6 +1,82 @@
+<<<<<<< HEAD
 �ھ�~
 <<<<<<< HEAD
+=======
+* User(사용자/고객)
 
+CREATE TABLE `user` (
+	`user_idx`	int(10)	NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`user_id`	varchar(50)	NULL,
+	`user_pw`	varchar(50)	NULL,
+	`user_name`	varchar(50)	NULL,
+	`user_phone`	varchar(50)	NULL,
+	`user_birth`	date	NULL,
+	`user_email`	varchar(255)	NULL,
+	`user_joindate`	timestamp	NULL   DEFAULT current_timestamp() ON UPDATE current_timestamp,
+	`user_active`	varchar(1)	NULL,
+	`user_email_check`	varchar(1)	NULL,
+	`user_address1`	varchar(20)	NULL,
+	`user_address2`	varchar(50)	NULL,
+	`user_address3`	varchar(50)	NULL,
+	`user_grade`	varchar(5)	NULL,
+	`user_update`	timestamp	NULL  DEFAULT current_timestamp() ON UPDATE current_timestamp
+);
+
+* Product(상품)
+CREATE TABLE `product` (
+	`product_id`	int(10)	NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	`product_category`	varchar(255)	NULL,
+	`product_name`	varchar(255)	NULL,
+	`product_price`	int(10)	NULL,
+	`product_color`	varchar(50)	NULL,
+	`product_size`	varchar(5)	NULL,
+	`product_desc`	varchar(255)	NULL,
+	`product_stock`	int(10)	NULL,
+	`product_view`	int(10)	NULL,
+	`product_quantity`	int(10)	NULL,
+	`product_delivery_price`	int(10)	NULL,
+	`product_recommend`	int(10)	NULL
+);
+
+* cscenter(-고객게시판/유저게시판)
+CREATE TABLE `cscenter` (
+   `cs_id`   int(10)   NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   `cs_type`   varchar(50)   NULL,
+   `cs_title`   varchar(255)   NULL,
+   `cs_context`   varchar(1000)   NULL,
+   `cs_date`   timestamp NOT NULL DEFAULT current_timestamp() on update current_timestamp(),
+   `cs_viewcnt`  int(4) NULL,
+   `cs_answer`   varchar(1000)   NULL,
+   `cs_ansdate`   timestamp   NULL,
+   `cs_status`   varchar(10)   NULL,
+   `cs_writer`   varchar(50)   NOT NULL,
+   `cs_recnt`   int(10)  NOT NULL
+);
+
+* cart(장바구니)
+CREATE TABLE `cart` (
+	`cart_id`	int(10)	NOT NULL,
+	`product_id`	int(10)	NOT NULL,
+	`user_id`	varchar(50)	NOT NULL,
+	`cart_quantity`	int(10)	NULL,
+);
+
+* image(상품 이미지)
+CREATE TABLE `product_image` (
+	`img_file_id`	int(10)	NOT NULL,
+	`product_id`	int(10)	NOT NULL,
+	`original_file_name`	varchar(255)	NULL,
+	`storage_file_name`	varchar(255)	NULL,
+	`file_size`	int(10)	NULL,
+	`file_createdate`	timestamp	NULL,
+	`thumbnail_file`	varchar(1)	NULL
+);
+>>>>>>> branch 'S.S.M' of https://github.com/kimd0hee/Project_ShoppingMall.git
+
+<<<<<<< HEAD
 =======
 ����
 >>>>>>> branch 'P.S.M' of https://github.com/kimd0hee/Project_ShoppingMall.git
+=======
+
+>>>>>>> branch 'S.S.M' of https://github.com/kimd0hee/Project_ShoppingMall.git

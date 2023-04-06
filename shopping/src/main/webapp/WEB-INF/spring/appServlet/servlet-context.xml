@@ -28,14 +28,14 @@
 	</beans:bean>
 	
 	<beans:bean id="uploadPath" class="java.lang.String">
-	<beans:constructor-arg value="C:\Users\woori\Documents\workspace-sts-3.9.18.RELEASE\shoppingmall\src\main\webapp\resources"/>
+	<beans:constructor-arg value="C:\Users\son94\git\Project_ShoppingMall\shopping\src\main\resources"/>
 	</beans:bean>
 	
 	<!-- 관리자 세션체크 -->
-<!-- 	<beans:bean id="adminInterceptor" class="com.spring.interceptor.AdminInterceptor"/> -->
+	<!-- <beans:bean id="adminInterceptor" class="com.spring.interceptor.AdminInterceptor"/> -->
 	
 	<!-- 관리자 세션체크 매핑 -->
-<!-- 	<interceptor>
+ 	<!-- <interceptor>
 		<mapping path="writeProduct.do"/>
 		<mapping path="insertProduct.do"/>
 		<mapping path="updateProduct.do"/>
@@ -45,7 +45,7 @@
 	</interceptor> -->
 	<!-- 추가 End -->
 		
-	<context:component-scan base-package="com.shopping.mall" />
+	<context:component-scan base-package="com.shopping.app" />
 	<context:component-scan base-package="com.user.controller" />
 	<context:component-scan base-package="com.product.controller" />
 	<context:component-scan base-package="com.memberboard.controller" />

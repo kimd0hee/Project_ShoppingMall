@@ -6,7 +6,7 @@
 
 <head>
 
-    <%@ include file="include/menu.jsp" %>
+    <%@ include file="menu.jsp" %>
     
     <script>
     	$("#btnReplyUpdate").click(function() {
@@ -63,5 +63,5 @@
 </body>
 
 
-<%@ include file="include/footer.jsp" %>
+<%@ include file="footer.jsp" %>
 </html>
