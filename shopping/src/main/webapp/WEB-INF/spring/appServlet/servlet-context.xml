@@ -21,11 +21,33 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.shopping.app" />
-	<context:component-scan base-package="com.user.controller" />
-	<context:component-scan base-package="com.board.controller" />
-	<context:component-scan base-package="com.login.controller" />
+	<!-- 추가 Start -->
+	<!-- 파일 업로드 -->
+	<beans:bean id="mulitpartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="10485760"/>
+	</beans:bean>
 	
+	<beans:bean id="uploadPath" class="java.lang.String">
+	<beans:constructor-arg value="C:\Users\woori\Documents\workspace-sts-3.9.18.RELEASE\shoppingmall\src\main\webapp\resources"/>
+	</beans:bean>
+	
+	<!-- 관리자 세션체크 -->
+<!-- 	<beans:bean id="adminInterceptor" class="com.spring.interceptor.AdminInterceptor"/> -->
+	
+	<!-- 관리자 세션체크 매핑 -->
+<!-- 	<interceptor>
+		<mapping path="writeProduct.do"/>
+		<mapping path="insertProduct.do"/>
+		<mapping path="updateProduct.do"/>
+		<mapping path="editProduct.do"/>
+		<mapping path="deleteProduct.do"/>
+		<beans:ref bean="adminInterceptor"/>
+	</interceptor> -->
+	<!-- 추가 End -->
+		
+	<context:component-scan base-package="com.shopping.mall" />
+	<context:component-scan base-package="com.user.controller" />
 	<context:component-scan base-package="com.product.controller" />
 	<context:component-scan base-package="com.memberboard.controller" />
+	
 </beans:beans>
