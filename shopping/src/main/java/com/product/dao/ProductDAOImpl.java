@@ -1,52 +1,42 @@
 package com.product.dao;
-
 import java.util.List;
 
 import javax.inject.Inject;
-
 import org.apache.ibatis.session.SqlSession;
-import org.springframework.stereotype.Repository;
-
 import com.product.dto.ProductVO;
 
-@Repository
-public class ProductDAOImpl implements ProductDAO {
-
+public class ProductDAOImpl implements ProductDAO{
+	
 	@Inject
 	SqlSession sqlsession;
-	String nameSpace = "product";
 	
-	// 목록
+	//01. 상품목록
 	@Override
-	public List<ProductVO> ProductList() {
-		return sqlsession.selectList(nameSpace+".productList");
-		
+	public List<ProductVO> productList() {
+		return sqlsession.selectList("product.productList");
 	}
-	
-	// 등록
+	//02. 상품상세
+	@Override
+	public ProductVO detailProduct(int product_id) {
+		return sqlsession.selectOne("product.insertProduct", product_id);
+	}
+	//03. 상품추가
 	@Override
 	public void insertProduct(ProductVO vo) {
-		sqlsession.insert(nameSpace+".insertProduct", vo);
+		sqlsession.insert("product.insertProduct", vo);
 	}
-	
-	// 자세히 보기
-	@Override
-	public ProductVO viewProduct(String product_id) {
-		return sqlsession.selectOne(nameSpace+".insertProduct", product_id);
-	}
-	
-	// 수정
+	//04. 상품수정
 	@Override
 	public void updateProduct(ProductVO vo) {
-		sqlsession.update(nameSpace+".updateProduct", vo);
-
+		sqlsession.update("product.updateProduct", vo);
 	}
-	
-	// 삭제
-	@Override
-	public void deleteProduct(String product_id) {
-		sqlsession.delete(nameSpace+".deleteProduct", product_id);
-
+	//05. 상품삭제
+	public void deleteProduct(int product_id) {
+		sqlsession.delete("product.deleteProduct", product_id);
 	}
-
+	// 06. 상품이미지 삭제를 위한 이미지파읿정보
+	public String fileInfo(int product_id) {
+		return sqlsession.selectOne("product.fileInfo",product_id);
+		
+	}
 }
