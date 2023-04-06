@@ -45,7 +45,7 @@
 	</interceptor> -->
 	<!-- 추가 End -->
 		
-	<context:component-scan base-package="com.shopping.mall" />
+	<context:component-scan base-package="com.shopping.app" />
 	<context:component-scan base-package="com.user.controller" />
 	<context:component-scan base-package="com.product.controller" />
 	<context:component-scan base-package="com.memberboard.controller" />

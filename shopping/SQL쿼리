@@ -55,7 +55,6 @@ CREATE TABLE `cart` (
 	`product_id`	int(10)	NOT NULL,
 	`user_id`	varchar(50)	NOT NULL,
 	`cart_quantity`	int(10)	NULL,
-	//`cart_price`	int(10)	NULL
 );
 
 * image(상품 이미지)
