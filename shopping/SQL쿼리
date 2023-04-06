@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 SQL
 * User(사용자/고객)
 
@@ -49,3 +50,5 @@ CREATE TABLE `cscenter` (
    `cs_writer`   varchar(50)   NOT NULL,
    `cs_recnt`   int(10)  NOT NULL
 );
+=======
+
