@@ -18,5 +18,6 @@ public interface UserDAO {
 	public void deleteUser(String user_id);
 	//삭제 및 수정 시 비밀번호 체크
 	public boolean checkPw(String user_id, String user_pw);
-
+	//어드민
+	public String loginCheck(UserVO vo);
 }

@@ -29,6 +29,7 @@ CREATE TABLE `product` (
 	`product_id`	int(10)	NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	`product_category`	varchar(255)	NULL,
 	`product_name`	varchar(255)	NULL,
+	`product_img`	varchar(500)	NULL,
 	`product_price`	int(10)	NULL,
 	`product_color`	varchar(50)	NULL,
 	`product_size`	varchar(5)	NULL,
@@ -38,6 +39,7 @@ CREATE TABLE `product` (
 	`product_quantity`	int(10)	NULL,
 	`product_delivery_price`	int(10)	NULL,
 	`product_recommend`	int(10)	NULL
+	
 );
 
 * cscenter(-고객게시판/유저게시판)
@@ -66,10 +68,14 @@ CREATE TABLE `cscenter` (
 
 * cart(장바구니)
 CREATE TABLE `cart` (
-	`cart_id`	int(10)	NOT NULL,
-	`product_id`	int(10)	NOT NULL,
-	`user_id`	varchar(50)	NOT NULL,
-	`cart_quantity`	int(10)	NULL,
+   `cart_id`         int(10)   NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   `user_id`         varchar(50)   NOT NULL,
+   `user_name`       varchar(50)   NULL,
+   `product_id`      int(10)   NOT NULL,
+   `product_name`    varchar(50) NULL,
+   `cart_price`      int(10)   NULL,      
+   `cart_quantity`   int(10)   NULL,   
+   `product_money`   int(10)      NULL
 );
 
 * image(상품 이미지)
@@ -82,6 +88,29 @@ CREATE TABLE `product_image` (
 	`file_createdate`	timestamp	NULL,
 	`thumbnail_file`	varchar(1)	NULL
 );
+<<<<<<< HEAD
 
 
+>>>>>>> branch 'S.S.M' of https://github.com/kimd0hee/Project_ShoppingMall.git
+=======
+
+* product_review(리뷰)
+CREATE TABLE `product_review` (
+	`review_id`	int(10)	NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	`order_id`		int(10)	NOT NULL,
+	`review_writer`	int(10)	NOT NULL,
+	`user_id`		varchar(200)	 NULL,
+	`review_context`	varchar(1000)	NULL,
+	`review_grade`	varchar(5)	NULL,
+	`review_img`	varchar(300)	NULL,
+	`review_recommend`	int(10)	NULL,
+	`review_comment`	varchar(1000)	NULL,
+	`review_reply`	varchar(1000)	NULL,
+	`review_date`	timestamp	NULL,
+	`review_comment-date`	timestamp	NOT NULL DEFAULT current_timestamp() on update current_timestamp(),
+	`review_comment-update`	timestamp	NOT NULL DEFAULT current_timestamp() on update current_timestamp(),
+	`review_reply_date`	timestamp	NOT NULL DEFAULT current_timestamp() on update current_timestamp(),
+	`review_secret`	varchar(1)	NULL,
+	`review_secret_writer` varchar(500)	NULL
+);
 >>>>>>> branch 'S.S.M' of https://github.com/kimd0hee/Project_ShoppingMall.git
