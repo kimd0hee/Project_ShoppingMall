@@ -5,7 +5,7 @@
 <html lang="UTF-8">
 
 <head>
-	<title>Home</title>
+	<title>옷사줘</title>
     <%@ include file="include/header.jsp" %>
     
     
