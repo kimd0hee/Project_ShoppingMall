@@ -6,7 +6,6 @@ CREATE TABLE `reply` (
 	`userName` varchar(50),
 	`regdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(), 
 	`updatedate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-);
 
 --------------------------------------------------------
 CREATE TABLE `user` (
