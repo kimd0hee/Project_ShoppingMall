@@ -1,3 +1,12 @@
+CREATE TABLE `reply` (
+	`rno` int(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	`bno` int(4) NOT NULL,
+	`replytext` varchar(200) NOT NULL,
+	`replyer` varchar(50) NOT NULL,
+	`userName` varchar(50),
+	`regdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(), 
+	`updatedate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+);
 
 
 
