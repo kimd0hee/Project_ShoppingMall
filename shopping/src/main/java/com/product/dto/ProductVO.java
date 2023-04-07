@@ -4,6 +4,7 @@ public class ProductVO {
 	private int product_id;
 	private String product_category;
 	private String product_name;
+	private String product_img;
 	private int product_price;
 	private String product_color;
 	private String product_size;
@@ -31,6 +32,12 @@ public class ProductVO {
 	}
 	public void setProduct_name(String product_name) {
 		this.product_name = product_name;
+	}
+	public String getProduct_img() {
+		return product_img;
+	}
+	public void setProduct_img(String product_img) {
+		this.product_img = product_img;
 	}
 	public int getProduct_price() {
 		return product_price;
@@ -86,14 +93,14 @@ public class ProductVO {
 	public void setProduct_recommend(int product_recommend) {
 		this.product_recommend = product_recommend;
 	}
-	
 	@Override
 	public String toString() {
 		return "ProductVO [product_id=" + product_id + ", product_category=" + product_category + ", product_name="
-				+ product_name + ", product_price=" + product_price + ", product_color=" + product_color
-				+ ", product_size=" + product_size + ", product_desc=" + product_desc + ", product_stock="
-				+ product_stock + ", product_view=" + product_view + ", product_quantity=" + product_quantity
-				+ ", product_delivery_price=" + product_delivery_price + ", product_recommend=" + product_recommend
-				+ "]";
+				+ product_name + ", product_img=" + product_img + ", product_price=" + product_price
+				+ ", product_color=" + product_color + ", product_size=" + product_size + ", product_desc="
+				+ product_desc + ", product_stock=" + product_stock + ", product_view=" + product_view
+				+ ", product_quantity=" + product_quantity + ", product_delivery_price=" + product_delivery_price
+				+ ", product_recommend=" + product_recommend + "]";
 	}
+	
 }

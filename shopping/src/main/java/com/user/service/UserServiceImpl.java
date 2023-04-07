@@ -50,5 +50,9 @@ public class UserServiceImpl implements UserService {
 		
 		return userdao.checkPw(user_id, user_pw);
 	}
-
+	//어드민
+	@Override
+	public String loginCheck(UserVO vo) {
+		return userdao.loginCheck(vo);
+	}
 }
