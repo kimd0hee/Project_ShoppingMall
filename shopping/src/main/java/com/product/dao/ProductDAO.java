@@ -5,14 +5,18 @@ import java.util.List;
 import com.product.dto.ProductVO;
 
 public interface ProductDAO {
-	// 목록
-	public List<ProductVO> ProductList();
-	// 등록
+	// 상품목록
+	public List<ProductVO> productList();
+	// 상품상세
+	public ProductVO detailProduct(int product_id);
+	// 상품추가
 	public void insertProduct(ProductVO vo);
-	// 보기
-	public ProductVO viewProduct(String product_id);
-	// 수정
+	// 상품수정
 	public void updateProduct(ProductVO vo);
-	// 삭제
-	public void deleteProduct(String product_id);
+	// 상품삭제
+	public void deleteProduct(int product_id);
+	// 상품이미지 삭제를 위한 이미지파일 정보
+	public String fileInfo(int product_id);
+	
 }
+
