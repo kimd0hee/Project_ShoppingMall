@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.shop.dto.shoppingmallVO;
 
 
+
 @Controller
 @RequestMapping("admin/*")
 public class AdminController {

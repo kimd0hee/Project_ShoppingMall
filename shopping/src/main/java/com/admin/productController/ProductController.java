@@ -11,7 +11,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.protobuf.compiler.PluginProtos.CodeGeneratorResponse.File;
-import com.shop.dto.shoppingmallVO;
+import com.product.service.ProductService;
+
 
 @Controller
 @RequestMapping("product/*")
