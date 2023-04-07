@@ -1,4 +1,46 @@
 
+- admin (관리자)
+
+create table admin (
+ admin_id varchar(50) not null,
+ admin_pw varchar(50) not null,
+ admin_name varchar(50) not null,
+ admin_email varchar(100) default null,
+ admin_joindate timestamp not null default current_timestamp() ON UPDATE current_timestamp(),
+ admin_update timestamp not null default current_timestamp() ON UPDATE current_timestamp(),
+ )ENGINE=lnnoDB default charset=utf8 collate=utf8_general_ci;
+ 
+ - user(회원)
+ 
+ CREATE TABLE `user` (
+	`user_idx`	int(10)	NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`user_id`	varchar(50)	NULL,
+	`user_pw`	varchar(50)	NULL,
+	`user_name`	varchar(50)	NULL,
+	`user_phone`	varchar(50)	NULL,
+	`user_birth`	date	NULL,
+	`user_email`	varchar(255)	NULL,
+	`user_joindate`	timestamp	NULL   DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+	`user_active`	varchar(1)	NULL,
+	`user_email_check`	varchar(1)	NULL,
+	`user_address1`	varchar(20)	NULL,
+	`user_address2`	varchar(50)	NULL,
+	`user_address3`	varchar(50)	NULL,
+	`user_grade`	varchar(5)	NULL,
+	`user_update`	timestamp	NULL  DEFAULT current_timestamp() ON UPDATE current_timestamp()
+);
+ 
+
+
+
+
+
+
+
+
+
+
+----------------------------------------
 * User(사용자/고객)
 
 CREATE TABLE `user` (
