@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 �ھ�~
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -9,6 +10,16 @@
 =======
 ewqwe
 =======
+=======
+
+
+
+
+
+
+--------------------------------------------------------
+
+>>>>>>> branch 'main' of https://github.com/kimd0hee/Project_ShoppingMall.git
 * User(사용자/고객)
 >>>>>>> branch 'S.S.M' of https://github.com/kimd0hee/Project_ShoppingMall.git
 
@@ -122,5 +133,24 @@ CREATE TABLE `product_review` (
 	`review_reply_date`	timestamp	NOT NULL DEFAULT current_timestamp() on update current_timestamp(),
 	`review_secret`	varchar(1)	NULL,
 	`review_secret_writer` varchar(500)	NULL
+<<<<<<< HEAD
 );
 >>>>>>> branch 'S.S.M' of https://github.com/kimd0hee/Project_ShoppingMall.git
+=======
+);
+
+
+
+* reply(댓글)
+create table tbl_reply (
+	rno int(4) not null primary key auto_increment,
+	bno int(4) not null,
+	replytext varchar(200) not null,
+	replyer varchar(50) not null,
+	userName varchar(50),
+	regdata timestamp not null default current_timestamp() on update current_timestamp(),
+	updatedata timestamp not null default current_timestamp() on update current_timestamp()
+);
+
+
+>>>>>>> branch 'main' of https://github.com/kimd0hee/Project_ShoppingMall.git
