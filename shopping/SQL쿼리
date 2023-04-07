@@ -1,21 +1,96 @@
+- admin (관리자)
+
+create table admin (
+ 	admin_id varchar(50) not null,
+ 	admin_pw varchar(50) not null,
+ 	admin_name varchar(50) not null,
+ 	admin_email varchar(100) default null,
+ 	admin_joindate timestamp not null default current_timestamp() ON UPDATE current_timestamp(),
+ 	admin_update timestamp not null default current_timestamp() ON UPDATE current_timestamp(),
+ 	)ENGINE=lnnoDB default charset=utf8 collate=utf8_general_ci;
+ 
+ - user(회원)
+ 
+ CREATE TABLE `user` (
+   `user_idx`   int(10)   NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   `user_id`   varchar(50)   NULL,
+   `user_pw`   varchar(50)   NULL,
+   `user_name`   varchar(50)   NULL,
+   `user_phone`   varchar(50)   NULL,
+   `user_birth`   date   NULL,
+   `user_email`   varchar(255)   NULL,
+   `user_joindate`   timestamp   NULL   DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+   `user_active`   varchar(1)   NULL,
+   `user_email_check`   varchar(1)   NULL,
+   `user_address1`   varchar(20)   NULL,
+   `user_address2`   varchar(50)   NULL,
+   `user_address3`   varchar(50)   NULL,
+   `user_grade`   varchar(5)   NULL,
+   `user_update`   timestamp   NULL  DEFAULT current_timestamp() ON UPDATE current_timestamp()
+);
+
+- memberboard(회원전용게시판)
+
+CREATE TABLE `memberboard` (
+	`bno` int(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	`title` varchar(200) NOT NULL,
+	`content` varchar(2000),
+	`writer` varchar(50) NOT NULL,
+	`regdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+	`viewcnt` int(4) DEFAULT 0
+	);
+
+- cart(장바구니)
+
+CREATE TABLE cart (
+   'cart_id' int(4) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   'user_id' VARCHAR(50) NOT NULL,
+   'product_id' int(4) NOT NULL,
+   'amount' int(4) DEFAULT 0
+);
+
+ALTER TABLE cart ADD CONSTRAINT cart_userid_fk FOREIGN KEY(user_id)
+REFERENCES tbl_member(user_id);
+ALTER TABLE cart ADD CONSTRAINT cart_product_fk FOREIGN KEY(product_id)
+REFERENCES tbl_product(product_id);
+
+- board(자유게시판)-
+
+CREATE TBALE board(
+   bno int(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   title varchar(200) NOT NULL,
+   content varchar(2000),
+   writer varchar(50) NOT NULL,
+   regdate timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+   viewcnt int(4) DEFAULT 0
+);
+
+- product (상품)
+
+CREATE TABLE tbl_product (
+   `product_id`    int(4) auto_increment,
+   `product_name`  varchar(50),
+   `product_price` int(4) default 0,
+   `product_desc`  varchar(500),
+   `product_url`   varchar(500),
+   primary key(product_id)   
+);
+
+- reply(댓글)
+
 CREATE TABLE `reply` (
-	`rno` int(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-	`bno` int(4) NOT NULL,
-	`replytext` varchar(200) NOT NULL,
-	`replyer` varchar(50) NOT NULL,
-	`userName` varchar(50),
-	`regdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(), 
-	`updatedate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+   `rno` int(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   `bno` int(4) NOT NULL,
+   `replytext` varchar(200) NOT NULL,
+   `replyer` varchar(50) NOT NULL,
+   `userName` varchar(50),
+   `regdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(), 
+   `updatedate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 );
 
 
-
-
-
-
---------------------------------------------------------
-
-* User(사용자/고객)
+=============================================================================================
+* User(회원)
 
 CREATE TABLE `user` (
 	`user_idx`	int(10)	NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -68,6 +143,7 @@ CREATE TABLE `cscenter` (
    `cs_recnt`   int(10)  NOT NULL
 );
 
+
 * cart(장바구니)
 CREATE TABLE `cart` (
    `cart_id`         int(10)   NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -109,6 +185,7 @@ CREATE TABLE `product_review` (
 	`review_reply_date`	timestamp	NOT NULL DEFAULT current_timestamp() on update current_timestamp(),
 	`review_secret`	varchar(1)	NULL,
 	`review_secret_writer` varchar(500)	NULL
+
 );
 
 
@@ -123,5 +200,4 @@ create table tbl_reply (
 	regdata timestamp not null default current_timestamp() on update current_timestamp(),
 	updatedata timestamp not null default current_timestamp() on update current_timestamp()
 );
-
 
