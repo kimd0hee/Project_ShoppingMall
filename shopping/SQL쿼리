@@ -1,19 +1,13 @@
+board(자유게시판)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+CREATE TBALE board(
+	bno int(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	title varchar(200) NOT NULL,
+	content varchar(2000),
+	writer varchar(50) NOT NULL,
+	regdate timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+	viewcnt int(4) DEFAULT 0
+);
 
 --------------------------------------------------------------------------------
 * User(사용자/고객)
