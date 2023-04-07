@@ -1,2 +1,13 @@
-ï¿½Ú¾ï¿½~
-¼öÁ¤
+CREATE TABLE tbl_cart (
+	cart_id int(4) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	user_id VARCHAR(50) NOT NULL,
+	product_id int(4) NOT NULL,
+	amount int(4) DEFAULT 0
+);
+
+ALTER TABLE tbl_cart ADD CONSTRAINT cart_userid_fk FOREIGN KEY(user_id)
+REFERENCES tbl_member(userid);
+ALTER TABLE tbl_cart ADD CONSTRAINT cart_product_fk FOREIGN KEY(product_id)
+REFERENCES tbl_product(product_id);
+
+-------------------------------
