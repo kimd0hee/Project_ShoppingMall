@@ -13,53 +13,6 @@ import com.cart.dto.CartVO;
 
 @Repository
 public class CartDAOImpl implements CartDAO {
-<<<<<<< HEAD
-	
-	@Inject
-	SqlSession sqlSession;
-	
-	// 1. 장바구니 추가
-	@Override
-	public void insertCart(CartVO vo) {
-		sqlSession.insert("cart.insertCart",vo);
-	}
-	// 2. 장바구니 목록
-	@Override
-	public List<CartVO> cartList(String user_id){
-		return sqlSession.selectList("cart.cartList",user_id);
-	}
-	// 3. 장바구니 삭제
-	@Override
-	public void deleteCart(int cart_id) {
-		sqlSession.delete("cart.deleteCart",cart_id);
-	}
-	// 4. 장바구니 수정
-	@Override
-	public void modifyCart(CartVO vo) {
-		sqlSession.update("cart.modifyCart",vo);
-	}
-	// 5. 장바구니 금액 합계
-	@Override
-	public int sumMoneyCart(String user_id) {
-		sqlSession.selectOne("cart.sumMoneyCart",user_id);
-		return sqlSession.selectOne("cart.sumMoneyCart",user_id);
-	}
-	
-	//6. 장바구니 동일한 상품 레코드 확인
-	@Override
-	public int countCart(int product_id, String user_id) {
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("product_id", product_id);
-		map.put("user_id", user_id);
-		return sqlSession.selectOne("cart.countCart", map);
-	}
-	
-	//77. 장바구니 상품슈량 변경
-	@Override
-	public void updateCart(CartVO vo) {
-		 //sqlSession.update("cart.sumCart",vo);
-	}
-=======
    
    @Inject
    SqlSession sqlSession;
@@ -105,5 +58,4 @@ public class CartDAOImpl implements CartDAO {
    public void updateCart(CartVO vo) {
        //sqlSession.update("cart.sumCart",vo);
    }
->>>>>>> branch 'S.S.M' of https://github.com/kimd0hee/Project_ShoppingMall.git
 }

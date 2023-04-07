@@ -25,7 +25,7 @@ public class CartController {
    
    // 1. 장바구니 추가
    @RequestMapping("insert.do")
-   public String insert(@ModelAttribute CartVO vo, HttpSession session) throws Exception {
+   public String insertCart(@ModelAttribute CartVO vo, HttpSession session) throws Exception {
       String user_id = (String) session.getAttribute("user_id");
       vo.setUser_id(user_id);
       
@@ -47,7 +47,7 @@ public class CartController {
    
    //2. 장바구니 목록
    @RequestMapping("list.do")
-   public ModelAndView list(HttpSession session, ModelAndView mav) throws Exception {
+   public ModelAndView cartList(HttpSession session, ModelAndView mav) throws Exception {
       String user_id = (String) session.getAttribute("user_id"); //session에 저장된 userid
       
       Map<String, Object> map = new HashMap<String, Object>();
@@ -73,13 +73,13 @@ public class CartController {
    
    // 3. 장바구니 삭제
    @RequestMapping("delete.do")
-   public String delete(@RequestParam int cart_id) throws Exception {
+   public String deleteCart(@RequestParam int cart_id) throws Exception {
       cartService.deleteCart(cart_id);
       return "redirect:/product/list.do";
    }
    //4. 장바구니 수정
    @RequestMapping("update.do")
-   public String update(@RequestParam int[] cart_quantity, @RequestParam int[] product_id, HttpSession session) throws Exception {
+   public String updateCart(@RequestParam int[] cart_quantity, @RequestParam int[] product_id, HttpSession session) throws Exception {
       //session의 id
       String user_id = (String) session.getAttribute("user_id");
       //레코드의 갯수만큼 반복문 실행

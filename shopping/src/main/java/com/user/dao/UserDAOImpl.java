@@ -68,15 +68,8 @@ public class UserDAOImpl implements UserDAO {
 		return result;
 	}
 	//관리자 로그인체크
-<<<<<<< HEAD
-	@Override
-	public String loginCheck(UserVO vo) {
-		return sqlSession.selectOne("admin.loginCheck", vo);
-	}
-=======
 	   @Override
 	   public String loginCheck(UserVO vo) {
 	      return sqlSession.selectOne("admin.loginCheck", vo);
 	   }	
->>>>>>> branch 'S.S.M' of https://github.com/kimd0hee/Project_ShoppingMall.git
 }

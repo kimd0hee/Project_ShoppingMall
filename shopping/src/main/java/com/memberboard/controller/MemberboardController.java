@@ -65,8 +65,8 @@ public class MemberboardController {
 	// 게시글 작성
 	@RequestMapping("insertMemberboard.do")
 	public String insertMemberboard(@ModelAttribute MemberboardVO vo, HttpSession session) {
-		String cs_writer = (String) session.getAttribute("user_id");
-		vo.setCs_writer(cs_writer);
+		//String cs_writer = (String) session.getAttribute("user_id");
+		//vo.setCs_writer(cs_writer);
 		service.insertMemberboard(vo);
 		return " redirect:/memberboardList.do";
 	}

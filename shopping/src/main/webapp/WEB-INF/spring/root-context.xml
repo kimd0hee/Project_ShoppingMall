@@ -37,6 +37,7 @@
 		<constructor-arg ref="sqlSessionFactory" name="sqlSessionFactory">
 		</constructor-arg>
 	</bean>
+	
 	<!-- 사용자 -->
 	<context:component-scan base-package="com.user.dao"></context:component-scan>
 	<context:component-scan base-package="com.user.dto"></context:component-scan>
@@ -57,18 +58,11 @@
 	<context:component-scan base-package="com.memberboard.dto"></context:component-scan>
 	<context:component-scan base-package="com.memberboard.service"></context:component-scan>
 	<!-- 장바구니 -->
-<<<<<<< HEAD
 	<context:component-scan base-package="com.cart.dao"></context:component-scan>
-	<context:component-scan base-package="com.cart.dto"></context:component-scan>
-	<context:component-scan base-package="com.cart.service"></context:component-scan>
-	
-=======
-	<context:component-scan base-package="com.shop.dao"></context:component-scan>
 	<context:component-scan base-package="com.cart.dto"></context:component-scan>
 	<context:component-scan base-package="com.cart.service"></context:component-scan>
 	<!-- 댓글 -->
 	<context:component-scan base-package="com.review.dao"></context:component-scan>
 	<context:component-scan base-package="com.review.dto"></context:component-scan>
 	<context:component-scan base-package="com.review.service"></context:component-scan>			
->>>>>>> branch 'S.S.M' of https://github.com/kimd0hee/Project_ShoppingMall.git
 </beans>

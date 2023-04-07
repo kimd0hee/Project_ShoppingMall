@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   		values (#{bno}, #{replytext}, #{replyer}, #{secretreply})
   	</insert>
   	
-  	<select id="listReview" resultType="com.user.domain.ReplyVO">
+  	<select id="listReview" resultType="com.review.dto.ReviewVO">
   		SELECT rno, bno, replytext, replyer, r.regdate. r.updatedate, secretReply, m.userName,
   		(SELECT writer FROM tbl_board WHERE bno = e.bno) AS writer
   		FROM tbl_rely r LEFT JOIN tbl_member m on r.replyer = m.userId
@@ -20,7 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   		<!--  <include refid = "pagingFooter"/> -->
   	</select>
   	
-  	<select id="detailReview" resultType="com.user.ReplyVO">
+  	<select id="detailReview" resultType="com.review.dto.ReviewVO">
   		SELECT rno, bno, replytext, replyer, regdate, updatedate, secretReply FROM product_review
   		WHERE rno = #{rno}
   	</select>
