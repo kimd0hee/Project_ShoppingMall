@@ -25,8 +25,8 @@ public class MemberboardDAOImpl implements MemberboardDAO {
 	
 	// 게시글 상세보기
 	@Override
-	public MemberboardVO viewMemberboard(int cs_id) {
-		return sqlsession.selectOne("memberboard.view", cs_id);
+	public MemberboardVO viewMemberboard(int bno) {
+		return sqlsession.selectOne("memberboard.view", bno);
 	}
 	
 	// 게시글 수정
@@ -37,8 +37,8 @@ public class MemberboardDAOImpl implements MemberboardDAO {
 	
 	// 게시글 삭제
 	@Override
-	public void deleteMemberboard(int cs_id) {
-		sqlsession.delete("memberboard.deleteArticle", cs_id);
+	public void deleteMemberboard(int bno) {
+		sqlsession.delete("memberboard.deleteArticle", bno);
 	}
 	
 	// 게시글 목록
@@ -47,6 +47,7 @@ public class MemberboardDAOImpl implements MemberboardDAO {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("searchOption", searchOption);
 		map.put("keyword", keyword);
+		// BETWEEN #{start}, #{end}에 입력될 값을 맵에
 		map.put("start", start);
 		map.put("end", end);
 		return sqlsession.selectList("memberboard.memberboardList", map);
@@ -54,8 +55,8 @@ public class MemberboardDAOImpl implements MemberboardDAO {
 
 	// 게시글 조회수 증가
 	@Override
-	public void increaseViewcnt(int cs_id) {
-		sqlsession.update("memberboard.increaseViewcnt", cs_id);
+	public void increaseViewcnt(int bno) {
+		sqlsession.update("memberboard.increaseViewcnt", bno);
 
 	}
 
