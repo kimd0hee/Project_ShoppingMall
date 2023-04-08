@@ -47,11 +47,11 @@ public class BoardController {
 		
 		//게시글 상세내용 조회
 		@RequestMapping(value="boardView.do", method=RequestMethod.GET)
-		public ModelAndView view(@RequestParam int cs_id, HttpSession session) throws Exception{
+		public ModelAndView view(@RequestParam int board_id, HttpSession session) throws Exception{
 
 			ModelAndView mav = new ModelAndView();
 			mav.setViewName("boardView");
-			mav.addObject("dto", service.viewBoard(cs_id));
+			mav.addObject("dto", service.viewBoard(board_id));
 			return mav;
 		}
 		
