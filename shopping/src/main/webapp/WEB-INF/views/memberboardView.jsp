@@ -9,29 +9,44 @@
 	<script>
 		// 게시글 수정
 		$(doxument).ready(function(){
-			$("#btnupdate").click(function(){
-				var cs_title = ${"#cs_title"}.val();
-				var cs_context = ${"#cs_context"}.val();
-				if(cs_title == ""){
+			$("#btnUpdate").click(function(){
+				/* var title = document.form.title.value; => name 으로 처리
+				var content = document.form.content.value;
+				var writer = document.form.writer.value; */
+				var title = ${"#title"}.val();
+				var content = ${"#content"}.val();
+				//var writer = ${#"writer"}.val();
+				if(title == ""){
 					alert("제목을 입력하세요");
-					document.form.cs_title.focus();
+					document.form.title.focus();
 					return;
 				}
-				if(cs_context == "") {
+				
+				if(content == "") {
 					alert("내용을 입력하세요");
-					document.form.cs_context.focus();
+					document.form.content.focus();
 					return;
 				}
+				
+				/* if(writer == "") {
+					alert("내용을 입력하세요");
+					document.form.writer.focus();
+					return;
+				} */				
+				
 				document.form.action="${path}/updateMemberboard.do"
 				document.form.submit();
 			});
 			// 게시글 삭제
-			$("#btndelete").click(function(){
+			$("#btnDelete").click(function(){
+				// 댓글이 존재하는 게시물은 삭제 방지
 				var count = "${count}"
+				// 댓글의 수가 0보다 크면 팝업, 함수 종료
 				if(count > 0) {
 					alert("댓글이 있는 게시물은 삭제할 수 없습니다");
 					return;
 				}
+				// 댓글의 수가 0인경우 삭제가능
 				if(confirm("삭제하시겠습니까?")){
 					document.form.action = "${path}/deleteMemberboard.do";
 					document.form.submit();	
@@ -57,13 +72,13 @@
 		// 댓글 입력 함수(폼 데이터 방식)
 		function reply(){
 			var replytext=${"#replytext"}.val();
-			var bno="${dto.cs_id}"
+			var bno="${dto.bno}"
 			var secretReply = "n";
 			if( $("#secretReply")).is(":checked") ){
 				secretReply = "y";
 			}
 			// 비밀댓글 파라미터 추가
-			var param="replytext="+replytext+"&cs_id="+cs_id+"&secretReply="+secretReply;
+			var param="replytext="+replytext+"&bno="+bno+"&secretReply="+secretReply;
 			$.ajax({
 				type: "post", url : "${path}/insertReply.do", data: param, success: function(){
 					alert("댓글이 등록되었습니다");
@@ -75,7 +90,7 @@
 		// 댓글 입력 함수(json 방식)
 		function replyJson(){
 			var replytext=$("#replytext").val();
-			var cs_id="${dto.cs_id}"
+			var cs_id="${dto.bno}"
 			// 비밀댓글 체크 여부
 			var secretReply = "n";
 			// 태그.is(":속성") 체크여부 true/false
@@ -85,7 +100,7 @@
 			$.ajax({
 				type: "post", url : "${path}/insertRest.do", headers:{"Content-Type" : application/json"
 					}, dateType: "text", data: JSON.stringify({
-						cs_id : cs_id, replytext : replytext, secretReply : secretReply
+						bno : bno, replytext : replytext, secretReply : secretReply
 					}),
 					success: function(){
 						alert("댓글이 등록되었습니다.");
@@ -102,13 +117,13 @@
 			$.ajax({
 				type : "get",
 				// contentType: "application/json", // RestController 방식이여서 생략이 가능
-				url : "${path}listJson.do?cs_id=${dto.cs_id}&curPage="+num,
+				url : "${path}listJson.do?cs_id=${dto.bno}&curPage="+num,
 						success : function(result){
 							console.log(result);
 							var output = "<table>";
 							for(var i in result){
 								output +="<tr>";
-								output +="<td>"+result[i].user_id;
+								output +="<td>"+result[i].bno;
 								output +="("+changeDate(result[i].regdate)+")<br>";
 								output += result[i].replytext+"</td>";
 								output += "<tr>";
@@ -134,7 +149,7 @@
 		// 댓글 목록 // rest 방식
 		function listReplyRest(num){
 			$.ajax({
-				type : "get", url : "${path}/replylist.do${dto.cs_id}/"+num,
+				type : "get", url : "${path}/replylist.do${dto.bno}/"+num,
 				success: function(result){
 					$("#listReply").html(result);
 				}
@@ -193,7 +208,7 @@
 		<!-- 본인이 쓴 게시물만 수정, 삭제가 가능 -->
 		<c:if test="${sessionScope.user_id == dto.cs_writer}">
 			<button type="button" id="btnUpdate">수정</button>
-			<button type="button" id="btndelete">삭제</button>
+			<button type="button" id="btnDelete">삭제</button>
 		</c:if>
 			<button type="button" id="btnList">목록</button>
 	</div>
