@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import com.memberboard.dto.MemberboardVO;
 
 public interface MemberboardService {
+	
 	// 게시글 작성
 	public void insertMemberboard(MemberboardVO vo);
 	

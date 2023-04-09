@@ -4,27 +4,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>게시글 목록</title>
+<title>회원 게시글 목록</title>
 <%@ include file="include/header.jsp" %>
 <script>
 		$(document).ready(function(){
-			console.log("test");
 			$("#btnWrite").click(function(){
-				console.log("test");
 				// 페이지 주소 변경(이동)
-				location.href = "${path}/memberboardWrite.do";
+				location.href = "${path}/writeMemberboard.do";
 			});
 		});
 		// 원하는 페이지로 이동시 검색조건, 키워드 값을 유지
 		function list(page){
-			location.href="${path}/memeberboardList.do?curPage="page+"&searchOption-
-					${map.searchOption}"+ "&keyword="${map.keyword}";
-					}
+			location.href="${path}/memeberboardList.do?curPage="page+"&searchOption-${map.searchOption}"+ "&keyword="${map.keyword}";
+		}
 </script>
 </head>
 <body>
 <%@ include file="include/menu.jsp" %>
-	<h2>게시글 목록</h2>
+	<h2>회원 게시글 목록</h2>
 	<form name="form" method="post" action="${path}/memberboardList.do">
 		<select name="searchOption">
 			<option value="all" <c:out value="${map.searchOption == 'all'?'seleted':''}"/> >제목+이름+제목</option>
@@ -35,7 +32,7 @@
 		<input name="keyword" value="${map.keyword}">
 		<input type="submit" value="조회">
 		<c:if test="${sessionScope.user_id != null}">
-		<button type="button" id="btnWrite">글쓰기</button>
+			<button type="button" id="btnWrite">글쓰기</button>
 		</c:if>
 	</form>
 	${map.count}개의 게시물이 있습니다

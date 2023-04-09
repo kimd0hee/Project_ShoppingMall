@@ -20,13 +20,13 @@ public class MemberboardDAOImpl implements MemberboardDAO {
 	// 게시글 작성
 	@Override
 	public void insertMemberboard(MemberboardVO vo) {
-		sqlsession.insert("memberboard.insert", vo);
+		sqlsession.insert("memberboard.insertMemberboard", vo);
 	}
 	
 	// 게시글 상세보기
 	@Override
 	public MemberboardVO viewMemberboard(int bno) {
-		return sqlsession.selectOne("memberboard.view", bno);
+		return sqlsession.selectOne("memberboard.viewMemberboard", bno);
 	}
 	
 	// 게시글 수정

@@ -9,7 +9,7 @@ public class MemberboardVO {
 	private String writer;
 	private Timestamp regdate;
 	private int viewcnt;
-	private String userName;
+	private String user_name;
 	private int recnt;
 	
 	public int getBno() {
@@ -49,10 +49,10 @@ public class MemberboardVO {
 		this.viewcnt = viewcnt;
 	}
 	public String getUserName() {
-		return userName;
+		return user_name;
 	}
 	public void setUserName(String userName) {
-		this.userName = userName;
+		this.user_name = userName;
 	}
 	public int getRecnt() {
 		return recnt;
@@ -64,7 +64,7 @@ public class MemberboardVO {
 	@Override
 	public String toString() {
 		return "MemberboardVO [bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer
-				+ ", regdate=" + regdate + ", viewcnt=" + viewcnt + ", userName=" + userName + ", recnt=" + recnt + "]";
+				+ ", regdate=" + regdate + ", viewcnt=" + viewcnt + ", userName=" + user_name + ", recnt=" + recnt + "]";
 	}
 	
 }

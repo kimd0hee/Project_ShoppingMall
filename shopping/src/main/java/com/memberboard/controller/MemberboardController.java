@@ -67,13 +67,12 @@ public class MemberboardController {
 	// 게시글 작성화면
 	// @RequestMapping("writeMemberboard.do")
 	// value="", method="전송방식"
-	@RequestMapping("writeMemberboard.do")
-	public String memberboardWrite() {
+	@RequestMapping(value="writeMemberboard.do", method=RequestMethod.GET)
+	public String writeMemberboard() {
 		return "memberboardWrite"; // memberboardWrite.jsp로 이동
 	}
 	
 	// 게시글 작성
-	
 	@RequestMapping(value="insertMemberboard.do", method=RequestMethod.POST)
 	public String insertMemberboard(@ModelAttribute MemberboardVO vo, HttpSession session) {
 		// session에 저장된 user_id를 writer에 저장
@@ -85,7 +84,7 @@ public class MemberboardController {
 	}
 	
 	// 게시글 상세조회, 게시글 조회수 증가
-	@RequestMapping(value="memberboardView.do", method=RequestMethod.GET)
+	@RequestMapping(value="viewMemberboard.do", method=RequestMethod.GET)
 	public ModelAndView viewMemberboard(@RequestParam int bno, @RequestParam int curPage,
 @RequestParam String searchOption, @RequestParam String keyword, HttpSession session) {
 		service.increaseViewcnt(bno, session);
