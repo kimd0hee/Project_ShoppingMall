@@ -19,7 +19,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insertMemberboard">
 		INSERT INTO memberboard(
 		<!-- bno, --> title, content, writer)
-		VALUES <!-- SELECT NVL(MAX(bno)+1, 1)FROM board), --> #{title}, #{content}, #{writer})
+		VALUES (<!-- SELECT NVL(MAX(bno)+1, 1)FROM board), --> #{title}, #{content}, #{writer})
 	</insert>
 	
 	<!-- 게시글 상세보기 -->

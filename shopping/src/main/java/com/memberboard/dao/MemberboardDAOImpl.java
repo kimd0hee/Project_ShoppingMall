@@ -17,6 +17,7 @@ public class MemberboardDAOImpl implements MemberboardDAO {
 	@Inject
 	SqlSession sqlsession;
 	
+	
 	// 게시글 작성
 	@Override
 	public void insertMemberboard(MemberboardVO vo) {
