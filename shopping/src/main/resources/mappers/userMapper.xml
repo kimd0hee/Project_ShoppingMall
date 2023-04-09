@@ -15,7 +15,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 회원 가입 -->
 	<insert id="insertUser" parameterType="com.user.dto.UserVO">
   		insert into user
-  			(user_id,user_pw,user_name,user_phone,user_email,user_birth) 
+  			(user_id, user_pw, user_name, user_phone, user_email, user_birth) 
   		values 
   			(#{user_id}, #{user_pw}, #{user_name}, #{user_phone}, #{user_email}, #{user_birth})
   	</insert>
@@ -47,7 +47,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 관리자 -->
    <select id="LoginCheck" resultType="String">
       SELECT user_name
-      FROM tbl_user
+      FROM user
       WHERE user_id = #{user_id} AND userPW = #{user_pw}
    </select>
 </mapper>

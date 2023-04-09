@@ -26,7 +26,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public void userInsert(UserVO vo) {
+	public void insertUser(UserVO vo) {
 		
 		sqlSession.insert(nameSpace+".insertUser", vo);
 	}

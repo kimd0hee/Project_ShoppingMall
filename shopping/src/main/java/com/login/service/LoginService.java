@@ -10,5 +10,5 @@ public interface LoginService {
 	
 	public UserVO viewUser(UserVO vo);
 	
-	public void logout(HttpSession session);
+	public void logoutUser(HttpSession session);
 }

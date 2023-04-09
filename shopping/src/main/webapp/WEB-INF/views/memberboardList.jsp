@@ -8,7 +8,9 @@
 <%@ include file="include/header.jsp" %>
 <script>
 		$(document).ready(function(){
+			console.log("test");
 			$("#btnWrite").click(function(){
+				console.log("test");
 				// 페이지 주소 변경(이동)
 				location.href = "${path}/memberboardWrite.do";
 			});
@@ -32,7 +34,7 @@
 		</select>
 		<input name="keyword" value="${map.keyword}">
 		<input type="submit" value="조회">
-		<!-- <c:if test="${sessionScope.user_id != null}"> -->
+		<c:if test="${sessionScope.user_id != null}">
 		<button type="button" id="btnWrite">글쓰기</button>
 		</c:if>
 	</form>

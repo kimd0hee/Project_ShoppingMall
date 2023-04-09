@@ -28,7 +28,7 @@ public class LoginDAOImpl implements LoginDAO {
 	}
 	
 	@Override
-	public void logout(HttpSession session) {
+	public void logoutUser(HttpSession session) {
 		
 	}
 

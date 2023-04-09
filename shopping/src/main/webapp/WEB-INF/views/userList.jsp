@@ -10,7 +10,7 @@
 </head>
 <body>
 <h2>회원 목록</h2>
-<input type="button" value="회원등록" onclick="location.href='${path}/userWrite.do'">
+<input type="button" value="회원등록" onclick="location.href='${path}/writeUser.do'">
 	<table border="1" width="700px">
 		<tr>
 			<th>회원번호</th>
