@@ -90,7 +90,7 @@
 		// 댓글 입력 함수(json 방식)
 		function replyJson(){
 			var replytext=$("#replytext").val();
-			var cs_id="${dto.bno}"
+			var bno="${dto.bno}"
 			// 비밀댓글 체크 여부
 			var secretReply = "n";
 			// 태그.is(":속성") 체크여부 true/false
@@ -117,13 +117,13 @@
 			$.ajax({
 				type : "get",
 				// contentType: "application/json", // RestController 방식이여서 생략이 가능
-				url : "${path}listJson.do?cs_id=${dto.bno}&curPage="+num,
+				url : "${path}listJson.do?bno=${dto.bno}&curPage="+num,
 						success : function(result){
 							console.log(result);
 							var output = "<table>";
 							for(var i in result){
 								output +="<tr>";
-								output +="<td>"+result[i].bno;
+								output +="<td>"+result[i].userName;
 								output +="("+changeDate(result[i].regdate)+")<br>";
 								output += result[i].replytext+"</td>";
 								output += "<tr>";
@@ -184,29 +184,29 @@
 	<h2>게시글 보기</h2>
 	<form name="form" method="post">
 		<div>
-			작성일자 : <fmt:formatDate value="${dto.cs_date}" pattern= "yyyy-MM-dd a HH:mm:ss"/>
+			작성일자 : <fmt:formatDate value="${dto.regdate}" pattern= "yyyy-MM-dd a HH:mm:ss"/>
 		</div>
 		<div>
-			조회수 : ${dto.cs_viewcnt}
+			조회수 : ${dto.viewcnt}
 		</div>
 		<div>
 			제목
-			<input name="cs_title" id="cs_title" size="80" value="${dto.cs_title}" placeholder="제목을 입력 하세요">
+			<input name="title" id="title" size="80" value="${dto.title}" placeholder="제목을 입력 하세요">
 		</div>
 		<div>
 			내용
-			<textarea name="cs_context" id="cs_context" value="${dto.cs_context}" rows="4" cols="80" placeholder="내용을 입력하세요">
-			${dto.cs_context}</textarea>
+			<textarea name="content" id="content" value="${dto.content}" rows="4" cols="80" placeholder="내용을 입력하세요">
+			${dto.content}</textarea>
 		</div>
 		<div>
 			아이디
-			<%-- <input name="cs_writer" id="cs_writer" value="${dto.cs_writer}" placeholder="이름을 입력하세요"> --%>
-			${dto.user_id}
+			<%-- <input name="writer" id="writer" value="${dto.writer}" placeholder="이름을 입력하세요"> --%>
+			${dto.bno}
 		</div>
 	<div style="width: 650px; text-align:center;">
-		<input type="hidden" name="cs_id" value="${dto.cs_id}">
+		<input type="hidden" name="bno" value="${dto.bno}">
 		<!-- 본인이 쓴 게시물만 수정, 삭제가 가능 -->
-		<c:if test="${sessionScope.user_id == dto.cs_writer}">
+		<c:if test="${sessionScope.user_id == dto.writer}">
 			<button type="button" id="btnUpdate">수정</button>
 			<button type="button" id="btnDelete">삭제</button>
 		</c:if>
