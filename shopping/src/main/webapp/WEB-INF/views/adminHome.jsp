@@ -14,6 +14,7 @@
 </c:if>>
 
 ${result }
+
 </body>
 <%@ include file="include/footer.jsp" %>
 </html>
