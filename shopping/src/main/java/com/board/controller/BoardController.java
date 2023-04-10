@@ -21,7 +21,7 @@ public class BoardController {
 
 		@Inject
 		BoardService service;
-		
+		//
 		// 게시글 목록
 		@RequestMapping("boardList.do")
 		public ModelAndView list() throws Exception{
