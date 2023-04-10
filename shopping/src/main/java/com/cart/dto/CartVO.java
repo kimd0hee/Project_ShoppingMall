@@ -1,25 +1,14 @@
-/*CREATE TABLE `cart` (
-   `cart_id`   int(10)   NOT NULL,        (장바구니 번호)
-   `user_id`   varchar(50)   NOT NULL,     (사용자 아이디)
-   `user_name` varchar(50)   NULL,         (사용자 이름)
-   `product_id     int(10)   NOT NULL,    (상품 번호)
-   `product_name`    varchar(50) NULL,    (상품 이름)
-   `cart_price`   int(10)   NULL,       (상품단가)
-   `cart_quantity`   int(10)   NULL,        (상품 수량)
-   `product_money`   int(10)      NULL    (상품 가격)
-); */
 package com.cart.dto;
 
 public class CartVO {
-   private int cart_id;         //장바구니 번호 cartID
-   private String user_id;         //사용자 아이디 userID
-   private String user_name;      //사용자 이름  userName
-   private int product_id;         //상품 번호   productID
-   private int product_name;      //상품이름    productName
-   private int cart_price;         //상품단가    productPrice
-   private int cart_quantity;      //구매수량      amount
-   private int product_money;      //상품 가격   money
-   
+   private int cart_id;
+   private String user_id;
+   private String user_name;
+   private int product_id;
+   private String product_name;
+   private int product_price;
+   private int amount;
+   private int money;
    public int getCart_id() {
       return cart_id;
    }
@@ -44,36 +33,35 @@ public class CartVO {
    public void setProduct_id(int product_id) {
       this.product_id = product_id;
    }
-   public int getProduct_name() {
+   public String getProduct_name() {
       return product_name;
    }
-   public void setProduct_name(int product_name) {
+   public void setProduct_name(String product_name) {
       this.product_name = product_name;
    }
-   public int getCart_price() {
-      return cart_price;
+   public int getProduct_price() {
+      return product_price;
    }
-   public void setCart_price(int cart_price) {
-      this.cart_price = cart_price;
+   public void setProduct_price(int product_price) {
+      this.product_price = product_price;
    }
-   public int getCart_quantity() {
-      return cart_quantity;
+   public int getAmount() {
+      return amount;
    }
-   public void setCart_quantity(int cart_quantity) {
-      this.cart_quantity = cart_quantity;
+   public void setAmount(int amount) {
+      this.amount = amount;
    }
-   public int getProduct_money() {
-      return product_money;
+   public int getMoney() {
+      return money;
    }
-   public void setProduct_money(int product_money) {
-      this.product_money = product_money;
+   public void setMoney(int money) {
+      this.money = money;
    }
    @Override
    public String toString() {
       return "CartVO [cart_id=" + cart_id + ", user_id=" + user_id + ", user_name=" + user_name + ", product_id="
-            + product_id + ", product_name=" + product_name + ", cart_price=" + cart_price + ", cart_quantity="
-            + cart_quantity + ", product_money=" + product_money + "]";
+            + product_id + ", product_name=" + product_name + ", product_price=" + product_price + ", amount="
+            + amount + ", money=" + money + "]";
    }
-   
 
 }
