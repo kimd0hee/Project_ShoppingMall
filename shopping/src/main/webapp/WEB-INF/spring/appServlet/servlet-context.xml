@@ -35,14 +35,16 @@
 	<!-- <beans:bean id="adminInterceptor" class="com.spring.interceptor.AdminInterceptor"/> -->
 	
 	<!-- 관리자 세션체크 매핑 -->
- 	<!-- <interceptor>
+	<interceptors>
+ 	<interceptor>
 		<mapping path="writeProduct.do"/>
 		<mapping path="insertProduct.do"/>
 		<mapping path="updateProduct.do"/>
 		<mapping path="editProduct.do"/>
 		<mapping path="deleteProduct.do"/>
 		<beans:ref bean="adminInterceptor"/>
-	</interceptor> -->
+	</interceptor>
+	</interceptors>
 	
 	<!-- 추가 End -->
 	<!-- 메인 -->
