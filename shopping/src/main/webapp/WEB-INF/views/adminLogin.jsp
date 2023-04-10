@@ -9,7 +9,7 @@
 <%@ include file="include/menu.jsp" %>
 </head>
 <body>
-<h2>관리자 로그인</h2>
+<h2>관리자로그인</h2>
 	<form name="form1" method="post">
 		<table border="1" width="400px">
 			<tr>
