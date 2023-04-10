@@ -14,7 +14,7 @@ public class MemberboardVO {
 	private String cs_status;
 	private String cs_writer;
 	private int cs_recnt;
-	
+
 	public int getCs_id() {
 		return cs_id;
 	}
@@ -81,7 +81,7 @@ public class MemberboardVO {
 	public void setCs_recnt(int cs_recnt) {
 		this.cs_recnt = cs_recnt;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "MemberboardVO [cs_id=" + cs_id + ", cs_type=" + cs_type + ", cs_title=" + cs_title + ", cs_context="

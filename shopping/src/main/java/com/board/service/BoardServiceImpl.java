@@ -14,7 +14,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Inject
 	BoardDAO dao;
-	
+
 	@Override
 	public void insertBoard(BoardVO vo) throws Exception {
 		
@@ -57,7 +57,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<BoardVO> boardList() throws Exception {
 		return dao.boardList();
-		
+
 	}
 
 

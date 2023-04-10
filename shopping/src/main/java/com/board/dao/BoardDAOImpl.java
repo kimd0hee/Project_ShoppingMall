@@ -14,9 +14,9 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Inject
 	SqlSession sqlSession;
-	
+
 	String nameSpace = "board";
-	
+
 	@Override
 	public void insertBoard(BoardVO vo) throws Exception {
 		sqlSession.insert(nameSpace+".boardInsert", vo);

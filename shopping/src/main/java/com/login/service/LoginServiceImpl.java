@@ -13,24 +13,24 @@ public class LoginServiceImpl implements LoginService {
 
 	@Inject
 	LoginDAO loginDao;
-	
+
 	@Override
 	public boolean loginCheck(UserVO vo, HttpSession session) {
 		boolean result = loginDao.loginCheck(vo);
-		if (result) { 
+		if (result) {
 			UserVO vo2 = viewUser(vo);
-			
+
 			session.setAttribute("user_id", vo2.getUser_id());
 			session.setAttribute("user_name", vo2.getUser_name());
 		}
 		return result;
 	}
-	
+
 	@Override
 	public UserVO viewUser(UserVO vo) {
 		return loginDao.viewUser(vo);
 	}
-	
+
 	@Override
 	public void logout(HttpSession session) {
 		session.invalidate();
