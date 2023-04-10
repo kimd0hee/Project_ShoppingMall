@@ -35,11 +35,11 @@
 			<tr>
 			<tr>
 				<td>생년월일</td>
-				<td><input type="date" name="user_birth"></td>
+				<td><input type="date" name="user_birth" placeholder="생일을 입력하세요"></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<input type="submit" value="확인">
+					<input type="submit" value="회원가입">
 					<input type="reset" value="취소">
 				</td>
 			</tr>

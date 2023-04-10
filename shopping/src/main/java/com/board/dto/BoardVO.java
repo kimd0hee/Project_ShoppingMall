@@ -38,7 +38,7 @@ public class BoardVO {
 	public void setCs_date(Date cs_date) {
 		this.cs_date = cs_date;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "BoardVO [cs_id=" + cs_id + ", cs_title=" + cs_title + ", cs_context=" + cs_context + ", cs_writer="

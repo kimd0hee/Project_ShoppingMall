@@ -14,21 +14,21 @@ public class BoardServiceImpl implements BoardService {
 
 	@Inject
 	BoardDAO dao;
-	
+
 	@Override
 	public void insertBoard(BoardVO vo) throws Exception {
 		String cs_title = vo.getCs_title();
 		String cs_context = vo.getCs_context();
 		String cs_writer = vo.getCs_writer();
-		
+
 		cs_title = cs_title.replace("<", "&lt;");
 		cs_title = cs_title.replace("<", "&gt;");
 		cs_writer = cs_writer.replace("<", "&lt");
 		cs_writer = cs_writer.replace("<", "&gt");
-		
+
 		cs_title = cs_title.replace(" ", "&nbsp;&nbsp;");
 		cs_writer = cs_writer.replace(" ", "&nbsp;&nbsp;");
-		
+
 		cs_context = cs_context.replace("\n", "<br>");
 		vo.setCs_title(cs_title);
 		vo.setCs_context(cs_context);
@@ -54,7 +54,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<BoardVO> boardList() throws Exception {
 		return dao.boardList();
-		
+
 	}
 
 

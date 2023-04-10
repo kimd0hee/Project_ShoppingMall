@@ -5,13 +5,13 @@
 <html lang="UTF-8">
 
 <head>
-
+	<%@ include file="include/header.jsp" %>
     <%@ include file="include/menu.jsp" %>
     <title>상품 장바구니 목록</title>
     <script>
        $(document).ready(function() {
           $("#btnList").click(function() {
-             location.href="${path}/product/list.do";
+             location.href="${path}/productList.do";
          });
     });
     </script>
@@ -24,7 +24,7 @@
             장바구니가 비었습니다.
          </c:when>
          <c:otherwise>
-            <form name="form1" id="form1" method="post" action=${path}/cart/update.do">
+            <form name="form1" id="form1" method="post" action=${path}/cartUpdate.do>
                <table border="1">
                   <tr>
                      <th>상품명</th>
@@ -38,18 +38,18 @@
                      <td>
                         ${row.product_name}
                      </td>
-                     <td style="width:800px" align="right">
-                        <fmt:formatNumber pattern="###,###,###" value="${row.cart_price}"/>
+                     <td style="width:80px" align="right">
+                        <fmt:formatNumber pattern="###,###,###" value="${row.product_price}"/>
                      </td>
                      <td>
-                        <input type="number" style="width:40px" name="cart_quantity" value="${row.cart_quantity}" min="1">
+                        <input type="number" style="width:40px" name="amount" value="${row.amount}" min="1">
                         <input type="hidden" name="product_id" value="${row.product_id}">
                      </td>
                      <td style="width:100px" align="right">
-                        <fmt:formatNumber pattern="###,###,###" value="${row.product_money}"/>
+                        <fmt:formatNumber pattern="###,###,###" value="${row.money}"/>
                      </td>
                      <td>
-                        <a href="${path}/cart/delete.do?cart_id=${row.cart_id}">삭제</a>
+                        <a href="${path}/cartDelete.do?cart_id=${row.cart_id}">삭제</a>
                      </td>
                   </tr>                  
                   </c:forEach>
