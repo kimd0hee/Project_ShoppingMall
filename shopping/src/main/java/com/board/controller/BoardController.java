@@ -21,11 +21,7 @@ public class BoardController {
 
 		@Inject
 		BoardService service;
-<<<<<<< HEAD
-		//
-=======
 
->>>>>>> branch 'K.D.H' of https://github.com/kimd0hee/Project_ShoppingMall.git
 		// 게시글 목록
 		@RequestMapping("boardList.do")
 		public ModelAndView list() throws Exception{

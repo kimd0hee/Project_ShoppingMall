@@ -48,12 +48,12 @@ public class ProductController {
    public String insert(ProductVO vo, MultipartFile product_photo) {
       String filename = "";
 
-      if(!product_photo.isEmpty()) {
+      if(product_photo != null && !product_photo.isEmpty()) {
          filename = product_photo.getOriginalFilename();
          System.out.print(product_photo.getOriginalFilename());
 
          //임시 경로
-         String path = "C:\\Users\\newtec\\git\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\shopping\\resources\\img\\product";
+         String path = "C:\\Users\\82107\\Desktop\\";
          //"C:\\Users\\newtec\\git\\Project_ShoppingMall" +".metadata\\.plugins\\org.eclipse.wst.server.core\\" +
          
          try {
@@ -86,7 +86,7 @@ public class ProductController {
          filename = product_photo.getOriginalFilename();
 
          //임시 경로
-         String path = "C:\\Users\\newtec\\git\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\shopping\\resources\\img\\product";
+         String path = "C:\\Users\\82107\\Desktop\\";
          //"C:\\Users\\newtec\\git\\Project_ShoppingMall" +".metadata\\.plugins\\org.eclipse.wst.server.core\\" +
 
          try {
@@ -107,7 +107,7 @@ public class ProductController {
    public String delete(@RequestParam int product_id) {
      String filename = service.fileInfo(product_id);
       //임시 경로
-      String path = "C:\\Users\\newtec\\git\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\shopping\\resources\\img\\product";
+      String path = "C:\\Users\\82107\\Desktop\\";
       //"C:\\Users\\newtec\\git\\Project_ShoppingMall" +".metadata\\.plugins\\org.eclipse.wst.server.core\\" +
 
       if(filename != null) {
