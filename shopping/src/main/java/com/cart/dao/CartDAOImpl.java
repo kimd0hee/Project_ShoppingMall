@@ -13,10 +13,10 @@ import com.cart.dto.CartVO;
 
 @Repository
 public class CartDAOImpl implements CartDAO {
-   
+
    @Inject
    SqlSession sqlSession;
-   
+
    // 1. 장바구니 추가
    @Override
    public void insertCart(CartVO vo) {
@@ -43,16 +43,16 @@ public class CartDAOImpl implements CartDAO {
       sqlSession.selectOne("cart.sumMoneyCart",user_id);
       return sqlSession.selectOne("cart.sumMoneyCart",user_id);
    }
-   
+
    //6. 장바구니 동일한 상품 레코드 확인
    @Override
    public int countCart(int product_id, String user_id) {
-      Map<String, Object> map = new HashMap<String, Object>();
+      Map<String, Object> map = new HashMap<>();
       map.put("product_id", product_id);
       map.put("user_id", user_id);
       return sqlSession.selectOne("cart.countCart", map);
    }
-   
+
    //7. 장바구니 상품슈량 변경
    @Override
    public void updateCart(CartVO vo) {

@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="login">
 
    <select id="LoginCheck" resultType="String">
-      SELECT user_name FROM tbl_user
+      SELECT user_name FROM user
       WHERE user_id = #{user_id} AND user_pw = #{user_pw}
    </select>
    
@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          user_id,
          user_email,
          user_joindate
-      FROM tbl_user
+      FROM user
       WHERE user_id = #{user_id} AND user_pw = #{user_pw}
          
    </select>

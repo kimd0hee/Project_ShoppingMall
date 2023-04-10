@@ -119,5 +119,5 @@ public class UserVO {
 				+ "]";
 	}
 
-	
+
 }

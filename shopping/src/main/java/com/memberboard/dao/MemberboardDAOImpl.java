@@ -16,35 +16,35 @@ public class MemberboardDAOImpl implements MemberboardDAO {
 
 	@Inject
 	SqlSession sqlsession;
-	
+
 	// 게시글 작성
 	@Override
 	public void insertMemberboard(MemberboardVO vo) {
 		sqlsession.insert("memberboard.insert", vo);
 	}
-	
+
 	// 게시글 상세보기
 	@Override
 	public MemberboardVO viewMemberboard(int cs_id) {
 		return sqlsession.selectOne("memberboard.view", cs_id);
 	}
-	
+
 	// 게시글 수정
 	@Override
 	public void updateMemberboard(MemberboardVO vo) {
 		sqlsession.update("memberboard.updateArticle", vo);
 	}
-	
+
 	// 게시글 삭제
 	@Override
 	public void deleteMemberboard(int cs_id) {
 		sqlsession.delete("memberboard.deleteArticle", cs_id);
 	}
-	
+
 	// 게시글 목록
 	@Override
 	public List<MemberboardVO> memberboardList(int start, int end, String searchOption, String keyword) {
-		Map<String, Object> map = new HashMap<String, Object>();
+		Map<String, Object> map = new HashMap<>();
 		map.put("searchOption", searchOption);
 		map.put("keyword", keyword);
 		map.put("start", start);
@@ -62,7 +62,7 @@ public class MemberboardDAOImpl implements MemberboardDAO {
 	// 게시글 레코드 갯수
 	@Override
 	public int countArticle(String searchOption, String keyword) {
-		Map<String, String> map = new HashMap<String, String>();
+		Map<String, String> map = new HashMap<>();
 		map.put("searchOption", searchOption);
 		map.put("keyword", keyword);
 		return sqlsession.selectOne("memberboard.countArticle", map);

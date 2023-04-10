@@ -5,7 +5,7 @@
 <html lang="UTF-8">
 
 <head>
-
+	<%@ include file="include/header.jsp" %>
     <%@ include file="include/menu.jsp" %>
     
     <script>

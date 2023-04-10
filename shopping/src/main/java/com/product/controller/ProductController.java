@@ -2,6 +2,7 @@ package com.product.controller;
 
 
 import java.io.File;
+
 import javax.annotation.Resource;
 import javax.inject.Inject;
 
@@ -19,104 +20,104 @@ import com.product.service.ProductService;
 public class ProductController {
 
    @Inject
-   ProductService service; 
+   ProductService service;
    @Resource(name="uploadPath")
    private String uploadPath;
-   
-   
-   @RequestMapping("productlist.do")
+
+
+   @RequestMapping("productList.do")
    public ModelAndView list(ModelAndView mav) {
-      mav.setViewName("/product/productList");
+      mav.setViewName("/productList");
       mav.addObject("list", service.productList());
       return mav;
    }
-   
-   @RequestMapping("/detail/{product_id}")
+
+   @RequestMapping("productDetail/{product_id}")
    public ModelAndView detail(@PathVariable("product_id") int product_id, ModelAndView mav) {
-      mav.setViewName("/product/productDetail");
+      mav.setViewName("/productDetail");
       mav.addObject("vo", service.detailProduct(product_id));
       return mav;
    }
-   
-   @RequestMapping("write.do")
+
+   @RequestMapping("productWrite.do")
    public String write() {
       return "productWrite";
    }
-   
-   @RequestMapping("insert.do")
-   public String insert(ProductVO vo, MultipartFile productPhotos) {
+
+   @RequestMapping("productInsert.do")
+   public String insert(ProductVO vo, MultipartFile product_photo) {
       String filename = "";
-      
-      if(!productPhotos.isEmpty()) {
-         filename = productPhotos.getOriginalFilename();
-         System.out.print(productPhotos.getOriginalFilename());
-         
-         String path = "C:\\Users\\woori\\Documents\\workspace-sts-3.9.18.RELEASE" +
-          ".metadata\\.plugins\\org.eclipse.wst.server.core\\" +
-                "tmp2\\wtpwebapps\\spring\\resources\\images\\";
+
+      if(!product_photo.isEmpty()) {
+         filename = product_photo.getOriginalFilename();
+         System.out.print(product_photo.getOriginalFilename());
+
+         //임시 경로
+         String path = "C:\\Users\\newtec\\git\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\shopping\\resources\\img\\product";
+         //"C:\\Users\\newtec\\git\\Project_ShoppingMall" +".metadata\\.plugins\\org.eclipse.wst.server.core\\" +
          
          try {
             new File(path).mkdirs();
-            productPhotos.transferTo(new File(path+filename));
+            product_photo.transferTo(new File(path+filename));
          }catch(Exception e) {
             e.printStackTrace();
          }
-         vo.setProduct_img(filename);
+         vo.setProduct_url(filename);
       }
-      
+
       service.insertProduct(vo);
-      
+
       return "redirect:/productList.do";
    }
-   
-   @RequestMapping("edit/{product_id}")
+
+   @RequestMapping("productEdit/{product_id}")
    public ModelAndView edit(@PathVariable("product_id") int product_id, ModelAndView mav) {
-      mav.setViewName("/product/productEdit");
+      mav.setViewName("/productEdit");
       mav.addObject("vo", service.detailProduct(product_id));
       return mav;
    }
-   
-   @RequestMapping("update.do")
-   public String update(ProductVO vo, MultipartFile productPhotos) {
+
+   @RequestMapping("productUpdate.do")
+   public String update(ProductVO vo, MultipartFile product_photo) {
       String filename = "";
-      
-      
-      if(!productPhotos.isEmpty()) {
-         filename = productPhotos.getOriginalFilename();
-         
-         String path = "C:\\Users\\woori\\Documents\\workspace-sts-3.9.18.RELEASE" +
-                ".metadata\\.plugins\\org.eclipse.wst.server.core\\" +
-                      "tmp2\\wtpwebapps\\spring\\resources\\images\\";
-         
+
+
+      if(!product_photo.isEmpty()) {
+         filename = product_photo.getOriginalFilename();
+
+         //임시 경로
+         String path = "C:\\Users\\newtec\\git\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\shopping\\resources\\img\\product";
+         //"C:\\Users\\newtec\\git\\Project_ShoppingMall" +".metadata\\.plugins\\org.eclipse.wst.server.core\\" +
+
          try {
             new File(path).mkdirs();
          }catch(Exception e) {
             e.printStackTrace();
          }
-         vo.setProduct_img(filename);
+         vo.setProduct_url(filename);
       }else {
          ProductVO vo2 = service.detailProduct(vo.getProduct_id());
-         vo.setProduct_img(vo2.getProduct_img());
+         vo.setProduct_url(vo2.getProduct_url());
       }
       service.updateProduct(vo);
       return "redirect:/productList.do";
    }
-   
-   @RequestMapping("delete.do")
+
+   @RequestMapping("productDelete.do")
    public String delete(@RequestParam int product_id) {
-      String filename = service.fileInfo(product_id);
-      String path = "C:\\Users\\woori\\Documents\\workspace-sts-3.9.18.RELEASE" +
-             ".metadata\\.plugins\\org.eclipse.wst.server.core\\" +
-                   "tmp2\\wtpwebapps\\spring\\resources\\images\\";
-      
+     String filename = service.fileInfo(product_id);
+      //임시 경로
+      String path = "C:\\Users\\newtec\\git\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\shopping\\resources\\img\\product";
+      //"C:\\Users\\newtec\\git\\Project_ShoppingMall" +".metadata\\.plugins\\org.eclipse.wst.server.core\\" +
+
       if(filename != null) {
          File file = new File(path+filename);
-         
+
          if(file.exists()) {
             file.delete();
          }
       }
-      
+
       service.deleteProduct(product_id);
       return "redirct:/productList.do";
    }

@@ -1,7 +1,8 @@
 package com.shopping.app;
 
-import java.sql.DriverManager;
 import java.sql.Connection;
+import java.sql.DriverManager;
+
 import org.junit.Test;
 
 
