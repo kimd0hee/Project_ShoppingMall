@@ -1,4 +1,4 @@
-- admin (관리자)
+- admin (관리자).
 
 create table admin (
     admin_id varchar(50) not null,
