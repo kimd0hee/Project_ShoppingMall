@@ -21,9 +21,9 @@
 </head>
 <body>
    <h2>상품목록</h2>
-   <c:if test="${sessionScope.admin_id != null}">
+  <!--  <c:if test="${sessionScope.admin_id != null}"> -->
       <button type="button" id="btnAdd">상품등록</button><br>
-   </c:if>
+  <!-- </c:if> -->
    <table border="1">
       <tr>
          <th>상품ID번호</th>

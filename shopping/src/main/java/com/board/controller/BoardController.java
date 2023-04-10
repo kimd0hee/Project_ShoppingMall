@@ -27,7 +27,7 @@ public class BoardController {
 		public ModelAndView list() throws Exception{
 			List<BoardVO> list = service.boardList();
 			ModelAndView mav = new ModelAndView();
-			mav.setViewName("boardList");
+			mav.setViewName("boardLis1lt");
 			mav.addObject("list",list);
 			return mav;
 		}
