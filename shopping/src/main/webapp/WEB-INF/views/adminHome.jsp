@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<%@ include file="include/header.jsp" %>
 <%@ include file="include/menu.jsp" %>
 </head>
 <body>
@@ -14,4 +15,5 @@
 
 ${result }
 </body>
+<%@ include file="include/footer.jsp" %>
 </html>
