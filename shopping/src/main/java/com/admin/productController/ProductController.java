@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.protobuf.compiler.PluginProtos.CodeGeneratorResponse.File;
+import com.product.dto.ProductVO;
 import com.product.service.ProductService;
 
 
@@ -26,7 +27,7 @@ public class ProductController {
    @RequestMapping("/list.do")
    public ModelAndView list(org.springframework.web.servlet.ModelAndView mav) {
       mav.setViewName("/product/productList");
-      mav.addObQject("list", productService.listProduct());
+      mav.addObject("list", productService.productList());
       return mav;
    }
    
@@ -43,7 +44,7 @@ public class ProductController {
    }
    
    @RequestMapping("insert.do")
-   public String insert(shoppingmallVO vo, MultipartFile productPhotos) {
+   public String insert(ProductVO vo, MultipartFile productPhotos) {
       String filename = "";
       
       if(!productPhotos.isEmpty()) {
