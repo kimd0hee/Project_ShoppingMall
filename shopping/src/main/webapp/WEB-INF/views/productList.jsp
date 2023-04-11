@@ -53,7 +53,10 @@
             </td>
          </tr>
       </c:forEach>
+      
    </table>
+   
+   <input type="button" onClick="location.href='order'">주문하기
    <%@ include file="include/footer.jsp" %>
 </body>
 </html>

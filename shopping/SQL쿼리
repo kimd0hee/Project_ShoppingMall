@@ -401,41 +401,7 @@ create table tbl_reply (
    regdata timestamp not null default current_timestamp() on update current_timestamp(),
    updatedata timestamp not null default current_timestamp() on update current_timestamp()
 );
-=======
-
-
->>>>>>> branch 'K.D.H' of https://github.com/kimd0hee/Project_ShoppingMall.git
-=======
-- admin (관리자)
-
-CREATE TABLE `admin` (
-    `admin_id` varchar(50) not null,
-    `admin_pw` varchar(50) not null,
-    `admin_name` varchar(50) not null,
-    `admin_email` varchar(100) default null,
-    `admin_joindate` timestamp not null default current_timestamp() ON UPDATE current_timestamp(),
-    `admin_update` timestamp not null default current_timestamp() ON UPDATE current_timestamp()
-    )ENGINE=INNODB default charset=utf8 collate=utf8_general_ci;
- 
- - user(회원)
- 
- CREATE TABLE `user` (
-   `user_idx`   int(10)   NOT NULL AUTO_INCREMENT PRIMARY KEY,
-   `user_id`   varchar(50)   NULL,
-   `user_pw`   varchar(50)   NULL,
-   `user_name`   varchar(50)   NULL,
-   `user_phone`   varchar(50)   NULL,
-   `user_birth`   date   NULL,
-   `user_email`   varchar(255)   NULL,
-   `user_joindate`   timestamp   NULL   DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-   `user_active`   varchar(1)   NULL,
-   `user_email_check`   varchar(1)   NULL,
-   `user_address1`   varchar(20)   NULL,
-   `user_address2`   varchar(50)   NULL,
-   `user_address3`   varchar(50)   NULL,
-   `user_grade`   varchar(5)   NULL,
-   `user_update`   timestamp   NULL  DEFAULT current_timestamp() ON UPDATE current_timestamp()
-);
+<<<<<<< HEAD
 
 - memberboard(회원전용게시판)
 
@@ -611,3 +577,5 @@ create table tbl_reply (
 >>>>>>> branch 'K.D.H' of https://github.com/kimd0hee/Project_ShoppingMall.git
 
 >>>>>>> branch 'N.D.O' of https://github.com/kimd0hee/Project_ShoppingMall.git
+=======
+>>>>>>> branch 'S.S.M' of https://github.com/kimd0hee/Project_ShoppingMall.git

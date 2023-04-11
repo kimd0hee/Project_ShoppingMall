@@ -4,12 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<<<<<<< HEAD
+
 <%@ include file="include/header.jsp" %>
 <%@ include file="include/menu.jsp" %>
-=======
-<%@ include file="./include/menu.jsp" %>
->>>>>>> branch 'K.S.H' of https://github.com/kimd0hee/Project_ShoppingMall.git
+
+
 </head>
 <body>
 

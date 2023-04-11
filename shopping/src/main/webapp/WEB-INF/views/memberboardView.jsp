@@ -15,7 +15,6 @@
 				var writer = document.form.writer.value; */
 				var title = ${"#title"}.val();
 				var content = ${"#content"}.val();
-				//var writer = ${#"writer"}.val();
 				if(title == ""){
 					alert("제목을 입력하세요");
 					document.form.title.focus();
@@ -229,4 +228,5 @@
 	<!-- 댓글 목록 출력 위치 -->
 	<div id="listReply"></div>
 </body>
+<%@ include file="include/footer.jsp" %>
 </html>

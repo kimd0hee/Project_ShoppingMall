@@ -12,7 +12,6 @@ import com.login.service.LoginService;
 import com.user.dto.UserVO;
 
 @Controller
-@RequestMapping("/*")
 public class LoginController {
 
 	@Inject

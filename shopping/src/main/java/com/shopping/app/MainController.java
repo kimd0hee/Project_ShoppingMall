@@ -66,6 +66,18 @@ public class MainController {
 	public String cartList(Model model) {
 		return "cartList";
 	}
+	
+	//order page 연결
+	@RequestMapping(value = "order", method = RequestMethod.GET)
+	public String order(Model model) {
+		return "order";
+	}
+	
+	//test
+	@RequestMapping(value = "ordertest", method = RequestMethod.GET)
+	public String ordertest(Model model) {
+		return "ordertest";
+	}
 
 }
 

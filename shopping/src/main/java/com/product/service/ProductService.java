@@ -17,4 +17,9 @@ public interface ProductService {
    public void deleteProduct(int product_id);
 
    public String fileInfo(int product_id);
+
+public static ProductVO read(int product_id) {
+	// TODO Auto-generated method stub
+	return null;
+}
 }

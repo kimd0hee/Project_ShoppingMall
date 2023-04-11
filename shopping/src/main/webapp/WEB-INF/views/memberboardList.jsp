@@ -6,6 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원 게시글 목록</title>
 <%@ include file="include/header.jsp" %>
+<%@ include file="include/menu.jsp" %>
+
 <script>
 		$(document).ready(function(){
 			$("#btnWrite").click(function(){
@@ -20,14 +22,13 @@
 </script>
 </head>
 <body>
-<%@ include file="include/menu.jsp" %>
 	<h2>회원 게시글 목록</h2>
 	<form name="form" method="post" action="${path}/memberboardList.do">
 		<select name="searchOption">
-			<option value="all" <c:out value="${map.searchOption == 'all'?'seleted':''}"/> >제목+이름+제목</option>
-			<option value="user_name" <c:out value="${map.searchOption == 'user_name'?'seleted':''}"/> >이름 </option>
-			<option value="content" <c:out value="${map.searchOption == 'content'?'seleted':''}"/> >내용</option>
-			<option value="title" <c:out value="${map.searchOption == 'title'?'seleted':''}"/> >제목</option>
+			<option value="all" <c:out value="${map.searchOption == 'all'?'selected':''}"/> >제목+이름+제목</option>
+			<option value="user_name" <c:out value="${map.searchOption == 'user_name'?'selected':''}"/> >이름 </option>
+			<option value="content" <c:out value="${map.searchOption == 'content'?'selected':''}"/> >내용</option>
+			<option value="title" <c:out value="${map.searchOption == 'title'?'selected':''}"/> >제목</option>
 		</select>
 		<input name="keyword" value="${map.keyword}">
 		<input type="submit" value="조회">
@@ -44,13 +45,14 @@
 			<th>작성일</th>
 			<th>조회수</th>		
 		</tr>
+		<!-- 게시글 상세보기 페이지로 이동시 게시글 목록페이지에 있는 검색조건, 키워드 현재 페이지 값을 유지 -->
+		<!-- ** 댓글이 있으면 게시글 이름 옆에 출력 -->
+		<!-- 원하는 날짜 형식으로 출력하기 위해 fmt태그 사용 -->		
 		<c:forEach var="row" items="${map.list}">
 			<tr>
 				<td>${row.bno}</td>
-				<!-- 게시글 상세보기 페이지로 이동시 게시글 목록페이지에 있는 검색조건, 키워드 현재 페이지 값을 유지 -->
 				<td><a href="${path}/viewMemberboard.do?bno=${row.bno}
 				&curPage=${map.boardPager.curPage}&searchOption=${map.searchOption}&keyword=${map.keyword}">${row.title}
-				<!-- ** 댓글이 있으면 게시글 이름 옆에 출력 -->
 				<c:if test="${row.recnt > 0}">
 				<span style="color : red;">(${row.recnt})</span>
 				</c:if>
@@ -58,7 +60,6 @@
 				</td>
 				<td>${row.userName}</td>
 				<td>
-				 	<!-- 원하는 날짜 형식으로 출력하기 위해 fmt태그 사용 -->
 					<fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/>
 				</td>
 				<td>${row.viewcnt}</td>
@@ -115,4 +116,5 @@
 		</tr>
 	</table>
 </body>
+<%@ include file="include/footer.jsp" %>
 </html>

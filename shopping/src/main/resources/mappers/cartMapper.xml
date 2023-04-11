@@ -20,8 +20,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          p.product_id As product_id,
          p.product_name AS product_name,
           c.cart_quantity,
-          p.cart_price AS cart_price,
-          (p.cart_price * c.cart_quantity) product_money,
+          c.cart_price AS cart_price,
+          (c.cart_price * c.cart_quantity) product_money,
           m.user_name AS user_name
       FROM
          cart c LEFT JOIN product p ON p.product_id = c.product_id

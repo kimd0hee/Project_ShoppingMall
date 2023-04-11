@@ -19,4 +19,10 @@ public interface UserService {
 	public boolean checkPw(String user_id, String user_pw);
 	//어드민 관리자 체크
 	public String loginCheck(UserVO vo);
+	
+	
+	public static UserVO read(String user_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
