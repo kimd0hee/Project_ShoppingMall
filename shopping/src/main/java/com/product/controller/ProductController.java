@@ -23,12 +23,7 @@ public class ProductController {
 
    @Inject
    ProductService service;
-<<<<<<< HEAD
-   
-   @Resource(name="uploadPath")
-=======
    @Value("#{uploadPath}")
->>>>>>> branch 'K.D.H' of https://github.com/kimd0hee/Project_ShoppingMall.git
    private String uploadPath;
 
 
@@ -59,16 +54,8 @@ public class ProductController {
 
       if(product_photo != null && !product_photo.isEmpty()) {
          filename = product_photo.getOriginalFilename();
-<<<<<<< HEAD
-         System.out.print(product_photo.getOriginalFilename());
-         //서버주소 깃으로 넣어야 서버에 뜸
-         String path = "C:\\Users\\newtec\\git\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\shopping\\resources\\img\\product";
-         //"C:\\Users\\newtec\\git\\Project_ShoppingMall" +".metadata\\.plugins\\org.eclipse.wst.server.core\\" +
-         
-=======
 
          System.out.println("상품 인서트 예외처리 전");
->>>>>>> branch 'K.D.H' of https://github.com/kimd0hee/Project_ShoppingMall.git
          try {
             new File(uploadPath).mkdirs();
             product_photo.transferTo(new File(uploadPath+filename));

@@ -30,17 +30,8 @@ public class AdminController {
       String name = service.adminLoginCheck(vo);
 
       if(name != null) {
-<<<<<<< HEAD
-         session.setAttribute("admin_id", vo.getUser_id());
-         //session.setAttribute("user_id", vo.getUser_id()); , admin VO 새로 생성
-=======
          session.setAttribute("admin_id", vo.getAdmin_id());
->>>>>>> branch 'K.D.H' of https://github.com/kimd0hee/Project_ShoppingMall.git
          session.setAttribute("admin_name", name);
-<<<<<<< HEAD
-         //session.setAttribute("user_name", name);
-=======
->>>>>>> branch 'K.D.H' of https://github.com/kimd0hee/Project_ShoppingMall.git
          mav.setViewName("adminHome");
          mav.addObject("msg", "success");
          
