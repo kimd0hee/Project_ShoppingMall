@@ -1,6 +1,5 @@
 package com.review.dto;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 
 public class ReviewVO {
@@ -20,7 +19,7 @@ public class ReviewVO {
 	private Timestamp review_reply_date;
 	private String review_secret;
 	private String review_secret_writer;
-	
+
 	public Integer getReview_id() {
 		return review_id;
 	}
@@ -127,5 +126,5 @@ public class ReviewVO {
 				+ ", review_reply_date=" + review_reply_date + ", review_secret=" + review_secret
 				+ ", review_secret_writer=" + review_secret_writer + "]";
 	}
-	
+
 }

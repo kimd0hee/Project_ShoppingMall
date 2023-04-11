@@ -13,23 +13,28 @@ public class LoginDAOImpl implements LoginDAO {
 
 	@Inject
 	SqlSession sqlSession;
-	
+
 	String nameSpace = "login";
-	
+
 	@Override
 	public boolean loginCheck(UserVO vo) {
-		String name = sqlSession.selectOne(nameSpace+".loginCheck", vo);
+		String name = sqlSession.selectOne(nameSpace+".LoginCheck", vo);
 		return(name ==null) ? false : true;
 	}
-	
+
 	@Override
 	public UserVO viewUser(UserVO vo) {
 		return sqlSession.selectOne(nameSpace+".viewUser", vo);
 	}
-	
+
 	@Override
+<<<<<<< HEAD
 	public void logoutUser(HttpSession session) {
 		
+=======
+	public void logout(HttpSession session) {
+
+>>>>>>> branch 'N.D.O' of https://github.com/kimd0hee/Project_ShoppingMall.git
 	}
 
 }

@@ -14,31 +14,31 @@ import com.user.dto.UserVO;
 @Controller
 @RequestMapping("/*")
 public class LoginController {
-	
+
 	@Inject
 	LoginService loginService;
-	
+
 	@RequestMapping("login.do")
 	public String login() {
 		return "login";
 	}
-	
+
 	@RequestMapping("loginCheck.do")
 	public ModelAndView loginCheck(@ModelAttribute UserVO vo, HttpSession session){
 		boolean result = loginService.loginCheck(vo, session);
 		ModelAndView mav = new ModelAndView();
-		if (result == true) { 
-			
+		if (result) {
+
 			mav.setViewName("main");
 			mav.addObject("msg", "success");
 		} else {
-			
+
 			mav.setViewName("login");
 			mav.addObject("msg","failure");
 		}
 		return mav;
 	}
-	
+
 	//03. 로그아웃처리
 	@RequestMapping("logout.do")
 	public ModelAndView logout(HttpSession session) {

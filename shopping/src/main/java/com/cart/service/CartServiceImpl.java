@@ -11,16 +11,16 @@ import com.cart.dto.CartVO;
 
 @Service
 public class CartServiceImpl implements CartService {
-   
+
    @Inject
    CartDAO dao;
-   
+
    //1. 장바구니 추가
    @Override
    public void insertCart(CartVO vo) {
       dao.insertCart(vo);
    }
-   
+
    //2. 장바구니 목록
    @Override
    public List<CartVO> cartList(String user_id){
@@ -39,8 +39,8 @@ public class CartServiceImpl implements CartService {
    }
    //5. 자아바구니 금액 합계
    @Override
-   public int sumMoneyCart(String userId) {
-      return dao.sumMoneyCart(userId);
+   public int sumMoneyCart(String user_id) {
+      return dao.sumMoneyCart(user_id);
    }
    //6. 장바구니 상품 확인
    @Override

@@ -11,43 +11,49 @@ import com.user.dto.UserVO;
 
 @Service
 public class UserServiceImpl implements UserService {
-	
+
 	@Inject
 	UserDAOImpl userdao;
-	
+
 	@Override
 	public List<UserVO> userList() {
-		
+
 		return userdao.userList();
 	}
 
 	@Override
+<<<<<<< HEAD
 	public void insertUser(UserVO vo) {
 		
 		userdao.insertUser(vo);
+=======
+	public void userInsert(UserVO vo) {
+
+		userdao.userInsert(vo);
+>>>>>>> branch 'N.D.O' of https://github.com/kimd0hee/Project_ShoppingMall.git
 	}
 
 	@Override
 	public UserVO viewUser(String user_id) {
-		
+
 		return userdao.viewUser(user_id);
 	}
 
 	@Override
 	public void updateUser(UserVO vo) {
-		
+
 		userdao.updateUser(vo);
 	}
 
 	@Override
 	public void deleteUser(String user_id) {
-		
+
 		userdao.deleteUser(user_id);
 	}
 
 	@Override
 	public boolean checkPw(String user_id, String user_pw) {
-		
+
 		return userdao.checkPw(user_id, user_pw);
 	}
 	//어드민

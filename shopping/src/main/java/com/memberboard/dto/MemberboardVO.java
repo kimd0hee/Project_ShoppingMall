@@ -3,6 +3,7 @@ package com.memberboard.dto;
 import java.sql.Timestamp;
 
 public class MemberboardVO {
+<<<<<<< HEAD
 	private int bno;
 	private String title;
 	private String content;
@@ -14,6 +15,22 @@ public class MemberboardVO {
 	
 	public int getBno() {
 		return bno;
+=======
+	private int cs_id;
+	private String cs_type;
+	private String cs_title;
+	private String cs_context;
+	private Timestamp cs_date;
+	private int cs_viewcnt;
+	private String cs_answer;
+	private Timestamp cs_ansdate;
+	private String cs_status;
+	private String cs_writer;
+	private int cs_recnt;
+
+	public int getCs_id() {
+		return cs_id;
+>>>>>>> branch 'N.D.O' of https://github.com/kimd0hee/Project_ShoppingMall.git
 	}
 	public void setBno(int bno) {
 		this.bno = bno;
@@ -60,7 +77,7 @@ public class MemberboardVO {
 	public void setRecnt(int recnt) {
 		this.recnt = recnt;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "MemberboardVO [bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer

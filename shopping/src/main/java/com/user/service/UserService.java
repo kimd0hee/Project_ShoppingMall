@@ -18,5 +18,5 @@ public interface UserService {
 	//삭제 및 수정 시 비밀번호 체크
 	public boolean checkPw(String user_id, String user_pw);
 	//어드민 관리자 체크
-	public String loginCheck(UserVO vo);	
+	public String loginCheck(UserVO vo);
 }
