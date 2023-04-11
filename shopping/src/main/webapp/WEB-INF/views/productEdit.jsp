@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
-<html lang="UTF-8">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<%@ include file="include/header.jsp" %>
-    <%@ include file="include/menu.jsp" %>
+    <%@ include file="./include/menu.jsp" %>
     <title>상품 상세/삭제</title>
     <script>
        $(document).ready(function() {
@@ -41,7 +40,6 @@
     });
     </script>
 </head>
-
 <body>
    <h2>상품 정보/삭제</h2>   
    <form action="" id="form1" name="form1" enctype="multipart/form-data" method="post">
@@ -75,10 +73,7 @@
          </td>
       </tr>
    </table>
+   <%@ include file="include/footer.jsp" %>
    </form>
 </body>
-   
-
-
-<%@ include file="include/footer.jsp" %>
 </html>
