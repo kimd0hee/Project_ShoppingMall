@@ -7,7 +7,6 @@ import javax.inject.Inject;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.product.dto.ProductVO;
 import com.product.service.ProductService;
+
 
 @Controller
 public class ProductController {
@@ -48,14 +48,13 @@ public class ProductController {
    }
 
    
-   @RequestMapping(value="productInsert.do", method=RequestMethod.POST)
-   public String insert(ProductVO vo , MultipartFile product_photo) {
+   @RequestMapping(value = "productInsert.do", method=RequestMethod.POST)
+   public String insert(ProductVO vo, MultipartFile product_photo) {
 
-   
-	  System.out.println("a");
+	  System.out.println("gg");
       String filename = "";
-//
-      if(product_photo != null && !product_photo.isEmpty()) {
+
+      if(!product_photo.isEmpty()) {
          filename = product_photo.getOriginalFilename();
 
          System.out.println("상품 인서트 예외처리 전");
@@ -124,4 +123,13 @@ public class ProductController {
       service.deleteProduct(product_id);
       return "redirct:/productList.do";
    }
+   
+   @RequestMapping("test.do")
+   public String test(ProductVO vo) {
+	   System.out.print(vo);
+	   System.out.print("good");
+	   
+	   return "productList";
+   }
+   
 }

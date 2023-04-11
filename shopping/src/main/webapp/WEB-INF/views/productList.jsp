@@ -20,6 +20,7 @@
 
 </head>
 <body>
+
    <h2>상품목록</h2>
    <c:if test="${sessionScope.admin_id != null}">
       <button type="button" id="btnAdd">상품등록</button><br>
@@ -38,7 +39,7 @@
             </td>
             <td>
                <a href="${path}/productDetail/${row.product_id}">
-                  <img src="${path}/resources/images/product/${row.product_url}" width="120px" height="110px">
+                  <img src="img/product/${row.product_url}" width="120px" height="110px">
                </a>
             </td>
             <td>

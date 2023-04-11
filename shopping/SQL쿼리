@@ -4,7 +4,7 @@
 - admin (관리자)
 
 CREATE TABLE `admin` (
-    `admin_id` varchar(50) not null,
+    `admin_id` varchar(50) NOT NULL PRIMARY KEY,
     `admin_pw` varchar(50) not null,
     `admin_name` varchar(50) not null,
     `admin_email` varchar(100) default null,
@@ -60,12 +60,12 @@ REFERENCES product(product_id);
 - board(자유게시판)-
 
 CREATE TABLE board(
-   bno int(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-   title varchar(200) NOT NULL,
-   content varchar(2000),
-   writer varchar(50) NOT NULL,
-   regdate timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-   viewcnt int(4) DEFAULT 0
+   board_id int(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   board_title varchar(200) NOT NULL,
+   board_content varchar(2000),
+   board_writer varchar(50) NOT NULL,
+   board_createdate timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+   board_viewcnt int(4) DEFAULT 0
 );
 
 - product (상품)

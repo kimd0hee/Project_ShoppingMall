@@ -14,7 +14,7 @@
 		<c:forEach var="row" items="${list}">
 		<tr>
 			<td>
-				${row.userName}(<fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd:mm:ss"/>
+				${row.userName}<fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd:mm:ss"/>
 				<br>
 				${row.replytext}
 				<br>
