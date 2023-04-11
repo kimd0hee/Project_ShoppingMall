@@ -34,7 +34,7 @@
 	<!-- 관리자 세션체크 -->
 	<beans:bean id="adminInterceptor" class="com.admin.interceptor.AdminInterceptor"/>
 	
-<<<<<<< HEAD
+
 	<!-- 관리자 세션체크 매핑 -->
 	<interceptors>
 	 	<interceptor>
@@ -46,7 +46,7 @@
 			<beans:ref bean="adminInterceptor"/>
 		</interceptor>
 	</interceptors>
-=======
+
 
 	<interceptors>
  	<interceptor>
