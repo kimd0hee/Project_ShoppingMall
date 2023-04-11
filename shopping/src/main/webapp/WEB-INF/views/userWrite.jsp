@@ -10,7 +10,7 @@
 </head>
 <body>
 <h2>회원등록</h2>
-	<form name="form1" method="post" action="${path }/insertUser.do">
+	<form name="form1" method="post" action="${path }/userInsert.do">
 		<table border="1" width="400px">
 			<tr>
 				<td>아이디</td>
