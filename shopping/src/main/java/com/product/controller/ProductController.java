@@ -47,11 +47,14 @@ public class ProductController {
       return "productWrite";
    }
 
+   
    @RequestMapping(value="productInsert.do", method=RequestMethod.POST)
-   public String insert(@ModelAttribute ProductVO vo, MultipartFile product_photo) {
-	  System.out.println("컨트롤러 작동");
-      String filename = "";
+   public String insert(ProductVO vo , MultipartFile product_photo) {
 
+   
+	  System.out.println("a");
+      String filename = "";
+//
       if(product_photo != null && !product_photo.isEmpty()) {
          filename = product_photo.getOriginalFilename();
 

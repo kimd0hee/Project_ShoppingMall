@@ -51,5 +51,10 @@ public class ProductVO {
             + product_price + ", product_desc=" + product_desc + ", product_url=" + product_url + ", product_photo="
             + product_photo + "]";
    }
+public ProductVO(String product_name, int product_price) {
+	super();
+	this.product_name = product_name;
+	this.product_price = product_price;
+}
 
 }

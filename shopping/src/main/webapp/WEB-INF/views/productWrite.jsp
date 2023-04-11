@@ -39,11 +39,12 @@
 
 <body>
    <h2>상품 등록</h2>   
-   <form action="${path}/productInsert.do" id="form1" name="form1" enctype="multipart/form-data" method="post">
+   <form action="" id="form1" name="form1" enctype="multipart/form-data" method="post">
    <table border="1">
       <tr>
-         <td>상품명</td>
-         <td><input type="text" name="product_name" id="product_name"></td>
+         <td>상품s명</td>
+         
+       <td><input type="text" name="product_name" id="product_name"></td>
       </tr>
       <tr>
          <td>가격</td>
@@ -65,6 +66,8 @@
       </tr>
    </table>
    </form>
+   
+ 
 </body>
    
 
