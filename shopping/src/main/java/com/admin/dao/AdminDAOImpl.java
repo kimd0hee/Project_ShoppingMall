@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.admin.dto.AdminVO;
 import com.user.dto.UserVO;
 
 @Repository
@@ -14,8 +15,8 @@ public class AdminDAOImpl implements AdminDAO {
 	SqlSession sqlSession;
 
 	@Override
-	public String adminLoginCheck(UserVO vo) {
-		return sqlSession.selectOne("admin.LoginCheck", vo);
+	public String adminLoginCheck(AdminVO vo) {
+		return sqlSession.selectOne("admin.adminLoginCheck", vo);
 	}
 
 }
