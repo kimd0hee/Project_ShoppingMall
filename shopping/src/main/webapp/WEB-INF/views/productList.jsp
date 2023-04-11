@@ -42,11 +42,11 @@
                </a>
             </td>
             <td>
-            <a href="${path}/productEdit${row.product_id}">[상품편집]</a>
-               <a href="${path}/productDetail/${row.product_id}">${row.product_name}</a>
-               <!--<c:if test="${sessionScope.admin_id != null}">
-                  <a href="${path}/productEdit/${row.product_id}">[상품편집]</a>
-               </c:if>-->
+            <!-- <a href="${path}/productEdit${row.product_id}">[상품편집]</a> -->
+               <a href="${path}/productDetail${row.product_id}">${row.product_name}</a>
+               <c:if test="${sessionScope.admin_id != null}">
+                  <a href="${path}/productEdit${row.product_id}">[상품편집]</a>
+               </c:if>
             </td>
             <td>
                <fmt:formatNumber value="${row.product_price}" pattern="###, ###, ###"></fmt:formatNumber>

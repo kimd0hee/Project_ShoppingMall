@@ -35,7 +35,7 @@ public class ProductController {
       return mav;
    }
 
-   @RequestMapping("productDetail/{product_id}")
+   @RequestMapping("productDetail{product_id}")
    public ModelAndView detail(@PathVariable("product_id") int product_id, ModelAndView mav) {
       mav.setViewName("/productDetail");
       mav.addObject("vo", service.detailProduct(product_id));

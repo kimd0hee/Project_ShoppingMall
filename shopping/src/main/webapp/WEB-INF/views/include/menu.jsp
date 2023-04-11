@@ -45,8 +45,8 @@
 									<li><a href="#">당첨 후기</a></li>
 								</ul></li>
 							<li><a href="${path}/boardList.do">CS CENTER</a></li>
-							<li><!--<c:if test="${sessionScope.admin_id !=null}"><a href="#">관리</a></c:if>-->
-							<a href="#">관리</a>
+							<li><c:if test="${sessionScope.admin_id !=null}"><a href="#">관리</a></c:if>
+							<!-- <a href="#">관리</a> -->
 								<ul class="dropdown">
 									<li><a href="${path}/userList.do">회원관리</a></li>
 									<li><a href="${path}/productWrite.do">상품등록</a></li>

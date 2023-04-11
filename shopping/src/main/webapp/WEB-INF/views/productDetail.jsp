@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <head>
 	<%@ include file="include/header.jsp" %>
-    <%@ include file="include/menu.jsp" %>
+    <%@ include file="./include/menu.jsp" %>
     <title>상품 상세정보</title>
 </head>
 
