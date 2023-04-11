@@ -18,7 +18,7 @@ public class LoginDAOImpl implements LoginDAO {
 
 	@Override
 	public boolean loginCheck(UserVO vo) {
-		String name = sqlSession.selectOne(nameSpace+".LoginCheck", vo);
+		String name = sqlSession.selectOne(nameSpace+".loginCheck", vo);
 		return(name == null) ? false : true;
 	}
 
