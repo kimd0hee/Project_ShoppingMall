@@ -26,13 +26,8 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-<<<<<<< HEAD
 	public void insertUser(UserVO vo) {
-		
-=======
-	public void userInsert(UserVO vo) {
 
->>>>>>> branch 'N.D.O' of https://github.com/kimd0hee/Project_ShoppingMall.git
 		sqlSession.insert(nameSpace+".insertUser", vo);
 	}
 

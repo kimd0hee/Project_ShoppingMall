@@ -19,7 +19,7 @@ public class LoginDAOImpl implements LoginDAO {
 	@Override
 	public boolean loginCheck(UserVO vo) {
 		String name = sqlSession.selectOne(nameSpace+".LoginCheck", vo);
-		return(name ==null) ? false : true;
+		return(name == null) ? false : true;
 	}
 
 	@Override
@@ -28,13 +28,9 @@ public class LoginDAOImpl implements LoginDAO {
 	}
 
 	@Override
-<<<<<<< HEAD
 	public void logoutUser(HttpSession session) {
-		
-=======
-	public void logout(HttpSession session) {
 
->>>>>>> branch 'N.D.O' of https://github.com/kimd0hee/Project_ShoppingMall.git
+
 	}
 
 }

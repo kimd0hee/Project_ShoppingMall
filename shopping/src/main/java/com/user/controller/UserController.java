@@ -29,56 +29,32 @@ public class UserController {
 
 		return "userList";
 	}
-<<<<<<< HEAD
 	
 	@RequestMapping(value="writeUser.do", produces="text/plain;charset=UTF-8")
 	public String writeUser() {
-=======
-
-	@RequestMapping("userWrite.do")
-	public String userWrite() {
->>>>>>> branch 'N.D.O' of https://github.com/kimd0hee/Project_ShoppingMall.git
 
 		return "userWrite";
 	}
-<<<<<<< HEAD
+
 	
 	@RequestMapping(value="insertUser.do", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
 	public String insertUser(@ModelAttribute UserVO vo, Model model) {
 		
 		userService.insertUser(vo);
-=======
-
-	@RequestMapping(value="userInsert.do", method=RequestMethod.POST)
-	public String userInsert(@ModelAttribute UserVO vo, Model model) {
-
-		userService.userInsert(vo);
->>>>>>> branch 'N.D.O' of https://github.com/kimd0hee/Project_ShoppingMall.git
 
 		return "redirect:/userList.do";
 	}
-<<<<<<< HEAD
 	
 	@RequestMapping("viewUser.do")
 	public String viewUser(String user_id, Model model) {
-		
-=======
 
-	@RequestMapping("userView.do")
-	public String userView(String user_id, Model model) {
-
->>>>>>> branch 'N.D.O' of https://github.com/kimd0hee/Project_ShoppingMall.git
 		model.addAttribute("dto", userService.viewUser(user_id));
 
 		return "userView";
 	}
-<<<<<<< HEAD
+
 	
 	@RequestMapping(value="updateUser.do", produces="text/plain;charset=UTF-8")
-=======
-
-	@RequestMapping("userUpdate.do")
->>>>>>> branch 'N.D.O' of https://github.com/kimd0hee/Project_ShoppingMall.git
 	public String userUpdate(@ModelAttribute UserVO vo, Model model) {
 
 		boolean result = userService.checkPw(vo.getUser_id(), vo.getUser_pw());
@@ -100,17 +76,10 @@ public class UserController {
 			return "userView";
 		}
 	}
-<<<<<<< HEAD
 	
 	@RequestMapping("deleteUser.do")
 	public String deleteUser(@RequestParam String user_id, @RequestParam String user_pw, Model model) {
 		
-=======
-
-	@RequestMapping("userDelete.do")
-	public String userDelete(@RequestParam String user_id, @RequestParam String user_pw, Model model) {
-
->>>>>>> branch 'N.D.O' of https://github.com/kimd0hee/Project_ShoppingMall.git
 		boolean result = userService.checkPw(user_id, user_pw);
 
 		if(result) {

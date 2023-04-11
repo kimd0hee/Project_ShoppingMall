@@ -37,31 +37,17 @@
 	<beans:bean id="adminInterceptor" class="com.admin.interceptor.AdminInterceptor"/>
 	
 	<!-- 관리자 세션체크 매핑 -->
-<<<<<<< HEAD
 	<interceptors>
- 	<interceptor>
-		<mapping path="writeProduct.do"/>
-		<mapping path="insertProduct.do"/>
-		<mapping path="updateProduct.do"/>
-		<mapping path="editProduct.do"/>
-		<mapping path="deleteProduct.do"/>
-		<beans:ref bean="adminInterceptor"/>
-	</interceptor>
+	 	<interceptor>
+			<mapping path="writeProduct.do"/>
+			<mapping path="insertProduct.do"/>
+			<mapping path="updateProduct.do"/>
+			<mapping path="editProduct.do"/>
+			<mapping path="deleteProduct.do"/>
+			<beans:ref bean="adminInterceptor"/>
+		</interceptor>
 	</interceptors>
-	
-=======
-	<!-- <interceptors>
- 	<interceptor>
- 		<mapping path="/productWrite.do"/>
- 		<mapping path="/productInsert.do"/>
- 		<mapping path="/productUpdate.do"/>
- 		<mapping path="/productEdit.do"/>
- 		<mapping path="/productDelete.do"/>
- 		<beans:ref bean="adminInterceptor"/>
- 	</interceptor>
- 	</interceptors>  -->
 
->>>>>>> branch 'N.D.O' of https://github.com/kimd0hee/Project_ShoppingMall.git
 	<!-- 추가 End -->
 	<!-- 메인 -->
 	<context:component-scan base-package="com.shopping.app" />

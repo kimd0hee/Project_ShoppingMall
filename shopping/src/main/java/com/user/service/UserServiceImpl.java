@@ -22,15 +22,10 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-<<<<<<< HEAD
 	public void insertUser(UserVO vo) {
 		
 		userdao.insertUser(vo);
-=======
-	public void userInsert(UserVO vo) {
 
-		userdao.userInsert(vo);
->>>>>>> branch 'N.D.O' of https://github.com/kimd0hee/Project_ShoppingMall.git
 	}
 
 	@Override

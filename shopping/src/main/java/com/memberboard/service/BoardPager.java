@@ -1,16 +1,12 @@
 package com.memberboard.service;
 
 public class BoardPager {
-<<<<<<< HEAD
 	
 	// 페이지당 게시물 수
-=======
-
->>>>>>> branch 'N.D.O' of https://github.com/kimd0hee/Project_ShoppingMall.git
 	public static final int PAGE_SCALE = 10;
 	// 화면당 페이지 수
 	public static final int BLOCK_SCALE = 10;
-<<<<<<< HEAD
+
 	
 	private int curPage; // 현재 페이지
 	private int prevPage; // 이전 페이지
@@ -24,47 +20,18 @@ public class BoardPager {
 	private int pageBegin; // #{start}
 	private int pageEnd; // #{end}
 	// [이전] blockBegin -> 41 42 43 44 45 46 47 48 49 50 [다음] 
-=======
-
-	private int curPage;
-	private int prevPage;
-	private int nextPage;
-	private int totPage;
-	private int totBlock;
-	private int curBlock;
-	private int prevBlock;
-	private int nextBlock;
-	private int pageBegin;
-	private int pageEnd;
->>>>>>> branch 'N.D.O' of https://github.com/kimd0hee/Project_ShoppingMall.git
 	private int blockBegin;
-<<<<<<< HEAD
 	// [이전] 41 42 43 44 45 46 47 48 49 50 <- blockEnd[다음]
 	private int blockEnd; // 현재 페이지 블록의 끝 번호
-	
-	// BoardPager(레코드 갯수, 현재 페이지 번호)
-=======
-	private int blockEnd;
 
->>>>>>> branch 'N.D.O' of https://github.com/kimd0hee/Project_ShoppingMall.git
+	// BoardPager(레코드 갯수, 현재 페이지 번호)
 	public BoardPager(int count, int curPage) {
-<<<<<<< HEAD
 		curBlock = 1; // 현재 페이지 블록 번호
 		this.curPage = curPage; // 현재 페이지 설정
 		setTotPage(count); // 전체 페이지 갯수 계산
 		setPageRange(); 
 		setTotBlock(curPage); // 전체 페이지 블록 갯수 계산
 		setBlockRange(); // 페이지 블록의 시작, 끝 번호 계산
-		
-=======
-		curBlock = 1;
-		this.curPage = curPage;
-		setTotPage(count);
-		setPageRange();
-		setTotBlock(curPage);
-		setBlockRange();
-
->>>>>>> branch 'N.D.O' of https://github.com/kimd0hee/Project_ShoppingMall.git
 	}
 
 	public void setBlockRange() {
@@ -74,11 +41,7 @@ public class BoardPager {
 		blockBegin = (curBlock -1)*BLOCK_SCALE+1;
 		// 페이지 블로그이 끝 번호 
 		blockEnd = blockBegin+BLOCK_SCALE-1;
-<<<<<<< HEAD
 		// *마지막 블록이 범위를 초과하지 않도록 계산
-=======
-
->>>>>>> branch 'N.D.O' of https://github.com/kimd0hee/Project_ShoppingMall.git
 		if(blockEnd > totPage) blockEnd = totPage;
 		// *이전을 눌렀을때 이동할 페이지 번호
 		prevPage = (curPage == 1)? 1:(curBlock-1)*BLOCK_SCALE;
