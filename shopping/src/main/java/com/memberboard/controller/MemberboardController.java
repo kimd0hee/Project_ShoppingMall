@@ -72,7 +72,7 @@ public class MemberboardController {
 	}
 	
 	// 게시글 상세조회, 게시글 조회수 증가
-	@RequestMapping("memberboardView.do")
+	@RequestMapping("viewMemberboard.do")
 	public ModelAndView viewMemberboard(@RequestParam int cs_id, @RequestParam int curPage,
 @RequestParam String searchOption, @RequestParam String keyword, HttpSession session) {
 		service.increaseViewcnt(cs_id, session);

@@ -56,7 +56,7 @@ REFERENCES tbl_product(product_id);
 
 - board(자유게시판)-
 
-CREATE TBALE board(
+CREATE TABLE board(
    bno int(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
    title varchar(200) NOT NULL,
    content varchar(2000),

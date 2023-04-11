@@ -64,7 +64,7 @@
 		<tr>input type submit 위치 왼쪽 정렬
 			<td colspan="5">
 			<c:if test="${map.boardPager.curBlock > 1}">
-				<a href="javascript:list"('${map.boardPager.prevPage}')">[이전]</a>
+				<a href="javascript:list('${map.boardPager.prevPage}')">[이전]</a>
 			</c:if>
 			<c:forEach var="num" begin="${map.boardPager.blockBegin}" end="${map.boardPager.blockEnd}">
 				<c:choose>
