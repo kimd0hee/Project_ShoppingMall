@@ -28,10 +28,10 @@
 	</tr>
 	<c:forEach var="row" items="${list}">
 	<tr>
-		<td>${row.cs_id}</td>
-		<td><a href="${path }/boardView.do?cs_id=${row.cs_id }">${row.cs_title }</a></td>
-		<td>${row.cs_writer }</td>
-		<td><fmt:formatDate value="${row.cs_date }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+		<td>${row.board_id}</td>
+		<td><a href="${path }/boardView.do?board_id=${row.board_id }">${row.board_title }</a></td>
+		<td>${row.board_writer }</td>
+		<td><fmt:formatDate value="${row.board_createdate }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 	</tr>
 	</c:forEach>
 </table>

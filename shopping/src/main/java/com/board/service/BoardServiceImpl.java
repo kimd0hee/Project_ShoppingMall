@@ -4,12 +4,12 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import com.board.dao.BoardDAO;
 import com.board.dto.BoardVO;
 
-@Repository
+@Service
 public class BoardServiceImpl implements BoardService {
 
 	@Inject
@@ -17,28 +17,31 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public void insertBoard(BoardVO vo) throws Exception {
-		String cs_title = vo.getCs_title();
-		String cs_context = vo.getCs_context();
-		String cs_writer = vo.getCs_writer();
-
-		cs_title = cs_title.replace("<", "&lt;");
-		cs_title = cs_title.replace("<", "&gt;");
-		cs_writer = cs_writer.replace("<", "&lt");
-		cs_writer = cs_writer.replace("<", "&gt");
-
-		cs_title = cs_title.replace(" ", "&nbsp;&nbsp;");
-		cs_writer = cs_writer.replace(" ", "&nbsp;&nbsp;");
-
-		cs_context = cs_context.replace("\n", "<br>");
-		vo.setCs_title(cs_title);
-		vo.setCs_context(cs_context);
-		vo.setCs_writer(cs_writer);
+		
+		String board_title = vo.getBoard_title();
+		String board_content = vo.getBoard_content();
+		String board_writer = vo.getBoard_writer();
+		
+		board_title = board_title.replace("<", "&lt;");
+		board_title = board_title.replace("<", "&gt;");
+		board_writer = board_writer.replace("<", "&lt");
+		board_writer = board_writer.replace("<", "&gt");
+		
+		board_title = board_title.replace(" ", "&nbsp;&nbsp;");
+		board_writer = board_writer.replace(" ", "&nbsp;&nbsp;");
+		
+		board_content = board_content.replace("\n", "<br>");
+		
+		vo.setBoard_title(board_title);
+		vo.setBoard_content(board_content);
+		vo.setBoard_writer(board_writer);
+		
 		dao.insertBoard(vo);
 	}
 
 	@Override
-	public BoardVO viewBoard(int cs_id) throws Exception {
-		return dao.viewBoard(cs_id);
+	public BoardVO viewBoard(int board_id) throws Exception {
+		return dao.viewBoard(board_id);
 	}
 
 	@Override
@@ -47,8 +50,8 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void deleteBoard(int cs_id) throws Exception {
-		dao.deleteBoard(cs_id);
+	public void deleteBoard(int board_id) throws Exception {
+		dao.deleteBoard(board_id);
 	}
 
 	@Override

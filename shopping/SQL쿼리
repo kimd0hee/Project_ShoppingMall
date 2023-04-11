@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 - admin (관리자)
 
 create table admin (
@@ -201,6 +202,10 @@ create table tbl_reply (
    regdata timestamp not null default current_timestamp() on update current_timestamp(),
    updatedata timestamp not null default current_timestamp() on update current_timestamp()
 );
+=======
+
+
+>>>>>>> branch 'K.D.H' of https://github.com/kimd0hee/Project_ShoppingMall.git
 =======
 - admin (관리자)
 

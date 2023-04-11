@@ -5,7 +5,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.admin.dao.AdminDAO;
-import com.user.dto.UserVO;
+import com.admin.dto.AdminVO;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -14,7 +14,7 @@ public class AdminServiceImpl implements AdminService {
 	AdminDAO dao;
 
 	@Override
-	public String adminLoginCheck(UserVO vo) {
+	public String adminLoginCheck(AdminVO vo) {
 		return dao.adminLoginCheck(vo);
 	}
 

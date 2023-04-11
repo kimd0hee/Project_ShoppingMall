@@ -27,15 +27,14 @@
 		<beans:property name="maxUploadSize" value="10485760"/>
 	</beans:bean>
 	
-	<beans:bean id="uploadPath" class="java.lang.String">
-	<!-- 경로 임시로 각자 환경에 맞게 변경 부탁 -->
-	<beans:constructor-arg value="C:\Users\newtec\git\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\shopping\resources\img\product"/>
-	<!-- "C:\\Users\\habiya\\Documents\\owrkspace-sts-3.9.18.RELEASE\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp2\\wtpwebapps\\spring\\resources\\images" -->
-	</beans:bean>
+<beans:bean id="uploadPath" class="java.lang.String">
+    <beans:constructor-arg value="/resources/img/product"/>
+</beans:bean>
 	
 	<!-- 관리자 세션체크 -->
 	<beans:bean id="adminInterceptor" class="com.admin.interceptor.AdminInterceptor"/>
 	
+<<<<<<< HEAD
 	<!-- 관리자 세션체크 매핑 -->
 	<interceptors>
 	 	<interceptor>
@@ -47,6 +46,19 @@
 			<beans:ref bean="adminInterceptor"/>
 		</interceptor>
 	</interceptors>
+=======
+
+	<interceptors>
+ 	<interceptor>
+ 		<mapping path="/productWrite.do"/>
+ 		<mapping path="/productInsert.do"/>
+ 		<mapping path="/productUpdate.do"/>
+ 		<mapping path="/productEdit.do"/>
+ 		<mapping path="/productDelete.do"/>
+ 		<beans:ref bean="adminInterceptor"/>
+ 	</interceptor>
+ 	</interceptors>
+>>>>>>> branch 'K.D.H' of https://github.com/kimd0hee/Project_ShoppingMall.git
 
 	<!-- 추가 End -->
 	<!-- 메인 -->

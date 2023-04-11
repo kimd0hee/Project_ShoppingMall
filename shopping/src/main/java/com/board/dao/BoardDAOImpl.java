@@ -23,8 +23,8 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public BoardVO viewBoard(int cs_id) throws Exception {
-		return sqlSession.selectOne(nameSpace+".boardView", cs_id);
+	public BoardVO viewBoard(int board_id) throws Exception {
+		return sqlSession.selectOne(nameSpace+".boardView", board_id);
 	}
 
 	@Override
@@ -33,8 +33,8 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public void deleteBoard(int cs_id) throws Exception {
-		sqlSession.delete(nameSpace+".boardDelete", cs_id);
+	public void deleteBoard(int board_id) throws Exception {
+		sqlSession.delete(nameSpace+".boardDelete", board_id);
 	}
 
 	@Override
