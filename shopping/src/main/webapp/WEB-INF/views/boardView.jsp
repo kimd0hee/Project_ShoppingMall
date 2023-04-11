@@ -16,22 +16,22 @@
 			}
 		});
 		$("#btnUpdate").click(function(){
-			var cs_title = $("#cs_title").val();
-			var cs_context = $("#cs_context").val();
-			var cs_writer = $("#cs_writer").val();
-			if(cs_title == ""){
+			var board_title = $("#board_title").val();
+			var board_content = $("#board_content").val();
+			var board_writer = $("#board_writer").val();
+			if(board_title == ""){
 				alert("제목을 입력하세요");
-				document.form1.cs_title.focus();
+				document.form1.board_title.focus();
 				return;
 			}
-			if(cs_context == ""){
+			if(board_content == ""){
 				alert("내용을 입력하세요");
-				document.form1.cs_context.focus();
+				document.form1.board_context.focus();
 				return;
 			}
-			if(cs_writer == ""){
+			if(board_writer == ""){
 				alert("이름을 입력하세요");
-				document.form1.cs_writer.focus();
+				document.form1.board_writer.focus();
 				return;
 			}
 			document.form1.action="${path}/boardUpdate.do"
@@ -45,22 +45,22 @@
 <h2>게시글 보기</h2>
 <form name="form1" method="post">
 	<div>
-		작성일자 : <fmt:formatDate value="${dto.cs_date }" pattern="yyyy-MM-dd HH:mm:ss"/>
+		작성일자 : <fmt:formatDate value="${dto.board_createdate }" pattern="yyyy-MM-dd HH:mm:ss"/>
 	</div>
 	<div>
 		제목
-		<input name="cs_title" id="cs_title" size="80" value="${dto.cs_title }" placeholder="제목을 입력해주세요.">
+		<input name="board_title" id="board_title" size="80" value="${dto.board_title }">
 	</div>
 	<div>
 		내용
-		<textarea name="cs_context" id="cs_context" rows="4" cols="80" placeholder="내용을 입력해주세요.">${dto.cs_context }</textarea>
+		<textarea name="board_content" id="board_content" rows="4" cols="80" >${dto.board_content }</textarea>
 	</div>
 	<div>
 		이름
-		<input name="cs_writer" id="cs_writer" value="${dto.cs_writer }" placeholder="이름을 입력해주세요">
+		<input name="board_writer" id="board_writer" value="${dto.board_writer }" >
 	</div>
 	<div style="width:650px; text-align: center;">
-		<input type="hidden" name="cs_id" value="${dto.cs_id }">
+		<input type="hidden" name="cs_id" value="${dto.board_id }">
 		<button type="button" id="btnUpdate">수정</button>
 		<button type="button" id="btnDelete">삭제</button>
 	</div>

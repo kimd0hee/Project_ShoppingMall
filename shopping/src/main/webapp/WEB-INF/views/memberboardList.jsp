@@ -31,7 +31,7 @@
 		</select>
 		<input name="keyword" value="${map.keyword}">
 		<input type="submit" value="조회">
-		<c:if test="${sessionScope.user_id != null}">
+		<!-- <c:if test="${sessionScope.user_id != null}"> -->
 		<button type="button" id="btnWrite">글쓰기</button>
 		</c:if>
 	</form>

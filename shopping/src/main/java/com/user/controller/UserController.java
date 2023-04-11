@@ -20,80 +20,85 @@ import com.user.service.UserService;
 public class UserController {
 	@Inject
 	UserService userService;
-	
+
 	@RequestMapping("userList.do")
 	public String userList(Model model) {
-		
+
 		List<UserVO> list = userService.userList();
 		model.addAttribute("list", list);
-		
+
 		return "userList";
 	}
-	
+
 	@RequestMapping("userWrite.do")
 	public String userWrite() {
 
 		return "userWrite";
 	}
+<<<<<<< HEAD
 	
 	@RequestMapping(value="insertUser.do", method=RequestMethod.POST)
+=======
+
+	@RequestMapping(value="userInsert.do", method=RequestMethod.POST)
+>>>>>>> branch 'K.D.H' of https://github.com/kimd0hee/Project_ShoppingMall.git
 	public String userInsert(@ModelAttribute UserVO vo, Model model) {
-		
+
 		userService.userInsert(vo);
 
 		return "redirect:/userList.do";
 	}
-	
+
 	@RequestMapping("userView.do")
 	public String userView(String user_id, Model model) {
-		
+
 		model.addAttribute("dto", userService.viewUser(user_id));
-		
+
 		return "userView";
 	}
-	
+
 	@RequestMapping("userUpdate.do")
 	public String userUpdate(@ModelAttribute UserVO vo, Model model) {
-		
+
 		boolean result = userService.checkPw(vo.getUser_id(), vo.getUser_pw());
-		
+
 		if(result) {
 			userService.updateUser(vo);
-			
+
 			return "redirect:/userList.do";
-		
+
 		}else {
 			UserVO uVo = userService.viewUser(vo.getUser_id());
-			
+
 			vo.setUser_joindate(uVo.getUser_joindate());
 			vo.setUser_update(uVo.getUser_update());
-			
+
 			model.addAttribute("dto", vo);
 			model.addAttribute("message", "비밀번호가 일치하지 않습니다.");
-			
+
 			return "userView";
 		}
 	}
-	
+
 	@RequestMapping("userDelete.do")
 	public String userDelete(@RequestParam String user_id, @RequestParam String user_pw, Model model) {
-		
+
 		boolean result = userService.checkPw(user_id, user_pw);
-		
+
 		if(result) {
 			userService.deleteUser(user_id);
-			
+
 			return "redirect:/userList.do";
-			
+
 		}else {
 			model.addAttribute("message", "비밀번호가 일치하지 않습니다.");
 			model.addAttribute("dto", userService.viewUser(user_id));
-			
+
 			return "userView";
 		}
 	}
 	//어드민
-    
+
     // 1. 관리자 로그인 페이지 매핑
     @RequestMapping("adminlogin.do")
     public String login() {
@@ -110,7 +115,7 @@ public class UserController {
           session.setAttribute("admin_name", name);
           session.setAttribute("user_name", name);
           mav.setViewName("admin/adminHome");
-          mav.addObject("msg", "success"); 
+          mav.addObject("msg", "success");
         // 로그인 실패
        }else {
           mav.setViewName("admin/adminLogin");
@@ -128,4 +133,3 @@ public class UserController {
        return mav;
     }
 }
-	

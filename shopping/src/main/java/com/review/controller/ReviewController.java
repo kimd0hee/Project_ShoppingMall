@@ -23,31 +23,31 @@ import com.review.service.ReviewService;
 
 @RestController
 public class ReviewController {
-	
+
 	@Inject
 	ReviewService service;
-	
+
 	@RequestMapping("insertReview.do")
 	public void insertReview(@ModelAttribute ReviewVO vo, HttpSession session) {
-		
+
 		String user_id = (String) session.getAttribute("user_id");
 		vo.setUser_id(user_id);
-		
+
 		service.createReview(vo);
 	}
-	
+
 	@RequestMapping(value="insertRest.do", method=RequestMethod.POST)
-			
+
 	public ResponseEntity<String> interRest(@RequestBody ReviewVO vo, HttpSession session) {
 	ResponseEntity<String> entity = null;
 	try {
 		String user_id = (String)session.getAttribute("user_id");
 		vo.setUser_id(user_id);
 		service.createReview(vo);
-		entity = new ResponseEntity<String>("success", HttpStatus.OK);
+		entity = new ResponseEntity<>("success", HttpStatus.OK);
 	} catch (Exception e) {
 		e.printStackTrace();
-		entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		entity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 	}
 	return entity;
 }
@@ -65,7 +65,7 @@ public class ReviewController {
 	mav.addObject("replyPager", replyPager);
 	return mav;
 }
-	
+
 	@RequestMapping("listJson.do")
 	public List<ReviewVO> listJson(@RequestParam int order_id,
 @RequestParam(defaultValue="1") int curPage, HttpSession session) {
@@ -75,8 +75,8 @@ public class ReviewController {
 	int end = pager.getPageEnd();
 	List<ReviewVO> list = service.reviewList(order_id, start, end, session);
 	return list;
-}	
-	
+}
+
 	@RequestMapping(value="list/{bno}/{curPage}", method=RequestMethod.GET)
 	public ModelAndView replylist(@PathVariable("bno") int order_id, @PathVariable int curPage, ModelAndView mav, HttpSession session) {
 
@@ -90,7 +90,7 @@ public class ReviewController {
 	mav.addObject("replyPager", replyPager);
 	return mav;
 }
-	
+
 	@RequestMapping(value="/delete/{review_id}", method=RequestMethod.GET)
 	public ModelAndView replydetail(@PathVariable("review_id") Integer review_id, ModelAndView mav) {
 	ReviewVO vo = service.detail(review_id);
@@ -98,31 +98,31 @@ public class ReviewController {
 	mav.addObject("vo", vo);
 	return mav;
 }
-	
+
 	@RequestMapping(value="/update/{review_id}", method={RequestMethod.PUT, RequestMethod.PATCH})
 	public ResponseEntity<String> updateReview(@PathVariable("review_id") Integer review_id, @RequestBody ReviewVO vo) {
-		
+
 		ResponseEntity<String> entity = null;
 		try {
 			vo.setOrder_id(review_id);
 			service.updateReview(vo);
-			entity = new ResponseEntity<String>("success", HttpStatus.OK);
+			entity = new ResponseEntity<>("success", HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
-			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+			entity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 	return entity;
 }
-	
+
 	@RequestMapping(value="/delete/{review_id}")
 	public ResponseEntity<String> deleteReview(@PathVariable("review_id") Integer review_id) {
 		ResponseEntity<String> entity = null;
 		try {
 			service.deleteReview(review_id);
-			entity = new ResponseEntity<String>("success", HttpStatus.OK);
+			entity = new ResponseEntity<>("success", HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
-			entity = new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+			entity = new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
 		}
 	return entity;
 	}

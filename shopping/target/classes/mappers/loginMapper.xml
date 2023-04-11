@@ -6,7 +6,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="login">
 
+<<<<<<< HEAD
    <select id="loginCheck" resultType="String">
+=======
+   <select id="LoginCheck" resultType="String">
+>>>>>>> branch 'K.D.H' of https://github.com/kimd0hee/Project_ShoppingMall.git
       SELECT user_name FROM user
       WHERE user_id = #{user_id} AND user_pw = #{user_pw}
    </select>

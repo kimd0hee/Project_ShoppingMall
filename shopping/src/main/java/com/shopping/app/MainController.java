@@ -10,23 +10,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class MainController {
-	
+
 	//메인 page 연결
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String main(Model model) {
 		return "main";
 	}
-	
+
 	//로그인 page 연결
 	@RequestMapping(value = "login.do", method = RequestMethod.GET)
 	public String login() {
 		return "login";
-	}	
+	}
 	@RequestMapping(value = "logout", method = RequestMethod.GET)
 	public String logout() {
 		return "logout";
 	}
-	
+
 	//회원관리 page 연결
 	@RequestMapping(value = "userList", method = RequestMethod.GET)
 	public String userList(Model model) {
@@ -54,7 +54,19 @@ public class MainController {
 	public String boardInsert(Model model) {
 		return "boardWrite";
 	}
-	
+
+	//product page 연결
+	@RequestMapping(value = "productList", method = RequestMethod.GET)
+	public String productList(Model model) {
+		return "productList";
+	}
+
+	//cart page 연결
+	@RequestMapping(value = "cartList", method = RequestMethod.GET)
+	public String cartList(Model model) {
+		return "cartList";
+	}
+
 }
 
 
