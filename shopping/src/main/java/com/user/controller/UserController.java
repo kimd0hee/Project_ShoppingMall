@@ -29,35 +29,15 @@ public class UserController {
 
 		return "userList";
 	}
-
-	@RequestMapping("userWrite.do")
-	public String userWrite() {
+	
+	@RequestMapping(value="writeUser.do", produces="text/plain;charset=UTF-8")
+	public String writeUser() {
 
 		return "userWrite";
 	}
-<<<<<<< HEAD
-	
-	@RequestMapping(value="insertUser.do", method=RequestMethod.POST)
-=======
 
-	@RequestMapping(value="userInsert.do", method=RequestMethod.POST)
->>>>>>> branch 'K.D.H' of https://github.com/kimd0hee/Project_ShoppingMall.git
-	public String userInsert(@ModelAttribute UserVO vo, Model model) {
 
-		userService.userInsert(vo);
-
-		return "redirect:/userList.do";
-	}
-
-	@RequestMapping("userView.do")
-	public String userView(String user_id, Model model) {
-
-		model.addAttribute("dto", userService.viewUser(user_id));
-
-		return "userView";
-	}
-
-	@RequestMapping("userUpdate.do")
+	@RequestMapping(value="updateUser.do", produces="text/plain;charset=UTF-8")
 	public String userUpdate(@ModelAttribute UserVO vo, Model model) {
 
 		boolean result = userService.checkPw(vo.getUser_id(), vo.getUser_pw());
@@ -79,10 +59,10 @@ public class UserController {
 			return "userView";
 		}
 	}
-
-	@RequestMapping("userDelete.do")
-	public String userDelete(@RequestParam String user_id, @RequestParam String user_pw, Model model) {
-
+	
+	@RequestMapping("deleteUser.do")
+	public String deleteUser(@RequestParam String user_id, @RequestParam String user_pw, Model model) {
+		
 		boolean result = userService.checkPw(user_id, user_pw);
 
 		if(result) {

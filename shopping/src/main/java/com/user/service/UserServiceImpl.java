@@ -22,9 +22,10 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void userInsert(UserVO vo) {
+	public void insertUser(UserVO vo) {
+		
+		userdao.insertUser(vo);
 
-		userdao.userInsert(vo);
 	}
 
 	@Override

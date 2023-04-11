@@ -19,7 +19,7 @@ public class LoginDAOImpl implements LoginDAO {
 	@Override
 	public boolean loginCheck(UserVO vo) {
 		String name = sqlSession.selectOne(nameSpace+".LoginCheck", vo);
-		return(name ==null) ? false : true;
+		return(name == null) ? false : true;
 	}
 
 	@Override
@@ -28,7 +28,8 @@ public class LoginDAOImpl implements LoginDAO {
 	}
 
 	@Override
-	public void logout(HttpSession session) {
+	public void logoutUser(HttpSession session) {
+
 
 	}
 
