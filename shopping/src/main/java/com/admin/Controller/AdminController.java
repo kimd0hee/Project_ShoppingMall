@@ -1,4 +1,4 @@
-package com.admin.Controller;
+package com.admin.controller;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -7,45 +7,46 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.shop.dto.shoppingmallVO;
-
+import com.admin.dto.AdminVO;
+import com.admin.service.AdminService;
 
 
 @Controller
-@RequestMapping("admin/*")
+@RequestMapping("/*")
 public class AdminController {
-   
+
    @Inject
-   AdminService adminService;
-   
-   @RequestMapping("login.do")
+   AdminService service;
+
+   @RequestMapping("adminLogin.do")
    public String login() {
-      return "admin/adminLogin";
+	   
+      return "adminLogin";
    }
-   
-   @RequestMapping("loginCheck.do")
-   public ModelAndView loginCheck(HttpSession session, shoppingmallVO vo , ModelAndView mav) {
-      String name = adminService.loginCheck(vo);
-      
+
+   @RequestMapping("adminLoginCheck.do")
+   public ModelAndView loginCheck(HttpSession session, AdminVO vo , ModelAndView mav) {
+	   
+      String name = service.adminLoginCheck(vo);
+
       if(name != null) {
-         session.setAttribute("adminId", vo.getUserId());
-         session.setAttribute("userId", vo.getUserId());
-         session.setAttribute("adminName", name);
-         session.setAttribute("userName", name);
-         mav.setViewName("admin/adminHome");
-         mav.addObject("msg", "success");   
+         session.setAttribute("admin_id", vo.getAdmin_id());
+         session.setAttribute("admin_name", name);
+         mav.setViewName("adminHome");
+         mav.addObject("msg", "success");
+         
       }else {
-         mav.setViewName("admin/adminLogin");
+         mav.setViewName("adminLogin");
          mav.addObject("msg", "failure");
       }
       return mav;
    }
-   
-   @RequestMapping("logout.do")
+
+   @RequestMapping("adminLogout.do")
    public ModelAndView logout(HttpSession session) {
       session.invalidate();
       ModelAndView mav = new ModelAndView();
-      mav.setViewName("admin/adminLogin");
+      mav.setViewName("adminLogin");
       mav.addObject("msg", "logout");
       return mav;
    }
