@@ -49,15 +49,15 @@
 	</div>
 	<div>
 		제목
-		<input name="board_title" id="board_title" size="80" value="${dto.board_title }" placeholder="제목을 입력해주세요.">
+		<input name="board_title" id="board_title" size="80" value="${dto.board_title }">
 	</div>
 	<div>
 		내용
-		<textarea name="board_content" id="board_content" rows="4" cols="80" placeholder="내용을 입력해주세요.">${dto.board_content }</textarea>
+		<textarea name="board_content" id="board_content" rows="4" cols="80" >${dto.board_content }</textarea>
 	</div>
 	<div>
 		이름
-		<input name="board_writer" id="board_writer" value="${dto.board_writer }" placeholder="이름을 입력해주세요">
+		<input name="board_writer" id="board_writer" value="${dto.board_writer }" >
 	</div>
 	<div style="width:650px; text-align: center;">
 		<input type="hidden" name="cs_id" value="${dto.board_id }">
