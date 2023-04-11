@@ -21,6 +21,7 @@ public class ProductController {
 
    @Inject
    ProductService service;
+   
    @Resource(name="uploadPath")
    private String uploadPath;
 
@@ -51,8 +52,7 @@ public class ProductController {
       if(!product_photo.isEmpty()) {
          filename = product_photo.getOriginalFilename();
          System.out.print(product_photo.getOriginalFilename());
-
-         //임시 경로
+         //서버주소 깃으로 넣어야 서버에 뜸
          String path = "C:\\Users\\newtec\\git\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\shopping\\resources\\img\\product";
          //"C:\\Users\\newtec\\git\\Project_ShoppingMall" +".metadata\\.plugins\\org.eclipse.wst.server.core\\" +
          

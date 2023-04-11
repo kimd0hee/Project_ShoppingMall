@@ -54,7 +54,7 @@
       </tr>
       <tr>
          <td>상품 이미지</td>
-            <td><input type="file" id="product_photos" name="product_photos"></td>
+            <td><input type="file" id="product_photo" name="product_photo"></td>
       </tr>
       <tr>
          <td colspan="2" align="center">

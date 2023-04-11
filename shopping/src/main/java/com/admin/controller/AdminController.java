@@ -28,9 +28,9 @@ public class AdminController {
 
       if(name != null) {
          session.setAttribute("admin_id", vo.getUser_id());
-         session.setAttribute("user_id", vo.getUser_id());
+         //session.setAttribute("user_id", vo.getUser_id()); , admin VO 새로 생성
          session.setAttribute("admin_name", name);
-         session.setAttribute("user_name", name);
+         //session.setAttribute("user_name", name);
          mav.setViewName("adminHome");
          mav.addObject("msg", "success");
       }else {

@@ -22,22 +22,22 @@
 	</beans:bean>
 	
 	<!-- 추가 Start -->
-	<!-- 파일 업로드 -->
-	<beans:bean id="mulitpartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<!-- 파일 업로드 용량-->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="maxUploadSize" value="10485760"/>
 	</beans:bean>
 	
+	<!-- 파일 업로드를 위한 디렉토리 설정 -->
 	<beans:bean id="uploadPath" class="java.lang.String">
-	<!-- 경로 임시로 각자 환경에 맞게 변경 부탁 -->
-	<beans:constructor-arg value="C:\Users\newtec\git\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\shopping\resources\img\product"/>
-	<!-- "C:\\Users\\habiya\\Documents\\owrkspace-sts-3.9.18.RELEASE\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp2\\wtpwebapps\\spring\\resources\\images" -->
+	<beans:constructor-arg value="C:\Users\newtec\git\product"/>
 	</beans:bean>
+	<!-- C:\\Users\\habiya\\Documents\\owrkspace-sts-3.9.18.RELEASE\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp2\\wtpwebapps\\spring\\resources\\images -->
 	
 	<!-- 관리자 세션체크 -->
 	<beans:bean id="adminInterceptor" class="com.admin.interceptor.AdminInterceptor"/>
 	
 	<!-- 관리자 세션체크 매핑 -->
-	<!-- <interceptors>
+	<interceptors>
  	<interceptor>
  		<mapping path="/productWrite.do"/>
  		<mapping path="/productInsert.do"/>
@@ -46,7 +46,7 @@
  		<mapping path="/productDelete.do"/>
  		<beans:ref bean="adminInterceptor"/>
  	</interceptor>
- 	</interceptors>  -->
+ 	</interceptors>
 
 	<!-- 추가 End -->
 	<!-- 메인 -->
