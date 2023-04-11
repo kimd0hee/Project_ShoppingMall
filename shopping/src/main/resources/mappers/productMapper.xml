@@ -51,7 +51,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       </update>
       
       <!-- 05. 상품 레코드 삭제처리 -->
-      <delete id="deleteProuct">
+      <delete id="deleteProduct">
          DELETE FROM product
          WHERE product_id = #{product_id}
          

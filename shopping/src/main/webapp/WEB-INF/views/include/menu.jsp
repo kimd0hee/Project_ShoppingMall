@@ -23,7 +23,7 @@
 			<div class="row">
 				<div class="col-xl-1 col-lg-1">
 					<div class="header__logo">
-						<a href="#"><img src="img/logo.jpg" alt=""></a>
+						<a href="${path}/main.do"><img src="img/logo.jpg" alt=""></a>
 					</div>
 				</div>
 				<div class="col-xl-6 col-lg-7">
@@ -46,7 +46,6 @@
 								</ul></li>
 							<li><a href="${path}/boardList.do">CS CENTER</a></li>
 							<li><c:if test="${sessionScope.admin_id !=null}"><a href="#">관리</a></c:if>
-							<!-- <a href="#">관리</a> -->
 								<ul class="dropdown">
 									<li><a href="${path}/userList.do">회원관리</a></li>
 									<li><a href="${path}/productWrite.do">상품등록</a></li>
