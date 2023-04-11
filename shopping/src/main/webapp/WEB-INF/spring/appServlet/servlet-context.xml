@@ -58,7 +58,7 @@
  		<beans:ref bean="adminInterceptor"/>
  	</interceptor>
  	</interceptors>
->>>>>>> branch 'K.D.H' of https://github.com/kimd0hee/Project_ShoppingMall.git
+
 
 	<!-- 추가 End -->
 	<!-- 메인 -->
