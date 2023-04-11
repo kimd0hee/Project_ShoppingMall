@@ -35,7 +35,7 @@
 	<beans:bean id="adminInterceptor" class="com.admin.interceptor.AdminInterceptor"/>
 	
 	<!-- 관리자 세션체크 매핑 -->
-	<interceptors>
+	<!-- <interceptors>
  	<interceptor>
  		<mapping path="/productWrite.do"/>
  		<mapping path="/productInsert.do"/>
@@ -44,7 +44,7 @@
  		<mapping path="/productDelete.do"/>
  		<beans:ref bean="adminInterceptor"/>
  	</interceptor>
- 	</interceptors>
+ 	</interceptors>  -->
 
 	<!-- 추가 End -->
 	<!-- 메인 -->

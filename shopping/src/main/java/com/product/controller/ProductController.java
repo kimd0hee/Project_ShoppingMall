@@ -72,7 +72,7 @@ public class ProductController {
       return "redirect:/productList.do";
    }
 
-   @RequestMapping("productEdit/{product_id}")
+   @RequestMapping("productEdit{product_id}")
    public ModelAndView edit(@PathVariable("product_id") int product_id, ModelAndView mav) {
       mav.setViewName("/productEdit");
       mav.addObject("vo", service.detailProduct(product_id));
