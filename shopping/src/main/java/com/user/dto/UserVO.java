@@ -19,6 +19,8 @@ public class UserVO {
 	private String user_address3;
 	private String user_grade;
 	private Timestamp user_update;
+	private String postcode;
+	
 	public int getUser_idx() {
 		return user_idx;
 	}
@@ -109,6 +111,12 @@ public class UserVO {
 	public void setUser_update(Timestamp user_update) {
 		this.user_update = user_update;
 	}
+	public String getPostcode() {
+		return postcode;
+	}
+	public void setPostcode(String postcode) {
+		this.postcode = postcode;
+	}
 	@Override
 	public String toString() {
 		return "UserVO [user_idx=" + user_idx + ", user_id=" + user_id + ", user_pw=" + user_pw + ", user_name="
@@ -116,7 +124,7 @@ public class UserVO {
 				+ ", user_joindate=" + user_joindate + ", user_active=" + user_active + ", user_email_check="
 				+ user_email_check + ", user_address1=" + user_address1 + ", user_address2=" + user_address2
 				+ ", user_address3=" + user_address3 + ", user_grade=" + user_grade + ", user_update=" + user_update
-				+ "]";
+				+ ", postcode=" + postcode + "]";
 	}
 
 

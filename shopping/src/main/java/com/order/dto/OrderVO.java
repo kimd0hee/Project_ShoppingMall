@@ -8,10 +8,10 @@ public class OrderVO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	//상품
-	private String product_id;
+	private int product_id;
 	private String product_name;
 	private int product_price;
-	private int product_quantity;
+	private String product_desc;
 	private String product_thumbnail;
 	private String product_info;
 	private String product_opt;
@@ -34,10 +34,10 @@ public class OrderVO implements Serializable{
 	private String order_message;
 	private int total_amount;
 	
-	public String getProduct_id() {
+	public int getProduct_id() {
 		return product_id;
 	}
-	public void setProduct_id(String product_id) {
+	public void setProduct_id(int product_id) {
 		this.product_id = product_id;
 	}
 	public String getProduct_name() {
@@ -52,11 +52,11 @@ public class OrderVO implements Serializable{
 	public void setProduct_price(int product_price) {
 		this.product_price = product_price;
 	}
-	public int getProduct_quantity() {
-		return product_quantity;
+	public String getProduct_desc() {
+		return product_desc;
 	}
-	public void setProduct_quantity(int product_quantity) {
-		this.product_quantity = product_quantity;
+	public void setProduct_desc(String product_desc) {
+		this.product_desc = product_desc;
 	}
 	public String getProduct_thumbnail() {
 		return product_thumbnail;
@@ -164,7 +164,7 @@ public class OrderVO implements Serializable{
 	@Override
 	public String toString() {
 		return "OrderVO [product_id=" + product_id + ", product_name=" + product_name + ", product_price="
-				+ product_price + ", product_quantity=" + product_quantity + ", product_thumbnail=" + product_thumbnail
+				+ product_price + ", product_desc=" + product_desc + ", product_thumbnail=" + product_thumbnail
 				+ ", product_info=" + product_info + ", product_opt=" + product_opt + ", user_idx=" + user_idx
 				+ ", user_id=" + user_id + ", user_address1=" + user_address1 + ", user_address2=" + user_address2
 				+ ", user_address3=" + user_address3 + ", user_phone=" + user_phone + ", postcode=" + postcode

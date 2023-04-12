@@ -72,6 +72,10 @@ public class MainController {
 	public String order(Model model) {
 		return "order";
 	}
+	@RequestMapping(value="orderResult", method=RequestMethod.GET)
+	public String orderResult(Model model) {
+		return "orderResult";
+	}
 	
 	//test
 	@RequestMapping(value = "ordertest", method = RequestMethod.GET)

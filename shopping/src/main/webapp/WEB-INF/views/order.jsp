@@ -86,35 +86,35 @@
 
 
 	<div class="container">
-		<form action="/order/orderResult" method="post">
+		<form action="orderResult" method="post">
 
 		<div class="row" style="text-align: center; ">
-		<c:set value="${userInfo}" var="vo"/>
+		<c:set value="${userInfo}" var="vo" />
 			<h1 class="page-header">주문정보 확인</h1>
 			<h4 style="color: red;">주문자 정보와 배송지가 다른 경우 직접 입력해주세요.</h4>
 		</div>
 		<div class="row">
 			<div class="form-horizontal">
 				<div class="form-group">
-					<label class="col-sm-2 control-label">ID</label>
+					<label for="inputId" class="col-sm-2 control-label">ID</label>
 					<div class="col-sm-10">
-						<input class="form-control" placeholder="ID" value="${vo.user_id}" readonly>
+						<input class="form-control" value="${vo.user_id}" readonly>
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<label class="col-sm-2 control-label">이름</label>
 					<div class="col-sm-10">
-						<input class="form-control" placeholder="Name" name="username" value="${vo.user_name}">
+						<input class="form-control" value="${vo.user_name}">
 					</div>
 				</div>				
 				<div class="form-group">
 					<label class="col-sm-2 control-label">주소</label>
 					<div class="col-sm-10">
-						<input id="postcode" name="postcode" value="${vo.postcode}">&nbsp;
+						<input value="${vo.postcode}">&nbsp;
 						<input type="button" class="btn btn-default btn-sm" id="searchAdd" value="우편번호 찾기"><br>
-						<input class="form-control" type="text" id="roadAddress" name="useraddress" value="${vo.user_address1}">
-						<input class="form-control" type="text"" name="useraddress" value="${vo.user_address2}">
+						<input class="form-control" type="text" value="${vo.user_address1}">
+						<input class="form-control" type="text" value="${vo.user_address2}">
 						<input class="form-control" type="text" name="useraddress" value="${vo.user_address3}" placeholder="상세주소">
 					<!-- 	<input class="form-control" type="text" id="detailAddress" name="detailAddress" placeholder="상세주소">-->
 					</div>
@@ -122,7 +122,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label">Email</label>
 					<div class="col-sm-10">
-						<input type="email" class="form-control" id="inputEmail" placeholder="Email" name="email" value="${vo.email}">
+						<input type="email" class="form-control" id="inputEmail" placeholder="Email" name="email" value="${vo.user_email}">
 					</div>
 				</div>
 				<div class="form-group">
@@ -171,13 +171,13 @@
 	
 	$(document).ready(function() {
 		
-		var userid = $("#login_userid").val();
-		var productId = $("#productId").val();
+		var user_id = $("#login_user_id").val();
+		var product_id = $("#product_id").val();
 		
 		$("input[name='cal_info']").click(function() {
 			
 			var con = $(".order_con").val();
-			var price = "<c:out value='${dto.price}'/>";
+			var price = "<c:out value='${vo.price}'/>";
 			var del_fee = "<c:out value='${del_fee}'/>";
 			
 			var amount = price * qty;
@@ -200,29 +200,29 @@
 		
 		$(".back_btn").click(function(event) {
 			event.preventDefault();
-			location.assign("/product/show/" + productId);
+			location.assign("/product/show/" + 	product_id);
 		});
 
 		$("#mycart_btn").click(function(event) {
 			event.preventDefault();
-			location.assign("/order/mycart/" + userid);
+			location.assign("/order/mycart/" + user_id);
 			
 		});
 		
 		$("li").on('click', function() {
 			var productDist = $(this).attr("value");
-			location.assign("/product/" + productDist);
+			location.assign("/product/" + product_desc);
 		});
 		
-		$("#go_to_member_insert").click(function(event) {
+		$("#go_to_user_insert").click(function(event) {
 			event.preventDefault();
 			
-			location.assign("/member/insert");
+			location.assign("/user/insert");
 		});
 		
 		$("#mypage_btn").click(function(event) {
 			event.preventDefault();
-			var userid = $("#login_userid").val();
+			var userid = $("#login_user_id").val();
 			
 			location.assign("/member/read/" + userid);
 		})
@@ -233,7 +233,7 @@
 			var logout = confirm("로그아웃 하시겠습니까?");
 			
 			if (logout) {
-				location.assign("/member/logout");
+				location.assign("/user/logout");
 			}
 		});
 		

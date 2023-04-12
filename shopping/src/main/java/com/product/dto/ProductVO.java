@@ -9,6 +9,7 @@ public class ProductVO {
    private String product_desc;
    private String product_url;
    private MultipartFile product_photo;
+   private String product_info;
    public int getProduct_id() {
       return product_id;
    }
@@ -45,11 +46,17 @@ public class ProductVO {
    public void setProduct_photo(MultipartFile product_photo) {
       this.product_photo = product_photo;
    }
-   @Override
-   public String toString() {
-      return "ProductVO [product_id=" + product_id + ", product_name=" + product_name + ", product_price="
-            + product_price + ", product_desc=" + product_desc + ", product_url=" + product_url + ", product_photo="
-            + product_photo + "]";
+   public String getProduct_info() {
+	return product_info;
    }
-
+   public void setProduct_info(String product_info) {
+		this.product_info = product_info;
+   }
+	@Override
+	public String toString() {
+		return "ProductVO [product_id=" + product_id + ", product_name=" + product_name + ", product_price=" + product_price
+				+ ", product_desc=" + product_desc + ", product_url=" + product_url + ", product_photo=" + product_photo
+				+ ", product_info=" + product_info + "]";
+	}
+   
 }

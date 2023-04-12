@@ -81,11 +81,10 @@
 </head>
 <body>
 
-	<div id="gnb">
-		<a href="/">Hello World</a>
+<!-- 	<div id="gnb">
 		<div  class="text-right" >
 			<c:choose>
-				<c:when test="${login.userid != null}">
+				<c:when test="${login.user_id != null}">
 					<span class="glyphicon glyphicon-heart-empty" style="color: white;" aria-hidden="true"></span>
 					<span id="login_log" style="border-bottom: 1px solid white;">${login.userid} 님, 환영합니다.</span>
 					<span class="glyphicon glyphicon-heart-empty" style="color: white;" aria-hidden="true"></span>
@@ -105,13 +104,12 @@
 			</c:choose>	
 			
 		</div>
-	</div>
+	</div> -->
 
 	<div class="container logo">
-		<a href="/">Hello World</a>
 	</div>
 
-	<div class="nav">
+<!--  	<div class="nav">
 		<nav>
 			<ul class="nav nav-tabs nav-justified">
 				<li value="about">ABOUT</li>
@@ -126,11 +124,11 @@
 		</nav>
 	</div>
 	
-	<br>
+	<br> -->
 	
 	<div class="container">
-		<form action="/order/orderResult" method="post">
-		<c:set value="${userInfo}" var="dto"/>
+		<form action="orderResult" method="post">
+		<c:set value="${userInfo}" var="vo"/>
 		<c:set value="2500" var="del_fee"/>
 		<div class="row qnas" style="text-align: center;">
 			<h1 class="page-header">주문하기</h1>
@@ -145,13 +143,13 @@
 				</thead>
 				<tbody>
 						<tr>
-							<td><img alt="thumbnail" src="/resources/upload${dto.filename}" width="40%">
-							<input type="hidden" value="${dto.productId}" name="productId" id="productId">
+							<td><img alt="thumbnail" src="/resources/upload${vo.product_thumbnail}" width="40%">
+							<input type="hidden" value="${vo.product_id}" name="productId" id="productId">
 							</td>
-							<td>${dto.productName}<br>${dto.productInfo}</td>
-							<td><fmt:formatNumber type="number" value="${dto.price}"/>&nbsp;원</td>
-							<td><select name="order_Qty" class="form-control order_Qty">
-								<c:forEach begin="1" end="${dto.stock > 5 ? 5 : dto.stock}" var="stock">
+							<td>${vo.product_name}<br>${vo.product_info}</td>
+							<td><fmt:formatNumber type="number" value="${vo.product_price}"/>&nbsp;원</td>
+							<td><select name="order_con" class="form-control order_con">
+								<c:forEach begin="1" end="${vo.stock > 5 ? 5 : vo.stock}" var="stock">
 									<option value="${stock}">${stock}</option>
 								</c:forEach>
 							</select>
