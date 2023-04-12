@@ -59,7 +59,7 @@
       </tr>
       <tr>
          <td colspan="2" align="center">
-            <input type="submit" value="등록" id="addBtn" >
+            <input type="button" value="등록" id="addBtn" >
             <input type="button" value="목록" onclick="location.href='${path}/productList.do';">
          </td>
       </tr>

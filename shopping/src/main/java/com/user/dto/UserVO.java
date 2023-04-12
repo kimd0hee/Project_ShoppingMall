@@ -19,6 +19,8 @@ public class UserVO {
 	private String user_address3;
 	private String user_grade;
 	private Timestamp user_update;
+	
+	
 	public int getUser_idx() {
 		return user_idx;
 	}

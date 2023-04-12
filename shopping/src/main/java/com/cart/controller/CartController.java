@@ -38,7 +38,7 @@ public class CartController {
          //있으면 update
          service.updateCart(vo);
       }
-      return "redirect:/productList.do";
+      return "redirect:/cartList.do";
    }
    //ModelAndView mav = new ModelAndView();
    //mav.setViewName("board/list); // 뷰를 list.jsp로 설정
@@ -75,7 +75,7 @@ public class CartController {
    @RequestMapping("cartDelete.do")
    public String deleteCart(@RequestParam int cart_id) throws Exception {
       service.deleteCart(cart_id);
-      return "redirect:/productList.do";
+      return "redirect:/cartList.do";
    }
    //4. 장바구니 수정
    @RequestMapping("cartUpdate.do")
@@ -91,6 +91,6 @@ public class CartController {
          vo.setProduct_id(product_id[i]);
          service.modifyCart(vo);
       }
-      return "redirect:/productList.do";
+      return "redirect:/cartList.do";
    }
 }
