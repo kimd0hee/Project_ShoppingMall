@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class MainController {
 
 	//메인 page 연결
-	@RequestMapping(value = "main.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String main(Model model) {
 		return "main";
 	}
