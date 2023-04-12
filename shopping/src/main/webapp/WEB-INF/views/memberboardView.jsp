@@ -7,20 +7,20 @@
 <title>게시글 작성</title>
 <%@ include file="include/header.jsp" %>
 <%@ include file="include/menu.jsp" %>
-	<script>
-		// 게시글 수정
-		$(document).ready(function(){
-			$("#btnUpdate").click(function(){
-				/* var title = document.form.title.value; => name 으로 처리
-				var content = document.form.content.value;
-				var writer = document.form.writer.value; */
-				var title = ${"#title"}.val();
-				var content = ${"#content"}.val();
-				if(title == ""){
-					alert("제목을 입력하세요");
-					document.form.title.focus();
-					return;
-				}
+<script>
+	// 게시글 수정
+	$(document).ready(function(){
+		$("#btnUpdate").click(function(){
+			/* var title = document.form.title.value; => name 으로 처리
+			var content = document.form.content.value;
+			var writer = document.form.writer.value; */
+			var title = $("#title").val();
+			var content = $("#content").val();
+			if(title == ""){
+				alert("제목을 입력하세요");
+				document.form.title.focus();
+				return;
+			}
 				
 				if(content == "") {
 					alert("내용을 입력하세요");
@@ -31,6 +31,7 @@
 				document.form.action="${path}/memberboardUpdate.do"
 				document.form.submit();
 			});
+		
 			// 게시글 삭제
 			$("#btnDelete").click(function(){
 				// 댓글이 존재하는 게시물은 삭제 방지
@@ -64,7 +65,7 @@
 		});
 		// 댓글 입력 함수(폼 데이터 방식)
 		function reply(){
-			var replytext=${"#replytext"}.val();
+			var replytext=$("#replytext").val();
 			var bno="${dto.bno}"
 			var secretReply = "n";
 			if( $("#secretReply")).is(":checked") ){
@@ -91,7 +92,7 @@
 				secretReply = "y";
 			}
 			$.ajax({
-				type: "post", url : "${path}/insertRest.do", headers:{"Content-Type" : application/json"
+				type: "post", url : "${path}/replyinsertRest.do", headers: {"Content-Type" : "application/json"
 					}, dateType: "text", data: JSON.stringify({
 						bno : bno, replytext : replytext, secretReply : secretReply
 					}),
@@ -109,8 +110,7 @@
 		function listReply(num){
 			$.ajax({
 				type: "get",
-				url: "${path}/replyList.do?bno=${dto.bno}&curPage="+num,
-				success: function(result){
+				url: "${path}/replyList.do?bno=${dto.bno}&curPage="+num, success: function(result){
 					$("#listReply").html(result);
 				}
 			});
