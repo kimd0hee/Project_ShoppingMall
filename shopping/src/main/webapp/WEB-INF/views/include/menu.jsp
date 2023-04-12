@@ -21,12 +21,13 @@
 	<header class="header">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-xl-1 col-lg-1">
+				<div class="col-xl-3 col-lg-8">
 					<div class="header__logo">
-						<a href="/"><img src="img/logo.jpg" alt=""></a>
+						<a href="/"><img src="img/logo.jpg" width="180" height="60" alt=""></a>
+						
 					</div>
 				</div>
-				<div class="col-xl-6 col-lg-7">
+				<div class="col-xl-5 col-lg-6">
 					<nav class="header__menu">
 						<ul>
 							<li></li>

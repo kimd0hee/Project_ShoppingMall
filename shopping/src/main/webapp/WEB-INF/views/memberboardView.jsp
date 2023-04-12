@@ -54,6 +54,8 @@
 			
 			// 목록 이동
 			$("#btnList").click(function(){
+				console.log("버튼아 살아있니");
+				alter("버튼은 살아있다");
 				location.href="${path}/memberboardList.do?curPage=${curpage}
 				&searchOption=${searchOption}&keyword=${keyword}";
 			});
