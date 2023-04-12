@@ -31,7 +31,7 @@
                      <th>단가</th>
                      <th>수량</th>
                      <th>금액</th>
-                     <th>취소</th>
+                     <th>삭제</th>
                   </tr>
                   <c:forEach var="row" items="${map.list}" varStatus="i">
                   <tr>
@@ -49,7 +49,7 @@
                         <fmt:formatNumber pattern="###,###,###" value="${row.money}"/>
                      </td>
                      <td>
-                        <a href="${path}/cartDelete.do?cart_id=${row.cart_id}">삭제</a>
+                         <a href="${path}/cartDelete.do?cart_id=${row.cart_id}">삭제</a>
                      </td>
                   </tr>                  
                   </c:forEach>

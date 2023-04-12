@@ -38,16 +38,15 @@
                ${row.product_id}
             </td>
             <td>
-               <a href="${path}/productDetail/${row.product_id}">
-                  <img src="img/product/${row.product_url}" width="120px" height="110px">
+               <a href="${path}/productDetail${row.product_id}">
+                  <img src="${path}/img/product/${row.product_url}" width="120px" height="110px">
                </a>
             </td>
             <td>
-            <a href="${path}/productEdit${row.product_id}">[상품편집]</a>
-               <a href="${path}/productDetail/${row.product_id}">${row.product_name}</a>
-               <!--<c:if test="${sessionScope.admin_id != null}">
-                  <a href="${path}/productEdit/${row.product_id}">[상품편집]</a>
-               </c:if>-->
+               <a href="${path}/productDetail${row.product_id}">${row.product_name}</a>
+               <c:if test="${sessionScope.admin_id != null}">
+                  <a href="${path}/productEdit${row.product_id}">[상품편집]</a>
+               </c:if>
             </td>
             <td>
                <fmt:formatNumber value="${row.product_price}" pattern="###, ###, ###"></fmt:formatNumber>

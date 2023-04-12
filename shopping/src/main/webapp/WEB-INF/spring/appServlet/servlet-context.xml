@@ -28,14 +28,14 @@
 	</beans:bean>
 	
 	<beans:bean id="uploadPath" class="java.lang.String">
-	    <beans:constructor-arg value="/resources/img/product"/>
+	    <beans:constructor-arg value="C:\Users\newtec\Documents\workspace-sts-3.9.18.RELEASE\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\shopping\resources\img\product\"/>
 	</beans:bean>
 	
 	<!-- 관리자 세션체크 -->
 	<beans:bean id="adminInterceptor" class="com.admin.interceptor.AdminInterceptor"/>
 	
 	<!-- 관리자 세션체크 매핑 -->
-	<!-- <interceptors>
+	<interceptors>
  	<interceptor>
  		<mapping path="/productWrite.do"/>
  		<mapping path="/productInsert.do"/>
@@ -44,7 +44,7 @@
  		<mapping path="/productDelete.do"/>
  		<beans:ref bean="adminInterceptor"/>
  	</interceptor>
- 	</interceptors>  -->
+ 	</interceptors>
 
 	<!-- 추가 End -->
 	<!-- 메인 -->
