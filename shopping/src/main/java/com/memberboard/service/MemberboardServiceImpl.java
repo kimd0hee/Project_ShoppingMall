@@ -18,7 +18,7 @@ public class MemberboardServiceImpl implements MemberboardService {
 
 	// 게시글 쓰기
 	@Override
-	public void insertMemberboard(MemberboardVO vo) {
+	public void memberboardInsert(MemberboardVO vo) {
 		String title = vo.getTitle();
 		String content = vo.getContent();
 		String writer = vo.getWriter();
@@ -35,26 +35,26 @@ public class MemberboardServiceImpl implements MemberboardService {
 		vo.setTitle(title);
 		vo.setContent(content);
 		vo.setWriter(writer);
-		dao.insertMemberboard(vo);
+		dao.memberboardInsert(vo);
 	}
 
 	// 게시글 상세보기
 	@Override
-	public MemberboardVO viewMemberboard(int bno) {
-		return dao.viewMemberboard(bno);
+	public MemberboardVO memberboardView(int bno) {
+		return dao.memberboardView(bno);
 	}
 
 	// 게시글 수정
 	@Override
-	public void updateMemberboard(MemberboardVO vo) {
-		dao.updateMemberboard(vo);
+	public void memberboardUpdate(MemberboardVO vo) {
+		dao.memberboardUpdate(vo);
 
 	}
 
 	// 게시글 삭제
 	@Override
-	public void deleteMemberboard(int bno) {
-		dao.deleteMemberboard(bno);
+	public void memberboardDelete(int bno) {
+		dao.memberboardDelete(bno);
 
 	}
 

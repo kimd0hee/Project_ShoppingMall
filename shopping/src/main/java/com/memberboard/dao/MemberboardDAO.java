@@ -7,16 +7,16 @@ import com.memberboard.dto.MemberboardVO;
 public interface MemberboardDAO {
 
 	// 게시글 작성
-	public void insertMemberboard(MemberboardVO vo);
+	public void memberboardInsert(MemberboardVO vo);
 
 	// 게시글 상세보기
-	public MemberboardVO viewMemberboard(int bno);
+	public MemberboardVO memberboardView(int bno);
 
 	// 게시글 수정
-	public void updateMemberboard(MemberboardVO vo);
+	public void memberboardUpdate(MemberboardVO vo);
 
 	// 게시글 삭제
-	public void deleteMemberboard(int bno);
+	public void memberboardDelete(int bno);
 
 	// 게시글 목록
 	public List<MemberboardVO> memberboardList(int start, int end,

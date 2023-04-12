@@ -48,6 +48,7 @@
 			<tr>
 				<td colspan="2" align="center">
 					<button type="button" id="btnLogin">로그인</button>
+					<button type="button" onclick="location.href='writeUser.do' ">회원가입</button>
 					
 					
 				<c:if test="${msg == 'failure' }">

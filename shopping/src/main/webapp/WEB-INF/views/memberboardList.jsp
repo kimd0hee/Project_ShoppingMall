@@ -6,27 +6,28 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>회원 게시글 목록</title>
 <%@ include file="include/header.jsp" %>
+<%@ include file="include/menu.jsp" %>
 
 <script>
 	$(document).ready(function(){
 		$("#btnWrite").click(function(){
 			// 페이지 주소 변경(이동)
-			location.href = "${path}/writeMemberboard.do";
+			location.href = "${path}/memberboardWrite.do";
 		});
 	});
 		// 원하는 페이지로 이동시 검색조건, 키워드 값을 유지
 	function list(page){
-		location.href="${path}/memeberboardList.do?curPage="page+"&searchOption-${map.searchOption}"+ "&keyword="${map.keyword}";
+		location.href="${path}/memeberboardList.do?curPage="+page+"&searchOption-${map.searchOption}"+"&keyword=${map.keyword}";
 	}
 </script>
 </head>
 <body>
-<%@ include file="include/menu.jsp" %>
+
 	<h2>회원 게시글 목록</h2>
 	<form name="form" method="post" action="${path}/memberboardList.do">
 		<select name="searchOption">
 			<option value="all" <c:out value="${map.searchOption == 'all'?'selected':''}"/> >제목+이름+제목</option>
-			<option value="user_name" <c:out value="${map.searchOption == 'user_name'?'selected':''}"/> >이름 </option>
+			<option value="userName" <c:out value="${map.searchOption == 'userName'?'selected':''}"/> >이름 </option>
 			<option value="content" <c:out value="${map.searchOption == 'content'?'selected':''}"/> >내용</option>
 			<option value="title" <c:out value="${map.searchOption == 'title'?'selected':''}"/> >제목</option>
 		</select>
@@ -51,7 +52,7 @@
 		<c:forEach var="row" items="${map.list}">
 			<tr>
 				<td>${row.bno}</td>
-				<td><a href="${path}/viewMemberboard.do?bno=${row.bno}
+				<td><a href="${path}/memberboardView.do?bno=${row.bno}
 				&curPage=${map.boardPager.curPage}&searchOption=${map.searchOption}&keyword=${map.keyword}">${row.title}
 				<c:if test="${row.recnt > 0}">
 				<span style="color : red;">(${row.recnt})</span>
@@ -103,5 +104,4 @@
 		</tr>
 	</table>
 </body>
-<%@ include file="include/footer.jsp" %>
 </html>

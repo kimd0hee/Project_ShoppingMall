@@ -6,9 +6,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시글 작성</title>
 <%@ include file="include/header.jsp" %>
+<%@ include file="include/menu.jsp" %>
 	<script>
 		// 게시글 수정
-		$(doxument).ready(function(){
+		$(document).ready(function(){
 			$("#btnUpdate").click(function(){
 				/* var title = document.form.title.value; => name 으로 처리
 				var content = document.form.content.value;
@@ -25,15 +26,9 @@
 					alert("내용을 입력하세요");
 					document.form.content.focus();
 					return;
-				}
+				}			
 				
-				/* if(writer == "") {
-					alert("내용을 입력하세요");
-					document.form.writer.focus();
-					return;
-				} */				
-				
-				document.form.action="${path}/updateMemberboard.do"
+				document.form.action="${path}/memberboardUpdate.do"
 				document.form.submit();
 			});
 			// 게시글 삭제
@@ -47,17 +42,14 @@
 				}
 				// 댓글의 수가 0인경우 삭제가능
 				if(confirm("삭제하시겠습니까?")){
-					document.form.action = "${path}/deleteMemberboard.do";
+					document.form.action = "${path}/memberboardDelete.do";
 					document.form.submit();	
 				}
 			});
 			
 			// 목록 이동
 			$("#btnList").click(function(){
-				console.log("버튼아 살아있니");
-				alter("버튼은 살아있다");
-				location.href="${path}/memberboardList.do?curPage=${curpage}
-				&searchOption=${searchOption}&keyword=${keyword}";
+				location.href="${path}/memberboardList.do?curPage=${curPage}&searchOption=${searchOption}&keyword=${keyword}";
 			});
 			
 			// 댓글 입력
@@ -116,10 +108,20 @@
 		// 댓글 목록 // Controller 방식
 		function listReply(num){
 			$.ajax({
-				type : "get",
+				type: "get",
+				url: "${path}/replyList.do?bno=${dto.bno}&curPage="+num,
+				success: function(result){
+					$("#listReply").html(result);
+				}
+			});
+		}
+		
+		function listReply2(){
+			$.ajax({
+				type: "get",
 				// contentType: "application/json", // RestController 방식이여서 생략이 가능
-				url : "${path}listJson.do?bno=${dto.bno}&curPage="+num,
-						success : function(result){
+				url: "${path}listJson.do?bno=${dto.bno}",
+						success: function(result){
 							console.log(result);
 							var output = "<table>";
 							for(var i in result){
@@ -150,7 +152,7 @@
 		// 댓글 목록 // rest 방식
 		function listReplyRest(num){
 			$.ajax({
-				type : "get", url : "${path}/replylist.do${dto.bno}/"+num,
+				type: "get", url: "${path}/replylist.do${dto.bno}/"+num,
 				success: function(result){
 					$("#listReply").html(result);
 				}
@@ -160,7 +162,7 @@
 		// 댓글 수정화면 생성 함수
 		function showReplyModify(rno){
 			$.ajax({
-				type : "get", url : "${path}/replydetail.do/"+rno,
+				type: "get", url: "${path}/replydetail.do/"+rno,
 				success: function(result){
 					$("#modifyReply").html(result);
 					// 태그.css("속성", "값")
@@ -181,7 +183,7 @@
 	</style>
 </head>
 <body>
-<%@ include file="include/menu.jsp" %>
+
 	<h2>게시글 보기</h2>
 	<form name="form" method="post">
 		<div>
@@ -196,13 +198,11 @@
 		</div>
 		<div>
 			내용
-			<textarea name="content" id="content" value="${dto.content}" rows="4" cols="80" placeholder="내용을 입력하세요">
-			${dto.content}</textarea>
+			<textarea name="content" id="content" rows="4" cols="80" placeholder="내용을 입력하세요">${dto.content}</textarea>
 		</div>
 		<div>
-			아이디
-			<%-- <input name="writer" id="writer" value="${dto.writer}" placeholder="이름을 입력하세요"> --%>
-			${dto.bno}
+			이름
+			${dto.userName}
 		</div>
 	<div style="width: 650px; text-align:center;">
 		<input type="hidden" name="bno" value="${dto.bno}">
@@ -230,5 +230,4 @@
 	<!-- 댓글 목록 출력 위치 -->
 	<div id="listReply"></div>
 </body>
-<%@ include file="include/footer.jsp" %>
 </html>
