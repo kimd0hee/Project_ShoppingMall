@@ -7,24 +7,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="board">
 
 	<select id="boardList" resultType="com.board.dto.BoardVO"> 
-		SELECT cs_id,cs_title,cs_context,cs_writer,cs_date FROM cscenter ORDER BY cs_id desc,cs_date desc 
+		SELECT board_id, board_title, board_content, board_writer, board_createdate 
+		FROM board ORDER BY board_id desc, board_createdate desc 
 	</select>
 	
 	<insert id="boardInsert"> 
-		INSERT INTO cscenter (cs_title,cs_context,cs_writer)VALUES(#{cs_title},#{cs_context},#{cs_writer}) 
+		INSERT INTO board (board_title, board_content, board_writer)
+		VALUES(#{board_title},#{board_content},#{board_writer}) 
 	</insert>
 	
 	<select id="boardView" resultType="com.board.dto.BoardVO"> 
-		SELECT * FROM cscenter WHERE cs_id = #{cs_id} 
+		SELECT * FROM board WHERE board_id = #{board_id} 
 	</select>
 	
 	<update id="boardUpdate"> 
-		UPDATE cscenter 
-		SET cs_title = #{cs_title},cs_context = #{cs_context},cs_writer = #{cs_writer} WHERE cs_id = #{cs_id} 
+		UPDATE board 
+		SET board_title = #{board_title}, board_content = #{board_content}, board_writer = #{board_writer} 
+		WHERE board_id = #{board_id} 
 	</update>
 	
 	<delete id="boardDelete"> 
-		DELETE FROM cscenter WHERE cs_id = #{cs_id} 
+		DELETE FROM board 
+		WHERE board_id = #{board_id} 
 	</delete>
 	
 </mapper>

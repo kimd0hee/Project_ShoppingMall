@@ -9,7 +9,7 @@ public interface UserDAO {
 	//회원 리스트
 	public List<UserVO> userList();
 	//회원가입, 등록
-	public void userInsert(UserVO vo);
+	public void insertUser(UserVO vo);
 	//회원정보 상세
 	public UserVO viewUser(String user_id);
 	//회원정보 수정

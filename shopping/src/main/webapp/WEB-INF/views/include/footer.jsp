@@ -16,7 +16,7 @@
             <div class="col-lg-4 col-md-6 col-sm-7">
                 <div class="footer__about">
                     <div class="footer__logo">
-                        <a href=""><img src="img/logo5.png" alt=""></a>
+                        <a href="/"><img src="img/logo.jpg" width="180" height="60" alt=""></a>
                     </div>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                     cilisis.</p>
@@ -72,7 +72,10 @@
             <div class="col-lg-12">
                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 <div class="footer__copyright__text">
-                    <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All rights reserved <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">옷사조</a></p>
+                    <p>Copyright &copy; 
+                    <script>document.write(new Date().getFullYear());</script>
+                     All rights reserved <i class="fa fa-heart" aria-hidden="true"></i> by 
+                     <a href="${path}/adminLogin.do" target="_blank">옷사조</a></p>
                 </div>
                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             </div>

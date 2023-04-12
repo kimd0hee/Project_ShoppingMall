@@ -6,47 +6,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>로그인페이지</title>
 <%@ include file="include/header.jsp" %>
-
-<script>
-	$(document).ready(function(){
-		$("#btnLogin").click(function(){
-			// 태크.val() : 태그에 입력된 값
-			// 태크.val("값ㅅ") : 태그의 값을변경
-			var user_id = $("#user_id").val();
-			var user_pw = $("#user_pw").val();
-			if(user_id == ""){
-				alert("아이디를 입력하세요.");;
-				$("#user_id").focus(); //입력포커스 이동
-				return;
-			}
-			if(user_pw == ""){
-				alert("비밀번호를 입력하세요.");
-				$("#user_pw").focus();
-				return;
-			}
-			// 폼 내부의 데이터를 전송할 주소
-			document.form1.action="${path}/adminLoginCheck.do"
-			//제출
-			document.form1.submit();
-		});
-	});
-</script>
+<%@ include file="include/menu.jsp" %>
 </head>
 <body>
-<h2>로그인</h2>
+<h2>관리자로그인</h2>
 	<form name="form1" method="post">
 		<table border="1" width="400px">
 			<tr>
 				<td>아이디</td>
-				<td><input name="user_id" id="user_id"></td>
+				<td><input name="admin_id" id="admin_id"></td>
 			</tr>
 			<tr>
 				<td>비밀번호</td>
-				<td><input type=password name="user_pw" id="user_pw"></td>
+				<td><input type=password name="admin_pw" id="admin_pw"></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<button type="button" id="btnLogin">로그인</button>
+					<button type="button" id="btnAdminLogin">로그인</button>
 					
 					
 				<c:if test="${msg == 'failure' }">
@@ -67,4 +43,28 @@
 			
 	</form>
 </body>
+<script>
+	$(document).ready(function(){
+		$("#btnAdminLogin").click(function(){
+			var admin_id = $("#admin_id").val();
+			var admin_pw = $("#admin_pw").val();
+			if(admin_id == ""){
+				alert("아이디를 입력하세요.");;
+				$("#admin_id").focus(); //입력포커스 이동
+				return;
+			}
+			if(admin_pw == ""){
+				alert("비밀번호를 입력하세요.");
+				$("#admin_pw").focus();
+				return;
+			}
+			// 폼 내부의 데이터를 전송할 주소
+			document.form1.action="${path}/adminLoginCheck.do"
+			//제출
+			document.form1.submit();
+		});
+	});
+</script>
+
+<%@ include file="include/footer.jsp" %>
 </html>

@@ -21,12 +21,13 @@
 	<header class="header">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-xl-1 col-lg-1">
+				<div class="col-xl-3 col-lg-8">
 					<div class="header__logo">
-						<a href="#"><img src="img/logo.jpg" alt=""></a>
+						<a href="/"><img src="img/logo.jpg" width="180" height="60" alt=""></a>
+						
 					</div>
 				</div>
-				<div class="col-xl-6 col-lg-7">
+				<div class="col-xl-5 col-lg-6">
 					<nav class="header__menu">
 						<ul>
 							<li></li>
@@ -45,8 +46,7 @@
 									<li><a href="#">당첨 후기</a></li>
 								</ul></li>
 							<li><a href="${path}/boardList.do">CS CENTER</a></li>
-							<li><!--<c:if test="${sessionScope.admin_id !=null}"><a href="#">관리</a></c:if>-->
-							<a href="#">관리</a>
+							<li><c:if test="${sessionScope.admin_id !=null}"><a href="#">관리</a></c:if>
 								<ul class="dropdown">
 									<li><a href="${path}/userList.do">회원관리</a></li>
 									<li><a href="${path}/productWrite.do">상품등록</a></li>
@@ -59,15 +59,20 @@
 				<div class="col-lg-3">
 					<div class="header__right">
 						<div class="header__right__auth">
-		<c:choose>
-			<c:when test="${sessionScope.user_id == null}">
-				<a href="${path}/login.do">Login</a>
-			</c:when>
-			<c:otherwise>
-				${sessionScope.user_name}님이 로그인중입니다.
-				<a href="${path}/logout.do">로그아웃</a>
-			</c:otherwise>
-		</c:choose>
+<c:choose>
+    <c:when test="${sessionScope.admin_id != null}">
+    	${sessionScope.admin_name}님이 로그인중입니다.
+        <a href="${path}/adminLogout.do">로그아웃</a>
+    </c:when>
+    <c:when test="${sessionScope.user_id != null}">
+        ${sessionScope.user_name}님이 로그인중입니다.
+        <a href="${path}/logout.do">로그아웃</a>
+    </c:when>
+    <c:otherwise>
+        <a href="${path}/login.do">Login</a>
+    </c:otherwise>
+</c:choose>
+		
 						<a href="mypageform">My page</a>
 						</div>
 						<ul class="header__right__widget">

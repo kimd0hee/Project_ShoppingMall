@@ -26,7 +26,7 @@
    </c:if>
    <table border="1">
       <tr>
-         <th>상품ID번호</th>
+         <th>상품번호</th>
          <th>상품이미지</th>
          <th>상품명</th>
          <th>가격</th>
@@ -38,7 +38,7 @@
             </td>
             <td>
                <a href="${path}/productDetail/${row.product_id}">
-                  <img src="${path}/resources/ima/product${row.product_url}" width="120px" height="110px">
+                  <img src="${path}/resources/images/product/${row.product_url}" width="120px" height="110px">
                </a>
             </td>
             <td>
@@ -49,7 +49,7 @@
                </c:if>
             </td>
             <td>
-               <fmt:formatNumber value="${row.product_price}" pattern="###, ###, ###" />
+               <fmt:formatNumber value="${row.product_price}" pattern="###, ###, ###"></fmt:formatNumber>
             </td>
          </tr>
       </c:forEach>

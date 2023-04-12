@@ -9,7 +9,8 @@ public interface LoginDAO {
 	public boolean loginCheck(UserVO vo);
 
 	public UserVO viewUser(UserVO vo);
+	
+	public void logoutUser(HttpSession session);
 
-	public void logout(HttpSession session);
 
 }
