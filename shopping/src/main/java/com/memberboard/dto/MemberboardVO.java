@@ -12,7 +12,7 @@ public class MemberboardVO {
 	private int viewcnt;
 	private String userName;
 	private int recnt;
-	
+		
 	public int getBno() {
 		return bno;
 	}

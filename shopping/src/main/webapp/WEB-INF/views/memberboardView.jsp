@@ -40,7 +40,7 @@
 				}
 				// 댓글의 수가 0인경우 삭제가능
 				if(confirm("삭제하시겠습니까?")){
-					document.form.action = "${path}/memberboardDelete.do";
+					document.form.action="${path}/memberboardDelete.do";
 					document.form.submit();	
 				}
 			});
