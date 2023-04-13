@@ -11,9 +11,6 @@
 	// 게시글 수정
 	$(document).ready(function(){
 		$("#btnUpdate").click(function(){
-			/* var title = document.form.title.value; => name 으로 처리
-			var content = document.form.content.value;
-			var writer = document.form.writer.value; */
 			var title = $("#title").val();
 			var content = $("#content").val();
 			if(title == ""){
@@ -21,21 +18,21 @@
 				document.form.title.focus();
 				return;
 			}
+			
+			if(content == ""){
+				alert("내용을 입력하세요");
+				document.form.content.focus();
+				return;
+			}			
 				
-				if(content == "") {
-					alert("내용을 입력하세요");
-					document.form.content.focus();
-					return;
-				}			
-				
-				document.form.action="${path}/memberboardUpdate.do"
-				document.form.submit();
+			document.form.action="${path}/memberboardUpdate.do";
+			document.form.submit();
 			});
 		
 			// 게시글 삭제
 			$("#btnDelete").click(function(){
 				// 댓글이 존재하는 게시물은 삭제 방지
-				var count = "${count}"
+				var count = "${count}";
 				// 댓글의 수가 0보다 크면 팝업, 함수 종료
 				if(count > 0) {
 					alert("댓글이 있는 게시물은 삭제할 수 없습니다");
@@ -68,7 +65,7 @@
 			var replytext=$("#replytext").val();
 			var bno="${dto.bno}"
 			var secretReply = "n";
-			if( $("#secretReply")).is(":checked") ){
+			if( $("#secretReply").is(":checked") ){
 				secretReply = "y";
 			}
 			// 비밀댓글 파라미터 추가
@@ -92,7 +89,7 @@
 				secretReply = "y";
 			}
 			$.ajax({
-				type: "post", url : "${path}/replyinsertRest.do", headers: {"Content-Type" : "application/json"
+				type: "post", url: "${path}/replyinsertRest.do", headers: { "Content-Type" : "application/json"
 					}, dateType: "text", data: JSON.stringify({
 						bno : bno, replytext : replytext, secretReply : secretReply
 					}),
@@ -183,7 +180,6 @@
 	</style>
 </head>
 <body>
-
 	<h2>게시글 보기</h2>
 	<form name="form" method="post">
 		<div>
@@ -202,6 +198,7 @@
 		</div>
 		<div>
 			이름
+			<input name="writer" id="writer" value="${dto.writer}" placeholder="이름을 입력하세요">
 			${dto.userName}
 		</div>
 	<div style="width: 650px; text-align:center;">

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.memberboard.dto.MemberboardVO;
 
+
 @Repository
 public class MemberboardDAOImpl implements MemberboardDAO {
 
