@@ -1,10 +1,10 @@
-package com.review.service;
+package com.reply.service;
 
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import com.review.dto.ReviewVO;
+import com.reply.dto.ReviewVO;
 
 public interface ReviewService {
 

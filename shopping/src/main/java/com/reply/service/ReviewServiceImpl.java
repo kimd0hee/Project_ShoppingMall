@@ -1,4 +1,4 @@
-package com.review.service;
+package com.reply.service;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Service;
 
-import com.review.dao.ReviewDAO;
-import com.review.dto.ReviewVO;
+import com.reply.dao.ReviewDAO;
+import com.reply.dto.ReviewVO;
 
 
 @Service

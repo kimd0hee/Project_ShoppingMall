@@ -41,7 +41,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<!-- 게시글 삭제 -->
-	<delete id="deleteAtricle">
+	<delete id="deleteArticle">
 		DELETE FROM memberboard WHERE bno = #{bno}
 	</delete>
 	
@@ -60,7 +60,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<when test="searchOption == 'all'">
 				WHERE b.writer = m.user_id
 				AND
-				(userName like CONCAT('%', #{keyword}, '%')
+				(user_name like CONCAT('%', #{keyword}, '%')
 				OR content like CONCAT('%', #{keyword}, '%')
 				OR title like CONCAT('%', #{keyword}, '%'))
 			</when>

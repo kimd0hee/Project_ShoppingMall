@@ -1,4 +1,4 @@
-package com.review.controller;
+package com.reply.controller;
 
 import java.util.List;
 
@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.review.dto.ReviewVO;
-import com.review.service.ReviewPager;
-import com.review.service.ReviewService;
+import com.reply.dto.ReviewVO;
+import com.reply.service.ReviewPager;
+import com.reply.service.ReviewService;
 
 
 @RestController

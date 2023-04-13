@@ -62,7 +62,7 @@
 	<!-- 장바구니 -->
 	<context:component-scan base-package="com.cart.controller" />
 	<!-- 댓글 -->
-	<context:component-scan base-package="com.review.controller" />
+	<context:component-scan base-package="com.reply.controller" />
 	<!-- 관리자 -->
 	<context:component-scan base-package="com.admin.controller" />
 </beans:beans>

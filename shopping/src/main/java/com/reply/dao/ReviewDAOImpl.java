@@ -1,4 +1,4 @@
-package com.review.dao;
+package com.reply.dao;
 
 import java.util.HashMap;
 import java.util.List;
@@ -9,7 +9,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.review.dto.ReviewVO;
+import com.reply.dto.ReviewVO;
 
 
 

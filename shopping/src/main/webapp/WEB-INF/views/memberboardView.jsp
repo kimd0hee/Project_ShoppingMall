@@ -117,13 +117,13 @@
 			$.ajax({
 				type: "get",
 				// contentType: "application/json", // RestController 방식이여서 생략이 가능
-				url: "${path}listJson.do?bno=${dto.bno}",
+				url: "${path}replyListJson.do?bno=${dto.bno}",
 						success: function(result){
 							console.log(result);
 							var output = "<table>";
 							for(var i in result){
 								output +="<tr>";
-								output +="<td>"+result[i].userName;
+								output +="<td>"+result[i].user_name;
 								output +="("+changeDate(result[i].regdate)+")<br>";
 								output += result[i].replytext+"</td>";
 								output += "<tr>";
@@ -199,7 +199,7 @@
 		<div>
 			이름
 			<input name="writer" id="writer" value="${dto.writer}" placeholder="이름을 입력하세요">
-			${dto.userName}
+			${dto.user_name}
 		</div>
 	<div style="width: 650px; text-align:center;">
 		<input type="hidden" name="bno" value="${dto.bno}">

@@ -112,7 +112,7 @@ public class MemberboardController {
 
 	// 게시글 삭제
 	@RequestMapping("memberboardDelete.do")
-	public String memberboardDelete(@ModelAttribute int bno) {
+	public String memberboardDelete(@ModelAttribute int bno) throws Exception {
 		service.memberboardDelete(bno);
 		return "redirect:/memberboardList.do";
 	}

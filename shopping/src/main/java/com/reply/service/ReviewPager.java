@@ -1,4 +1,4 @@
-package com.review.service;
+package com.reply.service;
 
 public class ReviewPager {
 

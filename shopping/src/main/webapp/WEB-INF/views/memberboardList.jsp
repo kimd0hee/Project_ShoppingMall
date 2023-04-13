@@ -27,7 +27,7 @@
 	<form name="form" method="post" action="${path}/memberboardList.do">
 		<select name="searchOption">
 			<option value="all" <c:out value="${map.searchOption == 'all'?'selected':''}"/> >제목+이름+제목</option>
-			<option value="userName" <c:out value="${map.searchOption == 'userName'?'selected':''}"/> >이름 </option>
+			<option value="user_name" <c:out value="${map.searchOption == 'user_name'?'selected':''}"/> >이름 </option>
 			<option value="content" <c:out value="${map.searchOption == 'content'?'selected':''}"/> >내용</option>
 			<option value="title" <c:out value="${map.searchOption == 'title'?'selected':''}"/> >제목</option>
 		</select>
@@ -59,7 +59,7 @@
 				</c:if>
 				</a>
 				</td>
-				<td>${row.userName}</td>
+				<td>${row.user_name}</td>
 				<td>
 					<fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/>
 				</td>

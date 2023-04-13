@@ -1,8 +1,8 @@
-package com.review.dao;
+package com.reply.dao;
 
 import java.util.List;
 
-import com.review.dto.ReviewVO;
+import com.reply.dto.ReviewVO;
 
 public interface ReviewDAO {
 
