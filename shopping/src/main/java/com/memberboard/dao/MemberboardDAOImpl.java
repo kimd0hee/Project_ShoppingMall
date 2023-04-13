@@ -11,41 +11,42 @@ import org.springframework.stereotype.Repository;
 
 import com.memberboard.dto.MemberboardVO;
 
+
 @Repository
 public class MemberboardDAOImpl implements MemberboardDAO {
 
 	@Inject
 	SqlSession sqlsession;
-	
+
 	
 	// 게시글 작성
 	@Override
-	public void insertMemberboard(MemberboardVO vo) {
-		sqlsession.insert("memberboard.insertMemberboard", vo);
+	public void memberboardInsert(MemberboardVO vo) {
+		sqlsession.insert("memberboard.memberboardInsert", vo);
 	}
-	
+
 	// 게시글 상세보기
 	@Override
-	public MemberboardVO viewMemberboard(int bno) {
-		return sqlsession.selectOne("memberboard.viewMemberboard", bno);
+	public MemberboardVO memberboardView(int bno) {
+		return sqlsession.selectOne("memberboard.memberboardView", bno);
 	}
-	
+
 	// 게시글 수정
 	@Override
-	public void updateMemberboard(MemberboardVO vo) {
+	public void memberboardUpdate(MemberboardVO vo) {
 		sqlsession.update("memberboard.updateArticle", vo);
 	}
-	
+
 	// 게시글 삭제
 	@Override
-	public void deleteMemberboard(int bno) {
+	public void memberboardDelete(int bno) {
 		sqlsession.delete("memberboard.deleteArticle", bno);
 	}
-	
+
 	// 게시글 목록
 	@Override
 	public List<MemberboardVO> memberboardList(int start, int end, String searchOption, String keyword) {
-		Map<String, Object> map = new HashMap<String, Object>();
+		Map<String, Object> map = new HashMap<>();
 		map.put("searchOption", searchOption);
 		map.put("keyword", keyword);
 		// BETWEEN #{start}, #{end}에 입력될 값을 맵에
@@ -64,7 +65,7 @@ public class MemberboardDAOImpl implements MemberboardDAO {
 	// 게시글 레코드 갯수
 	@Override
 	public int countArticle(String searchOption, String keyword) {
-		Map<String, String> map = new HashMap<String, String>();
+		Map<String, String> map = new HashMap<>();
 		map.put("searchOption", searchOption);
 		map.put("keyword", keyword);
 		return sqlsession.selectOne("memberboard.countArticle", map);

@@ -19,5 +19,5 @@ public interface CartDAO {
    public int countCart(int product_id, String user_id);
    //7. 자압구니 상품수량 변경
    public void updateCart(CartVO vo);
-   
+
 }

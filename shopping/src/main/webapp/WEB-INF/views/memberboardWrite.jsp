@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시글 작성</title>
 <%@ include file="include/header.jsp" %>
+<%@ include file="include/menu.jsp" %>
 <%@ include file="include/sessionCheck.jsp" %>
 <script>
 	$(document).ready(function(){
@@ -32,9 +33,9 @@
 </script>
 </head>
 <body>
-<%@ include file="include/menu.jsp" %>
+
 <h2>게시글 작성</h2>
-<form name="form" method="post" action="${path}/insertMemberboard.do">
+<form name="form" method="post" action="${path}/memberboardInsert.do">
 	<div>
 		제목
 		<input name="title" id="title" size="80" placeholder="제목을 입력하세요">
@@ -49,4 +50,5 @@
 	</div>
 	</form>
 </body>
+
 </html>

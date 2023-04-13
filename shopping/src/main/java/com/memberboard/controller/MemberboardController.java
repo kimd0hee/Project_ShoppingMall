@@ -23,12 +23,13 @@ public class MemberboardController {
 	
 	// 의존관계 주입 => BoardServiceImpl 생성
 	// IoC 의존관계 역전
+
 	@Inject
 	MemberboardService service;
 	
 	//@Inject // ReplyService 주입(ReplyService의 댓글의 갯수를 구하는 메서드 호출하기 위해)
 	//ReplyService replyservice;
-	
+
 	
 	// 게시글 목록
 	@RequestMapping("memberboardList.do")
@@ -45,9 +46,10 @@ public class MemberboardController {
 		BoardPager boardPager = new BoardPager(count, curPage);
 		int start = boardPager.getPageBegin()-1;
 		int end = boardPager.getPageEnd();
-		
+
 		List<MemberboardVO> list = service.memberboardList(start, end,
 	searchOption, keyword);
+
 		
 		// 데이터를 맵에 저장
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -56,62 +58,62 @@ public class MemberboardController {
 		map.put("searchOption", searchOption); // 검색옵션
 		map.put("keyword", keyword); // 검색키워드
 		map.put("boardPager", boardPager);
-		
+
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("map", map); // 맵에 저장된 데이터를 mav에 저장
 		mav.setViewName("memberboardList"); // 뷰를 memberboardList.jsp로 설정
 		
 		return mav; //memberboardList.jsp로 List가 전달
 	}
-	
+
 	// 게시글 작성화면
 	// @RequestMapping("writeMemberboard.do")
 	// value="", method="전송방식"
-	@RequestMapping(value="writeMemberboard.do", method=RequestMethod.GET)
-	public String writeMemberboard() {
+	@RequestMapping(value="memberboardWrite.do", method=RequestMethod.GET)
+	public String memberboardWrite() {
 		return "memberboardWrite"; // memberboardWrite.jsp로 이동
 	}
-	
+
 	// 게시글 작성
-	@RequestMapping(value="insertMemberboard.do", method=RequestMethod.POST)
-	public String insertMemberboard(@ModelAttribute MemberboardVO vo, HttpSession session) {
+	@RequestMapping(value="memberboardInsert.do", method=RequestMethod.POST)
+	public String memberboardInsert(@ModelAttribute MemberboardVO vo, HttpSession session) {
 		// session에 저장된 user_id를 writer에 저장
 		String writer = (String) session.getAttribute("user_id");
 		// vo에 writer를 세팅
 		vo.setWriter(writer);
-		service.insertMemberboard(vo);
-		return " redirect:/memberboardList.do";
+		service.memberboardInsert(vo);
+		return "redirect:/memberboardList.do";
 	}
-	
+
 	// 게시글 상세조회, 게시글 조회수 증가
-	@RequestMapping(value="viewMemberboard.do", method=RequestMethod.GET)
-	public ModelAndView viewMemberboard(@RequestParam int bno, @RequestParam int curPage,
+	@RequestMapping(value="memberboardView.do", method=RequestMethod.GET)
+	public ModelAndView memberboardView(@RequestParam int bno, @RequestParam int curPage,
 @RequestParam String searchOption, @RequestParam String keyword, HttpSession session) {
 		service.increaseViewcnt(bno, session);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("memberboardView");
 		// 댓글의 수를 맵에 저장 : 댓글이 존재하는 게시물의 삭제를 방지
 		//mav.addObject("count", replyservice.count(bno));
-		mav.addObject("dto", service.viewMemberboard(bno));
+		mav.addObject("dto", service.memberboardView(bno));
 		mav.addObject("curPage", curPage);
 		mav.addObject("searchOption", searchOption);
 		mav.addObject("keyword", keyword);
 		// logger.info("mav:", mav);
 		return mav;
 	}
-	
+
 	// 게시글 수정
 	// 폼에서 이력한 내용들은 @ModelAttribute BoardVO vo로 전달
-	@RequestMapping(value="updateMemberboard.do", method=RequestMethod.POST)
-	public String updateMemberboard(@ModelAttribute MemberboardVO vo) {
-		service.updateMemberboard(vo);
+	@RequestMapping(value="memberboardUpdate.do", method=RequestMethod.POST)
+	public String memberboardUpdate(@ModelAttribute MemberboardVO vo) {
+		service.memberboardUpdate(vo);
 		return "redirect:/memberboardList.do";
 	}
-	
+
 	// 게시글 삭제
-	@RequestMapping("deleteMemberboard.do")
-	public String deleteMemberboard(@ModelAttribute int bno) {
-		service.deleteMemberboard(bno);
+	@RequestMapping("memberboardDelete.do")
+	public String memberboardDelete(@ModelAttribute int bno) {
+		service.memberboardDelete(bno);
 		return "redirect:/memberboardList.do";
 	}
 }

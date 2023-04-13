@@ -13,23 +13,24 @@ public class LoginDAOImpl implements LoginDAO {
 
 	@Inject
 	SqlSession sqlSession;
-	
+
 	String nameSpace = "login";
-	
+
 	@Override
 	public boolean loginCheck(UserVO vo) {
 		String name = sqlSession.selectOne(nameSpace+".loginCheck", vo);
-		return(name ==null) ? false : true;
+		return(name == null) ? false : true;
 	}
-	
+
 	@Override
 	public UserVO viewUser(UserVO vo) {
 		return sqlSession.selectOne(nameSpace+".viewUser", vo);
 	}
-	
+
 	@Override
 	public void logoutUser(HttpSession session) {
-		
+
+
 	}
 
 }

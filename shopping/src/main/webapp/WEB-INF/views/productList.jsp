@@ -1,48 +1,59 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page session="false" %>
 <!DOCTYPE html>
-<html lang="ko">
+<html>
 <head>
-	<meta charset="UTF-8">
-	<title>상품 관리</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
- 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>상품 목록</title>
 <%@ include file="include/header.jsp" %>
+<%@ include file="./include/menu.jsp" %>
+<script>
+   $(document).ready(function() {
+      $("#btnAdd").click(functiion() {
+         location.href="${path}/productWrite.do";
+      });
+      $("#btnEdit").click(functiion() {
+         location.href="${path}/productEdit.do";
+      });
+   });
+</script>
+
 </head>
 <body>
-<%@ include file="include/menu.jsp" %>
-<section>
-	<div class="container mt-3">
-	  <h2>상품 관리</h2>       
-	  <table class="table table-striped">
-	    <thead>
-	      <tr>
-	      	<th>상품번호</th>
-	        <th>상품명</th>
-	        <th>카테고리</th>
-	        <th>사이즈</th>
-	        <th>컬러</th>
-	        <th>가격</th>
-	      </tr>
-	    </thead>
-	    <tbody>
-	    <c:forEach items="${list}" var="row">
-	      <tr>
-	      	<td><a href="${path}/viewProduct.do?product_id=${row.product_id}">${row.product_id}</a></td>
-	        <td>${row.product_name}</td>
-	        <td>${row.product_category}</td>
-	        <td>${row.product_size}</td>
-	        <td>${row.product_color}</td>
-	        <td>${row.product_price}</td>
-	      </tr>
-	      </c:forEach>
-	    </tbody>
-	  </table>
-	  <input type="button" value="상품등록" onclick="location.href='${path}/productWrite.do'">
-	</div>
-</section>
+   <h2>상품목록</h2>
+   <c:if test="${sessionScope.admin_id != null}">
+      <button type="button" id="btnAdd">상품등록</button><br>
+   </c:if>
+   <table border="1">
+      <tr>
+         <th>상품번호</th>
+         <th>상품이미지</th>
+         <th>상품명</th>
+         <th>가격</th>
+      </tr>
+      <c:forEach var="row" items="${list}">
+         <tr>
+            <td>
+               ${row.product_id}
+            </td>
+            <td>
+               <a href="${path}/productDetail/${row.product_id}">
+                  <img src="${path}/resources/images/product/${row.product_url}" width="120px" height="110px">
+               </a>
+            </td>
+            <td>
+            <!-- <a href="${path}/productEdit/${row.product_id}">[상품편집]</a>  -->
+               <a href="${path}/productDetail/${row.product_id}">${row.product_name}</a>
+               <c:if test="${sessionScope.admin_id != null}">
+                  <a href="${path}/productEdit/${row.product_id}">[상품편집]</a>
+               </c:if>
+            </td>
+            <td>
+               <fmt:formatNumber value="${row.product_price}" pattern="###, ###, ###"></fmt:formatNumber>
+            </td>
+         </tr>
+      </c:forEach>
+   </table>
+   <%@ include file="include/footer.jsp" %>
 </body>
 </html>

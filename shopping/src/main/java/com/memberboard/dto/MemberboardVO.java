@@ -3,13 +3,14 @@ package com.memberboard.dto;
 import java.sql.Timestamp;
 
 public class MemberboardVO {
+
 	private int bno;
 	private String title;
 	private String content;
 	private String writer;
 	private Timestamp regdate;
 	private int viewcnt;
-	private String user_name;
+	private String userName;
 	private int recnt;
 	
 	public int getBno() {
@@ -49,10 +50,10 @@ public class MemberboardVO {
 		this.viewcnt = viewcnt;
 	}
 	public String getUserName() {
-		return user_name;
+		return userName;
 	}
 	public void setUserName(String userName) {
-		this.user_name = userName;
+		this.userName = userName;
 	}
 	public int getRecnt() {
 		return recnt;
@@ -60,11 +61,11 @@ public class MemberboardVO {
 	public void setRecnt(int recnt) {
 		this.recnt = recnt;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "MemberboardVO [bno=" + bno + ", title=" + title + ", content=" + content + ", writer=" + writer
-				+ ", regdate=" + regdate + ", viewcnt=" + viewcnt + ", userName=" + user_name + ", recnt=" + recnt + "]";
+				+ ", regdate=" + regdate + ", viewcnt=" + viewcnt + ", userName=" + userName + ", recnt=" + recnt + "]";
 	}
 	
 }

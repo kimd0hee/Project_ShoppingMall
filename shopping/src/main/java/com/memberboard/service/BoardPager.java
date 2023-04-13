@@ -6,6 +6,7 @@ public class BoardPager {
 	public static final int PAGE_SCALE = 10;
 	// 화면당 페이지 수
 	public static final int BLOCK_SCALE = 10;
+
 	
 	private int curPage; // 현재 페이지
 	private int prevPage; // 이전 페이지
@@ -22,7 +23,7 @@ public class BoardPager {
 	private int blockBegin;
 	// [이전] 41 42 43 44 45 46 47 48 49 50 <- blockEnd[다음]
 	private int blockEnd; // 현재 페이지 블록의 끝 번호
-	
+
 	// BoardPager(레코드 갯수, 현재 페이지 번호)
 	public BoardPager(int count, int curPage) {
 		curBlock = 1; // 현재 페이지 블록 번호
@@ -31,9 +32,8 @@ public class BoardPager {
 		setPageRange(); 
 		setTotBlock(curPage); // 전체 페이지 블록 갯수 계산
 		setBlockRange(); // 페이지 블록의 시작, 끝 번호 계산
-		
 	}
-	
+
 	public void setBlockRange() {
 		// *현재, 몇번째 페이지 블록에 있는지 계산
 		curBlock = (int)Math.ceil((curPage-1) / BLOCK_SCALE)+1;
@@ -50,7 +50,7 @@ public class BoardPager {
 		// 마지막 페이지가 범위를 초과하지 않도록 처리
 		if(nextPage <= totPage) nextPage = totPage;
 	}
-	
+
 	public void setPageRange() {
 	// where rn BETWEEN #{start} AND #{end}
 		// 시작번호 = (현재페이지-1)*페이지당 게시물수 +1
@@ -58,8 +58,8 @@ public class BoardPager {
 		// 끝번호 = 시작번호 + 페이지당 게시물수 -1
 		pageEnd = pageBegin+PAGE_SCALE-1;
 	}
-	
-	
+
+
 
 	public int getCurPage() {
 		return curPage;
@@ -159,6 +159,6 @@ public class BoardPager {
 	public void setBlockEnd(int blockEnd) {
 		this.blockEnd = blockEnd;
 	}
-	
-	
+
+
 }
