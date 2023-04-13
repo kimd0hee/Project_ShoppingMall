@@ -22,7 +22,7 @@
 		<c:forEach var="row" items="${list }">
 		<tr>
 			<td>${row.user_idx }</td>
-			<td><a href="${path }/userView.do?user_id=${row.user_id}">${row.user_id }</a></td>
+			<td><a href="${path}/userView.do?user_id=${row.user_id}">${row.user_id }</a></td>
 			<td>${row.user_name }</td>
 			<td>${row.user_phone }</td>
 			<td>${row.user_joindate }</td>
