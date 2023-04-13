@@ -12,6 +12,7 @@ public class MemberboardVO {
 	private int viewcnt;
 	private String user_name;
 	private int recnt;
+	
 	public int getBno() {
 		return bno;
 	}
@@ -66,6 +67,23 @@ public class MemberboardVO {
 				+ ", regdate=" + regdate + ", viewcnt=" + viewcnt + ", user_name=" + user_name + ", recnt=" + recnt
 				+ "]";
 	}
+
+	public MemberboardVO() {
+		super();
+	}
+	public MemberboardVO(int bno, String title, String content, String writer, Timestamp regdate, int viewcnt,
+			String user_name, int recnt) {
+		super();
+		this.bno = bno;
+		this.title = title;
+		this.content = content;
+		this.writer = writer;
+		this.regdate = regdate;
+		this.viewcnt = viewcnt;
+		this.user_name = user_name;
+		this.recnt = recnt;
+	}
+
 	
 	
 }

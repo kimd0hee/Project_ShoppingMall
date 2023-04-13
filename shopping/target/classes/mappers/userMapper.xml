@@ -8,8 +8,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- 회원리스트 -->
   	<select id="userList" resultType="com.user.dto.UserVO">
-  		select user_idx, user_id, user_name, user_phone, user_joindate
-  		from user order by user_idx
+  		select user_id, user_name, user_phone, user_joindate
+  		from user order by user_id
   	</select>
   	
 <!-- 회원 가입 -->
@@ -47,7 +47,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 관리자 -->
    <select id="LoginCheck" resultType="String">
       SELECT user_name
-      FROM tbl_user
+      FROM user
       WHERE user_id = #{user_id} AND userPW = #{user_pw}
    </select>
 </mapper>
