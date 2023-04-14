@@ -11,7 +11,7 @@
     <script>
     //3. 댓글 수정
        $("#btnReplyUpdate").click(function() {
-          var datailReplytext=$("#detailReplytext").val();
+          var detailReplytext=$("#detailReplytext").val();
           $.ajax({
              type:"put",
              url:"${path}/updateReply/${vo.rno}",
@@ -58,7 +58,7 @@
 <body>
    댓글 번호 : ${vo.rno}<br>
    <textarea id="detailReplytext" rows="5" cols="82">${vo.replytext}</textarea>
-   <div style="$text-align:center;">
+   <div style="text-align:center;">
       <c:if test="${sessionScope.user_id==vo.replyer}">
          <button type="button" id="btnReplyUpdate">수정</button>
          <button type="button" id="btnReplyDelete">삭제</button>

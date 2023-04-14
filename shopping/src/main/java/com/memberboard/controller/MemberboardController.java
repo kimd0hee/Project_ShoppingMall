@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.memberboard.dto.MemberboardVO;
 import com.memberboard.service.BoardPager;
 import com.memberboard.service.MemberboardService;
+import com.reply.service.ReplyService;
 
 @Controller
 public class MemberboardController {
@@ -27,8 +28,8 @@ public class MemberboardController {
    @Inject
    MemberboardService service;
    
-   //@Inject // ReplyService 주입(ReplyService의 댓글의 갯수를 구하는 메서드 호출하기 위해)
-   //ReplyService replyservice;
+   @Inject   // ReplyService 주입(ReplyService의 댓글의 갯수를 구하는 메서드 호출하기 위해)
+   ReplyService replyservice;
 
    
    // 게시글 목록
@@ -93,7 +94,7 @@ public class MemberboardController {
       ModelAndView mav = new ModelAndView();
       mav.setViewName("memberboardView");
       // 댓글의 수를 맵에 저장 : 댓글이 존재하는 게시물의 삭제를 방지
-      //mav.addObject("count", replyservice.count(bno));
+      mav.addObject("count", replyservice.countReply(bno));
       mav.addObject("dto", service.memberboardView(bno));
       mav.addObject("curPage", curPage);
       mav.addObject("searchOption", searchOption);

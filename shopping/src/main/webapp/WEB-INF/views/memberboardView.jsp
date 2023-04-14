@@ -24,7 +24,7 @@
             document.form.content.focus();
             return;
          }         
-            
+   
          document.form.action="${path}/memberboardUpdate.do";
          document.form.submit();
          });
@@ -52,21 +52,20 @@
          
          // 댓글 입력
          $("#btnReply").click(function(){
-            // reply(); // 폼데이터 형식
-            replyJson(); // json 형식
+            reply(); // 폼데이터 형식
+
          });
-         //댓글 목록
-         // listReply("1") // 댓글 목록 불러오기
-         // listReply2() // json 방식
-         listReplyRest("1"); // rest 방식
+          //댓글 목록
+          listReply("1") // 댓글 목록 불러오기
+          listReplyRest("1"); // rest 방식
       });
-      // 댓글 입력 함수(폼 데이터 방식)
-      function reply(){
+          // 댓글 입력 함수(폼 데이터 방식)
+       function reply(){
          var replytext=$("#replytext").val();
          var bno="${dto.bno}"
          var secretReply = "n";
          if( $("#secretReply").is(":checked") ){
-            secretReply = "y";
+        	 secretReply = "y";
          }
          // 비밀댓글 파라미터 추가
          var param="replytext="+replytext+"&bno="+bno+"&secretReply="+secretReply;
@@ -74,6 +73,7 @@
             type: "post", url : "${path}/insertReply.do", data: param, success: function(){
                alert("댓글이 등록되었습니다");
                listReply("1");
+               listReplyRest("1");
             }
          });
       }
@@ -89,21 +89,20 @@
             secretReply = "y";
          }
          $.ajax({
-            type: "post", url: "${path}/insertRest.do", headers: { "Content-Type" : "application/json"
+            type: "post", url: "${path}/replyinsertRest.do", headers: { "Content-Type" : "application/json"
                }, dateType: "text", data: JSON.stringify({
-                  bno : bno, replytext : replytext, secretReply : secretReply
+                  bno : bno, replytext : replytext
                }),
                success: function(){
                   alert("댓글이 등록되었습니다.");
                   // 댓글 입력 완료 후 댓글 목록 불러오기 함수 호출
-                  // listReply("1"); // Controller 방식
-                  // listReply2(); // json 방식
-                  listReplyRest("1"); // rest 방식
+                   listReply("1"); // Controller 방식
+                   listReplyRest("1"); // rest 방식
                }
-         });
-         
+         });    
       }
-      // 댓글 목록 // Controller 방식
+      
+       // 댓글 목록 // Controller 방식
       function listReply(num){
          $.ajax({
             type: "get",
@@ -113,26 +112,6 @@
          });
       }
       
-      function listReply2(){
-         $.ajax({
-            type: "get",
-            // contentType: "application/json", // RestController 방식이여서 생략이 가능
-            url: "${path}replyListJson.do?bno=${dto.bno}",
-                  success: function(result){
-                     console.log(result);
-                     var output = "<table>";
-                     for(var i in result){
-                        output +="<tr>";
-                        output +="<td>"+result[i].user_name;
-                        output +="("+changeDate(result[i].regdate)+")<br>";
-                        output += result[i].replytext+"</td>";
-                        output += "<tr>";
-                     }
-                     output += "</table>";
-                     $("#listReply").html(output);
-            }
-         });
-      }
       // 댓글 목록 // 날짜 형식 변환 함수
       function changeDate(date){
          date = new Date(parseInt(date));
@@ -146,7 +125,7 @@
          return strDate;
       }
       
-      // 댓글 목록 // rest 방식
+        // 댓글 목록 // rest 방식
       function listReplyRest(num){
          $.ajax({
             type: "get", url: "${path}/replyList.do${dto.bno}/"+num,
@@ -221,11 +200,10 @@
       <!-- 비밀댓글 체크박스 -->
       <input type="checkbox" id="secretReply">비밀 댓글
       <button type="button" id="btnReply">댓글 작성</button>
-     
       </c:if>
    </div>
    
    <!-- 댓글 목록 출력 위치 -->
-   <div id="replyList"></div>
+   <div id="listReply"></div>
 </body>
 </html>

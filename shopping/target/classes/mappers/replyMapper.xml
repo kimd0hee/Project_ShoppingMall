@@ -7,13 +7,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <mapper namespace="reply">
    <!-- 1. 댓글 입력 -->
      <insert id="insertReply">
-        insert into reply (bno, replytext, replyer, secretReply) 
-        values (#{bno}, #{replytext}, #{replyer}, #{secretReply})
+		INSERT INTO reply (bno, replytext, replyer) VALUES (#{bno}, #{replytext}, #{replyer})
      </insert>
      
      <!-- 2. 댓글 목록 -->
-     <select id="replyList" resultType="com.reply.dto.ReplyVO">
-        SELECT rno, bno, replytext, replyer, r.regdate, r.updatedate, secretReply, m.user_name, 
+     <select id="listReply" resultType="com.reply.dto.ReplyVO">
+        SELECT rno, bno, replytext, replyer, r.regdate, r.updatedate, m.user_name, 
         (SELECT writer FROM board WHERE bno = r.bno) AS writer 
         FROM reply r LEFT JOIN user m on r.replyer = m.user_id 
         WHERE r.replyer = m.user_id AND bno=#{bno} 

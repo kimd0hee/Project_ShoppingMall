@@ -60,7 +60,7 @@ public class ReplyController {
    return entity;
 }
    // 2.1. 댓글목록
-   @RequestMapping("replyList.do")
+   @RequestMapping("listReply.do")
    public ModelAndView list(@RequestParam int bno,
 @RequestParam(defaultValue="1") int curPage, ModelAndView mav, HttpSession session) {
    //페이징 처리
@@ -107,7 +107,7 @@ public class ReplyController {
    List<ReplyVO> list = service.replyList(bno, start, end, session);
    // 뷰이름 지정
    mav.setViewName("replyList");
-   //뷰에 전달할 데이터 ㅂ지정
+   //뷰에 전달할 데이터 지정
    mav.addObject("list", list);
    mav.addObject("replyPager", replyPager);
    // replyList.jsp로 포워딩
