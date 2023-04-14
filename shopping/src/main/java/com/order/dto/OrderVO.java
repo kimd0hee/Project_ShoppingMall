@@ -1,6 +1,7 @@
 package com.order.dto;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 public class OrderVO implements Serializable{
@@ -15,10 +16,11 @@ public class OrderVO implements Serializable{
 	private String product_thumbnail;
 	private String product_info;
 	private String product_opt;
+	private String fullname;
 	
 	//주문자
-	private int user_idx;
 	private String user_id;
+	private String user_name;
 	private String user_address1;
 	private String user_address2;
 	private String user_address3;
@@ -33,6 +35,14 @@ public class OrderVO implements Serializable{
 	private String order_con;
 	private String order_message;
 	private int total_amount;
+	private Date date;
+	private int deliver_situ;
+	private Date billing_date;
+	private String cal_info;
+	
+	public OrderVO() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	public int getProduct_id() {
 		return product_id;
@@ -76,17 +86,23 @@ public class OrderVO implements Serializable{
 	public void setProduct_opt(String product_opt) {
 		this.product_opt = product_opt;
 	}
-	public int getUser_idx() {
-		return user_idx;
+	public String getFullname() {
+		return fullname;
 	}
-	public void setUser_idx(int user_idx) {
-		this.user_idx = user_idx;
+	public void setFullname(String fullname) {
+		this.fullname = fullname;
 	}
 	public String getUser_id() {
 		return user_id;
 	}
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
+	}
+	public String getUser_name() {
+		return user_name;
+	}
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
 	}
 	public String getUser_address1() {
 		return user_address1;
@@ -160,18 +176,47 @@ public class OrderVO implements Serializable{
 	public void setTotal_amount(int total_amount) {
 		this.total_amount = total_amount;
 	}
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	public int getDeliver_situ() {
+		return deliver_situ;
+	}
+	public void setDeliver_situ(int deliver_situ) {
+		this.deliver_situ = deliver_situ;
+	}
+	public Date getBilling_date() {
+		return billing_date;
+	}
+	public void setBilling_date(Date billing_date) {
+		this.billing_date = billing_date;
+	}
+	public String getCal_info() {
+		return cal_info;
+	}
+	public void setCal_info(String cal_info) {
+		this.cal_info = cal_info;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	
 	@Override
 	public String toString() {
 		return "OrderVO [product_id=" + product_id + ", product_name=" + product_name + ", product_price="
 				+ product_price + ", product_desc=" + product_desc + ", product_thumbnail=" + product_thumbnail
-				+ ", product_info=" + product_info + ", product_opt=" + product_opt + ", user_idx=" + user_idx
-				+ ", user_id=" + user_id + ", user_address1=" + user_address1 + ", user_address2=" + user_address2
-				+ ", user_address3=" + user_address3 + ", user_phone=" + user_phone + ", postcode=" + postcode
-				+ ", email=" + email + ", order_num=" + order_num + ", order_seq_num=" + order_seq_num + ", pay_time="
-				+ pay_time + ", order_con=" + order_con + ", order_message=" + order_message + ", total_amount="
-				+ total_amount + "]";
+				+ ", product_info=" + product_info + ", product_opt=" + product_opt + ", fullname=" + fullname
+				+ ", user_id=" + user_id + ", user_name=" + user_name + ", user_address1=" + user_address1
+				+ ", user_address2=" + user_address2 + ", user_address3=" + user_address3 + ", user_phone=" + user_phone
+				+ ", postcode=" + postcode + ", email=" + email + ", order_num=" + order_num + ", order_seq_num="
+				+ order_seq_num + ", pay_time=" + pay_time + ", order_con=" + order_con + ", order_message="
+				+ order_message + ", total_amount=" + total_amount + ", date=" + date + ", deliver_situ=" + deliver_situ
+				+ ", billing_date=" + billing_date + ", cal_info=" + cal_info + "]";
 	}
+	
 	
 	
 }

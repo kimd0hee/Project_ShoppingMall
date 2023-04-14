@@ -49,6 +49,7 @@ public class ProductVO {
    public String getProduct_info() {
 	return product_info;
    }
+
    public void setProduct_info(String product_info) {
 		this.product_info = product_info;
    }
@@ -58,5 +59,6 @@ public class ProductVO {
 				+ ", product_desc=" + product_desc + ", product_url=" + product_url + ", product_photo=" + product_photo
 				+ ", product_info=" + product_info + "]";
 	}
+
    
 }

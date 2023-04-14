@@ -20,7 +20,7 @@ public class UserVO {
 	private String user_grade;
 	private Timestamp user_update;
 	private String postcode;
-	
+
 	public int getUser_idx() {
 		return user_idx;
 	}

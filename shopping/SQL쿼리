@@ -88,6 +88,7 @@ CREATE TABLE `reply` (
    `updatedate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 );
 
+<<<<<<< HEAD
 create table admin (
  	admin_id varchar(50) not null,
  	admin_pw varchar(50) not null,
@@ -400,6 +401,35 @@ create table tbl_reply (
    userName varchar(50),
    regdata timestamp not null default current_timestamp() on update current_timestamp(),
    updatedata timestamp not null default current_timestamp() on update current_timestamp()
+=======
+CREATE TABLE `admin` (
+    `admin_id` varchar(50) NOT NULL PRIMARY KEY,
+    `admin_pw` varchar(50) not null,
+    `admin_name` varchar(50) not null,
+    `admin_email` varchar(100) default null,
+    `admin_joindate` timestamp not null default current_timestamp() ON UPDATE current_timestamp(),
+    `admin_update` timestamp not null default current_timestamp() ON UPDATE current_timestamp()
+    )ENGINE=INNODB default charset=utf8 collate=utf8_general_ci;
+ 
+ - user(회원)
+ 
+ CREATE TABLE `user` (
+   `user_idx`   int(10)   NOT NULL AUTO_INCREMENT PRIMARY KEY,
+   `user_id`   varchar(50)   NULL,
+   `user_pw`   varchar(50)   NULL,
+   `user_name`   varchar(50)   NULL,
+   `user_phone`   varchar(50)   NULL,
+   `user_birth`   date   NULL,
+   `user_email`   varchar(255)   NULL,
+   `user_joindate`   timestamp   NULL   DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+   `user_active`   varchar(1)   NULL,
+   `user_email_check`   varchar(1)   NULL,
+   `user_address1`   varchar(20)   NULL,
+   `user_address2`   varchar(50)   NULL,
+   `user_address3`   varchar(50)   NULL,
+   `user_grade`   varchar(5)   NULL,
+   `user_update`   timestamp   NULL  DEFAULT current_timestamp() ON UPDATE current_timestamp()
+>>>>>>> branch 'K.D.H' of https://github.com/kimd0hee/Project_ShoppingMall.git
 );
 <<<<<<< HEAD
 
@@ -431,12 +461,12 @@ REFERENCES product(product_id);
 - board(자유게시판)-
 
 CREATE TABLE board(
-   bno int(4) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-   title varchar(200) NOT NULL,
-   content varchar(2000),
-   writer varchar(50) NOT NULL,
-   regdate timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-   viewcnt int(4) DEFAULT 0
+   board_id int(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+   board_title varchar(200) NOT NULL,
+   board_content varchar(2000),
+   board_writer varchar(50) NOT NULL,
+   board_createdate timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+   board_viewcnt int(4) DEFAULT 0
 );
 
 - product (상품)

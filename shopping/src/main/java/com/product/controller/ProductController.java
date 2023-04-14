@@ -3,14 +3,12 @@ package com.product.controller;
 
 import java.io.File;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,12 +16,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.product.dto.ProductVO;
 import com.product.service.ProductService;
 
+
 @Controller
 public class ProductController {
 
    @Inject
    ProductService service;
-   @Value("#{uploadPath}")
+   @Resource(name="uploadPath")
    private String uploadPath;
 
 
@@ -35,7 +34,7 @@ public class ProductController {
       return mav;
    }
 
-   @RequestMapping("productDetail/{product_id}")
+   @RequestMapping("productDetail{product_id}")
    public ModelAndView detail(@PathVariable("product_id") int product_id, ModelAndView mav) {
       mav.setViewName("/productDetail");
       mav.addObject("vo", service.detailProduct(product_id));
@@ -47,32 +46,35 @@ public class ProductController {
       return "productWrite";
    }
 
-   @RequestMapping(value="productInsert.do", method=RequestMethod.POST)
-   public String insert(@ModelAttribute ProductVO vo, MultipartFile product_photo) {
-	  System.out.println("컨트롤러 작동");
+
+   @RequestMapping(value="productInsert.do")
+   public String insert(ProductVO vo, MultipartFile product_photo) {
+
       String filename = "";
 
-      if(product_photo != null && !product_photo.isEmpty()) {
+      if(!product_photo.isEmpty()) {
          filename = product_photo.getOriginalFilename();
-
-         System.out.println("상품 인서트 예외처리 전");
+         System.out.print(product_photo.getOriginalFilename());
+         //System.out.println("상품 인서트 예외처리 전");
+         
+         String path = "C:\\Users\\newtec\\Documents\\workspace-sts-3.9.18.RELEASE\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\shopping\\resources\\img\\product\\";
+         
          try {
-            new File(uploadPath).mkdirs();
-            product_photo.transferTo(new File(uploadPath+filename));
+            new File(path).mkdirs();
+            product_photo.transferTo(new File(path+filename));
          }catch(Exception e) {
             e.printStackTrace();
          }
          
          vo.setProduct_url(filename);
-         System.out.println("상품 인서트 예외처리 후");
       }
-      System.out.println(vo);
+
       service.insertProduct(vo);
 
       return "redirect:/productList.do";
    }
 
-   @RequestMapping("productEdit/{product_id}")
+   @RequestMapping("productEdit{product_id}")
    public ModelAndView edit(@PathVariable("product_id") int product_id, ModelAndView mav) {
       mav.setViewName("/productEdit");
       mav.addObject("vo", service.detailProduct(product_id));
@@ -87,10 +89,12 @@ public class ProductController {
       if(!product_photo.isEmpty()) {
     	  
          filename = product_photo.getOriginalFilename();
+         
+         String path = "C:\\Users\\newtec\\Documents\\workspace-sts-3.9.18.RELEASE\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\shopping\\resources\\img\\product\\";
 
          try {
-            new File(uploadPath).mkdirs();
-            
+            new File(path).mkdirs();
+            product_photo.transferTo(new File(path+filename));
          }catch(Exception e) {
             e.printStackTrace();
          }
@@ -109,9 +113,11 @@ public class ProductController {
    @RequestMapping("productDelete.do")
    public String delete(@RequestParam int product_id) {
      String filename = service.fileInfo(product_id);
-     System.out.println("상품 삭제 컨트롤러 작동");
+     //System.out.println("상품 삭제 컨트롤러 작동");
+     String path = "C:\\Users\\newtec\\Documents\\workspace-sts-3.9.18.RELEASE\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\shopping\\resources\\img\\product\\";
+     
       if(filename != null) {
-         File file = new File(uploadPath+filename);
+         File file = new File(path+filename);
          System.out.println(filename);
          if(file.exists()) {
             file.delete();
@@ -119,6 +125,15 @@ public class ProductController {
       }
 
       service.deleteProduct(product_id);
-      return "redirct:/productList.do";
+      return "redirect:/productList.do";
    }
+   
+   @RequestMapping("test.do")
+   public String test(ProductVO vo) {
+	   System.out.print(vo);
+	   System.out.print("good");
+	   
+	   return "productList";
+   }
+   
 }

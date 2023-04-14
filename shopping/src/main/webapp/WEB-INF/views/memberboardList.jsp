@@ -9,19 +9,22 @@
 <%@ include file="include/menu.jsp" %>
 
 <script>
-		$(document).ready(function(){
-			$("#btnWrite").click(function(){
-				// 페이지 주소 변경(이동)
-				location.href = "${path}/writeMemberboard.do";
-			});
-		});
-		// 원하는 페이지로 이동시 검색조건, 키워드 값을 유지
-		function list(page){
-			location.href="${path}/memeberboardList.do?curPage="page+"&searchOption-${map.searchOption}"+ "&keyword="${map.keyword}";
-		}
+
+   $(document).ready(function(){
+      $("#btnWrite").click(function(){
+         // 페이지 주소 변경(이동)
+         location.href = "${path}/memberboardWrite.do";
+      });
+   });
+      // 원하는 페이지로 이동시 검색조건, 키워드 값을 유지
+   function list(page){
+      location.href="${path}/memeberboardList.do?curPage="+page+"&searchOption-${map.searchOption}"+"&keyword=${map.keyword}";
+   }
+
 </script>
 </head>
 <body>
+
 	<h2>회원 게시글 목록</h2>
 	<form name="form" method="post" action="${path}/memberboardList.do">
 		<select name="searchOption">
@@ -115,6 +118,7 @@
 			</td>
 		</tr>
 	</table>
+
 </body>
 <%@ include file="include/footer.jsp" %>
 </html>

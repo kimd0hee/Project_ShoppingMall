@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>게시글 작성</title>
 <%@ include file="include/header.jsp" %>
+
 	<script>
 		// 게시글 수정
 		$(doxument).ready(function(){
@@ -177,8 +178,12 @@
 		visibility: hidden;
 		}
 	</style>
+
+<%@ include file="include/menu.jsp" %>
+
 </head>
 <body>
+
 <%@ include file="include/menu.jsp" %>
 	<h2>게시글 보기</h2>
 	<form name="form" method="post">
@@ -227,6 +232,7 @@
 	
 	<!-- 댓글 목록 출력 위치 -->
 	<div id="listReply"></div>
+
 </body>
 <%@ include file="include/footer.jsp" %>
 </html>

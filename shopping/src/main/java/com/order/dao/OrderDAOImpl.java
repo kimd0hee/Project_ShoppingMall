@@ -13,6 +13,9 @@ public class OrderDAOImpl {
 	
 	@Inject
 	SqlSession sqlsession;
+	
+	String nameSpace = "order";
+	
 	@Autowired
 	public void insert(OrderVO orderVO) {
 		

@@ -17,7 +17,7 @@ import com.user.service.UserService;
 
 @Controller
 public class OrderController {
-	@RequestMapping(value = "/insert", method= RequestMethod.POST)
+	@RequestMapping(value = "cartlist.do", method= RequestMethod.POST)
 	public String orderInsert(ProductVO productVO, HttpSession session, Model model,
 			@ModelAttribute("product_opt") String product_opt, @ModelAttribute("order_con")String order_con) {
 		
@@ -30,7 +30,7 @@ public class OrderController {
 		model.addAttribute("order_con", order_con); //배송상태
 		model.addAttribute("product_opt", product_opt); //제품 옵션 
 		
-		return "order/orderconfirm";
+		return "ordertest";
 		
 	}
 	
@@ -40,14 +40,15 @@ public class OrderController {
 			@ModelAttribute("order_con") String order_con,
 			@ModelAttribute("order_message") String order_message,
 			@ModelAttribute("total_amount") String totalamount,
+			@ModelAttribute("cal_info") String cal_info,
 			@ModelAttribute("detailAddress") String detailAddress) {
 		
 		OrderVO orderVO = new OrderVO();
 	
 		productVO = ProductService.read(productVO.getProduct_id());
 		
-		orderVO.setUser_idx(vo.getUser_idx());
 		orderVO.setUser_id(vo.getUser_id());
+		orderVO.setUser_name(vo.getUser_name());
 		orderVO.setUser_address1(vo.getUser_address1() + " " + detailAddress);
 		orderVO.setUser_address2(vo.getUser_address2() + " " + detailAddress);
 		orderVO.setUser_address3(vo.getUser_address3() + " " + detailAddress);
@@ -62,18 +63,18 @@ public class OrderController {
 		orderVO.setProduct_desc(productVO.getProduct_desc());
 		orderVO.setProduct_info(productVO.getProduct_info());
 		
-		orderVO.setProduct_opt(product_opt);
-		orderVO.setOrder_con(order_con);
-		orderVO.setOrder_message(order_message);
+//		orderVO.setProduct_opt(product_opt);
+//		orderVO.setOrder_con(order_con);
+//		orderVO.setOrder_message(order_message);
 		
-		int total_amount = Integer.parseInt(totalamount);
-		orderVO.setTotal_amount(total_amount);
+//		int total_amount = Integer.parseInt(totalamount);
+//		orderVO.setTotal_amount(total_amount);
 
 		
 		OrderService.insert(orderVO);
-		model.addAttribute("order", orderVO);
+		model.addAttribute("orderVO", orderVO);
 	
-		return "order/orderResult";
+		return "orderResult";
 
 	}
 

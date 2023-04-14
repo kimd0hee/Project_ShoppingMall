@@ -5,12 +5,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="order">
 <insert id="insert">
-		INSERT INTO setOrder (order_num, order_seq_num, product_id, product_name, product_price, order_con, product_desc, product_opt, 
-		product_thumnail, user_idx, user_id, user_email, user_phone, user_address1, user_address2, user_address3, postcode, order_message, total_amount)
+		INSERT INTO setorder (order_num, order_seq_num, product_id, product_name, product_price, order_con, product_desc, product_opt, 
+		fullname, user_id, user_name, email, user_phone, user_address1, user_address2, user_address3, postcode, order_message, deliver_situ, total_mount)
 		VALUES (#{order_num}, order_seq_num.nextval, #{product_id}, #{product_name}, 
-		#{product_price}, #{order_con}, #{product_desc}, #{product_opt}, #{product_thumnail}, #{user_idx}, #{user_id}, 
-		#{user_email}, #{user_phone}, #{user_address1}, #{user_address2}, #{user_address3}, #{postcode}, #{order_message}, #{total_amount})
-		
+		#{product_price}, #{order_con}, #{product_desc}, #{product_opt}, #{fullname}, #{user_id}, #{user_name}, 
+		#{email}, #{user_phone}, #{user_address1}, #{user_address2}, #{user_address3}, #{postcode}, #{order_message}, #{deliver_situ}, #{total_amount})
 		<selectKey resultType="integer" keyProperty="order_seq_num" order="BEFORE">
 			SELECT order_seq_num.nextval FROM dual
 		</selectKey>

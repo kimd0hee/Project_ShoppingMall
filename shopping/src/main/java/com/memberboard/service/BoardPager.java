@@ -3,10 +3,10 @@ package com.memberboard.service;
 public class BoardPager {
 	
 	// 페이지당 게시물 수
+
 	public static final int PAGE_SCALE = 10;
 	// 화면당 페이지 수
 	public static final int BLOCK_SCALE = 10;
-
 	
 	private int curPage; // 현재 페이지
 	private int prevPage; // 이전 페이지
@@ -32,6 +32,7 @@ public class BoardPager {
 		setPageRange(); 
 		setTotBlock(curPage); // 전체 페이지 블록 갯수 계산
 		setBlockRange(); // 페이지 블록의 시작, 끝 번호 계산
+
 	}
 
 	public void setBlockRange() {
@@ -40,8 +41,10 @@ public class BoardPager {
 		// *현재 페이지 블록 시작과 끝 번호 계산
 		blockBegin = (curBlock -1)*BLOCK_SCALE+1;
 		// 페이지 블로그이 끝 번호 
+
 		blockEnd = blockBegin+BLOCK_SCALE-1;
 		// *마지막 블록이 범위를 초과하지 않도록 계산
+
 		if(blockEnd > totPage) blockEnd = totPage;
 		// *이전을 눌렀을때 이동할 페이지 번호
 		prevPage = (curPage == 1)? 1:(curBlock-1)*BLOCK_SCALE;

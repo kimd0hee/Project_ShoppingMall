@@ -13,7 +13,6 @@
 <input type="button" value="회원등록" onclick="location.href='${path}/writeUser.do'">
 	<table border="1" width="700px">
 		<tr>
-			<th>회원번호</th>
 			<th>아이디</th>
 			<th>이름</th>
 			<th>전화번호</th>
