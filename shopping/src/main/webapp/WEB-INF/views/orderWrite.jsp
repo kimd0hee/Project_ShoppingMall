@@ -23,9 +23,11 @@
         <c:forEach var="row" items="${cartList}">
             <tr>
                 <td>${row.product_name}</td>
-                <td style="width:80px" align="right"><fmt:formatNumber pattern="###,###,###" value="${row.product_price}"/></td>
+                <td style="width:80px" align="right">
+                <fmt:formatNumber pattern="###,###,###" value="${row.product_price}"/></td>
                 <td>${row.amount}</td>
-                <td style="width:100px" align="right"><fmt:formatNumber pattern="###,###,###" value="${row.money}"/></td>
+                <td style="width:100px" align="right">
+                <fmt:formatNumber pattern="###,###,###" value="${row.money}"/></td>
             </tr>
         </c:forEach>
         <tr>

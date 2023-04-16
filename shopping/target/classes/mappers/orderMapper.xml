@@ -28,18 +28,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     )
 	</insert>	
 	
-	<!-- 주문 상품 목록(회원용) -->
-	<select id="orderByUserId" parameterType="String" resultType="com.order.dto.OrderVO">
-	  SELECT order_date, receive_name, order_quantity, order_price, order_memo FROM orders WHERE user_id = #{user_id}
-	</select>
-	
-	<!-- 주문 상품 목록(관리자용) -->
+	<!-- 주문 상품 목록 -->
 	<select id="orderList" parameterType="String" resultType="com.order.dto.OrderVO">
 	  SELECT order_id, product_id, user_id, order_quantity, order_price, order_date FROM orders
 	</select>
 	
 	<select id="orderDetail" resultType="com.order.dto.OrderVO">
-	  SELECT * FROM orders WHERE order_id = #{order_id}
+	  select order_id, product_id, user_id, receive_name, receive_phone, order_date,
+  		order_addr1,order_addr2,order_addr3, order_quantity,order_price, order_memo
+  		from orders where order_id = #{order_id}
 	</select>
 	
 	<!-- 주문 수정 -->
@@ -55,7 +52,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<!-- 주문 삭제 -->
-	<delete id="deleteOrder" parameterType="int">
+	<delete id="deleteOrder">
 	  DELETE FROM orders
 	  WHERE order_id = #{order_id}
 	</delete>

@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.cart.dto.CartVO;
 import com.order.dto.OrderVO;
 import com.order.service.OrderService;
+import com.user.dto.UserVO;
 
 @Controller
 @RequestMapping("/")
@@ -67,17 +68,16 @@ public class OrderController {
 	   mav.addObject("vo", orderService.orderDetail(order_id));
 	   return mav;
 	}
-
+	
+	@RequestMapping("orderUpdate.do")
+	public String orderUpdate(@ModelAttribute OrderVO vo, Model model) throws Exception {
+			orderService.updateOrder(vo);
+			return "redirect:/orderList.do";
+	}
     
-    @PostMapping("orderUpdate/{order_id}")
-    public String orderUpdate(OrderVO vo) throws Exception {
-        orderService.updateOrder(vo);
-        return "redirect:/orderList";
-    }
-    
-    @PostMapping("orderDelete/{order_id}")
+    @PostMapping("orderDelete.do")
     public String orderDelete(@PathVariable int order_id) throws Exception {
         orderService.deleteOrder(order_id);
-        return "redirect:/orderList";
+        return "redirect:/orderList.do";
     }
 }

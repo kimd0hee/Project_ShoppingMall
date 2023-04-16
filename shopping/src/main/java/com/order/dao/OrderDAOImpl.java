@@ -31,7 +31,7 @@ public class OrderDAOImpl implements OrderDAO {
         return sqlSession.selectList(NAMESPACE + ".orderByUserId", user_id);
     }
     
-    // 관리자용 주문 목록 조회
+    // 주문 목록 조회
     @Override
     public List<OrderVO> orderList() throws Exception {
         return sqlSession.selectList(NAMESPACE + ".orderList");
