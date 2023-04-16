@@ -127,13 +127,6 @@ public class ProductController {
       service.deleteProduct(product_id);
       return "redirect:/productList.do";
    }
-   
-   @RequestMapping("test.do")
-   public String test(ProductVO vo) {
-	   System.out.print(vo);
-	   System.out.print("good");
-	   
-	   return "productList";
-   }
+
    
 }

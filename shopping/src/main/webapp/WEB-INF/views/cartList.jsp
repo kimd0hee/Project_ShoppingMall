@@ -64,13 +64,24 @@
                   <input type="hidden" name="count" value="${map.count}" >
                   <button type="submit" id="btnUpdate">수정</button>
             </form>
+				<button type="submit" id="btnOrder">주문하기</button>
          </c:otherwise>
       </c:choose>
       <button type="button" id="btnList">상품목록</button>
 
 </body>
    
-
+<script>
+    $(document).ready(function() {
+        $("#btnOrder").click(function() {
+            // 주문페이지 URL 지정
+            var orderPageUrl = "${path}/orderWrite.do";
+            
+            // 주문페이지로 이동
+            window.location.href = orderPageUrl;
+        });
+    });
+</script>
 
 <%@ include file="include/footer.jsp" %>
 </html>

@@ -7,9 +7,6 @@
 <head>
 	<title>옷사줘</title>
     <%@ include file="include/header.jsp" %>
-    
-    
-    
 </head>
 
 <body>
