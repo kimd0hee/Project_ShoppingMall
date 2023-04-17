@@ -55,7 +55,7 @@
                   </c:forEach>
                   <tr>
                      <td colspan="5" align="right">
-                        장바구니 금액 합계 : <fmt:formatNumber pattern="###,###,###" value="${map.sumMoneyCart}"/><br>
+                        장바구니 금액 합계 : <fmt:formatNumber pattern="###,###,###" value="${map.sumMoney}"/><br>
                         배송료 : ${map.fee}<br>
                         전체 주문금액 : <fmt:formatNumber pattern="###,###,###" value="${map.allSum}"/>
                      </td>

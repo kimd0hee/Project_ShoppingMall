@@ -13,32 +13,49 @@
 <body>
     <h2>주문 페이지</h2>
     <h3>주문 내역</h3>
-    <table border="1">
-        <tr>
-            <th>상품명</th>
-            <th>단가</th>
-            <th>수량</th>
-            <th>금액</th>
-        </tr>
-        <c:forEach var="row" items="${cartList}">
+    <form name="form1" id="form1" method="post" action=${path}/cartUpdate.do>
+               <table border="1">
+                  <tr>
+                     <th>상품명</th>
+                     <th>단가</th>
+                     <th>수량</th>
+                     <th>금액</th>
+                     <th>삭제</th>
+                  </tr>
+                  <c:forEach var="row" items="${cartList}" varStatus="i">
+                  <tr>
+                     <td>
+                        ${row.product_name}
+                     </td>
+                     <td style="width:80px" align="right">
+                        <fmt:formatNumber pattern="###,###,###" value="${row.product_price}"/>
+                     </td>
+                     <td>
+                        <input type="number" style="width:40px" name="amount" value="${row.amount}" min="1">
+                        <input type="hidden" name="product_id" value="${row.product_id}">
+                     </td>
+                     <td style="width:100px" align="right">
+                        <fmt:formatNumber pattern="###,###,###" value="${row.money}"/>
+                     </td>
+                     <td>
+                         <a href="${path}/cartDelete.do?cart_id=${row.cart_id}">삭제</a>
+                     </td>
+                  </tr>                  
+                  </c:forEach>
+               </table>
+            </form>
+           
             <tr>
-                <td>${row.product_name}</td>
-                <td style="width:80px" align="right">
-                <fmt:formatNumber pattern="###,###,###" value="${row.product_price}"/></td>
-                <td>${row.amount}</td>
-                <td style="width:100px" align="right">
-                <fmt:formatNumber pattern="###,###,###" value="${row.money}"/></td>
-            </tr>
-        </c:forEach>
-        <tr>
-            <td colspan="4" align="right">총 주문 금액 : <fmt:formatNumber pattern="###,###,###" value="${map.allSum}"/></td>
-        </tr>
-    </table>
+                <td colspan="5" align="right">
+                    주문 금액 합계 : <fmt:formatNumber pattern="###,###,###" value="${map.sumMoney}"/><br>
+                    배송료 : ${map.fee}<br>
+                    전체 주문금액 : <fmt:formatNumber pattern="###,###,###" value="${map.allSum}"/>
+                 </td>
+           </tr>
     <hr>
     <h3>주문자 정보 입력</h3>
     <form name="orderForm" id="orderForm" method="post" action="${path}/orderInsert.do">
         <table>
-			<input type="hidden" name="order_id">
             <tr>
                 <td>주문자 이름:</td>
                 <td><input type="text" name="receive_name"></td>

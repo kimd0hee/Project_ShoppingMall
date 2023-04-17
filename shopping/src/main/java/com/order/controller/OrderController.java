@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -15,10 +14,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cart.dto.CartVO;
+import com.product.dto.ProductVO;
+import com.cart.service.CartService;
 import com.order.dto.OrderVO;
 import com.order.service.OrderService;
 import com.user.dto.UserVO;
@@ -30,6 +30,10 @@ public class OrderController {
     @Inject
     private OrderService orderService;
     
+    @Inject
+    private CartService cartService;
+
+    
     @RequestMapping("orderList.do")
     public ModelAndView orderList() throws Exception {
         List<OrderVO> orderList = orderService.orderList();
@@ -39,28 +43,17 @@ public class OrderController {
     }
     
 	@RequestMapping(value="orderWrite.do",method=RequestMethod.GET)
-	public String orderWrite() {
-		return "orderWrite";
+	public ModelAndView orderWrite(HttpSession session) throws Exception {
+		
+		ModelAndView mav = new ModelAndView();
+        String user_id = (String) session.getAttribute("user_id");
+        List<CartVO> cartList = cartService.cartList(user_id);
+        mav.addObject("cartList", cartList);
+        mav.setViewName("orderWrite");
+        
+        return mav;
 	}
     
-	@RequestMapping(value = "orderInsert.do", method = RequestMethod.POST)
-    public String orderInsert(@ModelAttribute("order") OrderVO orderVO, HttpServletRequest request) throws Exception {
-		System.out.println("실행");
-        // 세션에서 장바구니 정보 가져오기
-        HttpSession session = request.getSession();
-        List<CartVO> cartList = (List<CartVO>) session.getAttribute("cartList");
-        Map<String, Object> cartMap = new HashMap<String, Object>();
-        cartMap.put("cartList", cartList);
-
-        // 주문자 정보 저장
-        orderVO.setOrder_id((int) session.getAttribute("userId")); // 세션에서 아이디 가져오기
-        orderService.insertOrder(orderVO, cartMap);
-
-        // 세션에서 장바구니 정보 제거
-        session.removeAttribute("cartList");
-
-        return "redirect:/orderDetail.do";
-    }
 	
 	@RequestMapping("orderDetail{order_id}")
 	public ModelAndView detail(@PathVariable("order_id") int order_id, ModelAndView mav) throws Exception {
@@ -68,6 +61,20 @@ public class OrderController {
 	   mav.addObject("vo", orderService.orderDetail(order_id));
 	   return mav;
 	}
+
+    // 주문 처리
+    @RequestMapping(value = "orderInsert.do", method = RequestMethod.POST)
+    public String orderInsert(@ModelAttribute OrderVO vo, HttpSession session) throws Exception {
+
+    	String user_id = (String) session.getAttribute("user_id");
+    	vo.setUser_id(user_id);
+    	
+    	orderService.insertOrder(vo);
+    	System.out.println(vo);
+		return null;
+
+    }
+		
 	
 	@RequestMapping("orderUpdate.do")
 	public String orderUpdate(@ModelAttribute OrderVO vo, Model model) throws Exception {

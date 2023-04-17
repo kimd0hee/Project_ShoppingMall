@@ -30,7 +30,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 회원정보 수정 -->
   	<update id="updateUser">
   		update user set 
-  			user_name=#{user_name}, user_phone=#{user_phone}, user_email=#{user_email}, user_birth=#{user_birth}, user_joindate=#{user_joindate},
+  			user_name=#{user_name}, user_phone=#{user_phone}, user_email=#{user_email}, user_birth=#{user_birth}, user_joindate=user_joindate,
   			user_update=SYSDATE() where user_id=#{user_id}
   	</update>
   	

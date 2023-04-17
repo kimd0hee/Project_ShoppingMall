@@ -24,7 +24,6 @@ public class CartServiceImpl implements CartService {
    //2. 장바구니 목록
    @Override
    public List<CartVO> cartList(String user_id){
-      System.out.println(user_id);
       return dao.cartList(user_id);
    }
    //3. 장바구니 삭제

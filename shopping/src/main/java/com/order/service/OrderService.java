@@ -8,7 +8,7 @@ import com.order.dto.OrderVO;
 
 public interface OrderService {
 	
-	public void insertOrder(OrderVO vo, Map<String, Object> cartMap) throws Exception;
+	public void insertOrder(OrderVO vo) throws Exception;
 	
 	public List<OrderVO> orderByUserId(String user_id) throws Exception;
 	

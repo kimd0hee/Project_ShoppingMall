@@ -57,7 +57,6 @@ public class CartController {
       //장바구니 전체 금액에 따라 배송비 구분
       // 배송료(10만원이상 ==> 무료, 미만=> 2500원)
       int fee = sumMoney >= 100000 ? 0 : 2500;
-      System.out.println(list.size());
 
       map.put("list", list); //장바구니 정보를 map에 저장
       map.put("count", list.size()); //장바구니 상품의 유무

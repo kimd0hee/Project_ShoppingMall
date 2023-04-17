@@ -7,7 +7,7 @@ import com.order.dto.OrderVO;
 
 public interface OrderDAO {
     // 주문 정보 저장
-	public void insertOrder(OrderVO vo, Map<String, Object> cartMap) throws Exception;
+	public void insertOrder(OrderVO vo) throws Exception;
     
     // 회원의 주문 목록 조회
     public List<OrderVO> orderByUserId(String user_id) throws Exception;

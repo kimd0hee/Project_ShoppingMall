@@ -21,7 +21,7 @@ public class OrderDAOImpl implements OrderDAO {
     
     // 주문 정보 저장
     @Override
-    public void insertOrder(OrderVO vo, Map<String, Object> cartMap) throws Exception {
+    public void insertOrder(OrderVO vo) throws Exception {
         sqlSession.insert(NAMESPACE + ".insertOrder", vo);
     }
     

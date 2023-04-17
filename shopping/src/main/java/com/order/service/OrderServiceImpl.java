@@ -19,9 +19,9 @@ public class OrderServiceImpl implements OrderService {
 	private OrderDAO orderDAO;
 	
 	@Override
-    public void insertOrder(OrderVO vo, Map<String, Object> cartMap) throws Exception {
+    public void insertOrder(OrderVO vo) throws Exception {
 		 // 주문 정보 저장
-        orderDAO.insertOrder(vo, cartMap);
+        orderDAO.insertOrder(vo);
     }
 
 	@Override

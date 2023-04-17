@@ -65,7 +65,7 @@ public class UserController {
 		}else {
 			UserVO uVo = userService.viewUser(vo.getUser_id());
 
-			vo.setUser_joindate(uVo.getUser_joindate());
+			//vo.setUser_joindate(uVo.getUser_joindate());
 			vo.setUser_update(uVo.getUser_update());
 
 			model.addAttribute("dto", vo);
