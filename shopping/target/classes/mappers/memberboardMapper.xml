@@ -3,7 +3,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-  <mapper namespace="memberboard">
+   <mapper namespace="memberboard">
    <!-- 게시글 전체 조회 -->
    <select id="memberboardList" resultType="com.memberboard.dto.MemberboardVO">
       SELECT b.bno, b.title, b.content, b.regdate, b.viewcnt, m.user_name,
