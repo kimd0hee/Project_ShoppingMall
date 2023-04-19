@@ -18,13 +18,13 @@ public class ReplyServiceImpl implements ReplyService {
    ReplyDAO dao;
 
    @Override
-   public void createReply(ReplyVO vo) {
-      dao.createReply(vo);
+   public void create(ReplyVO vo) {
+      dao.create(vo);
    }
 
    @Override
-   public List<ReplyVO> replyList(Integer bno, int start, int end, HttpSession session) {
-      List<ReplyVO> items = dao.replyList(bno, start, end);
+   public List<ReplyVO> list(Integer bno, int start, int end, HttpSession session) {
+      List<ReplyVO> items = dao.list(bno, start, end);
       String user_id = (String) session.getAttribute("user_id");
       for(ReplyVO vo : items) {
          if(vo.getSecretReply().equals("y")) {
@@ -43,24 +43,24 @@ public class ReplyServiceImpl implements ReplyService {
    }
 
    @Override
-   public ReplyVO detailReply(Integer rno) {
-      return dao.detailReply(rno);
+   public ReplyVO detail(Integer rno) {
+      return dao.detail(rno);
    }
 
    @Override
-   public void updateReply(ReplyVO vo) {
-      dao.updateReply(vo);
+   public void update(ReplyVO vo) {
+      dao.update(vo);
    }
 
    @Override
-   public void deleteReply(Integer rno) {
-      dao.deleteReply(rno);
+   public void delete(Integer rno) {
+      dao.delete(rno);
 
    }
 
    @Override
-   public int countReply(Integer bno) {
-      return dao.countReply(bno);
+   public int count(Integer bno) {
+      return dao.count(bno);
    }
 
 }

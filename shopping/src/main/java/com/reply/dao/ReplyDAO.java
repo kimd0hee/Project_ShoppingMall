@@ -6,16 +6,16 @@ import com.reply.dto.ReplyVO;
 
 public interface ReplyDAO {
 
-   public void createReply(ReplyVO vo);
+   public void create(ReplyVO vo);
 
-   public List<ReplyVO> replyList(Integer bno, int start, int end);
+   public List<ReplyVO> list(Integer bno, int start, int end);
 
-   public ReplyVO detailReply(Integer rno);
+   public ReplyVO detail(Integer rno);
 
-   public void updateReply(ReplyVO vo);
+   public void update(ReplyVO vo);
 
-   public void deleteReply(Integer rno);
+   public void delete(Integer rno);
 
-   public int countReply(Integer bno);
+   public int count(Integer bno);
 
 }

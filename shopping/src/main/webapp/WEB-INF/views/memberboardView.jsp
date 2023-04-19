@@ -24,7 +24,6 @@
             document.form.content.focus();
             return;
          }         
-<<<<<<< HEAD
    
          document.form.action="${path}/memberboardUpdate.do";
          document.form.submit();
@@ -127,7 +126,6 @@
       }
       
         // 댓글 목록 // rest 방식
-=======
             
          document.form.action="${path}/memberboardUpdate.do";
          document.form.submit();
@@ -251,7 +249,7 @@
       }
       
       // 댓글 목록 // rest 방식
->>>>>>> branch 'K.D.H' of https://github.com/kimd0hee/Project_ShoppingMall.git
+
       function listReplyRest(num){
          $.ajax({
             type: "get", url: "${path}/replyList.do${dto.bno}/"+num,
@@ -326,20 +324,13 @@
       <!-- 비밀댓글 체크박스 -->
       <input type="checkbox" id="secretReply">비밀 댓글
       <button type="button" id="btnReply">댓글 작성</button>
-<<<<<<< HEAD
+
       </c:if>
    </div>
    
    <!-- 댓글 목록 출력 위치 -->
    <div id="listReply"></div>
-=======
-     
-      </c:if>
-   </div>
    
-   <!-- 댓글 목록 출력 위치 -->
-   <div id="replyList"></div>
->>>>>>> branch 'K.D.H' of https://github.com/kimd0hee/Project_ShoppingMall.git
 </body>
 <%@ include file="include/footer.jsp" %>
 </html>
