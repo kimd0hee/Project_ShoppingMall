@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.product.dto.ProductVO;
 import com.product.service.ProductService;
 
+
 @Controller
 public class ProductController {
 
@@ -45,9 +46,10 @@ public class ProductController {
       return "productWrite";
    }
 
+
    @RequestMapping(value="productInsert.do")
    public String insert(ProductVO vo, MultipartFile product_photo) {
-	  //System.out.println("컨트롤러 작동");
+
       String filename = "";
 
       if(!product_photo.isEmpty()) {
@@ -65,9 +67,8 @@ public class ProductController {
          }
          
          vo.setProduct_url(filename);
-        // System.out.println("상품 인서트 예외처리 후");
       }
-      //System.out.println(vo);
+
       service.insertProduct(vo);
 
       return "redirect:/productList.do";
@@ -126,4 +127,6 @@ public class ProductController {
       service.deleteProduct(product_id);
       return "redirect:/productList.do";
    }
+
+   
 }

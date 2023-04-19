@@ -66,6 +66,24 @@ public class MainController {
 	public String cartList(Model model) {
 		return "cartList";
 	}
+	
+	//orderList
+		@RequestMapping(value = "orderList", method = RequestMethod.GET)
+		public String orderList(Model model) {
+			return "orderList";
+		}
+		
+	//orderWrite
+		@RequestMapping(value = "orderWrite", method = RequestMethod.GET)
+		public String orderWrite(Model model) {
+			return "orderWrite";
+		}	
+		
+	//orderDetail
+		@RequestMapping(value = "orderDetail", method = RequestMethod.GET)
+		public String orderDetail(Model model) {
+			return "orderDetail";
+		}
 
 }
 

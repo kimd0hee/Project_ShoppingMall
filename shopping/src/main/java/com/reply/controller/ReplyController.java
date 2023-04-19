@@ -60,6 +60,7 @@ public class ReplyController {
    return entity;
 }
    // 2.1. 댓글목록
+<<<<<<< HEAD
    @RequestMapping("listReply.do")
    public ModelAndView list(@RequestParam int bno,
 @RequestParam(defaultValue="1") int curPage, ModelAndView mav, HttpSession session) {
@@ -108,6 +109,56 @@ public class ReplyController {
    // 뷰이름 지정
    mav.setViewName("replyList");
    //뷰에 전달할 데이터 지정
+=======
+   @RequestMapping("replyList.do")
+   public ModelAndView list(@RequestParam int bno,
+@RequestParam(defaultValue="1") int curPage, ModelAndView mav, HttpSession session) {
+   //페이징 처리
+   int count = service.countReply(bno); //댓글 개수
+   ReplyPager replyPager = new ReplyPager(count, curPage);
+   // 현재 페이지의 페이징 시작 번호
+   int start = replyPager.getPageBegin();
+   // 현재 페이지의 페이징 끝 번호
+   int end = replyPager.getPageEnd();
+   List<ReplyVO> list = service.replyList(bno, start, end, session);
+   //뷰 이름 지정
+   mav.setViewName("replyList");
+   //뷰에 전달할 데이터 지정
+   mav.addObject("list", list);
+   mav.addObject("replyPager", replyPager);
+   // replyList.jsp로 포워딩
+   return mav;
+}
+   //2_2. 댓글 목록
+   @RequestMapping("listJson.do")
+   @ResponseBody //리턴 데이트를 json으로 변환
+   public List<ReplyVO> listJson(@RequestParam int bno,
+@RequestParam(defaultValue="1") int curPage, HttpSession session) {
+   int count = service.countReply(bno); //댓글 갯수
+   ReplyPager pager = new ReplyPager(count, curPage);
+   // 현재 페이지의 페이징 싲가 번호
+   int start = pager.getPageBegin();
+   //현재 페이지의 페이징 끝 번호
+   int end = pager.getPageEnd();
+   List<ReplyVO> list = service.replyList(bno, start, end, session);
+   // list를 리턴
+   return list;
+}
+   // 2_3. 댓글 목록
+   @RequestMapping(value="list/{bno}/{curPage}", method=RequestMethod.GET)
+   public ModelAndView replyList(@PathVariable("bno") int bno, @PathVariable int curPage, ModelAndView mav, HttpSession session) {
+      //페이징 처리
+   int count = service.countReply(bno); // 댓글 갯수
+   ReplyPager replyPager = new ReplyPager(count, curPage);
+   //현재 페이지의 페이징 시작 번호
+   int start = replyPager.getPageBegin();
+   // 현재 페이지의 페이징 끝 번호
+   int end = replyPager.getPageEnd();
+   List<ReplyVO> list = service.replyList(bno, start, end, session);
+   // 뷰이름 지정
+   mav.setViewName("replyList");
+   //뷰에 전달할 데이터 ㅂ지정
+>>>>>>> branch 'K.D.H' of https://github.com/kimd0hee/Project_ShoppingMall.git
    mav.addObject("list", list);
    mav.addObject("replyPager", replyPager);
    // replyList.jsp로 포워딩

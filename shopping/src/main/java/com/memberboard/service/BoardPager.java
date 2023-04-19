@@ -1,12 +1,45 @@
 package com.memberboard.service;
 
+<<<<<<< HEAD
 public class BoardPager {
 	
 	// 페이지당 게시물 수
+=======
+public class BoardPager {
+	
+	// 페이지당 게시물 수
+>>>>>>> branch 'K.D.H' of https://github.com/kimd0hee/Project_ShoppingMall.git
 	public static final int PAGE_SCALE = 10;
 	// 화면당 페이지 수
 	public static final int BLOCK_SCALE = 10;
 
+	
+	private int curPage; // 현재 페이지
+	private int prevPage; // 이전 페이지
+	private int nextPage; // 다음 페이지
+	private int totPage; //전체 페이지 갯수
+	private int totBlock; //전체 페이지 블록 갯수
+	private int curBlock; // 현재 페이지 블록
+	private int prevBlock; //이전 페이지 블록
+	private int nextBlock; //다음 페이지 블록
+	// WHERE rn BETWEEN #{start} AND #{end}
+	private int pageBegin; // #{start}
+	private int pageEnd; // #{end}
+	// [이전] blockBegin -> 41 42 43 44 45 46 47 48 49 50 [다음] 
+	private int blockBegin;
+	// [이전] 41 42 43 44 45 46 47 48 49 50 <- blockEnd[다음]
+	private int blockEnd; // 현재 페이지 블록의 끝 번호
+
+<<<<<<< HEAD
+	// BoardPager(레코드 갯수, 현재 페이지 번호)
+	public BoardPager(int count, int curPage) {
+		curBlock = 1; // 현재 페이지 블록 번호
+		this.curPage = curPage; // 현재 페이지 설정
+		setTotPage(count); // 전체 페이지 갯수 계산
+		setPageRange(); 
+		setTotBlock(curPage); // 전체 페이지 블록 갯수 계산
+		setBlockRange(); // 페이지 블록의 시작, 끝 번호 계산
+=======
 	
 	private int curPage; // 현재 페이지
 	private int prevPage; // 이전 페이지
@@ -32,6 +65,7 @@ public class BoardPager {
 		setPageRange(); 
 		setTotBlock(curPage); // 전체 페이지 블록 갯수 계산
 		setBlockRange(); // 페이지 블록의 시작, 끝 번호 계산
+>>>>>>> branch 'K.D.H' of https://github.com/kimd0hee/Project_ShoppingMall.git
 	}
 
 	public void setBlockRange() {
@@ -40,8 +74,13 @@ public class BoardPager {
 		// *현재 페이지 블록 시작과 끝 번호 계산
 		blockBegin = (curBlock -1)*BLOCK_SCALE+1;
 		// 페이지 블로그이 끝 번호 
+<<<<<<< HEAD
 		blockEnd = blockBegin+BLOCK_SCALE-1;
 		// *마지막 블록이 범위를 초과하지 않도록 계산
+=======
+		blockEnd = blockBegin+BLOCK_SCALE-1;
+		// *마지막 블록이 범위를 초과하지 않도록 계산
+>>>>>>> branch 'K.D.H' of https://github.com/kimd0hee/Project_ShoppingMall.git
 		if(blockEnd > totPage) blockEnd = totPage;
 		// *이전을 눌렀을때 이동할 페이지 번호
 		prevPage = (curPage == 1)? 1:(curBlock-1)*BLOCK_SCALE;

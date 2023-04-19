@@ -10,7 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>상품 등록 페이지</title>
     <script>
-       $(document).ready(function() {
+    $(document).ready(function() {
           $("#addBtn").click(function() {
           var product_name = $("#product_name").val();
           var product_price = $("#product_price").val();
@@ -38,12 +38,14 @@
 </head>
 
 <body>
-   <h2>상품 등록</h2>   
-   <form action="${path}/productInsert.do" id="form1" name="form1" enctype="multipart/form-data" method="post">
+  <h2>상품 등록</h2>   
+  <!--  -->
+   <form action="" id="form1" name="form1" enctype="multipart/form-data" method="post">
    <table border="1">
       <tr>
          <td>상품명</td>
-         <td><input type="text" name="product_name" id="product_name"></td>
+         
+       <td><input type="text" name="product_name" id="product_name"></td>
       </tr>
       <tr>
          <td>가격</td>
@@ -65,6 +67,7 @@
       </tr>
    </table>
    </form>
+
 </body>
    
 
