@@ -28,7 +28,7 @@ public class MemberboardController {
    @Inject
    MemberboardService service;
    
-   @Inject // ReplyService 주입(ReplyService의 댓글의 갯수를 구하는 메서드 호출하기 위해)
+   @Inject
    ReplyService replyservice;
 
    
@@ -68,8 +68,6 @@ public class MemberboardController {
    }
 
    // 게시글 작성화면
-   // @RequestMapping("writeMemberboard.do")
-   // value="", method="전송방식"
    @RequestMapping(value="memberboardWrite.do", method=RequestMethod.GET)
    public String memberboardWrite() {
       return "memberboardWrite"; // memberboardWrite.jsp로 이동
@@ -104,7 +102,6 @@ public class MemberboardController {
    }
 
    // 게시글 수정
-   // 폼에서 이력한 내용들은 @ModelAttribute BoardVO vo로 전달
    @RequestMapping(value="memberboardUpdate.do", method=RequestMethod.POST)
    public String memberboardUpdate(@ModelAttribute MemberboardVO vo) {
       service.memberboardUpdate(vo);

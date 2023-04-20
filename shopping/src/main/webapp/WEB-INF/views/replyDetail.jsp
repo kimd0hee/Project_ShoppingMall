@@ -14,7 +14,7 @@
           var detailReplytext=$("#detailReplytext").val();
           $.ajax({
              type:"put",
-             url:"${path}/updateReply/${vo.rno}",
+             url:"${path}/reply/update/${vo.rno}",
              // 기본값 text/html을 json으로 변경
              headers:{
                 "Content-Type":"application/json"
@@ -42,7 +42,7 @@
           if(confirm("삭제하시겠습니까?")) {
           $.ajax({
              type:"delete",
-             url:"${path}/deleteReply/${vo.rno}",
+             url:"${path}/reply/delete/${vo.rno}",
              success:function(result){
                 alert("삭제되었습니다.");
                 $("#modifyReply").css("visibility", "hidden");

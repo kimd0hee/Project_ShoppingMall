@@ -24,12 +24,7 @@
 			<div class="row">
 				<div class="col-xl-3 col-lg-8">
 					<div class="header__logo">
-<<<<<<< HEAD
 						<a href="/"><img src="img/logo.jpg" width="180" height="60" alt=""></a>
-						
-=======
-						<a href="/"><img src="img/logo.jpg" alt=""></a>
->>>>>>> branch 'K.D.H' of https://github.com/kimd0hee/Project_ShoppingMall.git
 					</div>
 				</div>
 				<div class="col-xl-5 col-lg-6">

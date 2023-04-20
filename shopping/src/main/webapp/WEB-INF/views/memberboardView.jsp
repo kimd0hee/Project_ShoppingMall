@@ -253,7 +253,7 @@
       function listReplyRest(num){
          $.ajax({
             type: "get", url: "${path}/replyList.do${dto.bno}/"+num,
-            success: function(result){
+            success: function(result){o
                $("#listReply").html(result);
             }
          });

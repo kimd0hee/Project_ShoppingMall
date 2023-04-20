@@ -5,8 +5,8 @@
 <html lang="UTF-8">
 
 <head>
-    <%@ include file="include/header.jsp" %>
-    <%@ include file="include/menu.jsp" %>
+   <%@ include file="include/header.jsp"%>
+    <%@ include file="include/menu.jsp"%>
 </head>
 
 <body>
@@ -15,13 +15,13 @@
       <c:forEach var="row" items="${list}">
       <tr>
          <td>
-            ${row.user_name}(<fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd:mm:ss"/>
+            ${row.user_name}(<fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/>)
             <br>
             ${row.replytext}
             <br>
             <c:if test="${sessionScope.user_id == row.replyer}">
                <input type="button" id="btnModify" value="수정"
-               onclick="showReplyModify('${row.rno}')">
+                onclick="showReplyModify('${row.rno}')">
             </c:if>
             <hr>
          </td>
@@ -41,7 +41,7 @@
       
             <c:forEach var="num" begin="${replyPager.blockBegin}" end="${replyPager.blockEnd}">
                <c:choose>
-                  <c:when test="{num==replyPager.curPage}">
+                  <c:when test="${num==replyPager.curPage}">
                      ${num}&nbsp;
                   </c:when>
                   <c:otherwise>
