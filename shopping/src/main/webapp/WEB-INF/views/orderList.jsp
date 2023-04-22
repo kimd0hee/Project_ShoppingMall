@@ -25,7 +25,7 @@
 				<tr>
 					<td>${order.order_id}</td>
 					<td>${order.product_id}</td>
-					<td><a href="${path}/orderDetail${order.order_id}">${order.user_id}</a></td>
+					<td><a href="${path}/orderDetail.do?order_id=${order.order_id}">${order.user_id}</a></td>
 					<td>${order.order_quantity}</td>
 					<td>${order.order_price}</td>
 					<td>${order.order_date}</td>

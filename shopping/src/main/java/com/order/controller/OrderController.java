@@ -1,8 +1,6 @@
 package com.order.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -14,14 +12,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cart.dto.CartVO;
-import com.product.dto.ProductVO;
 import com.cart.service.CartService;
 import com.order.dto.OrderVO;
 import com.order.service.OrderService;
-import com.user.dto.UserVO;
 
 @Controller
 @RequestMapping("/")
@@ -47,7 +44,9 @@ public class OrderController {
 		
 		ModelAndView mav = new ModelAndView();
         String user_id = (String) session.getAttribute("user_id");
+        
         List<CartVO> cartList = cartService.cartList(user_id);
+        
         mav.addObject("cartList", cartList);
         mav.setViewName("orderWrite");
         
@@ -55,25 +54,41 @@ public class OrderController {
 	}
     
 	
-	@RequestMapping("orderDetail{order_id}")
-	public ModelAndView detail(@PathVariable("order_id") int order_id, ModelAndView mav) throws Exception {
-	   mav.setViewName("/orderDetail");
+	@RequestMapping("orderDetail.do")
+	public ModelAndView detail(@RequestParam("order_id") int order_id, ModelAndView mav) throws Exception {
+	   mav.setViewName("orderDetail");
 	   mav.addObject("vo", orderService.orderDetail(order_id));
 	   return mav;
 	}
 
-    // 주문 처리
-    @RequestMapping(value = "orderInsert.do", method = RequestMethod.POST)
-    public String orderInsert(@ModelAttribute OrderVO vo, HttpSession session) throws Exception {
+	// 주문 처리
+	@RequestMapping(value = "orderInsert.do", method = RequestMethod.POST)
+	public String orderInsert(@ModelAttribute OrderVO vo, HttpSession session) throws Exception {
+	    String user_id = (String) session.getAttribute("user_id");
+	    vo.setUser_id(user_id);
+	    
+	    System.out.println(user_id);
+	    
+	    //int cart_id = (int) session.getAttribute("cart_id");
+	    //vo.setCart_id(cart_id);
+	    
 
-    	String user_id = (String) session.getAttribute("user_id");
-    	vo.setUser_id(user_id);
-    	
-    	orderService.insertOrder(vo);
-    	System.out.println(vo);
-		return null;
+	    //System.out.println(cart_id);
+	    
+	    // 장바구니에서 선택한 상품 정보 가져오기
+	    List<CartVO> cartList = cartService.cartList(user_id);
+	    
+	    System.out.println(vo);
+	    
+	    // 주문 정보 저장
+	    orderService.insertOrder(vo);
+	    
+		// 장바구니에서 주문한 상품들 제거
+	    //cartService.deleteCart(cart_id);
 
-    }
+	    
+	    return "redirect:/orderList.do";
+	}
 		
 	
 	@RequestMapping("orderUpdate.do")
