@@ -17,6 +17,7 @@
     </script>
 </head>
 
+
 <body>
    <h2>장바구니 확인</h2>
       <c:choose>
