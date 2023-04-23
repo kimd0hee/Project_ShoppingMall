@@ -91,6 +91,6 @@ public class CartController {
          vo.setProduct_id(product_id[i]);
          service.modifyCart(vo);
       }
-      return "redirect:/productList.do";
+      return "redirect:/cartList.do";
    }
 }
