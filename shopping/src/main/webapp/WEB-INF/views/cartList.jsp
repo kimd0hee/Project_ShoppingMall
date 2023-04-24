@@ -5,6 +5,20 @@
 <html lang="UTF-8">
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<link rel="stylesheet" href="https://www.coupang.com/resources/20230424174622/np/css/common.ko-KR.css" type="text/css" />
+
+<script src="/resources/20230424152138/components/html5/html5.js" type="text/javascript"></script>
+<link rel="stylesheet" href="/resources/20230424152138/dist-desktop/shoppingcart-web-new.ko-KR.css" type="text/css" />
+    <script id="coupang-web-log"
+        data-auto-send-pageview="false"
+        data-platform="web"
+        data-service="coupang"
+        data-mode="production"
+        data-tti='{"platformType": "browser", "pageName": "cart", "screenType":"cart", "async": true}'
+        type="text/javascript"
+        src="//asset2.coupangcdn.com/customjs/coupang-web-log/1.0.0/web-log.umd.min.js">
+</script>
+
 
 <head>
 	<%@ include file="include/header.jsp" %>
@@ -70,6 +84,22 @@
 	font-size:20px;
 }
 	
+#price {
+	border: 2px solid gray;
+	font-size:18px;
+	padding : 10px;
+}	
+
+#cart {
+	position: relative;
+	top:23px;
+}
+.button {
+	postion:absolute;
+	text-align:center;
+	padding: 50px;
+}
+
    </style>
    
    
@@ -82,8 +112,8 @@
 <div class="container-fluid" style="text-align:center; margin:0 auto;" >
     <!-- Shopping cart table -->
 <div style="text-align:left;">	
-	<span class="material-symbols-outlined fa-4x">
-shopping_cart<id style="font-size:40px; '">장바구니</id>
+	<span class="material-symbols-outlined fa-4x" id="cart">
+shopping_cart<id style="font-size:40px;">장바구니</id>
 </span>
 
 <p style="text-align:right; font-size:24px; color:black;">01.장바구니 > 02.주문/결제 > 03.주문완료</p>
@@ -101,7 +131,7 @@ shopping_cart<id style="font-size:40px; '">장바구니</id>
           <form name="form1" id="form1" method="post" action=${path}/cartUpdate.do>
         <div class="card-body">
             <div class="table-responsive">
-              <table class="table table-bordered m-0">
+              <table class="table table-bordered m-0" >
                 <thead class="thead-dark">
                   <tr>
                     <!-- Set columns width -->
@@ -119,7 +149,7 @@ shopping_cart<id style="font-size:40px; '">장바구니</id>
                      <td>
                         ${row.product_name}
                      </td>
-                     <td style="width:80px" align="right">
+                     <td>
                         <fmt:formatNumber pattern="###,###,###" value="${row.product_price}"/>
                      </td>
                      <td>
@@ -140,86 +170,55 @@ shopping_cart<id style="font-size:40px; '">장바구니</id>
               </table>
             </div>
             </div>
+            <div class="cart-total-price" data-total-price="0" data-discount-price="0">
+                <div class="cart-total-price__inner">
+                    <div id="price">
+                      
+                       장바구니 금액 합계
+                        <fmt:formatNumber pattern="###,###,###" value="${map.sumMoney}"/>원
+                        <span class="final-sale-area">
+                        +
+                        </span>
+
+                        
+                        총 배송비
+                        ${map.fee}원 =
+                        
+                        총 주문금액
+                        <fmt:formatNumber pattern="###,###,###" value="${map.allSum}"/>원
+                    </div>
+
+                    <div id="ccidArea" class="ccid-area" style="display: none;">
+                        <span class="ccid-amount">
+                          카드 즉시할인 예상금액 (<em id="ccidAmount">0</em>원 할인)
+                        </span>
+                        <span class="adjustment-price" id="adjustmentPrice">
+                          <em>0</em>원
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+          
+          <div class="button">
+              <button type="button" style="background-color: white; border-color:black; color:black" class="btn btn-lg btn-primary mt-2" id="btnList">계속 쇼핑하기</button>
+               <input type="hidden" name="count" value="${map.count}">
+              <button type="submit" style="background-color: white; border-color:black; color:black" class="btn btn-lg btn-primary mt-2"  id="btnUpdate">수정</button>
+            </div>
             
-            
-            <input type="hidden" name="count" value="${map.count}">
+           
                 
          </form>   
           </c:otherwise>
       </c:choose>        
             <!-- / Shopping cart table -->
-
-             
-            <div class="float-right">
-              <button type="button" class="btn btn-lg btn-primary mt-2" id="btnList">계속 쇼핑하기</button>
-              <button type="submit" id="btnUpdate" class="btn btn-lg btn-primary mt-2" >수정</button>
-            </div>
-         <div id="total"> <!-- 금액 오른쪽 정렬하는 아이디 생성 -->
-                <div class="text-right mt-4">
-                   장바구니 금액 합계 : <fmt:formatNumber pattern="###,###,###" value="${map.sumMoney}"/><br>
-                   배송료 : ${map.fee}<br>
-                    전체 주문금액 : <fmt:formatNumber pattern="###,###,###" value="${map.allSum}"/>
-                </div>
-                
               </div>
           </div>
-      </div>
+   	
+ 				
 
-          
 
-<!-- <div style="text-align:center; margin:0 auto;">
-   <h2>장바구니 확인</h2>
-   </div>
-      <c:choose>
-         <c:when test="${map.count==0}">
-            장바구니가 비었습니다.
-         </c:when>
-         <c:otherwise>
-            <form name="form1" id="form1" method="post" action=${path}/cartUpdate.do>
-               <table border="1" style="">
-                  <tr>
-                     <th>상품명</th>
-                     <th>단가</th>
-                     <th>수량</th>
-                     <th>금액</th>
-                     <th>삭제</th>
-                  </tr>
-                  <c:forEach var="row" items="${map.list}" varStatus="i">
-                  <tr>
-                     <td>
-                        ${row.product_name}
-                     </td>
-                     <td style="width:80px" align="right">
-                        <fmt:formatNumber pattern="###,###,###" value="${row.product_price}"/>
-                     </td>
-                     <td>
-                        <input type="number" style="width:40px" name="amount" value="${row.amount}" min="1">
-                        <input type="hidden" name="product_id" value="${row.product_id}">
-                     </td>
-                     <td style="width:100px" align="right">
-                        <fmt:formatNumber pattern="###,###,###" value="${row.money}"/>
-                     </td>
-                     <td>
-                         <a href="${path}/cartDelete.do?cart_id=${row.cart_id}">삭제</a>
-                     </td>
-                  </tr>                  
-                  </c:forEach>
-                  <tr>
-                     <td colspan="5" align="right">
-                        장바구니 금액 합계 : <fmt:formatNumber pattern="###,###,###" value="${map.sumMoneyCart}"/><br>
-                        배송료 : ${map.fee}<br>
-                        전체 주문금액 : <fmt:formatNumber pattern="###,###,###" value="${map.allSum}"/>
-                     </td>
-                  </tr>
-               </table>
-                  <input type="hidden" name="count" value="${map.count}">
-                  <button type="submit" id="btnUpdate" style="float: right">수정</button>
-                  
-            </form>
-         </c:otherwise>
-      </c:choose>
-      <button type="button" id="btnList" style="float: right;">상품목록</button>
--->
 </body>
    
 
