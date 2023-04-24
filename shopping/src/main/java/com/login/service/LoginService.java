@@ -9,7 +9,6 @@ public interface LoginService {
 	public boolean loginCheck(UserVO vo, HttpSession session);
 
 	public UserVO viewUser(UserVO vo);
-	
-	public void logoutUser(HttpSession session);
 
+	public void logout(HttpSession session);
 }

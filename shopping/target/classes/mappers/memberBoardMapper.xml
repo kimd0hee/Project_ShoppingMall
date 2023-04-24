@@ -3,7 +3,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-  <mapper namespace="memberboard">
+   <mapper namespace="memberboard">
    <!-- 게시글 전체 조회 -->
    <select id="memberboardList" resultType="com.memberboard.dto.MemberboardVO">
       SELECT b.bno, b.title, b.content, b.regdate, b.viewcnt, m.user_name,
@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       
       <include refid="search"></include>
       ORDER BY b.bno DESC, b.regdate DESC
-      <include refid="pagingFooter"></include>
+      <include refid="pagingFooter"/>
    </select>
    
    <!-- 게시글 작성 -->
@@ -74,8 +74,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </sql>
    
    <!-- 페이징 sql -->
-   <sql id="pagingFooter">
-      LIMIT 10 OFFSET #{start}
-   </sql>
+    <sql id="pagingFooter">
+       LIMIT 10 OFFSET #{start}
+
+     </sql>
    
 </mapper>

@@ -7,9 +7,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <!-- 장바구니 추가 -->
    <insert id="insertCart">
       INSERT INTO cart(
-         user_id, product_id, cart_quantity
+         user_id, product_id, amount
       ) VALUES (
-         #{user_id}, #{product_id}, #{cart_quantity}         
+         #{user_id}, #{product_id}, #{amount}         
       )
    </insert>
    <!-- 2. 장바구니 목록 -->
@@ -19,9 +19,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          c.user_id AS user_id,
          p.product_id As product_id,
          p.product_name AS product_name,
-          c.cart_quantity,
-          c.cart_price AS cart_price,
-          (c.cart_price * c.cart_quantity) product_money,
+          c.amount,
+          p.product_price AS product_price,
+          (p.product_price * c.amount) money,
           m.user_name AS user_name
       FROM
          cart c LEFT JOIN product p ON p.product_id = c.product_id
@@ -34,7 +34,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </select>
    <!--  3. 장바구니 전체 금액 -->
    <select id="sumMoneyCart" resultType="int">
-      SELECT NVL(SUM(cart_price * cart_quantity), 0) product_money
+      SELECT NVL(SUM(product_price * amount), 0) money
       FROM cart c LEFT JOIN product p ON c.product_id = p.product_id
       WHERE <!--  c.product_id = p.product_id AND -->
       c.user_id =#{user_id}
@@ -42,7 +42,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <!--  4. 장바구니 수정 -->
    <update id="modifyCart">
       UPDATE cart
-      SET cart_quantity = #{cart_quantity}
+      SET amount = #{amount}
       WHERE user_id= #{user_id}
       AND product_id = #{product_id}
    </update>
@@ -61,7 +61,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <!--  7. 장바구니에 동일한 상품이 존재하면 수정 -->
    <update id="updateCart">
       UPDATE cart
-      SET cart_quantity = cart_quantity + #{cart_quantity}
+      SET amount = amount + #{amount}
       WHERE user_id= #{user_id}
       AND product_id = #{product_id}
    </update>   

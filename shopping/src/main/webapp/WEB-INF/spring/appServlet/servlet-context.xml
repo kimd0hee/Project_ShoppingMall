@@ -28,28 +28,14 @@
 	</beans:bean>
 	
 	<beans:bean id="uploadPath" class="java.lang.String">
-	    <beans:constructor-arg value="C:\Users\newtec\Documents\workspace-sts-3.9.18.RELEASE\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\shopping\resources\img\product\"/>
+	    <beans:constructor-arg value="C:\Users\wiwi4\Documents\workspace-sts-3.9.18.RELEASE\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\shopping\resources\img\product\"/>
 	</beans:bean>
 	
 	<!-- 관리자 세션체크 -->
 	<beans:bean id="adminInterceptor" class="com.admin.interceptor.AdminInterceptor"/>
 	
 	<!-- 관리자 세션체크 매핑 -->
-
 	<interceptors>
-
-	 	<interceptor>
-			<mapping path="writeProduct.do"/>
-			<mapping path="insertProduct.do"/>
-			<mapping path="updateProduct.do"/>
-			<mapping path="editProduct.do"/>
-			<mapping path="deleteProduct.do"/>
-			<beans:ref bean="adminInterceptor"/>
-		</interceptor>
-	</interceptors>
-
-	<interceptors>
-
  	<interceptor>
  		<mapping path="/productWrite.do"/>
  		<mapping path="/productInsert.do"/>
@@ -79,10 +65,4 @@
 	<context:component-scan base-package="com.reply.controller" />
 	<!-- 관리자 -->
 	<context:component-scan base-package="com.admin.controller" />
-
-	
-
-	<!-- 주문 -->
-
-	<context:component-scan base-package="com.order.controller" />
 </beans:beans>

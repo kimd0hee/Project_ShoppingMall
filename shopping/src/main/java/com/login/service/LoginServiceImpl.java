@@ -32,7 +32,7 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	@Override
-	public void logoutUser(HttpSession session) {
+	public void logout(HttpSession session) {
 		session.invalidate();
 	}
 }

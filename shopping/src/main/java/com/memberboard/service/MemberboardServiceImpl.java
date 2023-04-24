@@ -38,15 +38,25 @@ public class MemberboardServiceImpl implements MemberboardService {
       dao.memberboardInsert(vo);
    }
 
+   // 게시글 상세보기
+   @Override
+   public MemberboardVO memberboardView(int bno) {
+      return dao.memberboardView(bno);
+   }
 
-	// 게시글 상세보기
-	@Override
-	public MemberboardVO viewMemberboard(int bno) {
-		return dao.viewMemberboard(bno);
-	}
+   // 게시글 수정
+   @Override
+   public void memberboardUpdate(MemberboardVO vo) {
+      dao.memberboardUpdate(vo);
 
+   }
 
-  
+   // 게시글 삭제
+   @Override
+   public void memberboardDelete(int bno) {
+      dao.memberboardDelete(bno);
+
+   }
 
    // 게시글 목록
    @Override
@@ -54,12 +64,6 @@ public class MemberboardServiceImpl implements MemberboardService {
       return dao.memberboardList(start, end, searchOption, keyword);
    }
 
-
-	// 게시글 삭제
-	@Override
-	public void deleteMemberboard(int bno) {
-		dao.deleteMemberboard(bno);
-	}
    // 게시글 조회수 증가
    @Override
    public void increaseViewcnt(int bno, HttpSession session) {
@@ -85,10 +89,4 @@ public class MemberboardServiceImpl implements MemberboardService {
       return dao.countArticle(searchOption, keyword);
    }
 
-
-	
-
 }
-
-
-
