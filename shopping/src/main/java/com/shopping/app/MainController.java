@@ -82,6 +82,12 @@ public class MainController {
 	public String ordertest(Model model) {
 		return "ordertest";
 	}
+	
+	//membership연결
+	@RequestMapping(value = "membership", method = RequestMethod.GET)
+	public String membership(Model model) {
+		return "membership";
+	}
 
 }
 
