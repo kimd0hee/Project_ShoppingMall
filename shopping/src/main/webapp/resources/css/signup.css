@@ -2,14 +2,11 @@
 
 html {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    padding-bottom: 20px;
+
 }
 
 
 input{
-    border: 1px solid black;
     border-radius: 3px;
     line-height: 35px;
     font-size: 12px;
@@ -39,6 +36,7 @@ div {
 
 .name input {
     width: 100%;
+    
 }
 
 .password input {
@@ -53,6 +51,7 @@ div {
     display: flex;
     justify-content: space-between;
     line-height: 35px;
+    
 }
 
 #phone1 {
@@ -60,10 +59,28 @@ div {
 }
 
 #phone2 {
-    width: 30%;
+    width: 18%;
 }
 
 #phone3 {
+    width: 18%;
+}
+
+.address {
+    display: flex;
+    justify-content: space-between;
+    line-height: 35px;
+}
+
+#address1 {
+    width: 18%;
+}
+
+#address2 {
+    width: 30%;
+}
+
+#address3 {
     width: 30%;
 }
 
@@ -99,56 +116,77 @@ div {
     width: 70%;
 }
 
-.area select {
-    width: 100%;
-    height: 40px;
-}
 
-.gender {
-    text-align: center;
-}
 
-.signUp button {
-    width: 100%;
-    cursor:pointer;
-    
+.signUp Button {
+    width: 20%;
+    text-align:center;
+    margin:auto;
+    display:inline-block;
+    margin:5px 7px;
+    background-color:#f2f2f2;
 }
 
 
+table{
+	border-collapse : collapse;
+}
+
+th {
+	background-color:#f2f2f2;
+}
+
+td {
+	
+	
+}
+
+.text {
+	top:230px;
+}
+
+p {
+	margin-top:20px;
+	font-weight:500;
+	font-size:15px;
+}
 
 #form {
 	position: relative;
 	text-align:center;
-	left:18px;
-	width:90%;
-	padding-left:6px;
+	width:80%;
+	align:center;
+	margin:0 auto;
 }
 
-table {
-    width: 80%;
-    border-collapse:collapse;
-    
-    
-  }
-  
-  th {
-  	border:1px solid black;
-  }
-  
-  td {
-    text-align:left;
-    
-  }
-  
-  tr{
- 	border:1px solid white;
-  	position:relative;
-  	
-  }
+.address1 {
+	margin:7px 0px;
+}
 
+#roadAddress {
+	margin:7px 0px;
+}
+
+tbody {
+		border:2px solid black;
+		
+}
+
+#searchAdd{
+	background-color:f2f2f2;
+	border:1px solid black;
+	margin-left:3px;
+}
+
+
+h1 {
+	text-align:center;
+	padding: 8px 0px;
+	margin-top:9px;
+}
 
 .error{
-    font-size: 1px;
+    font-size: 13px;
     height: 20px;
     color:red;
     font-weight: 700;

@@ -18,10 +18,11 @@ function changePhone3(){
     const phone3 = document.getElementById("phone3").value // 010
     if(phone3.length === 4){
       document.getElementById("sendMessage").focus();
-      document.getElementById("sendMessage").setAttribute("style","background-color:yellow;")
+      document.getElementById("sendMessage").setAttribute("style","background-color:#f2f2f2;")
       document.getElementById("sendMessage").disabled = false;
     }
 }
+
 
 // 문자인증+타이머 부분
 function initButton(){
@@ -38,7 +39,7 @@ let processID = -1;
 const getToken = () => {
 
   // 인증확인 버튼 활성화
-  document.getElementById("completion").setAttribute("style","background-color:yellow;")
+  document.getElementById("completion").setAttribute("style","background-color:f2f2f2;")
   document.getElementById("completion").disabled = false;
 
   if (processID != -1) clearInterval(processID);
@@ -56,7 +57,7 @@ const getToken = () => {
     let result = mm + ":" + ss;
     document.getElementById("timeLimit").innerText = result;
     time--;
-  }, 50);
+  }, 1000);
 };
 
 function checkCompletion(){
@@ -64,7 +65,7 @@ function checkCompletion(){
   initButton();
   document.getElementById("completion").innerHTML="인증완료"
   document.getElementById("signUpButton").disabled = false;
-  document.getElementById("signUpButton").setAttribute("style","background-color:yellow;")
+  document.getElementById("signUpButton").setAttribute("style","background-color:f2f2f2;")
 }
 
 
@@ -76,7 +77,6 @@ function signUpCheck(){
   let name = document.getElementById("name").value
   let password = document.getElementById("password").value
   let passwordCheck = document.getElementById("passwordCheck").value
-  let area = document.getElementById("area").value
   let gender_man = document.getElementById("gender_man").checked
   let gender_woman = document.getElementById("gender_woman").checked
   let check = true;
@@ -131,14 +131,6 @@ function signUpCheck(){
   }
 
 
-  // 지역선택 확인
-  if(area === "지역을 선택하세요."){
-    document.getElementById("areaError").innerHTML="지역을 선택해주세요."
-    check = false
-  }else{
-    document.getElementById("areaError").innerHTML=""
-  }
-
   // 성별체크확인
   if(!gender_man && !gender_woman){
     document.getElementById("genderError").innerHTML="성별을 선택해주세요."
@@ -152,7 +144,6 @@ function signUpCheck(){
     document.getElementById("nameError").innerHTML=""
     document.getElementById("passwordError").innerHTML=""
     document.getElementById("passwordCheckError").innerHTML=""
-    document.getElementById("areaError").innerHTML=""
     document.getElementById("genderError").innerHTML=""
     
     //비동기 처리이벤트
