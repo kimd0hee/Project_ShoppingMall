@@ -7,7 +7,6 @@
 <title>회원 게시글 목록</title>
 <%@ include file="include/header.jsp" %>
 <%@ include file="include/menu.jsp" %>
-
 <script>
    $(document).ready(function(){
       $("#btnWrite").click(function(){
@@ -27,7 +26,7 @@
    <form name="form" method="post" action="${path}/memberboardList.do">
       <select name="searchOption">
          <option value="all" <c:out value="${map.searchOption == 'all'?'selected':''}"/> >제목+이름+제목</option>
-         <option value="user_name" <c:out value="${map.searchOption == 'user_name'?'selected':''}"/> >이름 </option>
+         <option value="user_name" <c:out value="${map.searchOption == 'user_name'?'selected':''}"/> >이름</option>
          <option value="content" <c:out value="${map.searchOption == 'content'?'selected':''}"/> >내용</option>
          <option value="title" <c:out value="${map.searchOption == 'title'?'selected':''}"/> >제목</option>
       </select>
@@ -103,6 +102,6 @@
          </td>
       </tr>
    </table>
+   <%@ include file="include/footer.jsp" %>
 </body>
-<%@ include file="include/footer.jsp" %>
 </html>

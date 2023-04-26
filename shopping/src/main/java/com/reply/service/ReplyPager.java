@@ -1,21 +1,21 @@
 package com.reply.service;
 
 public class ReplyPager {
-
-   public static final int PAGE_SCALE = 10;
+   //페이지당 게시물 수
+   public static final int PAGE_SCALE = 10; //화면당 페이지 수
    public static final int BLOCK_SCALE = 4;
-   private int curPage;
-   private int prevPage;
-   private int nextPage;
-   private int totPage;
-   private int totBlock;
-   private int curBlock;
-   private int prevBlock;
-   private int nextBlock;
-   private int pageBegin;
-   private int pageEnd;
-   private int blockBegin;
-   private int blockEnd;
+   private int curPage; //현재 페이지
+   private int prevPage; //이전 페이지
+   private int nextPage; //다음 페이지
+   private int totPage; //전체페이지 블록 갟수
+   private int totBlock; //현재 페이지 블록
+   private int curBlock; //이전 페이지 블록
+   private int prevBlock; //다음 페이지 블록
+   private int nextBlock; //다음 페이지 블록
+   private int pageBegin; //strat
+   private int pageEnd; // end
+   private int blockBegin; //현재 페이지 블록의 시작번호
+   private int blockEnd; //현제 페이지 블록의 끝번호
 
    public ReplyPager(int count, int curPage) {
       curBlock = 1;

@@ -71,7 +71,7 @@ public class OrderController {
     	
     	orderService.insertOrder(vo);
     	System.out.println(vo);
-		return null;
+		return "redirect:/orderList.do";
 
     }
 		

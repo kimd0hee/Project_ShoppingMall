@@ -12,23 +12,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
      </insert>
      
      <!-- 2. 댓글 목록 -->
-     <select id="listReply" resultType="com.reply.dto.ReplyVO">
+     <select id="replyList" resultType="com.reply.dto.ReplyVO">
         SELECT rno, bno, replytext, replyer, r.regdate, r.updatedate, secretReply, m.user_name, 
-        (SELECT writer FROM board WHERE bno = r.bno) AS writer 
-        FROM reply r LEFT JOIN user m on r.replyer = m.user_id 
+        (SELECT writer FROM memberboard WHERE bno = r.bno) AS writer 
+        FROM reply r LEFT JOIN user m ON r.replyer = m.user_id 
         WHERE r.replyer = m.user_id AND bno=#{bno} 
         ORDER BY rno
-         <include refid = "pagingFooter"/> 
+         
      </select>
      
-     <select id="detailReply" resultType="com.reply.dto.ReplyVO">
+     <select id="replyDetail" resultType="com.reply.dto.ReplyVO">
         SELECT rno, bno, replytext, replyer, regdate, updatedate, secretReply FROM reply 
         WHERE rno = #{rno}
      </select>
      
      <select id="updateReply">
         UPDATE reply 
-        SET replytext = #{rno} 
+        SET replytext = #{replytext} 
         WHERE rno = #{rno}
      </select>
           

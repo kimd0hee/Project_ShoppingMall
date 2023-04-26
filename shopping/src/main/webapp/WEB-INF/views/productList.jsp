@@ -9,10 +9,10 @@
 <%@ include file="./include/menu.jsp" %>
 <script>
    $(document).ready(function() {
-      $("#btnAdd").click(functiion() {
+      $("#btnAdd").click(function() {
          location.href="${path}/productWrite.do";
       });
-      $("#btnEdit").click(functiion() {
+      $("#btnEdit").click(function() {
          location.href="${path}/productEdit.do";
       });
    });

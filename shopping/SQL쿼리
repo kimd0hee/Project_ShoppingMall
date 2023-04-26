@@ -1,3 +1,24 @@
+-orders (주문)
+
+create table orders (
+order_id int(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+cart_id int(10) NOT NULL,
+product_id int(10) NOT NULL,
+user_id varchar(50) NOT NULL,
+receive_name varchar(50) NOT NULL,
+receive_phone varchar(50) NOT NULL,
+order_date timestamp not null default current_timestamp() ON UPDATE current_timestamp(),
+order_addr1 varchar(100) NOT NULL,
+order_addr2 varchar(100) NOT NULL,
+order_addr3 varchar(100) NOT NULL,
+order_quantity int(20) NOT NULL,
+order_price int(20) NOT NULL,
+order_memo varchar(300) NOT NULL
+);
+
+
+
+
 - admin (관리자)
 
 create table admin (

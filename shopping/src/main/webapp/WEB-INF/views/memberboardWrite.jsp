@@ -50,9 +50,5 @@
    </div>
    </form>
 </body>
-<<<<<<< HEAD
 
-=======
-<%@ include file="include/footer.jsp" %>
->>>>>>> branch 'K.D.H' of https://github.com/kimd0hee/Project_ShoppingMall.git
 </html>

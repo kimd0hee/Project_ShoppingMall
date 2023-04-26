@@ -30,7 +30,7 @@
              alert("상품 사진을 입력해주세요");
              product_photo.focus();
           }
-            document.form1.action = "${path}/productInsert.do";
+            document.form1.action = "${path}/insertProduct.do";
             document.form1.submit();
        });
     });
@@ -53,7 +53,7 @@
       </tr>
       <tr>
          <td>상품설명</td>
-         <td><textarea rows="5" cols="60" name="product_desc" id="product_desc"></textarea>></td>
+         <td><textarea rows="5" cols="60" name="product_desc" id="product_desc"></textarea></td>
       </tr>
       <tr>
          <td>상품 이미지</td>

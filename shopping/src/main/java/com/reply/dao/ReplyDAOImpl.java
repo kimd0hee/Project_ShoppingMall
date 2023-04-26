@@ -18,39 +18,38 @@ public class ReplyDAOImpl implements ReplyDAO {
 
    @Inject
    SqlSession sqlsession;
-   // String nameSpace = "user";
 
       @Override
-      public void create(ReplyVO vo) {
+      public void createReply(ReplyVO vo) {
          sqlsession.insert("reply.insertReply", vo);
       }
 
    @Override
-   public List<ReplyVO> list(Integer bno, int start, int end) {
+   public List<ReplyVO> replyList(Integer bno, int start, int end) {
       Map<String, Object> map = new HashMap<String, Object>();
       map.put("bno", bno);
       map.put("start", start);
       map.put("end", end);
-      return sqlsession.selectList("reply.listReply", map);
+      return sqlsession.selectList("reply.replyList", map);
    }
 
    @Override
-   public ReplyVO detail(Integer rno) {
-      return sqlsession.selectOne("reply.detailReply", rno);
+   public ReplyVO replyDetail(Integer rno) {
+      return sqlsession.selectOne("reply.replyDetail", rno);
    }
 
    @Override
-   public void update(ReplyVO vo) {
+   public void updateReply(ReplyVO vo) {
       sqlsession.update("reply.updateReply", vo);
    }
 
    @Override
-   public void delete(Integer rno) {
+   public void deleteReply(Integer rno) {
       sqlsession.delete("reply.deleteReply", rno);
    }
 
    @Override
-   public int count(Integer bno) {
+   public int countReply(Integer bno) {
       return sqlsession.selectOne("reply.countReply", bno);
    }
 

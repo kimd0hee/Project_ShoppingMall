@@ -47,7 +47,7 @@ public class ProductController {
    }
 
 
-   @RequestMapping(value="productInsert.do")
+   @RequestMapping(value="insertProduct.do")
    public String insert(ProductVO vo, MultipartFile product_photo) {
 
       String filename = "";
@@ -57,7 +57,7 @@ public class ProductController {
          System.out.print(product_photo.getOriginalFilename());
          //System.out.println("상품 인서트 예외처리 전");
          
-         String path = "C:\\Users\\newtec\\Documents\\workspace-sts-3.9.18.RELEASE\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\shopping\\resources\\img\\product\\";
+         String path = "C:\\Users\\son94\\Documents\\workspace-sts-3.9.18.RELEASE\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\shopping\\resources\\img\\product\\";
          
          try {
             new File(path).mkdirs();
@@ -90,7 +90,7 @@ public class ProductController {
     	  
          filename = product_photo.getOriginalFilename();
          
-         String path = "C:\\Users\\newtec\\Documents\\workspace-sts-3.9.18.RELEASE\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\shopping\\resources\\img\\product\\";
+         String path = "C:\\Users\\son94\\Documents\\workspace-sts-3.9.18.RELEASE\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\shopping\\resources\\img\\product\\";
 
          try {
             new File(path).mkdirs();
@@ -114,7 +114,7 @@ public class ProductController {
    public String delete(@RequestParam int product_id) {
      String filename = service.fileInfo(product_id);
      //System.out.println("상품 삭제 컨트롤러 작동");
-     String path = "C:\\Users\\newtec\\Documents\\workspace-sts-3.9.18.RELEASE\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\shopping\\resources\\img\\product\\";
+     String path = "C:\\Users\\son94\\Documents\\workspace-sts-3.9.18.RELEASE\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\shopping\\resources\\img\\product\\";
      
       if(filename != null) {
          File file = new File(path+filename);

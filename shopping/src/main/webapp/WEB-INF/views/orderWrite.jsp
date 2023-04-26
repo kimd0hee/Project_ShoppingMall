@@ -72,7 +72,7 @@
             </tr>
             <tr>
                 <td>주문 메모:</td>
-                <td><textarea name="memo"></textarea></td>
+                <td><textarea name="order_memo"></textarea></td>
             </tr>
             <tr>
                 <td colspan="2" align="center"><input type="submit" value="주문하기"></td>

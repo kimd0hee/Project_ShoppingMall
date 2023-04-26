@@ -29,6 +29,7 @@
 <body>
     <h1>주문 상세 정보</h1>
     <form name="form" method="post">
+    		<tr>
                 <td>주문번호</td>
 				<td><input name="order_id" value="${vo.order_id}" readonly="readonly"></td>
 				<br>

@@ -38,7 +38,7 @@
                         <input type="hidden" name="product_id" value="${vo.product_id}">
                         <select name="amount">
                            <c:forEach begin="1" end="10" var="i">
-                              <option value="${i}">"${i}"></option>
+                              <option value="${i}">"${i}"</option>
                            </c:forEach>
                         </select>&nbsp;개
                         <input type="submit" value="장바구니에 담기">

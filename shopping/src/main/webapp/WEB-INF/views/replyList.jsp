@@ -3,10 +3,9 @@
 
 <!DOCTYPE html>
 <html lang="UTF-8">
-
 <head>
-   <%@ include file="include/header.jsp"%>
-    <%@ include file="include/menu.jsp"%>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<%@ include file="include/header.jsp"%>
 </head>
 
 <body>
@@ -19,9 +18,8 @@
             <br>
             ${row.replytext}
             <br>
-            <c:if test="${sessionScope.user_id == row.replyer}">
-               <input type="button" id="btnModify" value="수정"
-                onclick="showReplyModify('${row.rno}')">
+            <c:if test="${sessionScope.user_id==row.replyer}">
+               <input type="button" id="btnModify" value="수정" onclick="showReplyModify('${row.rno}')">
             </c:if>
             <hr>
          </td>
@@ -63,7 +61,4 @@
    
    <div id="modifyReply"></div>
 </body>
-
-
-<%@ include file="include/footer.jsp" %>
 </html>

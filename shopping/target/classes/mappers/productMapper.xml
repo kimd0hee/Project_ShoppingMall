@@ -36,9 +36,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
           #{product_name}
          ,#{product_price}
          ,#{product_desc}
-         ,#{product_url}
-         )
-      </insert>   
+         ,#{product_url})
+      </insert>
+       
       <!-- 04. 상품 수정/편집하기 -->
       <update id="updateProduct">
          UPDATE product

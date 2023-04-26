@@ -6,11 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="cart">
    <!-- 장바구니 추가 -->
    <insert id="insertCart">
-      INSERT INTO cart(
-         user_id, product_id, amount
-      ) VALUES (
-         #{user_id}, #{product_id}, #{amount}         
-      )
+      INSERT INTO cart(user_id, product_id, amount) 
+      VALUES (#{user_id}, #{product_id}, #{amount})
    </insert>
    <!-- 2. 장바구니 목록 -->
    <select id="cartList" resultType="com.cart.dto.CartVO">

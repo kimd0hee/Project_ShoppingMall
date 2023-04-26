@@ -39,8 +39,8 @@ public class OrderDAOImpl implements OrderDAO {
     
     // 주문 정보 수정
     @Override
-    public void updateOrder(OrderVO orderVO) throws Exception {
-        sqlSession.update(NAMESPACE + ".updateOrder", orderVO);
+    public void updateOrder(OrderVO vo) throws Exception {
+        sqlSession.update(NAMESPACE + ".updateOrder", vo);
     }
     
     // 주문 정보 삭제

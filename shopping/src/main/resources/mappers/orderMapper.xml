@@ -10,6 +10,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	user_id,
     	cart_id,
     	product_id,
+    	order_quantity,
+    	order_price,
         receive_name,
         receive_phone, 
         order_addr1, 
@@ -22,24 +24,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	#{user_id}, 
     	#{cart_id}, 
     	#{product_id}, 
+    	#{order_quantity},
+    	#{order_price},
         #{receive_name}, 
         #{receive_phone}, 
         #{order_addr1}, 
         #{order_addr2}, 
         #{order_addr3}, 
         #{order_memo}, 
-        #{order_date},
+        #{order_date}
     )
 	</insert>	
 	
 	<!-- 주문 상품 목록 -->
 	<select id="orderList" parameterType="String" resultType="com.order.dto.OrderVO">
-	  SELECT order_id, product_id, user_id, order_quantity, order_price, order_date FROM orders
+	  SELECT o.order_id, o.product_id, o.cart_id, o.user_id, o.order_quantity, o.order_price, o.order_date, c.cart_id, c.product_id FROM cart c INNER JOIN orders o on c.user_id = c.user_id
 	</select>
 	
 	<select id="orderDetail" resultType="com.order.dto.OrderVO">
 	  select order_id, cart_id, product_id, user_id, receive_name, receive_phone, order_date,
-  		order_addr1,order_addr2,order_addr3, order_quantity,order_price, order_memo
+  		order_addr1,order_addr2,order_addr3, order_quantity, order_price, order_memo
   		from orders where order_id = #{order_id}
 	</select>
 	
