@@ -59,7 +59,7 @@ const getToken = () => {
     let result = mm + ":" + ss;
     document.getElementById("timeLimit").innerText = result;
     time--;
-  }, 800);
+  }, 600);
 };
 
 function checkCompletion(){
@@ -110,7 +110,7 @@ function signUpCheck(){
   }
   
   // 이름확인
-  if(id===""){
+  if(id!==""){
     document.getElementById("idError").innerHTML="아이디를 입력해주세요."
     check = false
   }else{
