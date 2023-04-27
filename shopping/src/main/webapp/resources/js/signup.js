@@ -1,6 +1,8 @@
 /**
  * 
  */
+ 
+ 
  // 휴대폰 번호 입력 부분
 function changePhone1(){
     const phone1 = document.getElementById("phone1").value // 010
@@ -57,7 +59,7 @@ const getToken = () => {
     let result = mm + ":" + ss;
     document.getElementById("timeLimit").innerText = result;
     time--;
-  }, 1000);
+  }, 800);
 };
 
 function checkCompletion(){
@@ -67,6 +69,7 @@ function checkCompletion(){
   document.getElementById("signUpButton").disabled = false;
   document.getElementById("signUpButton").setAttribute("style","background-color:f2f2f2;")
 }
+
 
 
 // 가입부분 체크
@@ -100,10 +103,18 @@ function signUpCheck(){
 
   // 이름확인
   if(name===""){
-    document.getElementById("nameError").innerHTML="이름이 올바르지 않습니다."
+    document.getElementById("nameError").innerHTML="이름을 입력해주세요."
     check = false
   }else{
     document.getElementById("nameError").innerHTML=""
+  }
+  
+  // 이름확인
+  if(id===""){
+    document.getElementById("idError").innerHTML="아이디를 입력해주세요."
+    check = false
+  }else{
+    document.getElementById("idError").innerHTML=""
   }
 
 
@@ -145,6 +156,7 @@ function signUpCheck(){
     document.getElementById("passwordError").innerHTML=""
     document.getElementById("passwordCheckError").innerHTML=""
     document.getElementById("genderError").innerHTML=""
+    
     
     //비동기 처리이벤트
     setTimeout(function() {

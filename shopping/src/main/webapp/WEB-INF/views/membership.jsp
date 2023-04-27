@@ -25,61 +25,69 @@
 
 <body>
     <h1 style="font-size:35px;">회원가입</h1>
-    <div id="form">
+      <form action="membership" method="post" onsubmit="return false;">
+    <div id="form_div">
 	<table class="table table-bordered m-0">
+		
         <tbody>
-        <tr class="member" class="email">
-            <th class="col-md-3"><p>이메일</p></th>
-            <td style="text-align:left;">
-            <input class="col-md-6" id="email" type="email" maxlength="50" placeholder="이메일을 입력해 주세요." style="height:35px;">
-            <div id="emailError" class="error"></div></td>
-        
-        </tr>
         <tr class="member" class="name">
         <th class="col-md-3"><p>이름</p></th>
             <td style="text-align:left;">
-            <input class="col-md-6" id="name" maxlength="10"  type="text" placeholder="이름을 입력해 주세요." style="height:35px;">
+            <input class="col-md-6" id="name" name="user_name" maxlength="10"  type="text" placeholder="이름을 입력해 주세요." style="height:35px; border-radius:7px;">
             <div id="nameError" class="error"></div></td>
         </tr>
+        <tr class="member" class="id">
+            <th class="col-md-3"><p>아이디</p></th>
+            <td style="text-align:left;">
+            <input class="col-md-6" id="id" name="user_id" type="text" maxlength="20" placeholder="아이디를 입력해 주세요." style="height:35px; border-radius:7px;">
+            <div id="idError" class="error"></div></td>
+        </tr>
+
         <tr class="member" class="password">
         <th class="col-md-3"><p>비밀번호</p></th>
             <td style="text-align:left;">
-            <input class="col-md-6" id="password" maxlength="20" type="password" placeholder="비밀번호를 입력해 주세요." style="height:35px;">
+            <input class="col-md-6" id="password" name="user_pw" maxlength="20" type="password" placeholder="비밀번호를 입력해 주세요." style="height:35px; border-radius:7px;">
             <div id="passwordError" class="error"></div></td>
         </tr>
         <tr class="member" class="passwordCheck">
         <th class="col-md-3"><p>비밀번호 확인</p></th>
             <td style="text-align:left;">
-            <input class="col-md-6" id="passwordCheck" maxlength="20" type="password" placeholder="비밀번호를 다시 입력해 주세요." style="height:35px;">
+            <input class="col-md-6" id="passwordCheck" maxlength="20" type="password" placeholder="비밀번호를 다시 입력해 주세요." style="height:35px; border-radius:7px;">
             <div id="passwordCheckError" class="error"></div></td>
+        </tr>
+        <tr class="member" class="email">
+            <th class="col-md-3"><p>이메일</p></th>
+            <td style="text-align:left;">
+            <input class="col-md-6" id="email" name="user_email" type="email" maxlength="50" placeholder="이메일을 입력해 주세요." style="height:35px; border-radius:7px;">
+            <div id="emailError" class="error"></div></td>
         </tr>
          <tr class="member" class="address">
 		<th class="col-md-3"><p style="margin-top:50px;">주소</p></th>
 			<td style="text-align:left;">
-				<input type="text" id="postcode" name="postcode" style="height:35px;">
-				<input type="button" class="btn btn-default btn-sm" id="searchAdd" value="우편번호 찾기" style="height:35px;"><br>
-				<input class="col-md-6" class="form-control" type="text" id="roadAddress" name="useraddress" style="height:35px;">
-				<input class="col-md-6" class="form-control" type="text" id="detailAddress" name="detailAddress" placeholder="상세주소" style="height:35px;">
+				<input type="text" id="postcode" name="postcode" style="height:35px; border-radius:7px;">
+				<input type="button" class="btn btn-default btn-sm" id="searchAdd" value="우편번호 찾기" style="height:35px; border-radius:7px;"><br>
+				<input class="col-md-6" class="form-control" type="text" id="roadAddress" name="useraddress" style="height:35px; border-radius:7px;">
+				<input class="col-md-6" class="form-control" type="text" id="detailAddress" name="detailAddress" placeholder="상세주소" style="height:35px; border-radius:7px;">
 					
 		</tr>
         <tr class="member" class="phone">
         <th class="col-md-3"><p>전화번호</p></th>
             <td style="text-align:left;" id="phone">
-            <input class="col-md-2" id="phone1" type="text" maxlength="3" oninput="changePhone1()" style="height:35px;"> -
-            <input id="phone2" type="text" maxlength="4" oninput="changePhone2()" style="height:35px;"> -
-            <input id="phone3" type="text" maxlength="4" oninput="changePhone3()" style="height:35px;"></td>
+            <input class="col-md-2" id="phone1" type="text" maxlength="3" oninput="changePhone1()" style="height:35px; border-radius:7px;"> -
+            <input id="phone2" type="text" maxlength="4" oninput="changePhone2()" style="height:35px; border-radius:7px;"> -
+            <input id="phone3" type="text" maxlength="4" oninput="changePhone3()" style="height:35px; border-radius:7px;"></td>
         </tr>
 		<tr>
-		<th class="member" class="auth"><p>인증번호 받기</p></th>
+		<th class="member" ><p>인증번호 받기</p></th>
             <td><div id="certificationNumber">000000</div>
-            <button disabled id="sendMessage" onclick="getToken()">인증번호 전송</button></td>
+            <button type="button" disabled id="sendMessage" onclick="getToken()">인증번호 전송</button></td>
 		</tr>
+		
 		<tr>
         <th class="member" class="timer"><p>인증하기</p></th>
             <td><div id="timeLimit">03:00</div>
-            <button disabled id="completion" onclick="checkCompletion()">인증확인</button></td>
+            <button type="button" disabled id="completion" onclick="checkCompletion()">인증확인</button></td>
         </tr>
-       
         <tr class="member" class="gender">
         <th class="col-md-3"><p>성별</p></th>
             <td style="text-align:left;"><input id="gender_man" type="radio" name="gender">남성  
@@ -97,12 +105,12 @@
             <button type="button" onclick="location.href='/' ">취소</button>
         </div>
 </div>
-   
+  </form> 
 
 </body>
 <!-- 주소 입력관련 스크립트 -->
 <script type="text/javascript">
-	
+
 	$(document).ready(function() {
 		
 		$("#searchAdd").click(function(event) {
