@@ -67,28 +67,22 @@ public class MainController {
 		return "cartList";
 	}
 	
-	//order page 연결
-	@RequestMapping(value = "order", method = RequestMethod.GET)
-	public String order(Model model) {
-		return "order";
-	}
-	@RequestMapping(value="orderResult", method=RequestMethod.GET)
-	public String orderResult(Model model) {
-		return "orderResult";
-	}
-	
-	//test
-	@RequestMapping(value = "ordertest", method = RequestMethod.GET)
-	public String ordertest(Model model) {
-		return "ordertest";
-	}
-	
-	//membership연결
-	@RequestMapping(value = "membership", method = RequestMethod.GET)
-	public String membership(Model model) {
-		return "membership";
-	}
+	//orderList
+		@RequestMapping(value = "orderList", method = RequestMethod.GET)
+		public String orderList(Model model) {
+			return "orderList";
+		}
+		
+	//orderWrite
+		@RequestMapping(value = "orderWrite", method = RequestMethod.GET)
+		public String orderWrite(Model model) {
+			return "orderWrite";
+		}	
+		
+	//orderDetail
+		@RequestMapping(value = "orderDetail", method = RequestMethod.GET)
+		public String orderDetail(Model model) {
+			return "orderDetail";
+		}
 
 }
-
-

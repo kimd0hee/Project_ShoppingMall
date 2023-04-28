@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,20 +21,31 @@
    });
 </script>
 
+<style>
+	table {
+		
+	}
+</style>
+
 </head>
 <body>
 
    <h2>상품목록</h2>
+   <div id="container_box">
    <c:if test="${sessionScope.admin_id != null}">
       <button type="button" id="btnAdd">상품등록</button><br>
    </c:if>
-   <table border="1">
+   <div class="table-responsive">
+   <table border="1" class="table table-bordered m-0" style="width:80%;">
+   	<thead>
       <tr>
          <th>상품번호</th>
          <th>상품이미지</th>
          <th>상품명</th>
          <th>가격</th>
       </tr>
+      </thead>
+      <tbody>
       <c:forEach var="row" items="${list}">
          <tr>
             <td>
@@ -53,9 +67,10 @@
             </td>
          </tr>
       </c:forEach>
-      
+      </tbody>
    </table>
-
+   </div>
+</div>
    <%@ include file="include/footer.jsp" %>
 </body>
 </html>

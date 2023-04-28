@@ -1,92 +1,91 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-    
+
 <!DOCTYPE html>
-<html>
+<html lang="UTF-8">
+
 <head>
-<meta charset="UTF-8">
-<title>주문 페이지</title>
-<%@ include file="include/header.jsp" %>
-<%@ include file="include/menu.jsp" %>
+    <%@ include file="include/header.jsp" %>
+    <%@ include file="include/menu.jsp" %>
+    <title>주문 페이지</title>
 </head>
+
 <body>
-	<div class="container">
-		<form name="form1" action="InsertOrder.do" method="post">
-		<div>
-			<h1 class="page-header">주문정보 확인</h1>
-			<h4 style="color: red;">주문자 정보와 배송지가 다른 경우 직접 입력해주세요.</h4>
-		</div>
-		<div>
-			<label>주문하시는 분</label><br>
-				<input value="${vo.user_idx}" readonly><br>
-			<label>주문 상품</label><br>
-				<input value="${vo.product_id}" readonly><br>
-			<label>수령인</label><br>
-				<input name="recipientName" id="recipientName" placeholder="받는 분 이름"><br>
-			<label>연락처</label><br>
-				<input name="recipientPhone" id="recipientPhone" placeholder="받는 분 연락처"><br>
-			<label>수령 주소</label><br>
-				<input name="zipcode" id="zipcode">&nbsp;
-				<input type="button" value="우편번호 찾기" onclick="execDaumPostcode();"><br>
-				<input name="address" id="address"><br>
-				<input name="addressDetail" id="addressDetail" placeholder="상세주소"><br>
-			<label>요청사항</label><br>
-				<input name="orderMemo" id="orderMemo" placeholder="배송 시 요청사항">
-		</div>
-		<div>
-			<button type="button" id="btnSave">확인</button>
-			<button type="reset">취소</button>
-		</div>
-		</form>
-	</div>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <h2>주문 페이지</h2>
+    <br>
+    <h3>주문 내역</h3>
+              <table border="1">
+                  <tr>
+                     <th>상품명</th>
+                     <th>단가</th>
+                     <th>수량</th>
+                     <th>금액</th>
+                     <th>삭제</th>
+                  </tr>
+                  <c:forEach var="row" items="${cartList}" varStatus="i">
+                  <tr>
+                     <td>
+                        ${row.product_name}
+                     </td>
+                     <td style="width:80px" align="right">
+                        <fmt:formatNumber pattern="###,###,###" value="${row.product_price}"/>
+                     </td>
+                     <td>
+                        <input type="number" style="width:40px" name="amount" value="${row.amount}" min="1" readonly>
+                        <input type="hidden" name="product_id" value="${row.product_id}">
+                     </td>
+                     <td style="width:100px" align="right">
+                        <fmt:formatNumber pattern="###,###,###" value="${row.money}"/>
+                     </td>
+                     <td>
+                         <a href="${path}/cartDelete.do?cart_id=${row.cart_id}">삭제</a>
+                     </td>
+                  </tr>                  
+                  </c:forEach>
+              </table>
 
-<script>
-$(document).ready(function(){
-	$("#btnSave").click(function(){
-		var recipientName = $("#recipientName").val();
-		var recipientPhone = $("#recipientPhone").val();
-		var address = $("#address").val();
-		if(order_name == ""){
-			alert("수령인을 입력하세요");
-			document.form1.recipientName.focus();
-			return;
-		}
-		if(order_phone == ""){
-			alert("연락처를 입력하세요");
-			document.form1.recipientPhone.focus();
-			return;
-		}
-		if(address == ""){
-			alert("배송지를 입력하세요");
-			document.form1.address.focus();
-			return;
-		}
-		
-		document.form1.submit();
-	});
-});
-/*
-function execDaumPostcode() {
-    new daum.Postcode({
-        oncomplete: function(data) {
-            var zipcode = data.zonecode; // 우편번호
-            var address = data.address; // 기본 주소
-            var addressDetail = data.buildingName; // 상세 주소
-
-            // 입력 폼에 우편번호, 기본 주소, 상세 주소를 채움
-            document.getElementById('zipcode').value = zipcode;
-            document.getElementById('address').value = address;
-            document.getElementById('addressDetail').value = addressDetail;
-        }
-    }).open();
-}*/
-</script>
-
+          <form name="form1" id="form1" method="post" action="${path}/orderInsert.do">
+          <table>
+            <tr>
+                <td colspan="5" align="right">
+                    주문 금액 합계 : <fmt:formatNumber pattern="###,###,###" value="${map.sumMoney}"/><br>
+                    배송료 : ${map.fee}<br>
+                    전체 주문금액 : <fmt:formatNumber pattern="###,###,###" value="${map.allSum}"/>
+                    <input type ="hidden" name="cart_id" value="${cart_id}">
+                    <input type ="hidden" name="order_price" value="${map.allSum}">
+                 </td>
+           </tr>
+          </table>
+    <hr>
+    <h3>주문자 정보 입력</h3>
+        <table>
+           
+            <tr>
+                <td>주문자 이름:</td>
+                <td><input type="text" name="receive_name"></td>
+            </tr>
+            <tr>
+                <td>연락처:</td>
+                <td><input type="text" name="receive_phone"></td>
+            </tr>
+            <tr>
+                <td>배송 주소:</td>
+                <td><input type="text" name="order_addr1"></td>
+                <td><input type="text" name="order_addr2"></td>
+                <td><input type="text" name="order_addr3"></td>
+            </tr>
+            <tr>
+                <td>주문 메모:</td>
+                <td><textarea name="order_memo"></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" value="주문하기"></td>
+            </tr>
+        </table>
+        <br>
+        <button type="submit">주문 완료</button>
+    </form>
 </body>
+
 <%@ include file="include/footer.jsp" %>
 </html>
