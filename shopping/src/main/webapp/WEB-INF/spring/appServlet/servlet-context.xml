@@ -31,6 +31,9 @@
 	    <beans:constructor-arg value="C:\Users\wiwi4\Documents\workspace-sts-3.9.18.RELEASE\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\shopping\resources\img\product\"/>
 	</beans:bean>
 	
+	<!-- img 띄우는 경로 -->
+	<resources mapping="/img/**" location="/WEB-INF/resources/img/" />
+	
 	<!-- 관리자 세션체크 -->
 	<beans:bean id="adminInterceptor" class="com.admin.interceptor.AdminInterceptor"/>
 	

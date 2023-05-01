@@ -21,56 +21,70 @@
    });
 </script>
 
-<style>
-	table {
+<style type="text/css">
+	a:link { color:black; text-decoration: none;}
+	a:visited {color:black; text-decoration: none;}
+	a:hover {color:dark; text-decoration: none;}
+	
+	h2 {
+		text-align:center;
+		margin-top:15px;
 		
 	}
+
+	ul li {
+		display:inline-block;
+	}
+	
+	.ul{
+		padding:8px;
+	}
+	
+	.li {
+		margin:12px;
+		font-size:18px;
+		font-weight:500;
+	}
+
 </style>
 
 </head>
 <body>
 
    <h2>상품목록</h2>
-   <div id="container_box">
    <c:if test="${sessionScope.admin_id != null}">
       <button type="button" id="btnAdd">상품등록</button><br>
    </c:if>
-   <div class="table-responsive">
-   <table border="1" class="table table-bordered m-0" style="width:80%;">
-   	<thead>
-      <tr>
-         <th>상품번호</th>
-         <th>상품이미지</th>
-         <th>상품명</th>
-         <th>가격</th>
-      </tr>
-      </thead>
-      <tbody>
-      <c:forEach var="row" items="${list}">
-         <tr>
-            <td>
-               ${row.product_id}
-            </td>
-            <td>
-               <a href="${path}/productDetail${row.product_id}">
-                  <img src="${path}/img/product/${row.product_url}" width="120px" height="110px">
-               </a>
-            </td>
-            <td>
+   
+   <div class="container" style="width:100%; height:80%;" id="con">
+   
+  <ul class="ul">
+   <c:forEach var="row" items="${list}">
+  	<li class="li">
+  		<div>
+        <a href="${path}/productDetail${row.product_id}">
+        <img src="${path}/img/product/${row.product_url}" width="340" height="300">
+        </a>
+      </div>
+        
+        <div style="text-align:center;">
+        	 
                <a href="${path}/productDetail${row.product_id}">${row.product_name}</a>
                <c:if test="${sessionScope.admin_id != null}">
                   <a href="${path}/productEdit${row.product_id}">[상품편집]</a>
                </c:if>
-            </td>
-            <td>
+        </div>
+        <div style="text-align:center;">   
                <fmt:formatNumber value="${row.product_price}" pattern="###, ###, ###"></fmt:formatNumber>
-            </td>
-         </tr>
+
+     </div>
+     </li>
       </c:forEach>
-      </tbody>
-   </table>
+    
+   </ul>
    </div>
-</div>
+
+
    <%@ include file="include/footer.jsp" %>
 </body>
 </html>

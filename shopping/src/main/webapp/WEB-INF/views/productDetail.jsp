@@ -8,31 +8,73 @@
 	<%@ include file="include/header.jsp" %>
     <%@ include file="./include/menu.jsp" %>
     <title>상품 상세정보</title>
+
+<style>
+	#tb_t {
+		
+		align:right;
+		
+		
+	}
+	
+	#detail {
+		
+		
+	}
+	
+	#detail2 {
+		border:1px solid gray;
+		text-align:center;
+		padding-bottom:130px;
+	}
+	
+	#img {
+		border:1px solid red;
+		
+		
+	}
+	
+	td {
+		border:1px solid black;
+		vertical-align: top;
+	}
+	
+	.container {
+		display:inline-block;
+	}
+</style>
+
     
 </head>
 
 <body>
-   <h2>상품 상세정보</h2>   
-   <table border="1">
+   <h2>상품 상세정보</h2>
+   <div>
+   <div id="detail" style="width:50%;  float:left;">   
+   <table style="width:90%; margin-left:10px;">
       <tr>
-         <td>
-            <img src="${path}/img/product/${vo.product_url}" width="340" height="300">
+         <td id="img">
+            <img src="${path}/img/product/${vo.product_url}" width="800px;" height="450px;"  >
          </td>
-         <td>
-            <table border="1" style="height:300px; width:400px;">
-               <tr align="center">
-                  <td>상품명</td>
-                  <td>${vo.product_name}</td>
+         </tr>
+            </table>
+         </div>
+         
+         <div style="float:left;" id="detail2">
+            <table style="height:600px; width:400px;" id="tb_t">
+               <tr>
+                  
+                  <td style="font-size:40px; font-weight:600;">${vo.product_name}</td>
                </tr>
-               <tr align="center">
-                  <td>가격</td>
+               <tr>
+                  
                   <td><fmt:formatNumber value="${vo.product_price}" pattern="###,###,###"/></td>
                </tr>
-               <tr align="center">
-                  <td>상품소개</td>
+               <tr>
+                  
                   <td>${vo.product_desc}</td>
                </tr>
-               <tr align="center">
+               <tr>
                   <td colspan="2">
                      <form name="form=1" method="post" action="${path}/cartInsert.do">
                         <input type="hidden" name="product_id" value="${vo.product_id}">
@@ -46,10 +88,11 @@
                      <a href="${path}/productList.do">상품목록</a>
                   </td>
                </tr>
-            </table>
-         </td>
-      </tr>
+         
+
    </table>
+   </div>
+   </div>
 </body>
 
 
