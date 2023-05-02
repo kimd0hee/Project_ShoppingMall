@@ -18,6 +18,10 @@ public class MainController {
 	}
 
 	//로그인 page 연결
+	@RequestMapping(value = "adminLogin.do", method = RequestMethod.GET)
+	public String adminLogin() {
+		return "adminLogin";
+	}
 	@RequestMapping(value = "login.do", method = RequestMethod.GET)
 	public String login() {
 		return "login";

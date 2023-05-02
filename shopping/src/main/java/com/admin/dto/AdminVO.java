@@ -6,7 +6,9 @@ public class AdminVO {
 	private String admin_id;
 	private String admin_pw;
 	private String admin_name;
-
+	private String admin_email;
+	private Timestamp admin_joindate;
+	private Timestamp admin_update;
 	public String getAdmin_id() {
 		return admin_id;
 	}
@@ -25,10 +27,29 @@ public class AdminVO {
 	public void setAdmin_name(String admin_name) {
 		this.admin_name = admin_name;
 	}
-	
+	public String getAdmin_email() {
+		return admin_email;
+	}
+	public void setAdmin_email(String admin_email) {
+		this.admin_email = admin_email;
+	}
+	public Timestamp getAdmin_joindate() {
+		return admin_joindate;
+	}
+	public void setAdmin_joindate(Timestamp admin_joindate) {
+		this.admin_joindate = admin_joindate;
+	}
+	public Timestamp getAdmin_update() {
+		return admin_update;
+	}
+	public void setAdmin_update(Timestamp admin_update) {
+		this.admin_update = admin_update;
+	}
 	@Override
 	public String toString() {
-		return "AdminVO [admin_id=" + admin_id + ", admin_pw=" + admin_pw + ", admin_name=" +" admin_name]";
+		return "AdminVO [admin_id=" + admin_id + ", admin_pw=" + admin_pw + ", admin_name=" + admin_name
+				+ ", admin_email=" + admin_email + ", admin_joindate=" + admin_joindate + ", admin_update="
+				+ admin_update + "]";
 	}
 	
 }
