@@ -45,6 +45,7 @@
 		font-size:18px;
 		font-weight:500;
 	}
+	
 
 </style>
 
@@ -56,7 +57,7 @@
       <button type="button" id="btnAdd">상품등록</button><br>
    </c:if>
    
-   <div class="container" style="width:100%; height:80%;" id="con">
+   <div class="container" style="width:100%; height:100%;" id="con">
    
   <ul class="ul">
    <c:forEach var="row" items="${list}">

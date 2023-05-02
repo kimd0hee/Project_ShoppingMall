@@ -66,6 +66,9 @@
 		
 	}
 	
+	#t_head{
+		background-color:#EBF5FF;
+	}
 	
 	
 </style>
@@ -88,7 +91,7 @@
    	${map.count}개의 게시물이 있습니다
    	</div>
         <table class="table table-sm" style="width:98%;">
-          <thead>
+          <thead id="t_head">
             <tr>
          		<th id="padding">번호</th>
          		<th id="padding">제목</th>
