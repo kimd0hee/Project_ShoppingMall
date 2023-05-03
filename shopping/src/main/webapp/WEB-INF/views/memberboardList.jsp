@@ -44,8 +44,9 @@
 	}
 	
 	#div {
-	   margin-left:10px;
-	   margin:5px 10px;
+	   
+	   margin:10px 0px;
+	  
 	}
 	
 		
@@ -53,10 +54,6 @@
 		width:32px;
 		height:27px;
 		text-align:center;
-	}
-	
-	#btnWrite {
-		position:absolute;
 	}
 	
 	.write {
@@ -70,12 +67,26 @@
 		background-color:#EBF5FF;
 	}
 	
+	#mb_body {
+		width:90%;
+		padding-left:130px;
+	}
+ 	
+ 	#m_write {
+ 		
+ 		text-align:right;
+ 		
+ 	}
+	
+	#page {
+		border:1px solid red;
+	}
 	
 </style>
 
 <body>
       <h2>회원 게시글 목록</h2>
-      <div class="table-responsive">
+      <div class="table-responsive" id="mb_body">
       <div id="div">
       <form name="form" method="post" action="${path}/memberboardList.do">
       <select name="searchOption">
@@ -90,13 +101,13 @@
    	</form>
    	${map.count}개의 게시물이 있습니다
    	</div>
-        <table class="table table-sm" style="width:98%;">
+        <table class="table table-sm" >
           <thead id="t_head">
             <tr>
          		<th id="padding">번호</th>
          		<th id="padding">제목</th>
          		<th id="padding">이름</th>
-         		<th id="padding">작성일</th>
+         		<th id="padding" style="width:200px;">작성일</th>
          		<th id="padding">조회수</th>      
       		</tr>
           </thead>
@@ -158,9 +169,11 @@
                <a href="javascript:list('${map.boardPager.totPage}')">[끝]</a>
             </c:if>
             
+            <div>
             <c:if test="${sessionScope.user_id != null}">
          		<button type="button" id="btnWrite" class="write">글쓰기</button>
       		</c:if>
+      		</div>
             </div>
       </div>
 

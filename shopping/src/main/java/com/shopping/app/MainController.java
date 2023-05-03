@@ -54,9 +54,9 @@ public class MainController {
 	public String boardView(Model model) {
 		return "boardView";
 	}
-	@RequestMapping(value = "boardInsert", method = RequestMethod.GET)
+	@RequestMapping(value = "boardWrite", method = RequestMethod.GET)
 	public String boardInsert(Model model) {
-		return "boardWrite";
+		return "boardInsert";
 	}
 
 	//product page 연결
@@ -87,6 +87,11 @@ public class MainController {
 		@RequestMapping(value = "orderDetail", method = RequestMethod.GET)
 		public String orderDetail(Model model) {
 			return "orderDetail";
+		}
+		
+		@RequestMapping(value = "membership", method = RequestMethod.GET)
+		public String membership(Model model) {
+			return "membership";
 		}
 
 }

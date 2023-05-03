@@ -102,7 +102,7 @@ function signUpCheck(){
 
 
   // 이름확인
-  if(name===""){
+  if(name!==""){
     document.getElementById("nameError").innerHTML="이름을 입력해주세요."
     check = false
   }else{

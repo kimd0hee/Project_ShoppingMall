@@ -19,13 +19,13 @@ public class AdminController {
    AdminService service;
 
    @RequestMapping("adminLogin.do")
-   public String adminLogin() {
+   public String login() {
 	   
       return "adminLogin";
    }
 
    @RequestMapping("adminLoginCheck.do")
-   public ModelAndView adminLoginCheck(HttpSession session, AdminVO vo , ModelAndView mav) {
+   public ModelAndView loginCheck(HttpSession session, AdminVO vo , ModelAndView mav) {
 	   
       String name = service.adminLoginCheck(vo);
 

@@ -31,7 +31,7 @@ public class UserController {
 		return "userList";
 	}
 	
-	@RequestMapping(value="writeUser.do", produces="text/plain;charset=UTF-8")
+	@RequestMapping(value="userWrite.do", produces="text/plain;charset=UTF-8")
 	public String writeUser() {
 
 		return "userWrite";
@@ -79,11 +79,11 @@ public class UserController {
 		}
 	}
 	
-	@PostMapping("membership")
+	@RequestMapping("userInsert.do")
 	public String insertUser(@ModelAttribute UserVO vo, Model model) {
 		
 
-		return "membership";
+		return "login";
 
 }
 }
