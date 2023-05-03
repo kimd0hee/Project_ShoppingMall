@@ -16,6 +16,7 @@ public class OrderVO {
 	private int order_quantity;
 	private int order_price;
 	private String order_memo;
+	private String order_pay;
 	public int getOrder_id() {
 		return order_id;
 	}
@@ -94,14 +95,19 @@ public class OrderVO {
 	public void setOrder_memo(String order_memo) {
 		this.order_memo = order_memo;
 	}
+	public String getOrder_pay() {
+		return order_pay;
+	}
+	public void setOrder_pay(String order_pay) {
+		this.order_pay = order_pay;
+	}
 	@Override
 	public String toString() {
 		return "OrderVO [order_id=" + order_id + ", cart_id=" + cart_id + ", product_id=" + product_id + ", user_id="
 				+ user_id + ", receive_name=" + receive_name + ", receive_phone=" + receive_phone + ", order_date="
 				+ order_date + ", order_addr1=" + order_addr1 + ", order_addr2=" + order_addr2 + ", order_addr3="
 				+ order_addr3 + ", order_quantity=" + order_quantity + ", order_price=" + order_price + ", order_memo="
-				+ order_memo + "]";
+				+ order_memo + ", order_pay=" + order_pay + "]";
 	}
-
 
 }

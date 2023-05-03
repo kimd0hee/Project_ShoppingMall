@@ -5,6 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<%@ include file="include/header.jsp" %>
+<%@ include file="./include/menu.jsp" %>
 <title>주문 내역</title>
 </head>
 <body>
@@ -23,9 +25,9 @@
 		<tbody>
 			<c:forEach var="order" items="${orderList}">
 				<tr>
-					<td>${order.order_id}</td>
+					<td><a href="${path}/orderDetail${order.order_id}">${order.order_id}</a></td>
 					<td>${order.product_id}</td>
-					<td><a href="${path}/orderDetail${order.order_id}">${order.user_id}</a></td>
+					<td>${order.user_id}</td>
 					<td>${order.order_quantity}</td>
 					<td>${order.order_price}</td>
 					<td>${order.order_date}</td>
@@ -34,3 +36,5 @@
 		</tbody>
 	</table>
 </body>
+<%@ include file="include/footer.jsp" %>
+</html>

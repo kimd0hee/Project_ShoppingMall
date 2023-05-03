@@ -30,8 +30,8 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public List<OrderVO> orderList() throws Exception {
-		return orderDAO.orderList();
+	public List<OrderVO> orderList(String user_id) throws Exception {
+		return orderDAO.orderList(user_id);
 	}
 
 	@Override
@@ -49,5 +49,9 @@ public class OrderServiceImpl implements OrderService {
 		
 		return orderDAO.orderDetail(order_id);
 	}
-
+	
+	@Override
+    public void cartAllDelete(String user_id) throws Exception{
+       orderDAO.cartAllDelete(user_id);
+    }
 }

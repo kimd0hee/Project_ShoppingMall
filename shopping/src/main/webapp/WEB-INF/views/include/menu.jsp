@@ -24,7 +24,7 @@
 			<div class="row">
 				<div class="col-xl-3 col-lg-8">
 					<div class="header__logo">
-						<a href="/"><img src="img/logo.jpg" width="180" height="60" alt=""></a>
+						<a href="${path }/"><img src="img/logo.jpg" width="180" height="60" alt=""></a>
 					</div>
 				</div>
 				<div class="col-xl-5 col-lg-6">
@@ -68,15 +68,12 @@
     </c:otherwise>
 </c:choose>
 		
-						<a href="mypageform">My page</a>
+						<a href="${path}/mypageform.do">My page</a>
 						</div>
 						<ul class="header__right__widget">
 							<li><span class="icon_search search-switch"></span></li>
-							<li><a href="keepform"><span class="icon_heart_alt"></span>
-									<div class="tip">2</div> </a></li>
 							<li><a href="${path}/cartList.do"><span class="icon_bag_alt"></span>
-									<!-- cartform -->
-									<div class="tip">2</div> </a></li>
+									</a></li>
 									
 						</ul>
 					</div>

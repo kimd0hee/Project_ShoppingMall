@@ -12,7 +12,7 @@
 	$(document).ready(function(){
 		$("#btnLogin").click(function(){
 			// 태크.val() : 태그에 입력된 값
-			// 태크.val("값ㅅ") : 태그의 값을변경
+			// 태크.val("값") : 태그의 값을변경
 			var user_id = $("#user_id").val();
 			var user_pw = $("#user_pw").val();
 			if(user_id == ""){

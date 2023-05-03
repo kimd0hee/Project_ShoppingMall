@@ -30,14 +30,14 @@ public class UserController {
 		return "userList";
 	}
 	
-	@RequestMapping(value="writeUser.do", produces="text/plain;charset=UTF-8")
+	@RequestMapping(value="writeUser.do", method=RequestMethod.GET)
 	public String writeUser() {
 
 		return "userWrite";
 	}
 
 	
-	@RequestMapping(value="insertUser.do", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	@RequestMapping(value="insertUser.do", method=RequestMethod.POST)
 	public String insertUser(@ModelAttribute UserVO vo, Model model) {
 		
 		userService.insertUser(vo);

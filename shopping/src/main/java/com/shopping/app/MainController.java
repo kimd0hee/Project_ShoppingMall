@@ -54,7 +54,10 @@ public class MainController {
 	public String boardInsert(Model model) {
 		return "boardWrite";
 	}
-
+	@RequestMapping(value = "mypageform", method = RequestMethod.GET)
+	public String mypageform(Model model) {
+		return "mypageform";
+	}
 	//product page 연결
 	@RequestMapping(value = "productList", method = RequestMethod.GET)
 	public String productList(Model model) {
@@ -84,5 +87,10 @@ public class MainController {
 		public String orderDetail(Model model) {
 			return "orderDetail";
 		}
+		@RequestMapping(value = "profileform", method = RequestMethod.GET)
+		public String profileform(Model model) {
+			return "profileform";
+		}		
+		
 
 }

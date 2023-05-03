@@ -12,12 +12,13 @@ public interface OrderService {
 	
 	public List<OrderVO> orderByUserId(String user_id) throws Exception;
 	
-	public List<OrderVO> orderList() throws Exception;
+	public List<OrderVO> orderList(String user_id) throws Exception;
 	
 	public void updateOrder(OrderVO vo) throws Exception;
 	
 	public void deleteOrder(int order_id) throws Exception;
 	
 	public OrderVO orderDetail(int order_id) throws Exception;
-	
+
+	public void cartAllDelete(String user_id) throws Exception;
 }

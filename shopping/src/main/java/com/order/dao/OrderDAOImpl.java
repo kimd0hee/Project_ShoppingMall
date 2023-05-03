@@ -33,8 +33,8 @@ public class OrderDAOImpl implements OrderDAO {
     
     // 주문 목록 조회
     @Override
-    public List<OrderVO> orderList() throws Exception {
-        return sqlSession.selectList(NAMESPACE + ".orderList");
+    public List<OrderVO> orderList(String user_id) throws Exception {
+        return sqlSession.selectList(NAMESPACE + ".orderList", user_id);
     }
     
     // 주문 정보 수정
@@ -53,5 +53,10 @@ public class OrderDAOImpl implements OrderDAO {
 	public OrderVO orderDetail(int order_id) {
 		return sqlSession.selectOne(NAMESPACE +".orderDetail", order_id);
 	}
+	
+	@Override
+    public void cartAllDelete(String user_id) throws Exception {
+       sqlSession.delete(NAMESPACE + "cartAllDelete", user_id);
+    }	
 
 }
