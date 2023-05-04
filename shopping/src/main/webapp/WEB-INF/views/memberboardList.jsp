@@ -58,8 +58,7 @@
 	
 	.write {
 		border:2px solid black;
-		right:20px;
-		
+		float:right;
 		
 	}
 	
@@ -68,8 +67,8 @@
 	}
 	
 	#mb_body {
-		width:90%;
-		padding-left:130px;
+		
+		
 	}
  	
  	#m_write {
@@ -79,13 +78,14 @@
  	}
 	
 	#page {
-		border:1px solid red;
+		
 	}
 	
 </style>
 
 <body>
       <h2>회원 게시글 목록</h2>
+      <div class="container">
       <div class="table-responsive" id="mb_body">
       <div id="div">
       <form name="form" method="post" action="${path}/memberboardList.do">
@@ -168,12 +168,11 @@
              <c:if test="${map.boardPager.curPage <= map.boardPager.totPage}">
                <a href="javascript:list('${map.boardPager.totPage}')">[끝]</a>
             </c:if>
-            
-            <div>
             <c:if test="${sessionScope.user_id != null}">
          		<button type="button" id="btnWrite" class="write">글쓰기</button>
       		</c:if>
-      		</div>
+            </div>
+            
             </div>
       </div>
 

@@ -256,54 +256,6 @@
     <div id="listReply"></div> 
   
   </div>
-
-<!--    <h2>게시글 보기</h2>
-   <form name="form" method="post">
-      <div>
-         작성일자 : <fmt:formatDate value="${dto.regdate}" pattern= "yyyy-MM-dd a HH:mm:ss"/>
-      </div>
-      <div>
-         조회수 : ${dto.viewcnt}
-      </div>
-      <div>
-         제목
-         <input name="title" id="title" size="80" value="${dto.title}" placeholder="제목을 입력 하세요">
-      </div>
-      <div>
-         내용
-         <textarea name="content" id="content" rows="4" cols="80" placeholder="내용을 입력하세요">${dto.content}</textarea>
-      </div>
-      <div>
-         이름
-         <input name="writer" id="writer" value="${dto.writer}" placeholder="이름을 입력하세요"> 
-         ${dto.user_name}
-      </div>
-   <div style="width: 650px; text-align:center;">
-      <input type="hidden" name="bno" value="${dto.bno}">
-      <!-- 본인이 쓴 게시물만 수정, 삭제가 가능 -->
-  <!--     <c:if test="${sessionScope.user_id == dto.writer}">
-         <button type="button" id="btnUpdate">수정</button>
-         <button type="button" id="btnDelete">삭제</button>
-      </c:if>
-         <button type="button" id="btnList">목록</button>
-   </div>
-   </form>
-   
-   <div style="width:650px; text-align:center;">
-      <br>
-      <!-- 로그인 한 회원에게만 댓글 작성 가능 -->
-  <!--     <c:if test="${sessionScope.user_id != null}">
-         <textarea rows="5" cols="80" id="replytext" placeholder="댓글을 입력하세요"></textarea>
-      <br>
-      <!-- 비밀댓글 체크박스 -->
-  <!--     <input type="checkbox" id="secretReply">비밀 댓글
-      <button type="button" id="btnReply">댓글 작성</button>
-     
-      </c:if>
-   </div>
-   
-   <!-- 댓글 목록 출력 위치 -->
- <!--   <div id="listReply"></div> -->
    
 </body>
 </html>

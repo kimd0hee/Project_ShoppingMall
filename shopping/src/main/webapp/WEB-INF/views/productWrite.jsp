@@ -35,39 +35,84 @@
        });
     });
     </script>
+    
+    <style>    
+    	#p_write {
+    		width:90%;
+    		height:400px;
+       		margin-left:50px;
+       		
+    	}
+    	
+    	#p_td1 {
+    		text-align:center;
+    	}
+    	
+    	#p_td2 {
+    		padding-left:10px;
+    		padding:2px 0px;
+    	}
+    	
+    	#p_row {
+    		border-bottom:1px solid #A4A4A4;
+    		
+    	}
+    	
+    	#p_title {
+    		text-align:center;
+    		padding:15px 0px 10px 0px;
+    		font-weight:500;
+    	}
+    	
+    	#p_btn {
+    		padding:10px 0px;
+    	}
+    	
+    	.p_bn {
+    		border:1px solid black;
+    		padding:6px 10px;
+    		border-radius:6px;
+    	}
+    	
+    	#bt2 {
+    		margin-left:5px;
+    	}
+    </style>
+    
 </head>
 
 <body>
-  <h2>상품 등록</h2>   
+  <h2 id="p_title">상품 등록</h2>   
   <!--  -->
+  <div class="container">
    <form action="" id="form1" name="form1" enctype="multipart/form-data" method="post">
-   <table border="1">
-      <tr>
-         <td>상품명</td>
+   <table id="p_write">
+      <tr id="p_row" style="border-top:1px solid #A4A4A4;">
+         <td id="p_td1">상품명</td>
          
-       <td><input type="text" name="product_name" id="product_name"></td>
+       <td id="p_td2"><input type="text" name="product_name" id="product_name"></td>
+      </tr>
+      <tr id="p_row">
+         <td id="p_td1">가격</td>
+         <td id="p_td2"><input type="text" name="product_price" id="product_price"></td>
+      </tr>
+      <tr id="p_row">
+         <td id="p_td1">상품설명</td>
+         <td id="p_td2"><textarea rows="5" cols="60" name="product_desc" id="product_desc"></textarea>></td>
+      </tr>
+      <tr id="p_row">
+         <td id="p_td1">상품 이미지</td>
+            <td id="p_td2"><input type="file" id="product_photo" name="product_photo"></td>
       </tr>
       <tr>
-         <td>가격</td>
-         <td><input type="text" name="product_price" id="product_price"></td>
-      </tr>
-      <tr>
-         <td>상품설명</td>
-         <td><textarea rows="5" cols="60" name="product_desc" id="product_desc"></textarea>></td>
-      </tr>
-      <tr>
-         <td>상품 이미지</td>
-            <td><input type="file" id="product_photo" name="product_photo"></td>
-      </tr>
-      <tr>
-         <td colspan="2" align="center">
-            <input type="button" value="등록" id="addBtn" >
-            <input type="button" value="목록" onclick="location.href='${path}/productList.do';">
+         <td colspan="2" align="center" id="p_btn">
+            <input type="button" value="등록" id="addBtn" class="p_bn">
+            <input type="button" value="목록" class="p_bn" id="bt2" onclick="location.href='${path}/productList.do';">
          </td>
       </tr>
    </table>
    </form>
-
+</div>
 </body>
    
 

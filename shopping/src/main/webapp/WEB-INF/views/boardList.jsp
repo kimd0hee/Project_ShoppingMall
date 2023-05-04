@@ -34,6 +34,7 @@
 	h2 {
 		text-align:center;
 		margin-top:15px;
+		margin-bottom:10px;
 	}
 	
 	#div {
@@ -49,12 +50,12 @@
 	}
 	
 	#btnWrite {
-		position:absolute;
+		
 	}
 	
 	.write {
 		border:2px solid black;
-		right:20px;
+		float:right;
 		
 		
 	}
@@ -69,13 +70,14 @@
 </head>
 <body>
 <h2>게시글 목록</h2>
-<table class="table table-sm" style="width:90%;">
+<div class="container">
+<table class="table">
           <thead id="t_head">
             <tr>
-         		<th id="padding">번호</th>
+         		<th id="padding" width="200px;">번호</th>
          		<th id="padding">제목</th>
          		<th id="padding">이름</th>
-         		<th id="padding">작성일</th>
+         		<th id="padding" width="400px;">작성일</th>
       		</tr>
           </thead>
 	<tbody>
@@ -92,6 +94,7 @@
           </tbody>
 </table>
 <button type="button" id="btnWrite" class="write">글쓰기</button>
+</div>
 <%@ include file="include/footer.jsp" %>
 </body>
 </html>

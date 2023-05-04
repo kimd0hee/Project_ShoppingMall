@@ -53,9 +53,9 @@
 <body>
 
    <h2>상품목록</h2>
-   <c:if test="${sessionScope.admin_id != null}">
+<!--    <c:if test="${sessionScope.admin_id != null}">
       <button type="button" id="btnAdd">상품등록</button><br>
-   </c:if>
+   </c:if> -->
    
    <div class="container" style="width:100%; height:100%;" id="con">
    

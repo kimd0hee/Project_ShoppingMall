@@ -56,8 +56,9 @@
   <form name="form" method="post" action="${path}/memberboardInsert.do">
     <div class="form-group">
       <label for="title">제목</label>
-      <input type="text" class="form-control" id="title"
-       name="title" size="80" placeholder="제목을 입력하세요"> 
+      <input type="text" class="form-control" id="board_title"
+       name="board_title" size="80" placeholder="제목을 입력하세요"> 
+       
     </div>
     <div class="form-group">
    	  <label for="content">내용</label>
