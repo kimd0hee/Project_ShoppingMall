@@ -40,31 +40,49 @@
 		});
 	});
 </script>
+
+<style>
+	.btn {
+   	border:1px solid black;
+    margin:0px 2px;
+   }
+</style>
+
 </head>
 <body>
-<h2>게시글 보기</h2>
+<div class="container">
+<h2 style="margin:20px 0px;">게시글 보기</h2>
 <form name="form1" method="post">
+	<div class="form-group">
 	<div>
 		작성일자 : <fmt:formatDate value="${dto.board_createdate }" pattern="yyyy-MM-dd HH:mm:ss"/>
 	</div>
-	<div>
-		제목
-		<input name="board_title" id="board_title" size="80" value="${dto.board_title }">
 	</div>
+	<div class="form-group">
 	<div>
-		내용
-		<textarea name="board_content" id="board_content" rows="4" cols="80" >${dto.board_content }</textarea>
+		<label for="title">제목</label>
+		<input type="text" class="form-control" name="board_title" id="board_title" size="80" value="${dto.board_title }">
 	</div>
+	</div>
+	<div class="form-group">
 	<div>
-		이름
-		<input name="board_writer" id="board_writer" value="${dto.board_writer }" >
+		<label for="content">내용</label>
+		<textarea class="form-control" name="board_content" id="board_content" rows="4" cols="80" >${dto.board_content }</textarea>
 	</div>
-	<div style="width:650px; text-align: center;">
+	</div>
+	<div class="form-group">
+	<div>
+		<label for="writer">이름</label>
+		<input type="text" class="form-control" name="board_writer" id="board_writer" value="${dto.board_writer }" >
+	</div>
+	</div>
+	<div style="width:100%; text-align:right;">
 		<input type="hidden" name="cs_id" value="${dto.board_id }">
-		<button type="button" id="btnUpdate">수정</button>
-		<button type="button" id="btnDelete">삭제</button>
+		<button type="button" id="btnUpdate" class="btn">수정</button>
+		<button type="button" id="btnDelete" class="btn">삭제</button>
 	</div>
 </form>
+</div>
 <%@ include file="include/footer.jsp" %>
 </body>
 </html>

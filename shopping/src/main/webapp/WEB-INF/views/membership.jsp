@@ -25,7 +25,7 @@
 
 <body>
     <h1 style="font-size:35px;">회원가입</h1>
-      <form action="membership" method="post" onsubmit="return false;">
+      <form action="${path}/userInsert.do" method="post" >
     <div id="form_div">
 	<table class="table table-bordered m-0">
 		

@@ -8,7 +8,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,7 +36,24 @@ public class UserController {
 		return "userWrite";
 	}
 
+	
+	@RequestMapping(value="userInsert.do", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	public String insertUser(@ModelAttribute UserVO vo, Model model) {
+		
+		userService.insertUser(vo);
 
+		return "login";
+	}
+	
+	@RequestMapping("viewUser.do")
+	public String viewUser(String user_id, Model model) {
+
+		model.addAttribute("dto", userService.viewUser(user_id));
+
+		return "userView";
+	}
+
+	
 	@RequestMapping(value="updateUser.do", produces="text/plain;charset=UTF-8")
 	public String userUpdate(@ModelAttribute UserVO vo, Model model) {
 
@@ -51,7 +67,7 @@ public class UserController {
 		}else {
 			UserVO uVo = userService.viewUser(vo.getUser_id());
 
-			vo.setUser_joindate(uVo.getUser_joindate());
+			//vo.setUser_joindate(uVo.getUser_joindate());
 			vo.setUser_update(uVo.getUser_update());
 
 			model.addAttribute("dto", vo);
@@ -78,12 +94,5 @@ public class UserController {
 			return "userView";
 		}
 	}
-	
-	@RequestMapping("userInsert.do")
-	public String insertUser(@ModelAttribute UserVO vo, Model model) {
-		
 
-		return "login";
-
-}
 }

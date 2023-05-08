@@ -6,10 +6,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ include file="include/header.jsp"%>
+
+
+<style>
+	a:link { color:#585858; text-decoration: none;}
+	a:visited {color:#585858; text-decoration: none;}
+	a:hover {color:#585858; text-decoration: none;}
+
+	#btnModify {
+		background-color:white;
+		border:1px solid black;
+		padding:4px;
+		border-radius:5px;
+		font-size:14px;
+	}
+</style>
 </head>
 
 <body>
-   <table style="width:700px">
+   <table style="width:100%;">
    <!-- 댓글 목록 -->
       <c:forEach var="row" items="${list}">
       <tr>
