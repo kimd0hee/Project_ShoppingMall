@@ -43,8 +43,13 @@ public class CartDAOImpl implements CartDAO {
       sqlSession.selectOne("cart.sumMoneyCart",user_id);
       return sqlSession.selectOne("cart.sumMoneyCart",user_id);
    }
-
-   //6. 장바구니 동일한 상품 레코드 확인
+   // 6. 장바구니 수량 합계
+   @Override
+   public int sumTotCart(String user_id) {
+      sqlSession.selectOne("cart.sumTotCart",user_id);
+      return sqlSession.selectOne("cart.sumTotCart",user_id);
+   }
+   // 7. 장바구니 동일한 상품 레코드 확인
    @Override
    public int countCart(int product_id, String user_id) {
       Map<String, Object> map = new HashMap<>();
@@ -53,7 +58,7 @@ public class CartDAOImpl implements CartDAO {
       return sqlSession.selectOne("cart.countCart", map);
    }
 
-   //7. 장바구니 상품슈량 변경
+   // 8. 장바구니 상품수량 변경
    @Override
    public void updateCart(CartVO vo) {
        //sqlSession.update("cart.sumCart",vo);

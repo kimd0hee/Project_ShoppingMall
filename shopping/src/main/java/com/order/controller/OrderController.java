@@ -12,8 +12,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.cart.dto.CartVO;
@@ -57,12 +60,14 @@ public class OrderController {
         
         int sumMoney = cartService.sumMoneyCart(user_id);
         int fee = sumMoney >= 100000 ? 0 : 2500;
+        int sumTot = cartService.sumTotCart(user_id);
         
         map.put("list", cartList);
         map.put("sumMoney", sumMoney);
         map.put("fee", fee);
         map.put("count", cartList.size());
         map.put("allSum", sumMoney + fee);
+        map.put("sumTot", sumTot);
         
         
         model.addAttribute("map", map);
@@ -84,12 +89,15 @@ public class OrderController {
     // 주문 처리
     @RequestMapping(value = "orderInsert.do", method = RequestMethod.POST)
     public String orderInsert(@ModelAttribute OrderVO vo, HttpSession session) throws Exception {
-
+    	
     	String user_id = (String) session.getAttribute("user_id");
     	vo.setUser_id(user_id);
     	
     	orderService.insertOrder(vo);
     	System.out.println(vo);
+    	
+    	orderService.cartAllDelete(user_id);
+    	
 		return "redirect:/orderList.do";
 
     }
@@ -101,9 +109,10 @@ public class OrderController {
 			return "redirect:/orderList.do";
 	}
     
-    @PostMapping("orderDelete.do")
-    public String deleteOrder(@PathVariable int order_id) throws Exception {
+	@RequestMapping("orderDelete.do")
+    public String deleteOrder(@RequestParam int order_id) throws Exception {
         orderService.deleteOrder(order_id);
         return "redirect:/orderList.do";
     }
+
 }

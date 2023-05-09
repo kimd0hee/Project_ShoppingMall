@@ -3,7 +3,7 @@
 
 <!DOCTYPE html>
 <html lang="UTF-8">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
@@ -13,6 +13,7 @@
     <title>상품 상세정보</title>
 
 <style>
+
 	body {
      padding: 0;
      margin: 0;
@@ -21,18 +22,6 @@
 
 	#tb_t {
 		border-top:1px solid gray;
-		
-	}
-	
-	#detail {
-		
-		
-	}
-	
-	#detail2 {
-		margin-right:35px;
-		text-align:left;
-		padding-bottom:130px;
 		
 	}
 	
@@ -46,17 +35,6 @@
 		vertical-align: top;
 	}
 	
-	.container {
-		display:inline-block;
-	}
-	
-	#form {
-		
-		text-align:right;
-		
-		width:90%;
-		
-	}
 
 	
 	#price {
@@ -180,28 +158,83 @@
 		font-size:20px;
 		font-weight:500;
 		color:#000;
-		padding:18px 22px;
+		padding:25px 22px;
+		padding-left:190px;
 	}
+	
+	
+.thumbs {
+   width:100px; 
+   float:left;
+}
+.thumbs img {
+    border:1px solid #ccc;
+    
+    margin-bottom:3px;
+}
+ 
+#mainImg {
+    border:solid 1px #ccc;
+    width:600px;
+    height:560px;
+    margin-left:110px;
+}
+
+#form {
+
+
+}
+
+.container {
+	display:inline-block;
+	max-width:2000px;
+}
+
+#detail {
+	margin-left:170px;
+	width:600px;
+}
+	
+#detail2 {
+
+	padding-bottom:130px;
+	width:500px;
+	margin-right:90px;
+}	
 </style>
 
     
 </head>
 
-<body>
+<body>	
+
+<div class="container" style="width:90%;">
    <p id="p_head">홈 > 상품목록 > ${vo.product_name}</p>
+   
    <div id="form">
-   <div id="detail" style="width:50%;  float:left;">   
-   <table style="width:90%; margin-left:10px;">
+   <div id="detail" style="float:left;">   
+   <table style="">
       <tr>
          <td id="img">
-            <img src="${path}/img/product/${vo.product_url}" width="500px;" height="350px;"  >
+         	<div class="thumbs">
+ 	        	<a href="${path}/img/product/${vo.product_url}" title="img1">
+         		<img src="${path}/img/product/${vo.product_url}" >
+				</a>
+				<a href="${path}/img/product/product-6.jpg" title="img1">
+         		<img src="${path}/img/product/product-6.jpg">
+				</a>
+				<a href="${path}/img/product/product-3.jpg" title="img1">
+         		<img src="${path}/img/product/product-3.jpg">
+				</a>
+            </div>
+            <div id="mainImg"><img src="${path}/img/product/${vo.product_url}" alt="img" width="600px;" height="560px;" ></div>
          </td>
          </tr>
             </table>
          </div>
          
          <div style="float:right;" id="detail2">
-            <table style="height:700px; width:400px;">
+            <table style="height:900px;">
                <tr id="tb_t">  
                   <td id="pro_name" class="tb_row">${vo.product_name}
                   	<div class="p_button">
@@ -228,7 +261,7 @@
                </tr>
                <tr>
                   <td id="text">
-                     <form name="form=1" method="post" action="${path}/cartInsert.do">
+                     <form name="form-1" method="post" action="${path}/cartInsert.do">
                         <input type="hidden" name="product_id" value="${vo.product_id}">
                         <select name="amount" id="p_amount">
                            <c:forEach begin="1" end="10" var="i">
@@ -245,8 +278,21 @@
    </table>
    </div>
    </div>
+   </div>
+   </div>
 </body>
 
+<script>
+$(function(){
+    $(".thumbs a").click(function(){            //클릭 시
+        var imgPath = $(this).attr("href");     //클릭한 a태그의 하이퍼링크를 변수저장
+        $("#mainImg>img").attr({src:imgPath})   //메인 이미지의 주소 속성에 할당
+        .hide()                                 //fadein()효과를 보여주기 위해 숨김처리
+        .fadeIn();                              //fadeIn()
+        return false;                           //<a> 의 본래기능 (하이퍼링크) 작동방지
+    });
+});
+</script>
 
 <%@ include file="include/footer.jsp" %>
 </html>

@@ -23,4 +23,7 @@ public interface OrderDAO {
     
     // 주문 정보 삭제
     public void deleteOrder(int order_id) throws Exception;
+    
+    //카트 비우기
+    public void cartAllDelete(String user_id) throws Exception;
 }

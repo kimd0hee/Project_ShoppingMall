@@ -18,7 +18,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         order_addr2, 
         order_addr3, 
         order_memo, 
-        order_date)
+        order_date,
+        order_pay)
         VALUES (
     	#{user_id}, 
     	#{cart_id}, 
@@ -31,7 +32,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         #{order_addr2}, 
         #{order_addr3}, 
         #{order_memo}, 
-        #{order_date})
+        #{order_date},
+        #{order_pay})
 	</insert>	
 	
 	<!-- 주문 상품 목록 -->
@@ -42,7 +44,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<select id="orderDetail" resultType="com.order.dto.OrderVO">
 	  SELECT order_id, cart_id, product_id, user_id, receive_name, receive_phone, order_date,
-  		order_addr1,order_addr2,order_addr3, order_quantity, order_price, order_memo
+  		order_addr1,order_addr2,order_addr3, order_quantity, order_price, order_memo, order_pay
   		FROM orders WHERE order_id = #{order_id}
 	</select>
 	
@@ -63,5 +65,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	  DELETE FROM orders
 	  WHERE order_id = #{order_id}
 	</delete>
+	
+	<delete id="ordercartAllDelete" parameterType="String">
+    DELETE from cart
+    WHERE user_id = #{user_id}
+   </delete>
 	
   </mapper>

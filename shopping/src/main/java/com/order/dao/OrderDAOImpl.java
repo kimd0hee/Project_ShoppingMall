@@ -53,5 +53,10 @@ public class OrderDAOImpl implements OrderDAO {
 	public OrderVO orderDetail(int order_id) {
 		return sqlSession.selectOne(NAMESPACE +".orderDetail", order_id);
 	}
+	
+	@Override
+	public void cartAllDelete(String user_id) throws Exception {
+	      sqlSession.delete(NAMESPACE + "cartAllDelete", user_id);
+	   }
 
 }

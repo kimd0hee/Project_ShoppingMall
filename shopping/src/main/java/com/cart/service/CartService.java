@@ -15,8 +15,10 @@ public interface CartService {
    public void modifyCart(CartVO vo) throws Exception;
    // 05. 장바구니 금액 합계
    public int sumMoneyCart(String user_id) throws Exception;
-   // 06. 장바구니 상품 확인
+   // 06. 장바구니 수량 합계
+   public int sumTotCart(String user_id) throws Exception;
+   // 07. 장바구니 상품 확인
    public int countCart(int product_id, String user_id) throws Exception;
-   // 07. 장바구니 상품 수량 변경
+   // 08. 장바구니 상품 수량 변경
    public void updateCart(CartVO vo) throws Exception;
 }

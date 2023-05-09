@@ -20,4 +20,6 @@ public interface OrderService {
 	
 	public OrderVO orderDetail(int order_id) throws Exception;
 	
+	public void cartAllDelete(String user_id) throws Exception;
+	
 }

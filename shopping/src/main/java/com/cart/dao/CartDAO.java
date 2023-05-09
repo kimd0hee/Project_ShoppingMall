@@ -15,9 +15,11 @@ public interface CartDAO {
    public void modifyCart(CartVO vo);
    //5. 장바구니 금액 합계
    public int sumMoneyCart(String user_id);
-   //6. 장바구니 동일한 상품 레코드 확인
+   //6. 장바구니 수량 합계
+   public int sumTotCart(String user_id);
+   //7. 장바구니 동일한 상품 레코드 확인
    public int countCart(int product_id, String user_id);
-   //7. 자압구니 상품수량 변경
+   //8. 장바구니 상품수량 변경
    public void updateCart(CartVO vo);
 
 }

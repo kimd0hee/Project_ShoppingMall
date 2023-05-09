@@ -49,5 +49,10 @@ public class OrderServiceImpl implements OrderService {
 		
 		return orderDAO.orderDetail(order_id);
 	}
+	
+	@Override
+    public void cartAllDelete(String user_id) throws Exception{
+       orderDAO.cartAllDelete(user_id);
+    }
 
 }
