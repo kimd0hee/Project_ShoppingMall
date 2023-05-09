@@ -36,8 +36,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <select id="sumMoneyCart" resultType="int">
       SELECT NVL(SUM(product_price * amount), 0) money
       FROM cart c LEFT JOIN product p ON c.product_id = p.product_id
-      WHERE <!--  c.product_id = p.product_id AND -->
-      c.user_id =#{user_id}
+      WHERE  c.product_id = p.product_id AND 
+      c.user_id = #{user_id}
    </select>
    <!--  4. 장바구니 수정 -->
    <update id="modifyCart">

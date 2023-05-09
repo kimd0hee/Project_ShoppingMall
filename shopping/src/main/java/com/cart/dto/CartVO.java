@@ -6,7 +6,7 @@ public class CartVO {
    private String user_name;
    private int product_id;
    private String product_name;
-   private int cart_price;
+   private int product_price;
    private int amount;
    private int money;
    public int getCart_id() {
@@ -40,10 +40,10 @@ public class CartVO {
       this.product_name = product_name;
    }
    public int getProduct_price() {
-      return cart_price;
+      return product_price;
    }
    public void setProduct_price(int product_price) {
-      this.cart_price = product_price;
+      this.product_price = product_price;
    }
    public int getAmount() {
       return amount;
@@ -60,7 +60,7 @@ public class CartVO {
    @Override
    public String toString() {
       return "CartVO [cart_id=" + cart_id + ", user_id=" + user_id + ", user_name=" + user_name + ", product_id="
-            + product_id + ", product_name=" + product_name + ", cart_price=" + cart_price + ", amount="
+            + product_id + ", product_name=" + product_name + ", product_price=" + product_price + ", amount="
             + amount + ", money=" + money + "]";
    }
 

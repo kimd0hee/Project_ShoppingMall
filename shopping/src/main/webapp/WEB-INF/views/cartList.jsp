@@ -222,10 +222,8 @@ shopping_cart<id style="font-size:30px;">장바구니</id>
                <input type="hidden" name="count" value="${map.count}">
               <button type="submit" style="background-color: white; border-color:black; color:black" class="btn btn-lg btn-primary mt-2"  id="btnUpdate">수정</button>
             </div>
-            
-           
-                
-         </form>   
+         </form>
+         <button type="submit" id="btnOrder">주문하기</button>   
           </c:otherwise>
       </c:choose>        
             <!-- / Shopping cart table -->
@@ -234,7 +232,17 @@ shopping_cart<id style="font-size:30px;">장바구니</id>
    	
 </body>
    
-
+<script>
+    $(document).ready(function() {
+        $("#btnOrder").click(function() {
+            // 주문페이지 URL 지정
+            var orderPageUrl = "${path}/orderWrite.do";
+            
+            // 주문페이지로 이동
+            window.location.href = orderPageUrl;
+        });
+    });
+</script>
 
 <%@ include file="include/footer.jsp" %>
 </html>
