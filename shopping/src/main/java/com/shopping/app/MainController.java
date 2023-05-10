@@ -18,10 +18,6 @@ public class MainController {
 	}
 
 	//로그인 page 연결
-	@RequestMapping(value = "adminLogin.do", method = RequestMethod.GET)
-	public String adminLogin() {
-		return "adminLogin";
-	}
 	@RequestMapping(value = "login.do", method = RequestMethod.GET)
 	public String login() {
 		return "login";
@@ -54,9 +50,9 @@ public class MainController {
 	public String boardView(Model model) {
 		return "boardView";
 	}
-	@RequestMapping(value = "boardWrite", method = RequestMethod.GET)
+	@RequestMapping(value = "boardInsert", method = RequestMethod.GET)
 	public String boardInsert(Model model) {
-		return "boardInsert";
+		return "boardWrite";
 	}
 
 	//product page 연결
@@ -88,10 +84,17 @@ public class MainController {
 		public String orderDetail(Model model) {
 			return "orderDetail";
 		}
+	
+	//mypageform	
+		@RequestMapping(value = "mypageform", method = RequestMethod.GET)
+	      public String mypageform(Model model) {
+	         return "mypageform";
+	      }
 		
-		@RequestMapping(value = "membership", method = RequestMethod.GET)
-		public String membership(Model model) {
-			return "membership";
-		}
+	//profileform	
+		@RequestMapping(value = "profileform", method = RequestMethod.GET)
+		public String profileform(Model model) {
+			 return "profileform";
+			      }
 
 }
