@@ -51,19 +51,20 @@ public class CartController {
       String user_id = (String) session.getAttribute("user_id"); //session에 저장된 userid
 
       Map<String, Object> map = new HashMap<>();
-      List<CartVO> list = service.cartList(user_id); //장박누니 정보
+      List<CartVO> list = service.cartList(user_id); //장바구니 정보
       int sumMoney = service.sumMoneyCart(user_id); //장바구니 전체 금액 호출
+      int sumTot = service.sumTotCart(user_id); //장바구니 전체 수량 호출
 
       //장바구니 전체 금액에 따라 배송비 구분
       // 배송료(10만원이상 ==> 무료, 미만=> 2500원)
       int fee = sumMoney >= 100000 ? 0 : 2500;
-      System.out.println(list.size());
 
       map.put("list", list); //장바구니 정보를 map에 저장
       map.put("count", list.size()); //장바구니 상품의 유무
       map.put("sumMoney", sumMoney); //장바구니 전체 금액
       map.put("fee", fee); //배송금액
       map.put("allSum", sumMoney+fee); //주문 상품 전체 금액
+      map.put("sumTot", sumTot); //장바구니 전체 수량
 
       mav.setViewName("cartList"); //view(jsp)의 이름 저장
       mav.addObject("map" , map); //map 변수 저장

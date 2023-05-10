@@ -11,7 +11,7 @@
 
 <head>
 
-	<%@ include file="include/header.jsp" %>
+   <%@ include file="include/header.jsp" %>
     <%@ include file="include/menu.jsp" %>
     <title>상품 장바구니 목록</title>
     <script>
@@ -24,29 +24,29 @@
     
    <style>
    
-	 a:link { color:black; text-decoration: none;}
-	 a:visited {color:black; text-decoration: none;}
-	 a:hover {color:dark; text-decoration: none;}
+    a:link { color:black; text-decoration: none;}
+    a:visited {color:black; text-decoration: none;}
+    a:hover {color:dark; text-decoration: none;}
 
-	table, td, th {
+   table, td, th {
     border-collapse : collapse;
     border : 1px solid black;
     border-collapse: collapse;
     
-	};
-	
+   };
+   
 
-	body{
+   body{
     margin-top:20px;
     background:#eee;
 }
-	
+   
 
 
 
 #cart {
-	background-color: #fff;
-	
+   background-color: #fff;
+   
 }
 
 .ui-product-color {
@@ -62,65 +62,77 @@
 }
 
 #total {
-	 text-align:right;
+    text-align:right;
 }  
 
 #icon {
-	font-size:20px;
+   font-size:20px;
 }
-	
+   
 #price {
-	border: 2px solid gray;
-	font-size:16px;
-	padding : 23px;
-	width:70%;
-	margin: 0 auto;
-	font-weight: 500;
-	
-}	
+   border: 2px solid gray;
+   font-size:16px;
+   padding : 23px;
+   width:70%;
+   margin: 0 auto;
+   font-weight: 500;
+   
+}   
 
 #cart {
-	position: relative;
-	top:30px;
+   position: relative;
+   top:30px;
 }
 .button {
-	postion:absolute;
-	text-align:center;
-	padding: 50px;
+   postion:absolute;
+   text-align:center;
+   padding: 50px;
 }
 
 #del_dt {
-	padding:2px 16px;
-	border:1px solid black;;
-	position: relative;
-	bottom:5px;
-	font-size:17px;
-	font-weight: 400;
-	
+   padding:2px 16px;
+   border:1px solid black;;
+   position: relative;
+   bottom:5px;
+   font-size:17px;
+   font-weight: 400;
+   
 }
 
 #table {
-	border-top:2px solid black;
-	border-bottom:1px solid white;
-	background-color:#EBF5FF;
+   border-top:2px solid black;
+   border-bottom:1px solid white;
+   background-color:#EBF5FF;
 }
 
 #p_cart {
-	position: relative;
-	top:7px;
+   position: relative;
+   top:7px;
 }
 
 #f {
-	font-size:17px;
-	font-weight:500;
-	
+   font-size:17px;
+   font-weight:500;
+   
 }
 
 th, td {
   text-align: center;
 }
-   </style>
+#btnUpdate {
+
+padding:2px 16px;
+   border:1px solid black;;
+   position: relative;
+   bottom:5px;
+   font-size:17px;
+   font-weight: 400;
    
+
+}
+
+   </style>
+
    
    
 </head>
@@ -130,8 +142,8 @@ th, td {
 
 <div class="container-fluid" style="text-align:center; margin:0 auto;" >
     <!-- Shopping cart table -->
-<div style="text-align:left;">	
-	<span class="material-symbols-outlined fa-3x" id="cart">
+<div style="text-align:left;">   
+   <span class="material-symbols-outlined fa-3x" id="cart">
 shopping_cart<id style="font-size:30px;">장바구니</id>
 </span>
 
@@ -154,6 +166,7 @@ shopping_cart<id style="font-size:30px;">장바구니</id>
                 <thead id="table">
                   <tr>
                     <!-- Set columns width -->
+                     <th>상품이미지</th>
                     <th>상품명</th>
                      <th>상품금액</th>
                      <th>수량</th>
@@ -165,6 +178,11 @@ shopping_cart<id style="font-size:30px;">장바구니</id>
         
                   <c:forEach var="row" items="${map.list}" varStatus="i">
                   <tr id="f">
+                      <td>
+                      <a href="${path}/productDetail${row.product_id}">
+                         <img src="${path}/img/product/${row.product_url}" width="120px" height="110px">
+                      </a>
+                   </td>
                      <td>
                         ${row.product_name}
                      </td>
@@ -182,7 +200,10 @@ shopping_cart<id style="font-size:30px;">장바구니</id>
                      </td>
                      <td>
                         <a href="${path}/cartDelete.do?cart_id=${row.cart_id}">
-                        	<button type="button" class="btn btn-lg btn-primary mt-2" style="background-color:white; border-color:black; color:black" id="del_dt">삭제</button>
+                        <input type="hidden" name="count" value="${map.count}"> 
+                           <button type="submit" style="background-color: white; border-color:black; color:black" class="btn btn-lg btn-primary mt-2"  id="btnUpdate">수정</button><br>
+                           <button type="button" class="btn btn-lg btn-primary mt-2" style="background-color:white; border-color:black; color:black" id="del_dt">삭제</button><br>
+                           
                         </a>
                      </td>
                   </tr>                  
@@ -196,7 +217,6 @@ shopping_cart<id style="font-size:30px;">장바구니</id>
             <div class="cart-total-price" data-total-price="0" data-discount-price="0" >
                 <div class="cart-total-price__inner">
                     <div id="price">
-                      
                        장바구니 금액 합계
                         <fmt:formatNumber pattern="###,###,###" value="${map.sumMoney}"/>원
                         <span class="final-sale-area">
@@ -209,6 +229,8 @@ shopping_cart<id style="font-size:30px;">장바구니</id>
                         
                         총 주문금액
                         <fmt:formatNumber pattern="###,###,###" value="${map.allSum}"/>원
+                        
+                      
                     </div>
 
                     
@@ -216,24 +238,30 @@ shopping_cart<id style="font-size:30px;">장바구니</id>
 
                 
             </div>
-          
+          </form> 
           <div class="button">
               <button type="button" style="background-color: white; border-color:black; color:black" class="btn btn-lg btn-primary mt-2" id="btnList">계속 쇼핑하기</button>&nbsp;&nbsp;&nbsp;
-               <input type="hidden" name="count" value="${map.count}">
-              <button type="submit" style="background-color: white; border-color:black; color:black" class="btn btn-lg btn-primary mt-2"  id="btnUpdate">수정</button>
-            </div>
-            
-           
-                
-         </form>   
+              <button type="submit" style="background-color: white; border-color:black; color:black" class="btn btn-lg btn-primary mt-2" id="btnOrder">주문하기</button>
+          </div>
+         
           </c:otherwise>
       </c:choose>        
             <!-- / Shopping cart table -->
               </div>
           </div>
-   	
+      
 </body>
-   
+ <script>
+    $(document).ready(function() {
+        $("#btnOrder").click(function() {
+            // 주문페이지 URL 지정
+            var orderPageUrl = "${path}/orderWrite.do";
+            
+            // 주문페이지로 이동
+            window.location.href = orderPageUrl;
+        });
+    });
+</script>  
 
 
 <%@ include file="include/footer.jsp" %>

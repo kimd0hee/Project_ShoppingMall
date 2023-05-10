@@ -1,81 +1,118 @@
 package com.order.controller;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.cart.dto.CartVO;
+import com.product.dto.ProductVO;
+import com.cart.service.CartService;
 import com.order.dto.OrderVO;
 import com.order.service.OrderService;
-import com.product.dto.ProductVO;
-import com.product.service.ProductService;
 import com.user.dto.UserVO;
-import com.user.service.UserService;
 
 @Controller
+@RequestMapping("/")
 public class OrderController {
-	@RequestMapping(value = "cartlist.do", method= RequestMethod.POST)
-	public String orderInsert(ProductVO productVO, HttpSession session, Model model,
-			@ModelAttribute("product_opt") String product_opt, @ModelAttribute("order_con")String order_con) {
-		
-		UserVO vo = (UserVO) session.getAttribute("login");
-		vo = UserService.read(vo.getUser_id());
-		productVO = ProductService.read(productVO.getProduct_id());
-		
-		model.addAttribute("userInfo", vo);
-		model.addAttribute("productInfo", productVO);
-		model.addAttribute("order_con", order_con); //배송상태
-		model.addAttribute("product_opt", product_opt); //제품 옵션 
-		
-		return "ordertest";
-		
-	}
-	
-	@RequestMapping(value = "/orderResult", method = RequestMethod.POST)
-	public String order(ProductVO productVO, UserVO vo, Model model,
-			@ModelAttribute("product_opt") String product_opt, 
-			@ModelAttribute("order_con") String order_con,
-			@ModelAttribute("order_message") String order_message,
-			@ModelAttribute("total_amount") String totalamount,
-			@ModelAttribute("cal_info") String cal_info,
-			@ModelAttribute("detailAddress") String detailAddress) {
-		
-		OrderVO orderVO = new OrderVO();
-	
-		productVO = ProductService.read(productVO.getProduct_id());
-		
-		orderVO.setUser_id(vo.getUser_id());
-		orderVO.setUser_name(vo.getUser_name());
-		orderVO.setUser_address1(vo.getUser_address1() + " " + detailAddress);
-		orderVO.setUser_address2(vo.getUser_address2() + " " + detailAddress);
-		orderVO.setUser_address3(vo.getUser_address3() + " " + detailAddress);
-		orderVO.setEmail(vo.getUser_email());
-		orderVO.setUser_phone(vo.getUser_phone());
-		orderVO.setPostcode(vo.getPostcode());
-		
-		
-		orderVO.setProduct_id(productVO.getProduct_id());
-		orderVO.setProduct_name(productVO.getProduct_name());
-		orderVO.setProduct_price(productVO.getProduct_price());
-		orderVO.setProduct_desc(productVO.getProduct_desc());
-		orderVO.setProduct_info(productVO.getProduct_info());
-		
-//		orderVO.setProduct_opt(product_opt);
-//		orderVO.setOrder_con(order_con);
-//		orderVO.setOrder_message(order_message);
-		
-//		int total_amount = Integer.parseInt(totalamount);
-//		orderVO.setTotal_amount(total_amount);
+    
+    @Inject
+    private OrderService orderService;
+    
+    @Inject
+    private CartService cartService;
 
+    
+    @RequestMapping("orderList.do")
+    public ModelAndView orderList(HttpSession session) throws Exception {
+    	
+    	String user_id = (String) session.getAttribute("user_id");
+        List<OrderVO> orderList = orderService.orderList(user_id);
+        ModelAndView mav = new ModelAndView("orderList");
+        
+        mav.addObject("orderList", orderList);
+        mav.addObject("user_id", user_id);
+        
+        return mav;
+    }
+    
+	@RequestMapping(value="orderWrite.do",method=RequestMethod.GET)
+	public ModelAndView orderWrite(HttpSession session, Model model) throws Exception {
 		
-		OrderService.insert(orderVO);
-		model.addAttribute("orderVO", orderVO);
-	
-		return "orderResult";
-
+		ModelAndView mav = new ModelAndView();
+        String user_id = (String) session.getAttribute("user_id");
+        List<CartVO> cartList = cartService.cartList(user_id);
+        Map<String, Object> map = new HashMap<>();
+        
+        int sumMoney = cartService.sumMoneyCart(user_id);
+        int fee = sumMoney >= 100000 ? 0 : 2500;
+        int sumTot = cartService.sumTotCart(user_id);
+        
+        map.put("list", cartList);
+        map.put("sumMoney", sumMoney);
+        map.put("fee", fee);
+        map.put("count", cartList.size());
+        map.put("allSum", sumMoney + fee);
+        map.put("sumTot", sumTot);
+        
+        
+        model.addAttribute("map", map);
+        model.addAttribute("cart_id", cartList.get(0).getCart_id());
+        mav.addObject("cartList", cartList);
+        mav.setViewName("orderWrite");
+        
+        return mav;
 	}
+    
+	
+	@RequestMapping("orderDetail{order_id}")
+	public ModelAndView detail(@PathVariable("order_id") int order_id, ModelAndView mav) throws Exception {
+	   mav.setViewName("/orderDetail");
+	   mav.addObject("vo", orderService.orderDetail(order_id));
+	   return mav;
+	}
+
+    // 주문 처리
+    @RequestMapping(value = "orderInsert.do", method = RequestMethod.POST)
+    public String orderInsert(@ModelAttribute OrderVO vo, HttpSession session) throws Exception {
+    	
+    	String user_id = (String) session.getAttribute("user_id");
+    	vo.setUser_id(user_id);
+    	
+    	orderService.insertOrder(vo);
+    	System.out.println(vo);
+    	
+    	orderService.cartAllDelete(user_id);
+    	
+		return "redirect:/orderList.do";
+
+    }
+		
+	
+	@RequestMapping("orderUpdate.do")
+	public String updateOrder(@ModelAttribute OrderVO vo, Model model) throws Exception {
+			orderService.updateOrder(vo);
+			return "redirect:/orderList.do";
+	}
+    
+	@RequestMapping("orderDelete.do")
+    public String deleteOrder(@RequestParam int order_id) throws Exception {
+        orderService.deleteOrder(order_id);
+        return "redirect:/orderList.do";
+    }
 
 }

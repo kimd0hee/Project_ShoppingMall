@@ -22,6 +22,7 @@
 </script>
 
 <style type="text/css">
+
 	a:link { color:black; text-decoration: none;}
 	a:visited {color:black; text-decoration: none;}
 	a:hover {color:dark; text-decoration: none;}
@@ -56,7 +57,7 @@
 <!--    <c:if test="${sessionScope.admin_id != null}">
       <button type="button" id="btnAdd">상품등록</button><br>
    </c:if> -->
-   
+   <div class="body-container">
    <div class="container" style="width:100%; height:100%;" id="con">
    
   <ul class="ul">
@@ -84,7 +85,7 @@
     
    </ul>
    </div>
-
+</div>
 
    <%@ include file="include/footer.jsp" %>
 </body>

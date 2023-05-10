@@ -24,7 +24,6 @@ public class CartServiceImpl implements CartService {
    //2. 장바구니 목록
    @Override
    public List<CartVO> cartList(String user_id){
-      System.out.println(user_id);
       return dao.cartList(user_id);
    }
    //3. 장바구니 삭제
@@ -37,17 +36,22 @@ public class CartServiceImpl implements CartService {
    public void modifyCart(CartVO vo) {
       dao.modifyCart(vo);
    }
-   //5. 자아바구니 금액 합계
+   //5. 장바구니 금액 합계
    @Override
    public int sumMoneyCart(String user_id) {
       return dao.sumMoneyCart(user_id);
    }
-   //6. 장바구니 상품 확인
+   //6. 장바구니 수량 합계
+   @Override
+   public int sumTotCart(String user_id) {
+      return dao.sumTotCart(user_id);
+   }
+   //7. 장바구니 상품 확인
    @Override
    public int countCart(int product_id, String user_id)                                                                               {
       return dao.countCart(product_id, user_id);
    }
-   // 7. 장바구니 상품 수량 변경
+   //8. 장바구니 상품 수량 변경
    @Override
    public void updateCart(CartVO vo) {
       dao.updateCart(vo);
