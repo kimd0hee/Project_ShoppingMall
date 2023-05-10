@@ -19,6 +19,7 @@
          location.href="${path}/productEdit.do";
       });
    });
+   
 </script>
 
 <style type="text/css">
@@ -46,6 +47,7 @@
 		font-size:18px;
 		font-weight:500;
 	}
+	
 	
 
 </style>

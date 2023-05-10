@@ -5,6 +5,16 @@
 <head>
 <meta charset="UTF-8">
 
+
+<style>
+	.container {
+		float:bottom;
+		background-color:white;
+		position:relative;
+		z-index:2;
+	}
+</style>
+
 </head>
 <body>
 

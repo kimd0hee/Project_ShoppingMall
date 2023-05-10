@@ -3,6 +3,9 @@
 
 <!DOCTYPE html>
 <html lang="UTF-8">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <head>
    <%@ include file="include/header.jsp" %>
@@ -14,6 +17,7 @@
      padding: 0;
      margin: 0;
      color:#000;
+
 }
 
    #tb_t {
@@ -211,11 +215,22 @@ align-items: center;
 #abc {
   position: fixed;
   top: 240px; /* 테이블이 보여질 위치 */
+  z-index:1;
+  max-height:1000px;
+  
 }
 
-.body-container2 {
-	border:1px solid red;
+.container{
+	
+	overflow:hidden;
 }
+
+.body-container{
+	
+	
+}
+
+
 </style>
 
 
@@ -226,8 +241,9 @@ align-items: center;
 <br>
 <a href="#"><img class="otsajo" src="img/logo.jpg" alt=""></a>
 <br>
-<div class="body-container1">
-<div class="container" style="width:90%;">
+
+<div class="body-container">
+<div class="container" id="body_con" style="width:90%;">
     
     <div id="detail" style="float:left;">   
     
@@ -245,10 +261,11 @@ align-items: center;
          </tr>
          </table>
          </div>
-         
+			
             <div style="float:right;" id="detail2">
-           <div class="body-container2">
-            <table style="height:900px;" id="abc">
+           
+            <table style=" width:500px;" id="abc">
+            
                <tr id="tb_t">  
                   <td id="pro_name" class="tb_row">상품명 : ${vo.product_name}
                      
@@ -268,7 +285,7 @@ align-items: center;
                
                </tr>
                <tr>
-                  <td class="tb_row" id="p_desc" >상품내용 : <br>${vo.product_desc}</td>
+                  <td class="tb_row" id="p_desc" style="">상품내용 :<br> ${vo.product_desc}</td>
                </tr>
                <tr>
                   <td id="text">
@@ -289,7 +306,9 @@ align-items: center;
    </div>
    </div>
    </div>
-  </div>
+
+
+  
   
 </body>
 <script>
