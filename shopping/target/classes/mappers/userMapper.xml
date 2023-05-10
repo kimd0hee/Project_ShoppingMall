@@ -15,14 +15,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!-- 회원 가입 -->
    <insert id="insertUser" parameterType="com.user.dto.UserVO">
         insert into user
-           (user_id,user_pw,user_name,user_phone,user_email,user_birth) 
+           (user_id,user_pw,user_name,user_address1,user_address2,user_address3,postcode,user_phone,user_email,user_birth) 
         values 
-           (#{user_id}, #{user_pw}, #{user_name}, #{user_phone}, #{user_email}, #{user_birth})
+           (#{user_id}, #{user_pw}, #{user_name},#{user_address1},#{user_address2},#{user_address3},#{postcode}, #{user_phone}, #{user_email}, #{user_birth})
      </insert>
      
 <!-- 회원 상세보기 -->
      <select id="viewUser" resultType="com.user.dto.UserVO">
-        select user_id, user_name, user_phone, user_email, user_birth, user_address1,
+        select user_id, user_name,user_address1,user_address2,user_address3, user_phone, user_email, user_birth, user_address1,
         user_address2,user_address3,user_joindate,user_update
         from user where user_id = #{user_id}
      </select>

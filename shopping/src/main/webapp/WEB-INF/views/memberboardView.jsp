@@ -197,6 +197,32 @@
    	border:1px solid black;
     margin:0px 2px;
    }
+   
+    #reply {
+   	width:100%;
+   	text-align:center;
+   	border-top:1px solid #D8D8D8;
+   	margin-top:15px;
+   }
+   
+   #re_btn {
+   	text-align:right;
+   }
+   
+   #btnReply {
+   	margin-reft:10px;
+   	border:1px solid black;
+   	padding:5px;
+   }
+   
+   #replylist {
+   	padding-top:10px;
+   }
+   
+   #listReply {
+   	text-align:left;
+   }
+   
 </style>
 </head>
 <body>
@@ -230,7 +256,7 @@
     <div style="width:100%; text-align:center;">
       <input type="hidden" name="bno" value="${dto.bno}">
       <!-- 본인이 쓴 게시물만 수정, 삭제가 가능 -->
-      <div style="text-align:right;">
+      <div style="width:100%; text-align:right;">
        <c:if test="${sessionScope.user_id == dto.writer}">
          <button class="btn" type="button" id="btnUpdate">수정</button>
          <button class="btn" type="button" id="btnDelete">삭제</button>
@@ -239,22 +265,30 @@
    	 </div>
    </div>
   </form>
-  <div style="width:650px; text-align:center;">
+  
+  <div id="reply">
+  <div class="container">
       <br>
       <!-- 로그인 한 회원에게만 댓글 작성 가능 -->
+      <div id="reply2">
        <c:if test="${sessionScope.user_id != null}">
-         <textarea rows="5" cols="80" id="replytext" placeholder="댓글을 입력하세요"></textarea>
+         <textarea rows="5" cols="120" id="replytext" placeholder="댓글을 입력하세요"></textarea>
       <br>
-      <!-- 비밀댓글 체크박스 -->
+      </c:if>
+      
+      <div id="replylist">
+   <div id="re_btn">
+    <!-- 비밀댓글 체크박스 -->
        <input type="checkbox" id="secretReply">비밀 댓글
       <button type="button" id="btnReply">댓글 작성</button>
-     
-      </c:if>
    </div>
    
+  </div>
+      </div>
+   </div>
    <!-- 댓글 목록 출력 위치 -->
     <div id="listReply"></div> 
-  
+    </div>
   </div>
    
 </body>

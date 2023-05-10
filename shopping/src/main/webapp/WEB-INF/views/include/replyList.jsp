@@ -10,7 +10,7 @@
 </head>
 
 <body>
-   <table style="width:700px">
+   <table style="width:100%">
    <!-- 댓글 목록 -->
       <c:forEach var="row" items="${list}">
       <tr>
