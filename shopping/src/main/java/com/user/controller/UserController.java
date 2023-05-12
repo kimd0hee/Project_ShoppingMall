@@ -5,6 +5,8 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,83 +18,103 @@ import org.springframework.web.servlet.ModelAndView;
 import com.user.dto.UserVO;
 import com.user.service.UserService;
 
-@Controller
-public class UserController {
-	@Inject
-	UserService userService;
+@Controller //현재의 클래스를 controller bean에 등록시킴
+public class UserController { 
+   private static final Logger Logger =
+LoggerFactory.getLogger(UserController.class);
+   
+   //MemberService 객체를 스프링에서 생성하여 주입시킴
+   @Inject
+   UserService userService;
+   
+   // 01. 회원목록
+   // url pater mapping
+   @RequestMapping("userList.do")
+   public String userList(Model model) {
+      //controller => service => dao 요청
+      
+      List<UserVO> list = userService.userList();
+      model.addAttribute("list", list);
+      return "userList";
+   }
+   // 02_01 회원 등록 페이지로 이동
+   @RequestMapping("userWrite.do")
+   public String userWrite() {
 
-	@RequestMapping("userList.do")
-	public String userList(Model model) {
+      return "userWrite";
+   }
+   
+   // 02_02 회원 등록 처리 후 ==> 회원목록으로 리다이렉트
+   // @ModelAttribute에 폼에서 입려한 데이터가 저장된다
+   @RequestMapping(value="userInsert.do", method=RequestMethod.POST)
+   public String userInsert(@ModelAttribute UserVO vo, Model model) {
 
-		List<UserVO> list = userService.userList();
-		model.addAttribute("list", list);
+      userService.insertUser(vo);
 
-		return "userList";
-	}
-	
-	@RequestMapping(value="userWrite.do", produces="text/plain;charset=UTF-8")
-	public String writeUser() {
+      return "redirect:/login.do";
+   }
+   // 03. 회원 상세정보 조회
+   @RequestMapping("userView.do")
+   public String userView(String user_id, Model model) {
 
-		return "userWrite";
-	}
+      model.addAttribute("dto", userService.viewUser(user_id));
+      
+      Logger.info("클릭한 아이디 : " +user_id);
+      // user_view.jsp로 포워드
+      return "userView";
+   }
+   // profile
+   
+   @RequestMapping("profileform.do")
+   public String profileform(String user_id, Model model, HttpSession session) {
+     user_id = (String) session.getAttribute("user_id");
+      model.addAttribute("dto", userService.viewUser(user_id));
+      
+      return "profileform";
+   }
+   
+   // 04. 회원 정보 수정 처리
+   @RequestMapping("userUpdate.do")
+   public String userUpdate(@ModelAttribute UserVO vo, Model model) {
 
-	
-	@RequestMapping(value="userInsert.do", method=RequestMethod.POST, produces="text/plain;charset=UTF-8")
-	public String insertUser(@ModelAttribute UserVO vo, Model model) {
-		
-		userService.insertUser(vo);
+      boolean result = userService.checkPw(vo.getUser_id(), vo.getUser_pw());
 
-		return "login";
-	}
-	
-	@RequestMapping("viewUser.do")
-	public String viewUser(String user_id, Model model) {
+      if(result) {
+         userService.updateUser(vo);
 
-		model.addAttribute("dto", userService.viewUser(user_id));
+         return "redirect:/userList.do";
 
-		return "userView";
-	}
+      }else {
+         UserVO uVo = userService.viewUser(vo.getUser_id());
 
-	
-	@RequestMapping(value="updateUser.do", produces="text/plain;charset=UTF-8")
-	public String userUpdate(@ModelAttribute UserVO vo, Model model) {
+         vo.setUser_joindate(uVo.getUser_joindate());
+         vo.setUser_update(uVo.getUser_update());
+         
 
-		boolean result = userService.checkPw(vo.getUser_id(), vo.getUser_pw());
+         model.addAttribute("dto", vo);
+         model.addAttribute("message", "비밀번호가 일치하지 않습니다.");
 
-		if(result) {
-			userService.updateUser(vo);
+         return "userView";
+      }
+   }
+   
+   //0 5. 회원정보 삭제 처리
+   @RequestMapping("userDelete.do")
+   public String userDelete(@RequestParam String user_id, @RequestParam String user_pw, Model model) {
 
-			return "redirect:/userList.do";
+      boolean result = userService.checkPw(user_id, user_pw);
 
-		}else {
-			UserVO uVo = userService.viewUser(vo.getUser_id());
+      if(result) {
+         userService.deleteUser(user_id);
 
-			//vo.setUser_joindate(uVo.getUser_joindate());
-			vo.setUser_update(uVo.getUser_update());
+         return "redirect:/userList.do";
 
-			model.addAttribute("dto", vo);
-			model.addAttribute("message", "비밀번호가 일치하지 않습니다.");
+      }else {
+         model.addAttribute("message", "비밀번호가 일치하지 않습니다.");
+         model.addAttribute("dto", userService.viewUser(user_id));
 
-			return "userView";
-		}
-	}
-	
-	@RequestMapping("deleteUser.do")
-	public String deleteUser(@RequestParam String user_id, @RequestParam String user_pw, Model model) {
-		
-		boolean result = userService.checkPw(user_id, user_pw);
-
-		if(result) {
-			userService.deleteUser(user_id);
-
-			return "redirect:/userList.do";
-
-		}else {
-			model.addAttribute("message", "비밀번호가 일치하지 않습니다.");
-			model.addAttribute("dto", userService.viewUser(user_id));
-
-			return "userView";
-		}
-	}
-
+         return "userView";
+      }
+   }
+   
 }

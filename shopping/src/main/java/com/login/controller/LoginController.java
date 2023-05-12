@@ -12,7 +12,6 @@ import com.login.service.LoginService;
 import com.user.dto.UserVO;
 
 @Controller
-@RequestMapping("/*")
 public class LoginController {
 
 	@Inject
@@ -42,7 +41,7 @@ public class LoginController {
 	//03. 로그아웃처리
 	@RequestMapping("logout.do")
 	public ModelAndView logout(HttpSession session) {
-		loginService.logout(session);
+		loginService.logoutUser(session);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("login");
 		mav.addObject("msg", "logout");

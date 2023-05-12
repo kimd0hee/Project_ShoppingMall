@@ -1,4 +1,4 @@
-package com.reply.service;
+	package com.reply.service;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ public interface ReplyService {
 
    public List<ReplyVO> replyList(Integer bno, int start, int end, HttpSession session);
 
-   public ReplyVO detailReply(Integer rno);
+   public ReplyVO replyDetail(Integer rno);
 
    public void updateReply(ReplyVO vo);
 

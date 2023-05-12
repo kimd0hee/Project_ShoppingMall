@@ -2,6 +2,8 @@ package com.product.controller;
 
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.inject.Inject;
@@ -47,31 +49,36 @@ public class ProductController {
    }
 
 
-   @RequestMapping(value="productInsert.do")
-   public String insert(ProductVO vo, MultipartFile product_photo) {
+   @RequestMapping(value="insertProduct.do")
+   public String insert(ProductVO vo, List<MultipartFile> product_photo) {
 
-      String filename = "";
-
-      if(!product_photo.isEmpty()) {
-         filename = product_photo.getOriginalFilename();
-         System.out.print(product_photo.getOriginalFilename());
-         //System.out.println("상품 인서트 예외처리 전");
+     if(!product_photo.isEmpty()) {
+        String currentUrl="";
+       for(int i=0;i<product_photo.size();i++) {
+         String filename = product_photo.get(i).getOriginalFilename();
+         System.out.print(product_photo.get(i).getOriginalFilename());
          
-         String path = "C:\\Users\\newtec\\Documents\\workspace-sts-3.9.18.RELEASE\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\shopping\\resources\\img\\product\\";
+         String path = "C:\\Users\\son94\\Documents\\workspace-sts-3.9.18.RELEASE\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\shopping\\resources\\img\\product\\";
          
          try {
-            new File(path).mkdirs();
-            product_photo.transferTo(new File(path+filename));
-         }catch(Exception e) {
-            e.printStackTrace();
+           new File(path).mkdirs();
+           product_photo.get(i).transferTo(new File(path+filename));
+           if(i<product_photo.size()-1) {
+           currentUrl += filename+","; // 기존의 값
+           } else {
+           currentUrl += filename;
+           }
+           
+         } catch(Exception e) {
+           e.printStackTrace();
          }
-         
-         vo.setProduct_url(filename);
-      }
+       }
+       vo.setProduct_url(currentUrl);
+     }
 
-      service.insertProduct(vo);
+     service.insertProduct(vo);
 
-      return "redirect:/productList.do";
+     return "redirect:/productList.do";
    }
 
    @RequestMapping("productEdit{product_id}")
@@ -82,39 +89,38 @@ public class ProductController {
    }
 
    @RequestMapping("productUpdate.do")
-   public String update(ProductVO vo, MultipartFile product_photo) {
-      String filename = "";
-
-
-      if(!product_photo.isEmpty()) {
-    	  
-         filename = product_photo.getOriginalFilename();
-         
-         String path = "C:\\Users\\newtec\\Documents\\workspace-sts-3.9.18.RELEASE\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\shopping\\resources\\img\\product\\";
+   public String update(ProductVO vo,List<MultipartFile> product_photo) {
+	     if(!product_photo.isEmpty()) {
+	         String currentUrl="";
+	        for(int i=0;i<product_photo.size();i++) {
+	          String filename = product_photo.get(i).getOriginalFilename();
+	          System.out.print(product_photo.get(i).getOriginalFilename());
+         String path = "C:\\Users\\son94\\Documents\\workspace-sts-3.9.18.RELEASE\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\shopping\\resources\\img\\product\\";
 
          try {
-            new File(path).mkdirs();
-            product_photo.transferTo(new File(path+filename));
-         }catch(Exception e) {
-            e.printStackTrace();
-         }
-         
-         vo.setProduct_url(filename);
-         
-      }else {
-    	  
-         ProductVO vo2 = service.detailProduct(vo.getProduct_id());
-         vo.setProduct_url(vo2.getProduct_url());
-      }
-      service.updateProduct(vo);
-      return "redirect:/productList.do";
-   }
+	            new File(path).mkdirs();
+	            product_photo.get(i).transferTo(new File(path+filename));
+	            if(i<product_photo.size()-1) {
+	            currentUrl += filename+","; // 기존의 값
+	            } else {
+	            currentUrl += filename;
+	            }
+	            
+	          } catch(Exception e) {
+	            e.printStackTrace();
+	          }
+	        }
+	        vo.setProduct_url(currentUrl);
+	      }
+   service.updateProduct(vo);
+   return "redirect:/productList.do";
+}
 
    @RequestMapping("productDelete.do")
    public String delete(@RequestParam int product_id) {
      String filename = service.fileInfo(product_id);
      //System.out.println("상품 삭제 컨트롤러 작동");
-     String path = "C:\\Users\\newtec\\Documents\\workspace-sts-3.9.18.RELEASE\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\shopping\\resources\\img\\product\\";
+     String path = "C:\\Users\\son94\\Documents\\workspace-sts-3.9.18.RELEASE\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\shopping\\resources\\img\\product\\";
      
       if(filename != null) {
          File file = new File(path+filename);
@@ -127,13 +133,6 @@ public class ProductController {
       service.deleteProduct(product_id);
       return "redirect:/productList.do";
    }
-   
-   @RequestMapping("test.do")
-   public String test(ProductVO vo) {
-	   System.out.print(vo);
-	   System.out.print("good");
-	   
-	   return "productList";
-   }
+
    
 }

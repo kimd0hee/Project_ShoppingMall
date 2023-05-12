@@ -23,14 +23,15 @@ import com.reply.service.ReplyService;
 
 
 @RestController
+@RequestMapping
 public class ReplyController {
 
    @Inject
    ReplyService service;
    
-   // 1_1. 댓글입력
+   // 1_1. 댓글입력 controller
    @RequestMapping("insertReply.do")
-   public void insertReply(@ModelAttribute ReplyVO vo, HttpSession session) {
+   public void insert(@ModelAttribute ReplyVO vo, HttpSession session) {
       // 세션에 저장된 회원아디디를 댓글 작성지에 세팅
       String user_id = (String) session.getAttribute("user_id");
       vo.setReplyer(user_id);
@@ -40,7 +41,7 @@ public class ReplyController {
    // 1_2. 댓글입력(@RestController방식으로 json전달하여 댓글입력)
    // ResponseEntity : 데이터 + http status code
    // ResponseBody : 객체를 json으로 (json -String)   
-   @RequestMapping(value="insertRest.do", method=RequestMethod.POST)
+   @RequestMapping(value="insertRestReply.do", method=RequestMethod.POST)
    public ResponseEntity<String> insertRest(@RequestBody ReplyVO vo, HttpSession session) {
    ResponseEntity<String> entity = null;
    try {
@@ -59,12 +60,12 @@ public class ReplyController {
    // 입력 처리 HTTP 상태 메시지 리턴
    return entity;
 }
-   // 2.1. 댓글목록
+   // 2.1. 댓글목록 controller
    @RequestMapping("replyList.do")
    public ModelAndView list(@RequestParam int bno,
 @RequestParam(defaultValue="1") int curPage, ModelAndView mav, HttpSession session) {
    //페이징 처리
-   int count = service.countReply(bno); //댓글 개수
+   int count = service.countReply(bno); //댓글 개수 
    ReplyPager replyPager = new ReplyPager(count, curPage);
    // 현재 페이지의 페이징 시작 번호
    int start = replyPager.getPageBegin();
@@ -80,7 +81,7 @@ public class ReplyController {
    return mav;
 }
    //2_2. 댓글 목록
-   @RequestMapping("listJson.do")
+   @RequestMapping("replyListJson.do")
    @ResponseBody //리턴 데이트를 json으로 변환
    public List<ReplyVO> listJson(@RequestParam int bno,
 @RequestParam(defaultValue="1") int curPage, HttpSession session) {
@@ -95,7 +96,7 @@ public class ReplyController {
    return list;
 }
    // 2_3. 댓글 목록
-   @RequestMapping(value="list/{bno}/{curPage}", method=RequestMethod.GET)
+   @RequestMapping(value="/replyList/{bno}/{curPage}", method=RequestMethod.GET)
    public ModelAndView replyList(@PathVariable("bno") int bno, @PathVariable int curPage, ModelAndView mav, HttpSession session) {
       //페이징 처리
    int count = service.countReply(bno); // 댓글 갯수
@@ -115,9 +116,9 @@ public class ReplyController {
 }
    
    // 3. 댓글 상세 보기
-   @RequestMapping(value="/delete/{rno}", method=RequestMethod.GET)
+   @RequestMapping(value="replyDetail.do/{rno}", method=RequestMethod.GET)
    public ModelAndView replyDetail(@PathVariable("rno") Integer rno, ModelAndView mav) {
-   ReplyVO vo = service.detailReply(rno);
+   ReplyVO vo = service.replyDetail(rno);
    // 뷰이름 지정
    mav.setViewName("replyDetail");
    // 뷰에 전달할 데이터 지정
@@ -127,8 +128,8 @@ public class ReplyController {
 }
    // 4. 댓글 수정 처리 - put:전체 수정, PATCH:일부수정
 
-   @RequestMapping(value="/update/{rno}", method={RequestMethod.PUT, RequestMethod.PATCH})
-   public ResponseEntity<String> updateReply(@PathVariable("rno") Integer rno, @RequestBody ReplyVO vo) {
+   @RequestMapping(value="updateReply/{rno}", method={RequestMethod.PUT, RequestMethod.PATCH})
+   public ResponseEntity<String> replyUpdate(@PathVariable("rno") Integer rno, @RequestBody ReplyVO vo) {
 
       ResponseEntity<String> entity = null;
       try {
@@ -146,7 +147,7 @@ public class ReplyController {
    return entity;
 }
    // 5. 댓글 삭제처리
-   @RequestMapping(value="/delete/{rno}")
+   @RequestMapping(value="deleteReply/{rno}")
    public ResponseEntity<String> deleteReply(@PathVariable("rno") Integer rno) {
       ResponseEntity<String> entity = null;
       try {

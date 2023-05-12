@@ -8,29 +8,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <!-- 회원리스트 -->
      <select id="userList" resultType="com.user.dto.UserVO">
-        select user_idx, user_id, user_name, user_phone, user_joindate
-        from user order by user_idx
+        SELECT user_idx, user_id, user_name, user_phone, user_joindate
+        FROM user ORDER BY user_idx ASC
      </select>
      
 <!-- 회원 가입 -->
    <insert id="insertUser" parameterType="com.user.dto.UserVO">
         insert into user
-           (user_id,user_pw,user_name,user_address1,user_address2,user_address3,postcode,user_phone,user_email,user_birth) 
+           (user_id, user_pw, user_name, user_phone, user_email, user_birth, user_address1, user_address2, user_address3) 
         values 
-           (#{user_id}, #{user_pw}, #{user_name},#{user_address1},#{user_address2},#{user_address3},#{postcode}, #{user_phone}, #{user_email}, #{user_birth})
+           (#{user_id}, #{user_pw}, #{user_name}, #{user_phone}, #{user_email}, #{user_birth}, #{user_address1}, #{user_address2}, #{user_address3})
      </insert>
      
 <!-- 회원 상세보기 -->
      <select id="viewUser" resultType="com.user.dto.UserVO">
-        select user_id, user_name,user_address1,user_address2,user_address3, user_phone, user_email, user_birth, user_address1,
+        select user_id, user_name, user_phone, user_email, user_birth, user_address1,
         user_address2,user_address3,user_joindate,user_update
+        from user where user_id = #{user_id}
+     </select>
+     
+     <!-- profile -->
+     <select id="profileform" resultType="com.user.dto.UserVO">
+        select user_id, user_name, user_phone, user_email, user_birth, user_address1,
+        user_address2,user_address3,user_joindate,user_update 
         from user where user_id = #{user_id}
      </select>
      
 <!-- 회원정보 수정 -->
      <update id="updateUser">
         update user set 
-           user_name=#{user_name}, user_phone=#{user_phone}, user_email=#{user_email}, user_birth=#{user_birth}, user_joindate=#{user_joindate},
+           user_name=#{user_name}, user_phone=#{user_phone}, user_email=#{user_email}, user_birth=#{user_birth}, user_joindate=user_joindate,
            user_update=SYSDATE() where user_id=#{user_id}
      </update>
      
@@ -44,5 +51,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         select count(*) from user where user_id=#{user_id} and user_pw=#{user_pw}
      </select>
      
-
+<!-- 관리자 -->
+   <select id="LoginCheck" resultType="String">
+      SELECT user_name
+      FROM user
+      WHERE user_id = #{user_id} AND userPW = #{user_pw}
+   </select>
 </mapper>

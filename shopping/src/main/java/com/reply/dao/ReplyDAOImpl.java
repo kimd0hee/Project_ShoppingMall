@@ -18,7 +18,6 @@ public class ReplyDAOImpl implements ReplyDAO {
 
    @Inject
    SqlSession sqlsession;
-   // String nameSpace = "user";
 
       @Override
       public void createReply(ReplyVO vo) {
@@ -35,8 +34,8 @@ public class ReplyDAOImpl implements ReplyDAO {
    }
 
    @Override
-   public ReplyVO detailReply(Integer rno) {
-      return sqlsession.selectOne("reply.detailReply", rno);
+   public ReplyVO replyDetail(Integer rno) {
+      return sqlsession.selectOne("reply.replyDetail", rno);
    }
 
    @Override

@@ -10,7 +10,7 @@ public interface ReplyDAO {
 
    public List<ReplyVO> replyList(Integer bno, int start, int end);
 
-   public ReplyVO detailReply(Integer rno);
+   public ReplyVO replyDetail(Integer rno);
 
    public void updateReply(ReplyVO vo);
 

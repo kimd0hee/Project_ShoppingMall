@@ -143,7 +143,7 @@ function validateForm() {
       <tr class="member" class="name">
          <th class="col-md-3"><p>아이디</p></th>
          <td style="text-align:left;">
-            <input class="col-md-6" type="text" name="user_id" maxlength="20" placeholder="아이디를 입력하세요">
+            <input class="col-md-6" type="text" name="user_id" maxlength="20" placeholder="아이디를 입력하세요" style="height:35px; top:10px; border-radius:7px;">
          <div id="idError" class="error"></div></td> 
          </tr>
 <tr class="member" class="password">

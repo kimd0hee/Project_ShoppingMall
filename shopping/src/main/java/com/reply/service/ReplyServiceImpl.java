@@ -43,8 +43,8 @@ public class ReplyServiceImpl implements ReplyService {
    }
 
    @Override
-   public ReplyVO detailReply(Integer rno) {
-      return dao.detailReply(rno);
+   public ReplyVO replyDetail(Integer rno) {
+      return dao.replyDetail(rno);
    }
 
    @Override

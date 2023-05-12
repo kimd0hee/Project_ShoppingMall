@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       
       <include refid="search"></include>
       ORDER BY b.bno DESC, b.regdate DESC
-      <include refid="pagingFooter"/>
+      <include refid="pagingFooter"></include>
    </select>
    
    <!-- 게시글 작성 -->
@@ -60,7 +60,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
          <when test="searchOption == 'all'">
             WHERE b.writer = m.user_id
             AND
-            (userName like CONCAT('%', #{keyword}, '%')
+            (user_name like CONCAT('%', #{keyword}, '%')
             OR content like CONCAT('%', #{keyword}, '%')
             OR title like CONCAT('%', #{keyword}, '%'))
          </when>
@@ -74,9 +74,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </sql>
    
    <!-- 페이징 sql -->
-    <sql id="pagingFooter">
-       LIMIT 10 OFFSET #{start}
 
-     </sql>
+   <sql id="pagingFooter">
+      LIMIT 10 OFFSET #{start}
+   </sql>
    
 </mapper>

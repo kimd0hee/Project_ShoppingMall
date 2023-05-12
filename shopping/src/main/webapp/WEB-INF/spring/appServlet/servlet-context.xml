@@ -28,11 +28,8 @@
 	</beans:bean>
 	
 	<beans:bean id="uploadPath" class="java.lang.String">
-	    <beans:constructor-arg value="C:\Users\wiwi4\Documents\workspace-sts-3.9.18.RELEASE\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\shopping\resources\img\product\"/>
+	    <beans:constructor-arg value="C:\Users\son94\Documents\workspace-sts-3.9.18.RELEASE\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\shopping\resources\img\product\"/>
 	</beans:bean>
-	
-	<!-- img 띄우는 경로 -->
-	<resources mapping="/img/**" location="/WEB-INF/resources/img/" />
 	
 	<!-- 관리자 세션체크 -->
 	<beans:bean id="adminInterceptor" class="com.admin.interceptor.AdminInterceptor"/>
@@ -67,5 +64,7 @@
 	<!-- 댓글 -->
 	<context:component-scan base-package="com.reply.controller" />
 	<!-- 관리자 -->
-	<context:component-scan base-package="com.admin.Controller" />
+	<context:component-scan base-package="com.admin.controller" />
+	<!-- 주문 -->
+	<context:component-scan base-package="com.order.controller" />
 </beans:beans>
