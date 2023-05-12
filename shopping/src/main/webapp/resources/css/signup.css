@@ -12,12 +12,11 @@ input{
     font-size: 12px;
     padding-left: 10px;
     padding-right: 10px;
+    border:1px solid black;
+    height:35px;
+    border-radius:7px;
 }
 
-
-.wrapper {
-    padding: 10px;
-}
 
 div {
     padding-top: 3px;
@@ -100,10 +99,11 @@ input[type="submit"], input[type="reset"]
 	}
 
 table{
-	border-collapse : collapse;
+	
 }
 
 th {
+	
 	background-color:#f8f8f8;
 }
 
@@ -124,9 +124,10 @@ p {
 #form_div {
 	position: relative;
 	text-align:center;
-	width:80%;
+	width:70%;
 	align:center;
 	margin:0 auto;
+	
 }
 
 .address1 {
@@ -138,12 +139,14 @@ p {
 }
 
 tbody {
-		border:2px solid black;
-		
+	border:1px solid black;
+	border-radius:15px;
+	box-shadow: 0 0 0 #000;
+	border-collapse:collapse;	
 }
 
 #searchAdd{
-	background-color:f2f2f2;
+
 	border:1px solid black;
 	margin-left:3px;
 }
