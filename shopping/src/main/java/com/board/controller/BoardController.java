@@ -64,8 +64,8 @@ public class BoardController {
 
 		//게시글 삭제
 		@RequestMapping("boardDelete.do")
-		public String boardDelete(@RequestParam int cs_id) throws Exception{
-			service.deleteBoard(cs_id);
+		public String boardDelete(@RequestParam int board_id) throws Exception{
+			service.deleteBoard(board_id);
 			return "redirect:boardList.do";
 		}
 }

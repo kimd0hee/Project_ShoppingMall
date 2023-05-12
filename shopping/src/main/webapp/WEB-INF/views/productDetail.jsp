@@ -175,9 +175,9 @@
  
 #mainImg {
    
-    width:1500px;
-    height:560px;
-    margin-left:110px;
+    width:600px;
+    height:700px;
+
 }
 
 #form {
@@ -221,13 +221,13 @@ align-items: center;
 }
 
 .container{
-	
-	overflow:hidden;
+   
+   overflow:hidden;
 }
 
 .body-container{
-	
-	
+   
+   
 }
 
 
@@ -261,7 +261,7 @@ align-items: center;
          </tr>
          </table>
          </div>
-			
+         
             <div style="float:right;" id="detail2">
            
             <table style=" width:500px;" id="abc">

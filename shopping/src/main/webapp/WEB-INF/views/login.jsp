@@ -9,7 +9,7 @@ justify-content: center;
 align-items: center;
 text-align: center;
 
-		}
+      }
 .btn btn-dark {
 padding: 10px 20px;
 background-color: #333;
@@ -19,7 +19,7 @@ border-radius: 4px;
 cursor: pointer;
 width: 500px;
 
-		}
+      }
 div.abc{
 text-align:center;
 }
@@ -36,7 +36,7 @@ border-radius: 10px;
  background-color: #f8f8f8;
 
 
-		}
+      }
 
 
 form button {
@@ -45,7 +45,7 @@ padding: 15px;
 margin: 5px;
 width: 150px;
 
-		}
+      }
 img.otsajo {
 width : 230px;
 height : 80px;
@@ -98,7 +98,7 @@ align-items: center;
    <form name="form1" method="post" class="abc">
      
          
- 	<p style="text-align:center">ID　　<input name="user_id" id="user_id" placeholder="아이디" title="아이디" style="width: 345px; height: 50px;"><p>
+    <p style="text-align:center">ID　　<input name="user_id" id="user_id" placeholder="아이디" title="아이디" style="width: 345px; height: 50px;"><p>
     <p style="text-align:center">PW 　<input type=password name="user_pw" id="user_pw" placeholder="비밀번호" title="비밀번호" style="width: 345px; height: 50px;"><p>
          
          <div class="container1" >   

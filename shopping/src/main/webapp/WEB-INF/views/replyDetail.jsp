@@ -7,18 +7,18 @@
 <%@ include file="include/header.jsp" %>
     <script>
     //3. 댓글 수정
-       $("#btnReplyUpdate").click(function(){
-          var detailReplytext = $("#detailReplytext").val();
+       $("#btnReplyUpdate").click(function() {
+          var detailReplytext=$("#detailReplytext").val();
           $.ajax({
-             type: "put",
-             url: "${path}/updateReply/${vo.rno}",
+             type:"put",
+             url:"${path}/updateReply/${vo.rno}",
              // 기본값 text/html을 json으로 변경
-             headers: {
+             headers:{
                 "Content-Type":"application/json"
              },
              // 데이터를 json형태로 변환
              data:JSON.stringify({
-                replytext:detailReplytext
+                replytext : detailReplytext
              }),
              dataType:"text",
              success:function(result){

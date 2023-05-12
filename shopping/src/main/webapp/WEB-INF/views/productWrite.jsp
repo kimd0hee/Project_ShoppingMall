@@ -30,7 +30,7 @@
              alert("상품 사진을 입력해주세요");
              product_photo.focus();
           }
-            document.form1.action = "${path}/productInsert.do";
+            document.form1.action = "${path}/insertProduct.do";
             document.form1.submit();
        });
     });
@@ -102,7 +102,7 @@
       </tr>
       <tr id="p_row">
          <td id="p_td1">상품 이미지</td>
-            <td id="p_td2"><input type="file" id="product_photo" name="product_photo"></td>
+            <td><input multiple="multiple" type="file" id="product_photo" name="product_photo"></td>
       </tr>
       <tr>
          <td colspan="2" align="center" id="p_btn">
@@ -115,7 +115,6 @@
 </div>
 </body>
    
-
 
 <%@ include file="include/footer.jsp" %>
 </html>

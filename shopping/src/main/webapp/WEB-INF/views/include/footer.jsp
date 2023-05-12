@@ -5,14 +5,17 @@
 <head>
 <meta charset="UTF-8">
 
-
 <style>
-	.container {
-		float:bottom;
-		background-color:white;
-		position:relative;
-		z-index:2;
-	}
+   .container {
+      float:bottom;
+      background-color:white;
+      position:relative;
+      z-index:2;
+   }
+   
+   input {
+   	text-align:left;
+   }
 </style>
 
 </head>
@@ -117,4 +120,3 @@
     <script src="js/main.js"></script>
 <!-- Footer Section End -->
 </body>
-</html>

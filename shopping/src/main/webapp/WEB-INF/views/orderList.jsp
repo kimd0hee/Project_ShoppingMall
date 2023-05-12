@@ -8,31 +8,62 @@
 <title>주문 내역</title>
 <%@ include file="include/header.jsp" %>
 <%@ include file="include/menu.jsp" %>
+
+<style>
+	 a:link { color:black; text-decoration: none;}
+     a:visited {color:black; text-decoration: none;}
+     a:hover {color:dark; text-decoration: none;}
+
+	#list_con{
+		text-align:center;
+		margin-top:20px;
+	}
+
+	#list_th{
+		border-top:1px solid black;
+		border-bottom:1px solid black;
+		padding:5px 0px;
+		background-color: #f8f8f8;
+	}
+	
+	#list_td {
+		border-bottom:1px solid black;
+		padding:10px 0px;
+	}
+	
+	h2{
+		padding-bottom:10px;
+	}
+</style>
+
 </head>
 <body>
-	<h1>주문 내역</h1>
-	<table>
+	<div class="container" id="list_con">
+	<h2>주문 내역</h2>
+	<table style="width:100%;" >
 		<thead>
 			<tr>
-				<th>주문번호</th>
-				<th>주문회원</th>
-				<th>총주문수량</th>
-				<th>주문가격</th>
-				<th>주문일자</th>
+				<th id="list_th">주문번호</th>
+				<th id="list_th">주문회원</th>
+				<th id="list_th">총주문수량</th>
+				<th id="list_th">주문가격</th>
+				<th id="list_th">주문일자</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach var="order" items="${orderList}">
 				<tr>
-					<td>${order.order_id}</td>
-					<td><a href="${path}/orderDetail${order.order_id}">${order.user_id}</a></td>
-					<td>${order.order_quantity}</td>
-					<td>${order.order_price}</td>
-					<td>${order.order_date}</td>
+					<td id="list_td">${order.order_id}</td>
+					<td id="list_td"><a href="${path}/orderDetail${order.order_id}">${order.user_id}</a></td>
+					<td id="list_td">${order.order_quantity}</td>
+					<td id="list_td">
+					<fmt:formatNumber pattern="###,###,###" value="${order.order_price}"/></td>
+					<td id="list_td">${order.order_date}</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+	</div>
 </body>
 <%@ include file="include/footer.jsp" %>
 </html>

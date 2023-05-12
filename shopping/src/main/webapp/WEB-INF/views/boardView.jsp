@@ -73,11 +73,11 @@
 	<div class="form-group">
 	<div>
 		<label for="writer">이름</label>
-		<input type="text" class="form-control" name="board_writer" id="board_writer" value="${dto.board_writer }" >
+		<input type="text" class="form-control" name="board_writer" id="board_writer" value="${dto.board_writer}" >
 	</div>
 	</div>
 	<div style="width:100%; text-align:right;">
-		<input type="hidden" name="cs_id" value="${dto.board_id }">
+		<input type="hidden" name="board_id" value="${dto.board_id}">
 		<button type="button" id="btnUpdate" class="btn">수정</button>
 		<button type="button" id="btnDelete" class="btn">삭제</button>
 	</div>

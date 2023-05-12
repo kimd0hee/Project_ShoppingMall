@@ -1,4 +1,4 @@
-package com.admin.Controller;
+package com.admin.controller;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -26,13 +26,10 @@ public class AdminController {
 
    @RequestMapping("adminLoginCheck.do")
    public ModelAndView loginCheck(HttpSession session, AdminVO vo , ModelAndView mav) {
-	   System.out.println("adminLoginCheck.do");
-	   System.out.println(vo);
+	   
       String name = service.adminLoginCheck(vo);
-      System.out.println("name: " + name);
 
       if(name != null) {
-    	 
          session.setAttribute("admin_id", vo.getAdmin_id());
          session.setAttribute("admin_name", name);
          mav.setViewName("adminHome");

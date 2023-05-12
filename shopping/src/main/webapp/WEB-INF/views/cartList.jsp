@@ -102,7 +102,8 @@
 #table {
    border-top:2px solid black;
    border-bottom:1px solid white;
-   background-color:#EBF5FF;
+  /* background-color:#EBF5FF;*/
+   background-color:#f8f8f8;
 }
 
 #p_cart {
@@ -122,7 +123,7 @@ th, td {
 #btnUpdate {
 
 padding:2px 16px;
-   border:1px solid black;;
+   border:1px solid black;
    position: relative;
    bottom:5px;
    font-size:17px;

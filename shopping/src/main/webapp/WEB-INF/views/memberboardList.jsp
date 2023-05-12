@@ -23,70 +23,76 @@
 </head>
 
 <style>
-	 a:link { color:black; text-decoration: none;}
-	 a:visited {color:black; text-decoration: none;}
-	 a:hover {color:dark; text-decoration: none;}
+    a:link { color:black; text-decoration: none;}
+    a:visited {color:black; text-decoration: none;}
+    a:hover {color:dark; text-decoration: none;}
 
-	table {
-		border:2px solid black;
-		text-align:center;
-		border-collapse: collapse;
-		margin:0 auto;
-	}
-	
-	#padding {
-		padding:7px;
-	}
-	
-	h2 {
-		text-align:center;
-		margin-top:15px;
-	}
-	
-	#div {
-	   
-	   margin:10px 0px;
-	  
-	}
-	
+   table {
+      border:2px solid black;
+      text-align:center;
+      border-collapse: collapse;
+      margin:0 auto;
+   }
+   
+   #padding {
+      padding:7px;
+      
+   }
+   
+   h2 {
+      text-align:center;
+      margin-top:15px;
+   }
+   
+   #div {
+      margin-left:10px;
+      margin:5px 10px;
+   }
+   
+      
+   #button1 {
+      width:32px;
+      height:27px;
+      text-align:center;
+   }
+   
+   #btnWrite {
+      position:absolute;
+      border-radius:4px;
+      background-color: #fff;
+	  color: #333;
+	  cursor: pointer;
+	  border:1px solid black;
+	  padding:3px 6px;
 		
-	#button1 {
-		width:32px;
-		height:27px;
-		text-align:center;
-	}
-	
-	.write {
-		border:2px solid black;
-		float:right;
-		
-	}
-	
-	#t_head{
-		background-color:#EBF5FF;
-	}
-	
-	#mb_body {
-		
-		
-	}
- 	
- 	#m_write {
- 		
- 		text-align:right;
- 		
- 	}
-	
-	#page {
-		
-	}
-	
+   }
+   
+   .write {
+      border:2px solid black;
+      right:20px;
+      
+      
+   }
+   
+   th{
+   	background-color:#f8f8f8;
+   }
+   
+   #in_sub {
+   	border-radius:4px;
+      background-color: #fff;
+	  color: #333;
+	  cursor: pointer;
+	  border:1px solid black;
+	  padding:3px 6px;
+   }
+   
+   
 </style>
 
 <body>
       <h2>회원 게시글 목록</h2>
-      <div class="container">
-      <div class="table-responsive" id="mb_body">
+      <div class="table-responsive">
       <div id="div">
       <form name="form" method="post" action="${path}/memberboardList.do">
       <select name="searchOption">
@@ -96,24 +102,24 @@
          <option value="title" <c:out value="${map.searchOption == 'title'?'selected':''}"/> >제목</option>
       </select>
       <input name="keyword" value="${map.keyword}">
-      <input type="submit" value="조회">
+      <input id="in_sub" type="submit" value="조회">
       
-   	</form>
-   	${map.count}개의 게시물이 있습니다
-   	</div>
-        <table class="table table-sm" >
-          <thead id="t_head">
+      </form>
+      ${map.count}개의 게시물이 있습니다
+      </div>
+        <table class="table table-sm" style="width:98%;">
+          <thead>
             <tr>
-         		<th id="padding">번호</th>
-         		<th id="padding">제목</th>
-         		<th id="padding">이름</th>
-         		<th id="padding" style="width:200px;">작성일</th>
-         		<th id="padding">조회수</th>      
-      		</tr>
+               <th id="padding">번호</th>
+               <th id="padding">제목</th>
+               <th id="padding">이름</th>
+               <th id="padding">작성일</th>
+               <th id="padding">조회수</th>      
+            </tr>
           </thead>
          <!-- 게시글 상세보기 페이지로 이동시 게시글 목록페이지에 있는 검색조건, 키워드 현재 페이지 값을 유지 -->
-      	 <!-- ** 댓글이 있으면 게시글 이름 옆에 출력 -->
-      	 <!-- 원하는 날짜 형식으로 출력하기 위해 fmt태그 사용 -->
+          <!-- ** 댓글이 있으면 게시글 이름 옆에 출력 -->
+          <!-- 원하는 날짜 형식으로 출력하기 위해 fmt태그 사용 -->
           <tbody>
             <c:forEach var="row" items="${map.list}">
          <tr>
@@ -137,12 +143,13 @@
         
         <div id="page" style="text-align:center;">
         <!-- 처음페이지로 이동 : 현재 페이지가 1보다 크면 [처음]하이퍼링크를 화면에 출력 -->
-            <c:if test="${map.boardPager.curBlock > 1}"><input type="button">
-               <a href="javascript:list('1')">[처음]</a>
-            </c:if>
+         <c:if test="${map.boardPager.curBlock > 1}">
+             
+             <a href="javascript:list('1')">[처음]</a>
+         </c:if>
             
             <!-- 이전페이지 블록으로 이동 : 현재 페이지 블럭이 1보다 크면 [이전]하이퍼링크를 화면에 출력 -->
-            <c:if test="${map.boardPager.curBlock > 1}"><input type="button">
+            <c:if test="${map.boardPager.curBlock > 1}">
                <a href="javascript:list('${map.boardPager.prevPage}')">[이전]</a>
             </c:if>
             
@@ -151,16 +158,16 @@
                <!-- 현재페이일경우 하이퍼링크 제거 -->
                 <c:choose>
                   <c:when test="${num == map.boardPager.curPage}">
-                     <span style="color:red;"><button id="button1">${num}</button></span>&nbsp;
+                     <span style="color:red;"><button id="button1">${num}</button></span>
                   </c:when>
                   <c:otherwise>
-                     <a href="javascript:list('${num}')"><button id="button1">${num}</button></a>&nbsp;
+                     <a href="javascript:list('${num}')"><button id="button1">${num}</button></a>
                   </c:otherwise>
                </c:choose>
             </c:forEach>
          
             <!-- 다음페이지 블록으로 이동 : 현재 페이지 블럭이 전체 페이지 블럭보다 작거나 같은경우 [다움]하이퍼링크를 화면에 출력 -->
-             <c:if test="${map.boardPager.curBlock <= map.boardPager.totBlock}">
+             <c:if test="${map.boardPager.curBlock >= map.boardPager.totBlock}">
                <a href="javascript:list('${map.boardPager.nextPage}')">[다음]</a>
             </c:if>
             
@@ -168,11 +175,10 @@
              <c:if test="${map.boardPager.curPage <= map.boardPager.totPage}">
                <a href="javascript:list('${map.boardPager.totPage}')">[끝]</a>
             </c:if>
-            <c:if test="${sessionScope.user_id != null}">
-         		<button type="button" id="btnWrite" class="write">글쓰기</button>
-      		</c:if>
-            </div>
             
+            <c:if test="${sessionScope.user_id != null}">
+               <button type="button" id="btnWrite" class="write">글쓰기</button>
+            </c:if>
             </div>
       </div>
 

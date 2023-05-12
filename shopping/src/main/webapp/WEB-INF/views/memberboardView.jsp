@@ -40,9 +40,9 @@
                return;
             }
             // 댓글의 수가 0인경우 삭제가능
-            if(confirm("삭제하시겠습니까?")){
+            else if(confirm("삭제하시겠습니까?")){
                document.form.action="${path}/memberboardDelete.do";
-               document.form.submit();   
+               document.form.submit();
             }
          });
          
@@ -193,9 +193,15 @@
       visibility: hidden;
    }
    
-    .btn {
-   	border:1px solid black;
+    .btn1 {
+    border:1px solid black;
     margin:0px 2px;
+    padding: 5px 5px;
+	background-color: #fff;
+	color: #333;
+	
+	border-radius: 4px;
+	cursor: pointer;
    }
    
     #reply {
@@ -203,12 +209,12 @@
    	text-align:center;
    	border-top:1px solid #D8D8D8;
    	margin-top:15px;
+   	
    }
    
    #re_btn {
    	text-align:right;
-   }
-   
+   }   
    #btnReply {
    	margin-reft:10px;
    	border:1px solid black;
@@ -226,8 +232,10 @@
 </style>
 </head>
 <body>
+
 <div class="container">
-  <h2 style="margin:20px 0px;">게시글 보기</h2>
+  <h2 style="padding:20px 0px;">게시글 보기</h2>
+  
   <form name="form" method="post">
     <div class="form-group">
       <div>
@@ -238,16 +246,16 @@
       </div>
     </div>
     <div class="form-group">
-    	<div>
+       <div>
          <label for="title">제목</label>
          <input type="text" class="form-control" id="title" value="${dto.title}"
        name="title" size="80" placeholder="제목을 입력하세요"> 
       </div>
     </div>
     <div class="form-group">
-   	  <label for="content">내용</label>
+        <label for="content">내용</label>
       <textarea class="form-control" name="content" id="content" rows="13" cols="80" placeholder="내용을 입력하세요">${dto.content}</textarea>
- 	</div>
+    </div>
     <div class="form-group">
       <label for="writer">이름</label>
       <input type="text" class="form-control" id="writer"
@@ -256,16 +264,16 @@
     <div style="width:100%; text-align:center;">
       <input type="hidden" name="bno" value="${dto.bno}">
       <!-- 본인이 쓴 게시물만 수정, 삭제가 가능 -->
-      <div style="width:100%; text-align:right;">
+      <div style="text-align:right;">
        <c:if test="${sessionScope.user_id == dto.writer}">
-         <button class="btn" type="button" id="btnUpdate">수정</button>
-         <button class="btn" type="button" id="btnDelete">삭제</button>
+         <button class="btn1" type="button" id="btnUpdate">수정</button>
+         <button class="btn1" type="button" id="btnDelete">삭제</button>
       </c:if>
-         <button class="btn" type="button" id="btnList">목록</button>
-   	 </div>
+         <button class="btn1" type="button" id="btnList">목록</button>
+       </div>
    </div>
   </form>
-  
+
   <div id="reply">
   <div class="container">
       <br>
@@ -290,6 +298,6 @@
     <div id="listReply"></div> 
     </div>
   </div>
-   
+
 </body>
 </html>

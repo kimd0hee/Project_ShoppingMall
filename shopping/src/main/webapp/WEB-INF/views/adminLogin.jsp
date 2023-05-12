@@ -11,12 +11,10 @@
 <script>
 	$(document).ready(function(){
 		$("#btnAdminLogin").click(function(){
-			
 			// 태크.val() : 태그에 입력된 값
 			// 태크.val("값ㅅ") : 태그의 값을변경
 			var user_id = $("#admin_id").val();
 			var user_pw = $("#admin_pw").val();
-			console.log("user_id");
 			if(user_id == ""){
 				alert("아이디를 입력하세요.");;
 				$("#admin_id").focus(); //입력포커스 이동

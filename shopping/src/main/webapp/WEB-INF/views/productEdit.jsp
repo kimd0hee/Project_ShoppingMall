@@ -81,20 +81,29 @@
     	#deleteBtn{
     		margin:0px 5px;
     	}
+		#c_div2 img {
+		  display: inline-block;
+		  margin-right: 20px;
+		}
     </style>
     
 </head>
 <body>
+<div class="body-container">
    <h2 id="p_title">상품 정보/삭제</h2>   
-   <div>
    <form action="" id="form1" name="form1" enctype="multipart/form-data" method="post">
    <table border="1">
       <tr id="p_tr">
          <td id="p_td1">상품 이미지</td>
          <td id="p_td2">
-            <img src="${path}/img/product/${vo.product_url}" height="300px" width="310px" style="margin-bottom:15px">
-            <br>
-            <input type="file" id="product_photo" name="product_photo">
+         <div class="c_div2">
+	    <c:forEach var="product_url" items="${vo.product_url}">
+	        <img src="${path}/img/product/${product_url}" width="340" height="300" style="margin-right: 20px;">
+	    </c:forEach>
+	    </div>
+	    <br>
+	    <input multiple="multiple" type="file" id="product_photo" name="product_photo">
+	    <br>
          </td>
       </tr>
       <tr>
@@ -103,7 +112,7 @@
       </tr>
       <tr>
          <td id="p_td1">가격</td>
-         <td id="p_td2"><input type="number" id="product_price" name="product_price" value="${vo.product_price}"></td>
+         <td id="p_td2"><input type="number" id="product_price" name="product_price" value="${vo.product_price}" readonly></td>
       </tr>
       <tr>
          <td id="p_td1">상품소개</td>
@@ -119,5 +128,6 @@
    </form>
    </div>
 </body>
+
 <%@ include file="include/footer.jsp" %>
 </html>

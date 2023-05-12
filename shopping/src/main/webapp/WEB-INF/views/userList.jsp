@@ -55,7 +55,7 @@
 		</tr>
 		</c:forEach>
 	</table>
-	<input type="button" id="u_btn" value="회원등록" onclick="location.href='${path}/writeUser.do'" class="float-right">
+	<input type="button" id="u_btn" value="회원등록" onclick="location.href='${path}/userWrite.do'" class="float-right">
 	</div>
 	
 </body>

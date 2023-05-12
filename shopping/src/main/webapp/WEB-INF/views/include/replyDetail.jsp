@@ -48,8 +48,8 @@
                 $("#modifyReply").css("visibility", "hidden");
                 listReplyRest("1");
              }
-          })
-       };
+          }
+       });
     }
    });
 </script>

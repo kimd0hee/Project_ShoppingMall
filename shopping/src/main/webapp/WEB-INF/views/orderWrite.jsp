@@ -50,50 +50,161 @@
   			}
   		}
     </script>
+    
+    <style>
+    	 a:link { color:black; text-decoration: none;}
+    	a:visited {color:black; text-decoration: none;}
+    	a:hover {color:dark; text-decoration: none;}
+    
+    	table {
+
+    		text-align:center;
+    	}
+    	
+    	#cart_tb {
+    		width:100%;
+    	}
+    	
+    	#cart_th {
+    		padding:8px 0px;
+    		border-bottom:1px solid black;
+    		border-top:1px solid black;
+    	}
+    	
+    	#cart_td {
+    		border-bottom:1px solid black;
+    		padding:10px 0px;
+    	}
+    	
+    	#order_tb {
+    		margin-top:30px;
+    		height:50%;
+    	}
+    	
+    	#order_tb1{
+    		margin-top:10px;
+    		text-align:right;
+    		float:right;
+    	}
+    	
+    	#order_con {
+    		border:1px solid black;
+    	}
+    	
+    	.container {
+    		margin:0 auto;
+    	}
+    	
+    	input {
+    	/*	border:none; */
+    		text-align:center;
+    	}
+    	
+    	#info_tb {
+    		width:90%;
+    		margin-left:50px;
+    	}
+    	
+    	#info_tr{
+    		border-bottom:1px solid black;
+    		padding:10px 0px;
+    		border-left:1px solid black;
+    		border-right:1px solid black;
+    	}
+    	
+    	#info_td1 {
+    		padding:10px 0px;
+    	}
+    	
+    	#info_td2 {
+    		padding:10px 0px;
+    		
+    	}
+    	
+    	.add_td {
+    		width:250px;
+    	}
+    	
+    	h2{
+    		text-align:center;
+    		padding:17px 0px;
+    		border-bottom:1px solid #E6E6E6;
+    	}
+    	
+    	h3 {
+    		text-align:center;
+    		padding-bottom:10px;
+    	}
+    	
+    	#ra_con_bt{
+    		text-align:center;
+    	}
+    	
+    	#radio_btn {
+    		display:inline-block;
+    	}
+    	
+		.ra_btn1 {
+			padding-right:17px;
+		}
+		.ra_btn2 {
+
+		}
+		
+		#order_btn {
+			float:right;
+			padding-right:15px;
+			
+		}
+		
+		.btn_style{
+			border-radius:3px;
+			padding:5px;
+			background-color:white;
+			border:1px solid black;
+		}
+    </style>
+    
 </head>
 
 <body>
-    <h2>주문 페이지</h2>
-    <br>
-    <h3>주문 내역</h3>
-              <table border="1">
-              <thead>
-                  <tr>
-                     <th>상품명</th>
-                     <th>단가</th>
-                     <th>수량</th>
-                     <th>금액</th>
-                     <th>삭제</th>
+<h2>주문 페이지</h2>
+	<div class="container" id="order_tb"> <!-- 주문내역 -->
+    	<h3>주문 내역</h3>
+              <table id="cart_tb">
+                  <tr class="order_tr">
+                     <th id="cart_th">상품명</th>
+                     <th id="cart_th">단가</th>
+                     <th id="cart_th">수량</th>
+                     <th id="cart_th">금액</th>
+                     <th id="cart_th">삭제</th>
                   </tr>
-                </thead>
-                <tbody>  
-                  <c:forEach var="row" items="${map.cartList}" varStatus="i">
-                  <tr>
-                     <td>
+                  <c:forEach var="row" items="${cartList}" varStatus="i">
+                  <tr class="order_tr">
+                     <td id="cart_td">
                         ${row.product_name}
                      </td>
-                     <td style="width:80px" align="right">
+                     <td style="width:80px" id="cart_td">
                         <fmt:formatNumber pattern="###,###,###" value="${row.product_price}"/>
                      </td>
-                     <td>
-                        <input type="number" style="width:40px" name="amount" value="${row.amount}" min="1" readonly>
+                     <td id="cart_td">
+                        <input type="number" style="width:40px; border:none; text-align:right;" name="amount" value="${row.amount}" min="1" readonly>
                         <input type="hidden" name="product_id" value="${row.product_id}">
                      </td>
-                     <td style="width:100px" align="right">
+                     <td style="width:100px" id="cart_td">
                         <fmt:formatNumber pattern="###,###,###" value="${row.money}"/>
                      </td>
-                     <td>
-                         <a href="${path}/cartDelete.do?cart_id=${row.cart_id}">삭제</a>
+                     <td id="cart_td">
+                         <a href="${path}/cartDelete.do?cart_id=${row.cart_id}">X</a>
                      </td>
                   </tr>                  
                   </c:forEach>
-                  </tbody>
               </table>
-
           <form name="form1" id="form1" method="post" action="${path}/orderInsert.do">
-          <table>
+
+          <table id="order_tb1">
             <tr>
-                <td colspan="5" align="right">
+                <td colspan="5">
                 	총 수량 : <fmt:formatNumber pattern="###,###,###" value="${map.sumTot}"/>
                 	<input type ="hidden" name="order_quantity" value="${map.sumTot}">
                 	<br>
@@ -105,44 +216,53 @@
                  </td>
            </tr>
           </table>
+      
+          </div> <!-- 주문내역 END -->
     <hr>
-    <h3>주문자 정보 입력</h3>
-        <table>
-            <tr>
-                <td>주문자 이름:</td>
-                <td><input type="text" name="receive_name" id="receive_name"></td>
+    <div class="container" id="info_con">
+    <h3>주문 정보 입력</h3>
+        <table id="info_tb">
+            <tr id="info_tr" style="border-top:1px solid black;">
+                <td id="info_td1">주문자 이름:</td>
+                <td id="info_td2"><input type="text" name="receive_name" id="receive_name"></td>
             </tr>
-            <tr>
-                <td>연락처:</td>
-                <td><input type="text" name="receive_phone" id="receive_phone"></td>
+            <tr id="info_tr">
+                <td id="info_td1">연락처:</td>
+                <td id="info_td2"><input type="text" name="receive_phone" id="receive_phone"></td>
             </tr>
-            <tr>
-                <td>배송 주소:</td>
-                <td><input type="text" name="order_addr1" id="order_addr1"></td>
-                <td><input type="text" name="order_addr2" id="order_addr2"></td>
-                <td><input type="text" name="order_addr3" id="order_addr3"></td>
+            <tr id="info_tr">
+                <td id="info_td1">배송 주소:</td>
+                <td id="info_td2" class="add_td"><input type="text" name="order_addr1" id="order_addr1"></td>
+                <td id="info_td2" class="add_td"><input type="text" name="order_addr2" id="order_addr2"></td>
+                <td id="info_td2" class="add_td"><input type="text" name="order_addr3" id="order_addr3"></td>
             </tr>
-            <tr>
-                <td>주문 메모:</td>
-                <td><textarea name="order_memo"></textarea></td>
+            <tr id="info_tr">
+                <td id="info_td1">주문 메모:</td>
+                <td id="info_td2"><textarea name="order_memo" rows="7" ></textarea></td>
             </tr>
         </table>
+        </div>
         <hr>
+        <div class="container" id="ra_con_bt">
         <h3>결제방식</h3>
-        <table>
+        <table id="radio_btn">
         	<tr>
-               <td>
-               <input type="radio" id="card" name="order_pay" value="카드" onchange="setDisplay()" onclick="requestPay()">카드결제&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-               <td>
+               <td class="ra_btn1">
+               <input type="radio" id="card" name="order_pay" value="카드" onchange="setDisplay()" onclick="requestPay()" >카드결제</td>
+          
+            </tr>
+            <tr>
+             <td class="ra_btn2">
                <input type="radio" id="coin" name="order_pay" value="무통장" onchange="setDisplay()">무통장입금
                <div id="divPay" style="display:none">기업은행: 258-089215-01-017(예금주: 나다온)</div>
                </td>
-            </tr>
+               </tr>
         </table>
+        </div>
         <hr>
-        <tr>
-           <td colspan="2" align="center"><input type="button" id="order" value="주문하기"></td>
-        </tr>
+          	<div id="order_btn">
+           	<td colspan="2"><input class="btn_style" type="button" id="order" value="주문하기"></td>
+           	</div>
     </form>
 </body>
 <script type="text/javascript">

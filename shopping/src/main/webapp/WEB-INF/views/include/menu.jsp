@@ -24,7 +24,7 @@
 			<div class="row">
 				<div class="col-xl-3 col-lg-8">
 					<div class="header__logo">
-						<a href="/"><img src="img/logo.jpg" width="180" height="60" alt=""></a>
+						<a href="${path }/"><img src="img/logo.jpg" width="180" height="60" alt=""></a>
 					</div>
 				</div>
 				<div class="col-xl-5 col-lg-6">
@@ -35,14 +35,14 @@
 							<li></li>
 							<!-- 메뉴 위치 고정 -->
 							
+							<li><a href="${path}/">HOME</a></li>
 							<li><a href="${path}/productList.do">PRODUCT(list)</a></li>
-							<li><a href="memberboardList.do">MEMBER-BOARD</a>
+							<li><a href="${path}/memberboardList.do">MEMBER-BOARD</a></li>
+							<li><a href="${path}/boardList.do">BOARD</a>
 								<ul class="dropdown">
-									<li><a href="#">응모 이벤트</a></li>
-									<li><a href="#">당첨자 발표</a></li>
-									<li><a href="#">당첨 후기</a></li>
+									<li><a href="${path}/memberboardList.do">회원게시판</a></li>
+									<li><a href="${path}/boardList.do">자유게시판</a></li>
 								</ul></li>
-							<li><a href="${path}/boardList.do">BOARD</a></li>
 							<li><c:if test="${sessionScope.admin_id !=null}"><a href="#">ADMIN</a></c:if>
 								<ul class="dropdown">
 									<li><a href="${path}/userList.do">USER</a></li>
@@ -68,15 +68,12 @@
     </c:otherwise>
 </c:choose>
 		
-						<a href="mypageform">My page</a>
+						<a href="${path}/mypageform.do">My page</a>
 						</div>
 						<ul class="header__right__widget">
 							<li><span class="icon_search search-switch"></span></li>
-							<li><a href="keepform"><span class="icon_heart_alt"></span>
-									<div class="tip">2</div> </a></li>
 							<li><a href="${path}/cartList.do"><span class="icon_bag_alt"></span>
-									<!-- cartform -->
-									<div class="tip">2</div> </a></li>
+									</a></li>
 									
 						</ul>
 					</div>
