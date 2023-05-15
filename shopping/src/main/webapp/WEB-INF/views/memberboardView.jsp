@@ -199,9 +199,9 @@
     padding: 5px 5px;
 	background-color: #fff;
 	color: #333;
-	
 	border-radius: 4px;
 	cursor: pointer;
+	margin-top:10px;
    }
    
     #reply {
@@ -229,6 +229,19 @@
    	text-align:left;
    }
    
+	.f_div{
+		border:1px solid black;
+		padding:5px 10px 15px;
+	}
+	
+   
+	td{
+		padding:5px 10px;
+	}
+	
+	#content{
+		border:1px solid black;	
+	}
 </style>
 </head>
 <body>
@@ -245,22 +258,30 @@
          조회수 : ${dto.viewcnt}
       </div>
     </div>
-    <div class="form-group">
-       <div>
-         <label for="title">제목</label>
-         <input type="text" class="form-control" id="title" value="${dto.title}"
-       name="title" size="80" placeholder="제목을 입력하세요"> 
-      </div>
+    
+    <div class="f_div">
+      <table>
+         <tr>
+         	<th>제목</th>
+     <!--     <label for="title">제목</label> -->
+         
+        <td> <input class="col-md-6" type="text" id="title" value="${dto.title}"
+       name="title" size="80" placeholder="제목을 입력하세요"> </td>
+       </tr>
+       <tr>
+		<th>이름</th>
+   <!--    <label for="writer">이름</label> -->
+     <td> <input class="col-md-6" type="text" id="writer"
+      value="${dto.writer}" placeholder="이름을 입력하세요" name="writer"> </td>
+      </tr>
+      </table>
+       <textarea class="form-control" name="content" id="content" rows="13" cols="80" placeholder="내용을 입력하세요">${dto.content}</textarea>
     </div>
-    <div class="form-group">
-        <label for="content">내용</label>
-      <textarea class="form-control" name="content" id="content" rows="13" cols="80" placeholder="내용을 입력하세요">${dto.content}</textarea>
-    </div>
-    <div class="form-group">
-      <label for="writer">이름</label>
-      <input type="text" class="form-control" id="writer"
-      value="${dto.writer}" placeholder="이름을 입력하세요" name="writer">
-    </div>
+    </div><!-- container -->
+ 		  
+       
+
+    
     <div style="width:100%; text-align:center;">
       <input type="hidden" name="bno" value="${dto.bno}">
       <!-- 본인이 쓴 게시물만 수정, 삭제가 가능 -->
