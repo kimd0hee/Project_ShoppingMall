@@ -44,7 +44,29 @@
    
    .btn {
       border:1px solid black;
-    margin:0px 2px;
+      background-color:#333;
+      color:#fff;
+      margin:0px 2px;
+   }
+   
+   .memWrite_title{
+   	margin:20px 0px;
+   	text-align:center;
+   }
+   
+   #memWrite_form{
+   	border:1px solid black;
+   	padding:15px 20px;
+   }
+   
+   #memWrite_btn{
+   	width:100%;
+   	text-align:right;
+   	margin-top:15px;
+   }
+   
+   #content {
+   	border:1px solid #848484;
    }
 </style>
 
@@ -52,18 +74,20 @@
 <body>
 
 <div class="container">
-  <h2 style="margin:20px 0px;">게시글 작성</h2>
+  <h2 class="memWrite_title">게시글 작성</h2>
   <form name="form" method="post" action="${path}/memberboardInsert.do">
+  	<div id="memWrite_form">
     <div class="form-group">
       <label for="title">제목</label>
-      <input type="text" class="form-control" id="title"
-       name="title" size="80" placeholder="제목을 입력하세요"> 
+      <input type="text" id="title"
+       name="title" size="80" placeholder="제목을 입력하세요" maxlength="45" style="margin-left:5px;"> 
     </div>
     <div class="form-group">
         <label for="content">내용</label>
       <textarea class="form-control" name="content" id="content" rows="13" cols="80" placeholder="내용을 입력하세요"></textarea>
     </div>
-    <div style="width:100%; text-align:right;">
+    </div>
+    <div style="" id="memWrite_btn">
       <button class="btn" type="button" id="btnSave">확인</button>
       <button class="btn" type="reset">취소</button>
    </div>

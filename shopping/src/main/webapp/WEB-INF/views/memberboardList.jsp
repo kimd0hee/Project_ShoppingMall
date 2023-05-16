@@ -30,7 +30,6 @@
    table {
       border:1px solid black;
       text-align:center;
-      border-collapse: collapse;
       margin:0 auto;
       border-collapse:separate;
 	  border-spacing: 0;
@@ -43,7 +42,7 @@
    
    #padding2 {
       padding:7px;
-      border:none;
+      border-bottom:1px solid #FAFAFA;
    }
    
    h2 {
@@ -62,14 +61,15 @@
       height:27px;
       text-align:center;
       border:1px solid black;
-      background-color:#f8f8f8;
+      background-color: #333;
+	  color: #fff;
    }
    
    #btnWrite {
       
       border-radius:4px;
-      background-color: #f8f8f8;
-	  color: #333;
+      background-color: #333;
+	  color: #fff;
 	  cursor: pointer;
 	  border:1px solid black;
 	  padding:3px 6px;
@@ -90,8 +90,8 @@
    
    #in_sub {
    	  border-radius:4px;
-      background-color: #f8f8f8;
-	  color: #333;
+      background-color: #333;
+	  color: #fff;
 	  cursor: pointer;
 	  border:1px solid black;
 	  padding:3px 6px;

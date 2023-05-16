@@ -21,9 +21,10 @@
 	 a:hover {color:dark; text-decoration: none;}
 
 	table {
-		border:2px solid black;
+		border:1px solid black;
 		text-align:center;
-		border-collapse: collapse;
+		border-collapse:separate;
+	  	border-spacing: 0;
 		margin:0 auto;
 	}
 	
@@ -54,7 +55,7 @@
 	}
 	
 	.write {
-		border:2px solid black;
+		border:1px solid black;
 		float:right;
 		
 		
@@ -71,7 +72,7 @@
 <body>
 <h2>게시글 목록</h2>
 <div class="container">
-<table class="table">
+<table class="table table-sm">
           <thead id="t_head">
             <tr>
          		<th id="padding" width="200px;">번호</th>
