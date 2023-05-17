@@ -66,7 +66,7 @@
    width:70%;
    margin: 0 auto;
    font-weight: 500;
-   
+   margin-top:20px;
 }   
 
 #cart {
@@ -108,13 +108,30 @@
    
 }
 
+table {
+	border:1px solid black;
+	border-collapse:separate;
+	border-spacing: 0;
+	border-radius:10px;
+}
+
+
 th, td {
   text-align: center;
   padding:10px;
+  border-collapse:separate;
+  border-spacing: 0;
+  border-top-left-radius:10px;
+  border-top-right-radius:10px;
 }
 
 th {
 	border-bottom:1px solid black;
+	border-collapse:collapse;
+}
+
+td{
+	border-bottom: 1px solid #D8D8D8;
 }
 #btnUpdate {
    padding:2px 16px;
@@ -125,15 +142,17 @@ th {
    font-weight: 400;
 }
 
-table {
-	border:1px solid black;
+#cart_container{
+	text-align:center; 
+	margin:0 auto; 
+	margin-top:20px;
+	width:90%;
 }
 
-#div_cart{
+#cart_a{
+	
 	
 }
-
-
    </style>
 
    
@@ -143,16 +162,16 @@ table {
 
 <body>
 
-<div class="container" style="text-align:center; margin:0 auto; margin-top:20px;" >
+<div class="container" id="cart_container">
     <!-- Shopping cart table -->
 <div style="text-align:left;">
    <span class="material-symbols-outlined fa-3x" id="cart">
-shopping_cart<id style="font-size:30px;">장바구니</id>
-</span>
+shopping_cart<a id="cart_a" style="font-size:30px;">장바구니</a>
+	</span>
 
 <p style="text-align:right; font-size:18px; color:black;" id="p_cart" >01.장바구니 > 02.주문/결제 > 03.주문완료</p>
 </div>
-    <div class="container" id="div_cart">
+  
       <!--   <div class="card-header" id="cart">
             <h2>장바구니 목록</h2>
         </div> -->
@@ -163,8 +182,8 @@ shopping_cart<id style="font-size:30px;">장바구니</id>
          </c:when>
          <c:otherwise>
           <form name="form1" id="form1" method="post" action=${path}/cartUpdate.do>
-        <div class="card-body">
-            <div >
+        <div>
+            <div>
               <table style="width:100%;" >
                 <thead id="table">
                   <tr>
@@ -194,7 +213,7 @@ shopping_cart<id style="font-size:30px;">장바구니</id>
                      </td>
                      <td>
                     
-                        <input type="number" style="width:40px" name="amount" value="${row.amount}" min="1">
+                        <input type="number" style="width:40px; text-align:center;" name="amount" value="${row.amount}" min="1">
                         <input type="hidden" name="product_id" value="${row.product_id}">
                         
                      </td>
@@ -251,7 +270,6 @@ shopping_cart<id style="font-size:30px;">장바구니</id>
       </c:choose>        
             <!-- / Shopping cart table -->
               </div>
-          </div>
       
 </body>
  <script>
