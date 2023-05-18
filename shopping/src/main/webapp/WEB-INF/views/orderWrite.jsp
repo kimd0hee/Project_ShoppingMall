@@ -57,23 +57,29 @@
     	a:hover {color:dark; text-decoration: none;}
     
     	table {
-
     		text-align:center;
     	}
     	
     	#cart_tb {
     		width:100%;
+    		border:1px solid black;
+    		border-collapse:separate;
+  			border-spacing: 0;
+  			border-radius:7px;
     	}
     	
     	#cart_th {
     		padding:8px 0px;
+    		background-color:#f8f8f8;
     		border-bottom:1px solid black;
-    		border-top:1px solid black;
+    		border-collapse:separate;
+ 		    border-spacing: 0;
+ 		    border-radius:7px 7px 0 0;
     	}
     	
     	#cart_td {
-    		border-bottom:1px solid black;
     		padding:10px 0px;
+    		border-bottom: 1px solid #D8D8D8;
     	}
     	
     	#order_tb {
@@ -163,6 +169,9 @@
 			background-color:white;
 			border:1px solid black;
 		}
+		
+		.cart_del{
+		}
     </style>
     
 </head>
@@ -195,7 +204,7 @@
                         <fmt:formatNumber pattern="###,###,###" value="${row.money}"/>
                      </td>
                      <td id="cart_td">
-                         <a href="${path}/cartDelete.do?cart_id=${row.cart_id}">X</a>
+                         <a class="cart_del" href="${path}/cartDelete.do?cart_id=${row.cart_id}">X</a>
                      </td>
                   </tr>                  
                   </c:forEach>

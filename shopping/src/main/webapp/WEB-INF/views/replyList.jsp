@@ -14,25 +14,35 @@
 	a:hover {color:#585858; text-decoration: none;}
 
 	#btnModify {
-		background-color:white;
+		background-color:#333;
+		color:#fff;
 		border:1px solid black;
-		padding:4px;
+		padding:6px;
 		border-radius:5px;
-		font-size:14px;
+		font-size:16px;
+		float:right;
+		
+	}
+	
+	#reply_tb{
+		font-size:17px;
 	}
 </style>
 </head>
 
 <body>
-   <table style="width:100%;">
+   <table style="width:98%;" id="reply_tb">
    <!-- 댓글 목록 -->
       <c:forEach var="row" items="${list}">
       <tr>
          <td>
             ${row.user_name}(<fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/>)
-            <br>
+         </td>   
+      </tr>
+      <tr>
+      	<td>      
             ${row.replytext}
-            <br>
+            
             <c:if test="${sessionScope.user_id==row.replyer}">
                <input type="button" id="btnModify" value="수정" onclick="showReplyModify('${row.rno}')">
             </c:if>

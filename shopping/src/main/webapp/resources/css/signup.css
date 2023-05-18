@@ -1,8 +1,26 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&display=swap');
+
 
 html {
     width: 100%;
+    font-family: 'Dongle', sans-serif;
+}
 
+body{
+	
+}
+
+.Light {
+	font-weight:300;
+}
+
+.Regular {
+	font-weight:400;
+}
+
+.Bold {
+	font-weight:700;
 }
 
 
@@ -19,7 +37,7 @@ input{
 
 
 div {
-    padding-top: 3px;
+    
     padding-bottom: 8px;
     
 }
@@ -69,6 +87,7 @@ div {
     display: flex;
     justify-content: space-between;
     line-height: 35px;
+    
 }
 
 #address1 {
@@ -99,17 +118,29 @@ input[type="submit"], input[type="reset"]
 	}
 
 table{
+	border:1px solid black;
+	border-radius:10px;
+	border-collapse:separate;
+	border-spacing: 0;
+}
+
+tbody {
 	
 }
 
+
 th {
-	
+	border-bottom:1px solid #f8f8f8;
+	border-right:1px solid black;
 	background-color:#f8f8f8;
+	border-collapse:separate;
+	border-spacing: 0;
 }
 
 td {
-	
+	padding-left:10px;
 }
+
 
 .text {
 	top:230px;
@@ -124,7 +155,7 @@ p {
 #form_div {
 	position: relative;
 	text-align:center;
-	width:70%;
+	
 	align:center;
 	margin:0 auto;
 	
@@ -138,15 +169,10 @@ p {
 	margin:7px 0px;
 }
 
-tbody {
-	border:1px solid black;
-	border-radius:15px;
-	box-shadow: 0 0 0 #000;
-	border-collapse:collapse;	
-}
+
 
 #searchAdd{
-
+	margin-bottom:1px;
 	border:1px solid black;
 	margin-left:3px;
 }

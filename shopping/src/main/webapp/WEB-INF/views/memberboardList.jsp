@@ -28,15 +28,21 @@
     a:hover {color:dark; text-decoration: none;}
 
    table {
-      border:2px solid black;
+      border:1px solid black;
       text-align:center;
-      border-collapse: collapse;
       margin:0 auto;
+      border-collapse:separate;
+	  border-spacing: 0;
    }
    
-   #padding {
+   #padding1 {
       padding:7px;
-      
+      border-bottom:1px solid black;
+   }
+   
+   #padding2 {
+      padding:7px;
+      border-bottom:1px solid #FAFAFA;
    }
    
    h2 {
@@ -45,8 +51,8 @@
    }
    
    #div {
-      margin-left:10px;
-      margin:5px 10px;
+      
+      margin:5px 0px;
    }
    
       
@@ -54,13 +60,16 @@
       width:32px;
       height:27px;
       text-align:center;
+      border:1px solid black;
+      background-color: #333;
+	  color: #fff;
    }
    
    #btnWrite {
-      position:absolute;
+      
       border-radius:4px;
-      background-color: #fff;
-	  color: #333;
+      background-color: #333;
+	  color: #fff;
 	  cursor: pointer;
 	  border:1px solid black;
 	  padding:3px 6px;
@@ -69,28 +78,33 @@
    
    .write {
       border:2px solid black;
-      right:20px;
-      
+      vertical-align:right;
+      float:right;
       
    }
    
    th{
    	background-color:#f8f8f8;
+   	
    }
    
    #in_sub {
-   	border-radius:4px;
-      background-color: #fff;
-	  color: #333;
+   	  border-radius:4px;
+      background-color: #333;
+	  color: #fff;
 	  cursor: pointer;
 	  border:1px solid black;
 	  padding:3px 6px;
    }
    
+   #page a{
+   	
+   }
    
 </style>
 
 <body>
+	<div class="container">
       <h2>회원 게시글 목록</h2>
       <div class="table-responsive">
       <div id="div">
@@ -107,14 +121,14 @@
       </form>
       ${map.count}개의 게시물이 있습니다
       </div>
-        <table class="table table-sm" style="width:98%;">
+        <table class="table table-sm">
           <thead>
             <tr>
-               <th id="padding">번호</th>
-               <th id="padding">제목</th>
-               <th id="padding">이름</th>
-               <th id="padding">작성일</th>
-               <th id="padding">조회수</th>      
+               <th id="padding1">번호</th>
+               <th id="padding1">제목</th>
+               <th id="padding1">이름</th>
+               <th id="padding1">작성일</th>
+               <th id="padding1">조회수</th>      
             </tr>
           </thead>
          <!-- 게시글 상세보기 페이지로 이동시 게시글 목록페이지에 있는 검색조건, 키워드 현재 페이지 값을 유지 -->
@@ -123,19 +137,19 @@
           <tbody>
             <c:forEach var="row" items="${map.list}">
          <tr>
-            <td id="padding">${row.bno}</td>
-            <td id="padding"><a href="${path}/memberboardView.do?bno=${row.bno}
+            <td id="padding2">${row.bno}</td>
+            <td id="padding2"><a href="${path}/memberboardView.do?bno=${row.bno}
             &curPage=${map.boardPager.curPage}&searchOption=${map.searchOption}&keyword=${map.keyword}">${row.title}
             <c:if test="${row.recnt > 0}">
             <span style="color : red;">(${row.recnt})</span>
             </c:if>
             </a>
             </td>
-            <td id="padding">${row.user_name}</td>
-            <td id="padding">
+            <td id="padding2">${row.user_name}</td>
+            <td id="padding2">
                <fmt:formatDate value="${row.regdate}" pattern="yyyy-MM-dd HH:mm:ss"/>
             </td>
-            <td id="padding">${row.viewcnt}</td>
+            <td id="padding2">${row.viewcnt}</td>
          </tr>
       </c:forEach>
           </tbody>
@@ -154,7 +168,7 @@
             </c:if>
             
             <!-- **하나의 블럭 시작페이지부터 끝 페이지까지 반복문 실행 -->
-             <c:forEach var="num" begin="${map.boardPager.blockBegin}" end="${map.boardPager.blockEnd}">
+             <c:forEach var="num" begin="${map.boardPager.blockBegin}" end="${map.boardPager.blockEnd}" >
                <!-- 현재페이일경우 하이퍼링크 제거 -->
                 <c:choose>
                   <c:when test="${num == map.boardPager.curPage}">
@@ -181,6 +195,6 @@
             </c:if>
             </div>
       </div>
-
+	</div>
 </body>
 </html>

@@ -193,15 +193,21 @@
       visibility: hidden;
    }
    
+   h2 {
+   	text-align:center;
+   	padding:20px 0px;
+   }
+   
     .btn1 {
     border:1px solid black;
     margin:0px 2px;
-    padding: 5px 5px;
-	background-color: #fff;
-	color: #333;
-	
+    padding: 5px 8px;
+	background-color: #333;
+	color: #fff;
 	border-radius: 4px;
 	cursor: pointer;
+	margin-top:10px;
+	
    }
    
     #reply {
@@ -213,28 +219,45 @@
    }
    
    #re_btn {
-   	text-align:right;
+   	text-align:left;
    }   
    #btnReply {
-   	margin-reft:10px;
+
    	border:1px solid black;
    	padding:5px;
+   	background-color:#333;
+   	color:#fff;
+   	float:right;
+   	
    }
-   
-   #replylist {
-   	padding-top:10px;
-   }
-   
+
    #listReply {
+    padding-top:70px;
    	text-align:left;
    }
    
+	.f_div{
+		border:1px solid black;
+		padding:10px 25px 20px;
+	}
+	
+   
+	td{
+		padding:5px 10px;
+	}
+	
+	#content{
+		border:1px solid black;
+		margin-top:20px;
+		border-color:#848484;
+	}
+	
 </style>
 </head>
 <body>
 
 <div class="container">
-  <h2 style="padding:20px 0px;">게시글 보기</h2>
+  <h2>게시글 보기</h2>
   
   <form name="form" method="post">
     <div class="form-group">
@@ -245,26 +268,34 @@
          조회수 : ${dto.viewcnt}
       </div>
     </div>
-    <div class="form-group">
-       <div>
-         <label for="title">제목</label>
-         <input type="text" class="form-control" id="title" value="${dto.title}"
-       name="title" size="80" placeholder="제목을 입력하세요"> 
-      </div>
+    
+    <div class="f_div">
+      <table>
+         <tr>
+         	<th>제목</th>
+     <!--     <label for="title">제목</label> -->
+         
+        <td> <input class="col-md-6" type="text" id="title" value="${dto.title}"
+       name="title" size="80" placeholder="제목을 입력하세요" maxlength="45"> </td>
+       </tr>
+       <tr>
+		<th>이름</th>
+   <!--    <label for="writer">이름</label> -->
+     <td> <input class="col-md-6" type="text" id="writer"
+      value="${dto.writer}" placeholder="이름을 입력하세요" name="writer"> </td>
+      </tr>
+      </table>
+       <textarea class="form-control" name="content" id="content" rows="13" cols="80" placeholder="내용을 입력하세요">${dto.content}</textarea>
     </div>
-    <div class="form-group">
-        <label for="content">내용</label>
-      <textarea class="form-control" name="content" id="content" rows="13" cols="80" placeholder="내용을 입력하세요">${dto.content}</textarea>
-    </div>
-    <div class="form-group">
-      <label for="writer">이름</label>
-      <input type="text" class="form-control" id="writer"
-      value="${dto.writer}" placeholder="이름을 입력하세요" name="writer">
-    </div>
+    </div><!-- container -->
+ 		  
+       
+
+    
     <div style="width:100%; text-align:center;">
       <input type="hidden" name="bno" value="${dto.bno}">
       <!-- 본인이 쓴 게시물만 수정, 삭제가 가능 -->
-      <div style="text-align:right;">
+      <div style="text-align:right; margin-right:10px;">
        <c:if test="${sessionScope.user_id == dto.writer}">
          <button class="btn1" type="button" id="btnUpdate">수정</button>
          <button class="btn1" type="button" id="btnDelete">삭제</button>
@@ -278,22 +309,20 @@
   <div class="container">
       <br>
       <!-- 로그인 한 회원에게만 댓글 작성 가능 -->
-      <div id="reply2">
+      <div id="reply2" style="width:97%;">
        <c:if test="${sessionScope.user_id != null}">
          <textarea rows="5" cols="120" id="replytext" placeholder="댓글을 입력하세요"></textarea>
-      <br>
       </c:if>
       
-      <div id="replylist">
+      <div id="replylist"> 
    <div id="re_btn">
     <!-- 비밀댓글 체크박스 -->
-       <input type="checkbox" id="secretReply">비밀 댓글
-      <button type="button" id="btnReply">댓글 작성</button>
-   </div>
-   
+       <input type="checkbox" id="secretReply">비밀 댓글    
+       <button type="button" id="btnReply">댓글 작성</button>   
+   </div> 
   </div>
-      </div>
-   </div>
+ </div>
+      
    <!-- 댓글 목록 출력 위치 -->
     <div id="listReply"></div> 
     </div>
