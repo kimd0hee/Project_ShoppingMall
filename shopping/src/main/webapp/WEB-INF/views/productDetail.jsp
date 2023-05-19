@@ -176,7 +176,7 @@
 #mainImg {
    
     width:600px;
-    height:700px;
+    height:auto;
 
 }
 
@@ -253,7 +253,7 @@ align-items: center;
          <td id="img">
          <div id="mainImg">
             <c:forEach var="product_url" items="${vo.product_url}">
-             <img src="${path}/img/product/${product_url}" width="800px;" height="300px;" alt="img"><br>
+             <img src="${path}/img/product/${product_url}" width="500px;" height="500px;" alt="img"><br>
          </c:forEach>
          
           </div>
@@ -274,7 +274,7 @@ align-items: center;
                      </div>
                   </td>
                </tr>
-               
+                
                <tr>
                   <td class="tb_row" style="height:80px;" id="local">
                   <div class="i_loc" style="align:left;">
@@ -312,18 +312,20 @@ align-items: center;
   
 </body>
 <script>
-$(function(){
-    $(".thumbs a").click(function(){            //클릭 시
-        var imgPath = $(this).attr("href");     //클릭한 a태그의 하이퍼링크를 변수저장
-        $("#mainImg>img").attr({src:imgPath})   //메인 이미지의 주소 속성에 할당
-        .hide()                                 //fadein()효과를 보여주기 위해 숨김처리
-        .fadeIn();                              //fadeIn()
-        return false;                           //<a> 의 본래기능 (하이퍼링크) 작동방지
-    });
+window.addEventListener("scroll", function() {
+  var abc = document.getElementById("abc");
+  var targetPosition = 1500; // 멈추고자 하는 위치의 값 (예: 500px)
+
+  if (window.pageYOffset >= targetPosition) {
+    abc.style.position = "absolute";
+    abc.style.top = targetPosition + "px";
+  } else {
+    abc.style.position = "fixed";
+    abc.style.top = "240px";
+  }
 });
 </script>
 
 
 
-<%@ include file="include/footer.jsp" %>
-</html>
+<%@ include file="include/footer.jsp"%>

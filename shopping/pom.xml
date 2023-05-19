@@ -168,7 +168,25 @@
 			<artifactId>thumbnailator</artifactId>
 			<version>0.4.8</version>
 		</dependency>
-		<!-- 추가 End 수정수정 -->				
+		<!-- 추가 End 수정수정 -->			
+		
+	<!-- S3 -->
+		<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-aws</artifactId>
+    <version>2.0.1.RELEASE</version>
+</dependency>
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-aws-context</artifactId>
+    <version>1.2.1.RELEASE</version>
+</dependency>
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-aws-autoconfigure</artifactId>
+    <version>1.2.1.RELEASE</version>
+</dependency>
+		
 	</dependencies>
     <build>
         <plugins>

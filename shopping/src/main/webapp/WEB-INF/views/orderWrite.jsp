@@ -52,9 +52,9 @@
     </script>
     
     <style>
-    	 a:link { color:black; text-decoration: none;}
-    	a:visited {color:black; text-decoration: none;}
-    	a:hover {color:dark; text-decoration: none;}
+    	 a:link { color:white; text-decoration: none;}
+    	a:visited {color:white; text-decoration: none;}
+    	a:hover {color:white; text-decoration: none;}
     
     	table {
     		text-align:center;
@@ -171,6 +171,11 @@
 		}
 		
 		.cart_del{
+			border:1px solid black;
+			padding:5px 10px;
+			border-radius:5px;
+			background-color:#333;
+			color:#fff;
 		}
     </style>
     
@@ -179,7 +184,7 @@
 <body>
 <h2>주문 페이지</h2>
 	<div class="container" id="order_tb"> <!-- 주문내역 -->
-    	<h3>주문 내역</h3>
+    	<h3>주문 확인</h3>
               <table id="cart_tb">
                   <tr class="order_tr">
                      <th id="cart_th">상품명</th>
@@ -204,7 +209,7 @@
                         <fmt:formatNumber pattern="###,###,###" value="${row.money}"/>
                      </td>
                      <td id="cart_td">
-                         <a class="cart_del" href="${path}/cartDelete.do?cart_id=${row.cart_id}">X</a>
+                         <a class="cart_del" href="${path}/cartDelete.do?cart_id=${row.cart_id}">삭제</a>
                      </td>
                   </tr>                  
                   </c:forEach>
