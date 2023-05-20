@@ -52,16 +52,17 @@
     </script>
     
     <style>
-    	 a:link { color:black; text-decoration: none;}
-    	a:visited {color:black; text-decoration: none;}
-    	a:hover {color:dark; text-decoration: none;}
+    	 a:link { color:white; text-decoration: none;}
+    	a:visited {color:white; text-decoration: none;}
+    	a:hover {color:white; text-decoration: none;}
     
     	table {
     		text-align:center;
+    		width:100%;
     	}
     	
     	#cart_tb {
-    		width:100%;
+    		
     		border:1px solid black;
     		border-collapse:separate;
   			border-spacing: 0;
@@ -91,6 +92,9 @@
     		margin-top:10px;
     		text-align:right;
     		float:right;
+    		box-sizing: border-box;
+    		width:230px;
+    		
     	}
     	
     	#order_con {
@@ -107,10 +111,10 @@
     	}
     	
     	#info_tb {
-    		width:90%;
-    		margin-left:50px;
+    		width:100%;
+    		
     	}
-    	
+  	
     	#info_tr{
     		border-bottom:1px solid black;
     		padding:10px 0px;
@@ -118,17 +122,16 @@
     		border-right:1px solid black;
     	}
     	
-    	#info_td1 {
-    		padding:10px 0px;
+    	#info_th {
     	}
     	
-    	#info_td2 {
-    		padding:10px 0px;
-    		
+    	#info_td {
+    		width:75%;
+    		padding: 10px 0px; 
     	}
     	
     	.add_td {
-    		width:250px;
+    		
     	}
     	
     	h2{
@@ -142,19 +145,15 @@
     		padding-bottom:10px;
     	}
     	
-    	#ra_con_bt{
-    		text-align:center;
-    	}
-    	
     	#radio_btn {
-    		display:inline-block;
+    		vertical-align: middle;
     	}
     	
 		.ra_btn1 {
 			padding-right:17px;
+			text-align:center
 		}
 		.ra_btn2 {
-
 		}
 		
 		#order_btn {
@@ -166,20 +165,38 @@
 		.btn_style{
 			border-radius:3px;
 			padding:5px;
-			background-color:white;
-			border:1px solid black;
+			background-color:#333;
+			color:#fff;
+			border:none;
 		}
 		
 		.cart_del{
+			border:1px solid black;
+			background-color:#333;
+			color:#fff;
+			padding:7px 10px;
+			border-radius:5px;
+			border:none;
 		}
+
+		#order_addr2{
+			margin:5px 0px;
+		}
+		
+		#info_tb td {
+			padding-right:10px;
+			text-align:left;
+		}
+		
+
     </style>
     
 </head>
 
 <body>
-<h2>주문 페이지</h2>
+
 	<div class="container" id="order_tb"> <!-- 주문내역 -->
-    	<h3>주문 내역</h3>
+    	<h3>주문 결제</h3>
               <table id="cart_tb">
                   <tr class="order_tr">
                      <th id="cart_th">상품명</th>
@@ -203,8 +220,8 @@
                      <td style="width:100px" id="cart_td">
                         <fmt:formatNumber pattern="###,###,###" value="${row.money}"/>
                      </td>
-                     <td id="cart_td">
-                         <a class="cart_del" href="${path}/cartDelete.do?cart_id=${row.cart_id}">X</a>
+                     <td id="cart_td" style="width:20%;">
+                         <a class="cart_del" href="${path}/cartDelete.do?cart_id=${row.cart_id}">삭제</a>
                      </td>
                   </tr>                  
                   </c:forEach>
@@ -213,41 +230,66 @@
 
           <table id="order_tb1">
             <tr>
-                <td colspan="5">
-                	총 수량 : <fmt:formatNumber pattern="###,###,###" value="${map.sumTot}"/>
+                <td>총 수량 : 
+                <fmt:formatNumber pattern="###,###,###" value="${map.sumTot}"/>
                 	<input type ="hidden" name="order_quantity" value="${map.sumTot}">
-                	<br>
-                    주문 금액 합계 : <fmt:formatNumber pattern="###,###,###" value="${map.sumMoney}"/>
-                    <br>배송료 : ${map.fee}
-                    <br>전체 주문금액 : <fmt:formatNumber pattern="###,###,###" value="${map.allSum}"/>
+                </td>	
+             </tr>
+             <tr>   	
+                    <td>주문 금액 합계 : 
+                    <fmt:formatNumber pattern="###,###,###" value="${map.sumMoney}"/></td>
+             </tr>
+             <tr>       
+                    <td>배송료 : 
+                    ${map.fee}</td>
+             </tr>
+             <tr>       
+                    <td>전체 주문금액 : 
+                    <fmt:formatNumber pattern="###,###,###" value="${map.allSum}"/>
+                    <input type ="hidden" name="cart_id" value="${cart_id}">
+                    <input type ="hidden" name="order_price" value="${map.allSum}"></td>
+           </tr>
+          </table> 
+    <!--     <div class="cart-total-price" >
+                <div class="cart-total-price__inner">
+                    <div id="price">
+                       총 수량 : <fmt:formatNumber pattern="###,###,###" value="${map.sumTot}"/> 
+                	<input type ="hidden" name="order_quantity" value="${map.sumTot}">
+                       주문 금액 합계 : <fmt:formatNumber pattern="###,###,###" value="${map.sumMoney}"/>
+
+                        
+                      배송료 : ${map.fee}
+                        
+                       전체 주문금액 : <fmt:formatNumber pattern="###,###,###" value="${map.allSum}"/>
                     <input type ="hidden" name="cart_id" value="${cart_id}">
                     <input type ="hidden" name="order_price" value="${map.allSum}">
-                 </td>
-           </tr>
-          </table>
-      
+                    </div>   
+                </div> 
+            </div> -->
           </div> <!-- 주문내역 END -->
+        
     <hr>
     <div class="container" id="info_con">
     <h3>주문 정보 입력</h3>
         <table id="info_tb">
             <tr id="info_tr" style="border-top:1px solid black;">
-                <td id="info_td1">주문자 이름:</td>
-                <td id="info_td2"><input type="text" name="receive_name" id="receive_name"></td>
+                <th id="info_th">받는분 이름:</th>
+                <td id="info_td"><input class="col-md-6" type="text" name="receive_name" id="receive_name"></td>
             </tr>
             <tr id="info_tr">
-                <td id="info_td1">연락처:</td>
-                <td id="info_td2"><input type="text" name="receive_phone" id="receive_phone"></td>
+                <th id="info_th">연락처:</th>
+                <td id="info_td"><input class="col-md-6" type="text" name="receive_phone" id="receive_phone"></td>
             </tr>
             <tr id="info_tr">
-                <td id="info_td1">배송 주소:</td>
-                <td id="info_td2" class="add_td"><input type="text" name="order_addr1" id="order_addr1"></td>
-                <td id="info_td2" class="add_td"><input type="text" name="order_addr2" id="order_addr2"></td>
-                <td id="info_td2" class="add_td"><input type="text" name="order_addr3" id="order_addr3"></td>
+                <th id="info_th">배송 주소:</th>
+                <td id="info_td" class="add_td" style="height:50px; padding-right:10px;">
+                <input class="col-md-6" type="text" name="order_addr1" id="order_addr1">
+                <input class="col-md-6" type="text" name="order_addr2" id="order_addr2">
+                <input class="col-md-6" type="text" name="order_addr3" id="order_addr3"></td>
             </tr>
             <tr id="info_tr">
-                <td id="info_td1">주문 메모:</td>
-                <td id="info_td2"><textarea name="order_memo" rows="7" ></textarea></td>
+                <th id="info_th">주문 메모:</th>
+                <td id="info_td"><textarea name="order_memo" rows="7" cols="35"></textarea></td>
             </tr>
         </table>
         </div>
@@ -267,11 +309,13 @@
                </td>
                </tr>
         </table>
-        </div>
-        <hr>
-          	<div id="order_btn">
+        <div id="order_btn">
            	<td colspan="2"><input class="btn_style" type="button" id="order" value="주문하기"></td>
            	</div>
+           	<br>
+           	<hr>
+        </div>
+      
     </form>
 </body>
 <script type="text/javascript">
@@ -281,12 +325,10 @@ $('#order').on("click", function() {
         alert("수령인 이름을 입력하세요.");
         return false;
     }
-
     if ($('#receive_phone').val() == '') {
         alert("수령인 전화번호를 입력하세요.");
         return false;
     }
-
     if ($('#order_addr1').val() == '') {
         alert("배송지 주소를 입력하세요.");
         return false;
@@ -301,7 +343,6 @@ $('#order').on("click", function() {
         alert("상세 주소를 입력하세요.");
         return false;
     }
-
     if ($('#receive_name').val() != '' || $('#receive_phone').val() != '' || $('#order_addr1').val() != '') {
         if (confirm("주문 하시겠습니까 ??")) {
             document.getElementById("form1").submit();
