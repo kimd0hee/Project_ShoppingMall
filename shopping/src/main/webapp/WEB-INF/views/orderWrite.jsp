@@ -52,9 +52,11 @@
     </script>
     
     <style>
-    	 a:link { color:white; text-decoration: none;}
-    	a:visited {color:white; text-decoration: none;}
-    	a:hover {color:white; text-decoration: none;}
+    	 a:link { color:black; text-decoration: none;}
+    	a:visited {color:black; text-decoration: none;}
+    	a:hover {color:black; text-decoration: none;}
+    	
+    	
     
     	table {
     		text-align:center;
@@ -178,7 +180,7 @@
 			border-radius:5px;
 			border:none;
 		}
-
+		
 		#order_addr2{
 			margin:5px 0px;
 		}
@@ -188,6 +190,9 @@
 			text-align:left;
 		}
 		
+		a[type=button]{
+		color:white;
+		}
 
     </style>
     
@@ -221,7 +226,7 @@
                         <fmt:formatNumber pattern="###,###,###" value="${row.money}"/>
                      </td>
                      <td id="cart_td" style="width:20%;">
-                         <a class="cart_del" href="${path}/cartDelete.do?cart_id=${row.cart_id}">삭제</a>
+                         <a type="button" class="cart_del" href="${path}/cartDelete.do?cart_id=${row.cart_id}">삭제</a>
                      </td>
                   </tr>                  
                   </c:forEach>

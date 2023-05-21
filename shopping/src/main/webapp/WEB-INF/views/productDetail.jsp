@@ -173,34 +173,8 @@
     margin-bottom:3px;
 }
  
-#mainImg {
-   
-    width:600px;
-    height:700px;
-
-}
-
-#form {
 
 
-}
-
-.container {
-   display:inline-block;
-   max-width:2000px;
-}
-
-#detail {
-   margin-left:170px;
-   width:600px;
-}
-   
-#detail2 {
-
-   padding-bottom:130px;
-   width:500px;
-   margin-right:90px;
-}  
 
 img.otsajo {
 width : 230px;
@@ -215,22 +189,37 @@ align-items: center;
 #abc {
   position: fixed;
   top: 240px; /* 테이블이 보여질 위치 */
-  z-index:1;
-  max-height:1000px;
+  z-index: 1;
+}
+
+.container {
+  display: flex;
+
+  justify-content: center;
+}
+
+.table-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
   
+  .table-wrapper {
+    width:100%;
+  }
 }
 
-.container{
-   
-   overflow:hidden;
+@media (max-width: 400px) {
+  .table-wrapper {
+    flex-direction: row;
+  }
 }
-
-.body-container{
-   
-   
-}
-
-
 </style>
 
 
@@ -243,87 +232,73 @@ align-items: center;
 <br>
 
 <div class="body-container">
-<div class="container" id="body_con" style="width:90%;">
-    
-    <div id="detail" style="float:left;">   
-    
-   <table >
-    
-      <tr>
-         <td id="img">
-         <div id="mainImg">
-            <c:forEach var="product_url" items="${vo.product_url}">
-             <img src="${path}/img/product/${product_url}" width="800px;" height="300px;" alt="img"><br>
-         </c:forEach>
-         
-          </div>
-         </td>
-         </tr>
-         </table>
-         </div>
-         
-            <div style="float:right;" id="detail2">
-           
-            <table style=" width:500px;" id="abc">
-            
-               <tr id="tb_t">  
-                  <td id="pro_name" class="tb_row">상품명 : ${vo.product_name}
-                     
-                     <div>
-                     가격 : <fmt:formatNumber value="${vo.product_price}" pattern="###,###,###"/>원
-                     </div>
-                  </td>
-               </tr>
-               
-               <tr>
-                  <td class="tb_row" style="height:80px;" id="local">
-                  <div class="i_loc" style="align:left;">
-                  <span class="material-symbols-outlined" id="p_local" id="lo_icon">local_shipping</span>
-                  <p class="lo_pont" style="vertical-align:top; padding-top:20px; color:#000;">내일 출발예정</p>
-                  </div>
-                  </td>
-               
-               </tr>
-               <tr>
-                  <td class="tb_row" id="p_desc" style="">상품내용 :<br> ${vo.product_desc}</td>
-               </tr>
-               <tr>
-                  <td id="text">
-                     <form name="form-1" method="post" action="${path}/cartInsert.do">
-                        <input type="hidden" name="product_id" value="${vo.product_id}">
-                        <select name="amount" id="p_amount">
-                           <c:forEach begin="1" end="10" var="i">
-                              <option id="option" value="${i}">${i}</option>
-                           </c:forEach>
-                        </select>&nbsp;<a style="font-size:17px;">개</a>
-                        <input type="submit" id="p_btn" value="장바구니에 담기">
-                        <button id="p_btn" onclick="location.href='${path}/productList.do'">상품목록</button>
-                     </form>    
-                  </td>
-               </tr>
-        
-   </table>
-   </div>
-   </div>
-   </div>
+  <div class="container" id="body_con" style="width:90%;">
+    <div class="table-wrapper" id="detail" style="float:left;">
+      <div id="mainImg">
+        <c:forEach var="product_url" items="${vo.product_url}">
+          <img src="${path}/img/product/${product_url}" width="500px;" height="500px;" alt="img"><br>
+        </c:forEach>
+      </div>
+    </div>
+    <div class="table-wrapper" id="detail2" style="float:right;">
+      <table style="width:500px;" id="abc">
+        <tr id="tb_t">
+          <td id="pro_name" class="tb_row">상품명 : ${vo.product_name}
+            <div>
+              가격 : <fmt:formatNumber value="${vo.product_price}" pattern="###,###,###"/>원
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="tb_row" style="height:80px;" id="local">
+            <div class="i_loc" style="align:left;">
+              <span class="material-symbols-outlined" id="p_local" id="lo_icon">local_shipping</span>
+              <p class="lo_pont" style="vertical-align:top; padding-top:20px; color:#000;">내일 출발예정</p>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td class="tb_row" id="p_desc" style="">상품내용 :<br> ${vo.product_desc}</td>
+        </tr>
+        <tr>
+          <td id="text">
+            <form name="form-1" method="post" action="${path}/cartInsert.do">
+              <input type="hidden" name="product_id" value="${vo.product_id}">
+              <select name="amount" id="p_amount">
+                <c:forEach begin="1" end="10" var="i">
+                  <option id="option" value="${i}">${i}</option>
+                </c:forEach>
+              </select>&nbsp;<a style="font-size:17px;">개</a>
+              <input type="submit" id="p_btn" value="장바구니에 담기">
+              <button id="p_btn" onclick="location.href='${path}/productList.do'">상품목록</button>
+            </form>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
 
 
   
   
 </body>
 <script>
-$(function(){
-    $(".thumbs a").click(function(){            //클릭 시
-        var imgPath = $(this).attr("href");     //클릭한 a태그의 하이퍼링크를 변수저장
-        $("#mainImg>img").attr({src:imgPath})   //메인 이미지의 주소 속성에 할당
-        .hide()                                 //fadein()효과를 보여주기 위해 숨김처리
-        .fadeIn();                              //fadeIn()
-        return false;                           //<a> 의 본래기능 (하이퍼링크) 작동방지
-    });
+window.addEventListener("scroll", function() {
+  var abc = document.getElementById("abc");
+  var targetPosition = 1500; // 멈추고자 하는 위치의 값 (예: 500px)
+
+  if (window.pageYOffset >= targetPosition) {
+    abc.style.position = "absolute";
+    abc.style.top = targetPosition + "px";
+  } else {
+    abc.style.position = "fixed";
+    abc.style.top = "240px";
+  }
 });
 </script>
 
 
 
 <%@ include file="include/footer.jsp" %>
-</html>

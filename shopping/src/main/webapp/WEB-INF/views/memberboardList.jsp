@@ -124,11 +124,11 @@
         <table class="table table-sm">
           <thead>
             <tr>
-               <th id="padding1">번호</th>
-               <th id="padding1">제목</th>
-               <th id="padding1">이름</th>
-               <th id="padding1">작성일</th>
-               <th id="padding1">조회수</th>      
+               <th id="padding1"  width="15%;">번호</th>
+               <th id="padding1"  width="30%;">제목</th>
+               <th id="padding1"  width="15%;">이름</th>
+               <th id="padding1"  width="25%;">작성일</th>
+               <th id="padding1"  width="15%;">조회수</th>      
             </tr>
           </thead>
          <!-- 게시글 상세보기 페이지로 이동시 게시글 목록페이지에 있는 검색조건, 키워드 현재 페이지 값을 유지 -->

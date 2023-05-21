@@ -11,6 +11,7 @@ public class ProductVO {
    private String product_desc;
    private String product_url;
    private List<MultipartFile> product_photo;
+   private String category;
    
 public int getProduct_id() {
 	return product_id;
@@ -48,11 +49,19 @@ public List<MultipartFile> getProduct_photo() {
 public void setProduct_photo(List<MultipartFile> product_photo) {
 	this.product_photo = product_photo;
 }
+public String getCategory() {
+	return category;
+}
+public void setCategory(String category) {
+	this.category = category;
+}
 
 @Override
 public String toString() {
 	return "ProductVO [product_id=" + product_id + ", product_name=" + product_name + ", product_price=" + product_price
 			+ ", product_desc=" + product_desc + ", product_url=" + product_url + ", product_photo=" + product_photo
-			+ "]";
+			+ ", category=" + category + "]";
 }
+   
+
 }

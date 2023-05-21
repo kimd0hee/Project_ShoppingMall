@@ -28,8 +28,15 @@
 		margin:0 auto;
 	}
 	
-	#padding {
+	#padding_th {
 		padding:7px;
+		border-bottom:1px solid #333;
+		
+	}
+	
+	#padding_td {
+		padding:7px;
+		border-bottom:1px solid #FAFAFA;
 	}
 	
 	h2 {
@@ -51,7 +58,12 @@
 	}
 	
 	#btnWrite {
-		
+		 border-radius:4px;
+      background-color: #333;
+	  color: #fff;
+	  cursor: pointer;
+	  border:1px solid black;
+	  padding:3px 6px;
 	}
 	
 	.write {
@@ -63,6 +75,7 @@
 	
 	#t_head{
 		background-color:#f8f8f8;
+		border-bottom:1px solid black;
 	}
 	
 	
@@ -75,19 +88,19 @@
 <table class="table table-sm">
           <thead id="t_head">
             <tr>
-         		<th id="padding" width="200px;">번호</th>
-         		<th id="padding">제목</th>
-         		<th id="padding">이름</th>
-         		<th id="padding" width="400px;">작성일</th>
+         		<th id="padding_th" width="15%;">번호</th>
+         		<th id="padding_th" width="40%">제목</th>
+         		<th id="padding_th" width="15%;">이름</th>
+         		<th id="padding_th" width="30%">작성일</th>
       		</tr>
           </thead>
 	<tbody>
             <c:forEach var="row" items="${list}">
          <tr>
-            <td id="padding">${row.board_id}</td>
-            <td id="padding"><a href="${path }/boardView.do?board_id=${row.board_id }">${row.board_title }</a></td>
-            <td id="padding">${row.board_writer}</td>
-            <td id="padding">
+            <td id="padding_td">${row.board_id}</td>
+            <td id="padding_td"><a href="${path }/boardView.do?board_id=${row.board_id }">${row.board_title }</a></td>
+            <td id="padding_td">${row.board_writer}</td>
+            <td id="padding_td">
                <fmt:formatDate value="${row.board_createdate}" pattern="yyyy-MM-dd HH:mm:ss"/>
             </td>
          </tr>
