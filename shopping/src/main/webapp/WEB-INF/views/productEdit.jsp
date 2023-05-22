@@ -108,7 +108,9 @@
       </tr>
       <tr>
          <td id="p_td1">상품명</td>
-         <td id="p_td2"><input type="text" id="product_name" name="product_name" value="${vo.product_name}"></td>
+         <td id="p_td2"><input type="text" id="product_name" name="product_name" value="${vo.product_name}">
+         <input type="radio" id="top" name="category" value="top">상의
+       	 <input type="radio" id="bottom" name="category" value="bottom">하의</td>
       </tr>
       <tr>
          <td id="p_td1">가격</td>

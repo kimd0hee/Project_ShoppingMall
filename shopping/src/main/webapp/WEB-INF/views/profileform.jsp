@@ -46,10 +46,9 @@
    }
    
    #pro_bt {
-      border:1px solid black;
       padding:5px;
-      background-color: #fff;
-	  color: #333;
+      background-color: #333;
+	  color: #fff;
 	  
 	  border-radius: 4px;
 	  cursor: pointer;
@@ -59,12 +58,27 @@
 	#pro_back{
 		 
 	}
+	
+	#pro_tbt{
+		border:2px solid #333;
+		width:100%;
+		margin:10px 0px; 
+		border-collapse:separate;
+  		border-spacing: 0;
+  		border-radius:15px;
+	}
+	
+	td img{
+		border-collapse:separate;
+  		border-spacing: 0;
+		border-radius:50%;
+	}
 </style>
 
 </head>
 <body>
 <div class="container mt-3">
-    <table class="table" border="10" style="border-color: gray;">
+    <table id="pro_tbt">
        <thead>
           <tr>
                <td align="center"><img src="" alt="" onerror="this.src='//img.echosting.cafe24.com/skin/base/member/img_member_default.gif';" class="myshop_benefit_group_image_tag"/></td>

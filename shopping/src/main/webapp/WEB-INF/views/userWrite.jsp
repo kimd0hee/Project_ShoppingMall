@@ -27,58 +27,48 @@ function validateForm() {
     var userPhone3 = document.forms["form1"]["user_phone3"].value;
     var userEmail = document.forms["form1"]["user_email"].value;
     var userBirth = document.forms["form1"]["user_birth"].value;
-
     // 아이디는 5자 이상이어야 합니다.
     if (userId.length < 5) {
         alert("아이디는 5자 이상이어야 합니다.");
         return false;
     }
-
     // 비밀번호는 8자 이상이어야 합니다.
     if (userPw.length < 8) {
         alert("비밀번호는 8자 이상이어야 합니다.");
         return false;
     }
-
     // 이름은 필수 입력 항목입니다.
     if (userName.trim() == "") {
         alert("이름은 필수 입력 항목입니다.");
         return false;
     }
-
     // 전화번호는 숫자만 입력 가능합니다.
     if (!/^\d+$/.test(userPhone + userPhone2 + userPhone3)) {
     alert("전화번호는 숫자만 입력 가능합니다.");
     return false;
    }
     document.forms["form1"]["user_phone"].value = userPhone + "-" + userPhone2 + "-" + userPhone3;
-
     // 이메일 형식이 유효한지 검사합니다.
     if (!/\S+@\S+\.\S+/.test(userEmail)) {
         alert("유효한 이메일 주소를 입력해주세요.");
         return false;
     }
-
     // 생년월일은 필수 입력 항목입니다.
     if (userBirth.trim() == "") {
         alert("생년월일은 필수 입력 항목입니다.");
         return false;
     }
-
     alert("회원가입이 완료되었습니다.");
     return true;
 }
-
 </script>
 <!-- 우편번호 -->
 <script type="text/javascript">
-
    $(document).ready(function() {
       
       $("#searchAdd").click(function(event) {
          event.preventDefault();
          postcode();
-
       });
       
       
@@ -87,12 +77,10 @@ function validateForm() {
            new daum.Postcode({
                oncomplete: function(data) {
                    // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
                    // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
                    // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
                    var roadAddr = data.roadAddress; // 도로명 주소 변수
                    var extraRoadAddr = ''; // 참고 항목 변수
-
                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
@@ -106,21 +94,14 @@ function validateForm() {
                    if(extraRoadAddr !== ''){
                        extraRoadAddr = ' (' + extraRoadAddr + ')';
                    }
-
                    // 우편번호와 주소 정보를 해당 필드에 넣는다.
                    document.getElementById('postcode').value = data.zonecode;
                    document.getElementById('roadAddress').value = roadAddr;
-
                    
                }
-
-
            }).open();
-
        }
-
    });
-
    
    function pass_check(){
 	      var user_pw = document.getElementById('user_pw').value;

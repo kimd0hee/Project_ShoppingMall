@@ -173,6 +173,7 @@
     margin-bottom:3px;
 }
  
+
 #mainImg {
    
     width:600px;
@@ -182,25 +183,7 @@
 
 #form {
 
-
 }
-
-.container {
-   display:inline-block;
-   max-width:2000px;
-}
-
-#detail {
-   margin-left:170px;
-   width:600px;
-}
-   
-#detail2 {
-
-   padding-bottom:130px;
-   width:500px;
-   margin-right:90px;
-}  
 
 img.otsajo {
 width : 230px;
@@ -215,22 +198,37 @@ align-items: center;
 #abc {
   position: fixed;
   top: 240px; /* 테이블이 보여질 위치 */
-  z-index:1;
-  max-height:1000px;
+  z-index: 1;
+}
+
+.container {
+  display: flex;
+
+  justify-content: center;
+}
+
+.table-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
   
+  .table-wrapper {
+    width:100%;
+  }
 }
 
-.container{
-   
-   overflow:hidden;
+@media (max-width: 400px) {
+  .table-wrapper {
+    flex-direction: row;
+  }
 }
-
-.body-container{
-   
-   
-}
-
-
 </style>
 
 
@@ -243,6 +241,7 @@ align-items: center;
 <br>
 
 <div class="body-container">
+
 <div class="container" id="body_con" style="width:90%;">
     
     <div id="detail" style="float:left;">   
@@ -307,9 +306,6 @@ align-items: center;
    </div>
    </div>
 
-
-  
-  
 </body>
 <script>
 window.addEventListener("scroll", function() {
@@ -327,5 +323,4 @@ window.addEventListener("scroll", function() {
 </script>
 
 
-
-<%@ include file="include/footer.jsp"%>
+<%@ include file="include/footer.jsp" %>

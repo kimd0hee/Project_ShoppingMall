@@ -80,7 +80,7 @@
     <div class="form-group">
       <label for="title">제목</label>
       <input type="text" id="title"
-       name="title" size="80" placeholder="제목을 입력하세요" maxlength="45" style="margin-left:5px;"> 
+       name="title" placeholder="제목을 입력하세요" maxlength="45" style="margin-left:5px; width:100%;"> 
     </div>
     <div class="form-group">
         <label for="content">내용</label>

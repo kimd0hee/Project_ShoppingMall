@@ -18,22 +18,34 @@
 		text-align:center;
 		margin-top:20px;
 	}
-
+	
+	table{
+		border:1px solid #333;
+		border-collapse:separate;
+ 		border-spacing: 0;
+ 		border-radius:10px;
+	}
+	
 	#list_th{
-		border-top:1px solid black;
-		border-bottom:1px solid black;
 		padding:5px 0px;
 		background-color: #f8f8f8;
+		border-bottom:1px solid black;
+		border-top-left-radius:10px;
+		border-top-right-radius:10px;
 	}
 	
 	#list_td {
-		border-bottom:1px solid black;
+		border-bottom:1px solid #D8D8D8;
 		padding:10px 0px;
+		border-collapse:separate;
+ 		border-spacing: 0;
+ 		
 	}
 	
 	h2{
 		padding-bottom:10px;
 	}
+	
 </style>
 
 </head>
@@ -45,7 +57,7 @@
 			<tr>
 				<th id="list_th">주문번호</th>
 				<th id="list_th">주문회원</th>
-				<th id="list_th">총주문수량</th>
+				<th id="list_th">주문수량</th>
 				<th id="list_th">주문가격</th>
 				<th id="list_th">주문일자</th>
 			</tr>

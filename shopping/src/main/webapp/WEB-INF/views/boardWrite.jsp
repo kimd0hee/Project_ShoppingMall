@@ -47,18 +47,32 @@
 	.btn {
    	border:1px solid black;
     margin:0px 2px;
+    margin-top:15px;
+    background-color:#333;
+    color:#fff;
    }
+   
+   #Write_form{
+   	border:1px solid black;
+   	padding:15px 20px;
+   }
+   
+   #board_content {
+   	border:1px solid #848484;
+   }
+   
 </style>
 
 </head>
 <body>
 <div class="container">
-  <h2 style="margin:20px 0px;">게시글 작성</h2>
+  <h2 style="margin:20px 0px; text-align:center;">게시글 작성</h2>
 <form name="form1" method="post" action="${path }/boardInsert.do">
+	<div id="Write_form">
 	<div class="form-group">
       <label for="title">제목</label>
-      <input type="text" class="form-control" id="board_title"
-       name="board_title" size="80" placeholder="제목을 입력하세요"> 
+      <input type="text" id="board_title"
+       name="board_title" placeholder="제목을 입력하세요" style="width:100%;"> 
        
     </div>
     <div class="form-group">
@@ -67,12 +81,14 @@
  	</div>
 	<div class="form-group">
 	<label for="name">이름</label>
-		<input class="form-control" name="board_writer" id="board_writer" placeholder="이름을 입력해주세요">
+		<input name="board_writer" id="board_writer" placeholder="이름을 입력해주세요" style="width:100%;">
+	</div>
 	</div>
 	<div style="width:100%; text-align:right;">
 		<button class="btn" type="button" id="btnSave">확인</button>
 		<button class="btn"type="reset">취소</button>
 	</div>
+	
 </form>
 </div>
 <%@ include file="include/footer.jsp" %>

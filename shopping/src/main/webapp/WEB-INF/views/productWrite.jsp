@@ -90,7 +90,10 @@
       <tr id="p_row" style="border-top:1px solid #A4A4A4;">
          <td id="p_td1">상품명</td>
          
-       <td id="p_td2"><input type="text" name="product_name" id="product_name"></td>
+       <td id="p_td2"><input type="text" name="product_name" id="product_name">
+        <input type="radio" id="top" name="category" value="top">상의
+        <input type="radio" id="bottom" name="category" value="bottom">하의
+       </td>
       </tr>
       <tr id="p_row">
          <td id="p_td1">가격</td>

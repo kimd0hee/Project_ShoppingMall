@@ -272,7 +272,7 @@
     <div class="f_div">
       <table>
          <tr>
-         	<th>제목</th>
+         	<th style="width:10%;">제목</th>
      <!--     <label for="title">제목</label> -->
          
         <td> <input class="col-md-6" type="text" id="title" value="${dto.title}"
@@ -311,7 +311,7 @@
       <!-- 로그인 한 회원에게만 댓글 작성 가능 -->
       <div id="reply2" style="width:97%;">
        <c:if test="${sessionScope.user_id != null}">
-         <textarea rows="5" cols="120" id="replytext" placeholder="댓글을 입력하세요"></textarea>
+         <textarea rows="5" id="replytext" placeholder="댓글을 입력하세요" style="width:100%;"></textarea>
       </c:if>
       
       <div id="replylist"> 

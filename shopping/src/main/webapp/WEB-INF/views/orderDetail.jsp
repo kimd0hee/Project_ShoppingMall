@@ -38,21 +38,42 @@
 		}
 		
 		
-		#det_th{
-			padding:10px;
+		table{
+			border-collapse:separate;
+ 		    border-spacing: 0;
+ 		    border-radius:10px;
+ 		    border:1px solid black;
 		}
+		
+		#det_th{
+			padding:8px 10px;
+    		background-color:#f8f8f8;
+    		border-bottom:1px solid black;
+			border-right:1px solid black;
+ 		}
 		#det_td{
 			padding:0px 10px;
+			width:70%;
+			border-collapse:separate;
+ 		    border-spacing: 0;
+ 		    border-bottom:1px solid black;
 		}
 		
 		#btnWrite,#btnUpdate,#btnDelete {
-			background-color:#f8f8f8;
-			border:1px solid black;
-			border-radius:2px;
+			background-color:#333;
+			color:#fff;
+			border:none;
+			border-radius:5px;
 			margin:3px 2px;
+			padding:5px 5px;
 		}
 		
-
+		#add_margin{
+			margin:5px 0px;
+		}
+		
+		
+		
 	</style>
 	
 </head>
@@ -60,40 +81,40 @@
 	<div class="container" id="det_con">
     <h2>주문 상세 정보</h2>
     <form name="form" method="post">
-    	<table border="1" style="width:100%;">
+    	<table style="width:100%;">
     		<tr>
-                <th id="det_th">주문번호: </th>
-				<td id="det_td"><input name="order_id" value="${vo.order_id}" readonly="readonly"></td>
+                <th id="det_th" style="border-top-left-radius:10px;">주문번호: </th>
+				<td id="det_td"><input class="col-md-6" name="order_id" value="${vo.order_id}" readonly="readonly" ></td>
 				</tr>
 				<tr>
 				<th id="det_th">주문자아이디: </th>
-				<td id="det_td"><input name="user_id" value="${vo.user_id}" readonly="readonly"></td>
+				<td id="det_td"><input class="col-md-6" name="user_id" value="${vo.user_id}" readonly="readonly"></td>
 				</tr>
 				<tr>
 				<th id="det_th">수령자명: </th>
-				<td id="det_td"><input name="receive_name" value="${vo.receive_name}"></td>
+				<td id="det_td"><input class="col-md-6" name="receive_name" value="${vo.receive_name}"></td>
 				</tr>
 				<tr>
 				<th id="det_th">수령자연락처: </th>
-				<td id="det_td"><input name="receive_phone" value="${vo.receive_phone}"></td>
+				<td id="det_td"><input class="col-md-6" name="receive_phone" value="${vo.receive_phone}"></td>
 				</tr>
 				<tr>
 				<th id="det_th">주소: </th>
-				<td id="det_td"><input name="order_addr1" value="${vo.order_addr1}">
-				<input name="order_addr2" value="${vo.order_addr2}">
-				<input name="order_addr3" value="${vo.order_addr3}"></td>
+				<td id="det_td" style="padding:5px 10px;"><input class="col-md-6" name="order_addr1" value="${vo.order_addr1}">
+				<input class="col-md-6" id="add_margin" name="order_addr2" value="${vo.order_addr2}">
+				<input class="col-md-6" name="order_addr3" value="${vo.order_addr3}"></td>
 				</tr>
 				<tr>
 				<th id="det_th">수량: </th>
-				<td id="det_td"><input name="order_quantity" value="${vo.order_quantity}" readonly="readonly"></td>
+				<td id="det_td"><input class="col-md-6" name="order_quantity" value="${vo.order_quantity}" readonly="readonly"></td>
 				</tr>
 				<tr>
 				<th id="det_th">가격: </th>
-				<td id="det_td"><input name="order_price" value="${vo.order_price}" readonly="readonly"></td>
+				<td id="det_td"><input class="col-md-6" name="order_price" value="${vo.order_price}" readonly="readonly"></td>
 				</tr>
 				<tr>
-				<th id="det_th">메모: </th>
-				<td id="det_td"><input name="order_memo" value="${vo.order_memo}"></td>
+				<th id="det_th" style="border-bottom:none; border-bottom-left-radius:10px;">메모: </th>
+				<td id="det_td" style="border-bottom:none;"><input class="col-md-6" name="order_memo" value="${vo.order_memo}"></td>
 				</tr>
 				</table>
 			
